@@ -8,6 +8,7 @@ export const NavWrapper = styled.nav`
         left: 0;
         z-index: 3;
         display: flex;
+        background-color: var(--main-bg)
 `;
 export const NavRow = styled.div`
         display: flex;
@@ -83,5 +84,8 @@ export const NavItem = styled.span`
         }
         & > i{
             font-size: var(--font-size-icon)
+        }
+        &:hover{
+            opacity: 50%;
         }
 `;

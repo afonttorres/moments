@@ -16,7 +16,7 @@ export const MBFooter = styled.footer`
 `;
 export const MBFooterRow = styled.div`
     height: 100%;
-    width: 60%;
+    width: 70%;
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -37,6 +37,6 @@ export const AddIcon = styled.span`
     border: 3px solid var(--font-color-plain-noBg);
     border-radius: 50%;
     height: fit-content;
-    width: 18%;
+    width: 3.5rem;
     text-align: center;
 `;
