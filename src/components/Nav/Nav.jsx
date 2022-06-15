@@ -28,7 +28,6 @@ export const Nav = (props) => {
         if (location == 'profile') setMBoutput([<i className="fa-solid fa-bars"></i>])
     }
 
-    console.log(location);
     return (
         <NavWrapper>
             <NavTitleRow>

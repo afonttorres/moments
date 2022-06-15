@@ -10,8 +10,6 @@ export const Card = (props) => {
         , { button: <i className="fa-regular fa-bookmark"></i>, content: props.moment.saves }
     ]);
 
-
-    console.log(moment.isLiked);
     return (
         <SCard>
             <InfoRow>

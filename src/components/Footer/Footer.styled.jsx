@@ -28,6 +28,7 @@ export const MBFooterItem = styled.span`
     text-align: center;
     & > *{
             color: var(--font-color-plain-noBg);
+            color: ${props => props.color};
         }
 `;
 

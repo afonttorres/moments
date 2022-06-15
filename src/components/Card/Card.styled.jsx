@@ -63,7 +63,7 @@ export const UserText = styled(Text)`
     font-weight: 900;
 `;
 export const LocationText = styled(Text)`
-    opacity: 50%;
+    opacity: var(--text-opacity);
     font-size: var(--font-size-plain-small);
 `;
 
@@ -99,7 +99,7 @@ export const SButton = styled.button`
     color: var(--font-color-plain-noBg);
    }
    & :hover{
-    opacity: 50%;
+    opacity: var(--text-opacity);
    }
 `;
 export const SCardAvatar = styled.div`

@@ -7,10 +7,11 @@
     --font-color-plain-bg: "";
     --font-color-main-noBg: "";
     --font-color-main-bg: "";
+    --text-opacity: 50%;
     /*FONT SIZE*/
     --font-size-plain: small;
     --font-size-main: larger;
-    --font-size-icon: x-large;
+    --font-size-icon: 1.65rem;
     --font-size-plain-small: x-small;
     /*BACKGROUNDS*/
     --main-bg: white;

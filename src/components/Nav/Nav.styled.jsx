@@ -86,6 +86,6 @@ export const NavItem = styled.span`
             font-size: var(--font-size-icon)
         }
         &:hover{
-            opacity: 50%;
+            opacity: var(--text-opacity);
         }
 `;

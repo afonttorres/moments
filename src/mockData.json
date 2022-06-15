@@ -45,7 +45,7 @@
         "description": "oranged sky",
         "imgUrl": "https://www.publicdomainpictures.net/pictures/30000/nahled/sunset-15.jpg",
         "avatar": "https://images2.alphacoders.com/521/521982.jpg",
-        "isLiked":false,
+        "isLiked":true,
         "likes":89,
         "comments": 21,
         "saves": 5,
