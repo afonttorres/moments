@@ -29,12 +29,12 @@ export const Nav = (props) => {
     }
 
     return (
-        <NavWrapper>
+        <NavWrapper color={location == "profile"?`var(--no-bg)`:`var(--main-bg)`}>
             <NavTitleRow>
                 <Title>{title}</Title>
             </NavTitleRow>
             <NavItemsColDT>
-                <NavItemsRowDT>{dtOutput.map((item, key) => <NavItem key={key}><Link to={`/${item}`}>{item}</Link></NavItem>)}
+                <NavItemsRowDT>{dtOutput.map((item, key) => <NavItem key={key}><Link to={`/${item.split(" ").join("-")}`}>{item}</Link></NavItem>)}
                 </NavItemsRowDT>
             </NavItemsColDT>
             <NavItemsColMB>

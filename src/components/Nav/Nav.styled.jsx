@@ -8,7 +8,8 @@ export const NavWrapper = styled.nav`
         left: 0;
         z-index: 3;
         display: flex;
-        background-color: var(--main-bg)
+        background-color: var(--main-bg);
+        background-color: ${props => props.color};
 `;
 export const NavRow = styled.div`
         display: flex;
