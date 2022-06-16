@@ -11,10 +11,10 @@ export const Footer = (props) => {
         { button: "notifications", content: <i className="fa-solid fa-bell"></i> },
         { button: "profile", content: <i className="fa-solid fa-circle-user"></i> }
     ]);
-
+    
     return (
         <MBFooter>
-            <MBFooterRow>{output.map((item, key) => key !== 2 ? <MBFooterItem key={key} color={location == item.button? `var(--interaction-color)`:`var(--font-color-plain-noBg)`}>{item.content}</MBFooterItem> : <AddIcon key={key}>{item.content}</AddIcon>)}
+            <MBFooterRow>{output.map((item, key) => key !== 2 ? <MBFooterItem key={key} color={location == item.button ? `var(--interaction-color)` : `var(--font-color-plain-noBg)`}>{item.content}</MBFooterItem> : <AddIcon key={key}>{item.content}</AddIcon>)}
             </MBFooterRow>
         </MBFooter>
     )

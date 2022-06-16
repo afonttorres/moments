@@ -4,7 +4,7 @@ import { NavWrapper, NavTitleRow, Title, NavItemsColDT, NavItemsRowDT, NavItemsC
 
 export const Nav = (props) => {
 
-    const [location, setLocation] = useState(useLocation(0).pathname.toString().substring(1, (useLocation(0).pathname.toString().length)))
+    const [location] = useState(useLocation(0).pathname.toString().substring(1, (useLocation(0).pathname.toString().length)))
     const [dtOutput, setDToutput] = useState(["upload", "sign in", "log in"]);
     const [mbOutput, setMBoutput] = useState([<i className="fa-regular fa-bookmark"></i>, <i className="fa-regular fa-heart"></i>]);
     const [title, setTitle] = useState("Moments");
