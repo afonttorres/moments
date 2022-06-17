@@ -66,10 +66,12 @@ export const SButton = styled.button`
     }
 `;
 
-export const MForm = styled(Form)`
+export const MForm = styled(Form)` 
+    height: ${props => props.formHeight};
     height: 75%;
 `;
 
 export const MInput = styled(Input)`
+    min-height: ${props => props.inputHeight};
     min-height: 5%;
 `;
