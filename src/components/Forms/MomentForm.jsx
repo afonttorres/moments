@@ -49,8 +49,13 @@ export const MomentForm = (props) => {
     return (
         <MForm onSubmit={handleSubmit}>{Object.keys(moment).map((field, key) => (
             <>
-                <Label>{field.replace("Url", " url")}</Label>
-                <MInput border={filledInputs.includes(field) ? `2px solid var(--ux-border-color);` : ""} type={moment[field].includes("Url") ? "url" : "text"} name={field} value={moment[field]} placeholder={field.replace("Url", " url")} onChange={handleInputChange} />
+                <Label color={filledInputs.includes(field) ? "--interaction-color" : ""} >{field.replace("Url", " url")}</Label>
+                <MInput 
+                    border={filledInputs.includes(field) ? `2px solid var(--ux-border-color);` : ""} 
+                    type={moment[field].includes("Url") ? "url" : "text"} 
+                    name={field} value={moment[field]} 
+                    placeholder={field.replace("Url", " url")} 
+                    onChange={handleInputChange} />
             </>
         ))}
             <SButton>Upload</SButton>

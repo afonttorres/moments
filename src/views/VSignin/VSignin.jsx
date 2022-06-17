@@ -1,14 +1,15 @@
 import React, { useState, useEffect } from "react";
+import {Link} from 'react-router-dom';
 import { LogForm } from "../../components/Forms/LogForm";
-import { Text, Title, Container } from "./VSignin.styled";
+import { TextBold, Text, Title, Row, ViewContainer } from '../../pages/Pages.styled';
 
 export const VSignin = (props) => {
 
     return (
-        <Container>
+        <ViewContainer>
             <Title>Sign in</Title>
             <LogForm location={props.location} functions={props.functions} />
-            <Text>Already have an account? Log in</Text>
-        </Container>
+            <Row gap="1%"><Text>Already have an account?</Text><TextBold><Link to="/log-in">Log in</Link></TextBold></Row> 
+        </ViewContainer>
     )
 }

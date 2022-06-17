@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { DetailText, Text } from "../../pages/Pages.styled";
 
 export const SCard = styled.article`
     height: fit-content;
@@ -43,6 +44,12 @@ export const InfoRow = styled(SCardRow)`
     }
 `;
 
+export const TitleRow = styled(SCardRow)`
+    justify-content: flex-start;
+    width: 75%;
+    margin: 1.5% auto;
+`;
+
 export const InfoIconsCol = styled(SCardCol)`  
     width: 20%;
 `;
@@ -52,19 +59,17 @@ export const InfoDataCol = styled(SCardCol)`
     justify-content: center;
     gap: 10%;
 `;
-export const Text = styled.span`
-    font-size: var(--font-size-plain);
-    font-family: var(--font-family-plain);
-    color: var(--font-color-plain-noBg);
+
+export const CDetailText = styled(DetailText)`
+    opacity: var(--text-opacity);
+    font-size: var(--font-size-plain-small);
     text-transform: capitalize;
 `;
 
-export const UserText = styled(Text)`
-    font-weight: 900;
-`;
-export const LocationText = styled(Text)`
-    opacity: var(--text-opacity);
-    font-size: var(--font-size-plain-small);
+export const CText = styled(Text)`
+    &::first-letter{
+        text-transform: uppercase;
+    }
 `;
 
 export const ImgRow = styled(SCardRow)`

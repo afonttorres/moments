@@ -1,15 +1,29 @@
-*{
+* {
   margin: 0;
   padding: 0;
 }
-html, body{
+
+html,
+body {
   height: 100%;
   width: 100%;
 }
-a{
+
+a {
   display: contents;
   text-decoration: none;
+  color: inherit;
 }
-i{
+
+/* a:-webkit-any-link {
+  color: inherit;
+} */
+
+a:focus,
+a:active {
+  color: var(--interaction-color);
+}
+
+i {
   font-size: var(--font-size-icon);
 }

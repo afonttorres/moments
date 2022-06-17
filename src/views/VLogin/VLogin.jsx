@@ -1,16 +1,16 @@
 import React, { useState } from "react";
-import { useParams } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { LogForm } from "../../components/Forms/LogForm";
-import { Text, Title, Container } from "./VLogin.styled";
+import { TextBold, Text, Title, Row, ViewContainer } from '../../pages/Pages.styled';
 
 
 export const VLogin = (props) => {
 
     return (
-        <Container>
+        <ViewContainer>
             <Title>Log in</Title>
             <LogForm location={props.location} functions={props.functions} />
-            <Text>Don't have an account? Sign in</Text>
-        </Container>
+            <Row gap="1%"><Text>Don't have an account? </Text><TextBold><Link to="/sign-in">Sign in</Link></TextBold></Row>
+        </ViewContainer>
     )
 }

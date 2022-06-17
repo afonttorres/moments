@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Link, useLocation, useParams } from 'react-router-dom';
-import { NavWrapper, NavTitleRow, Title, NavItemsColDT, NavItemsRowDT, NavItemsColMB, NavItemsRowMB, NavItem } from "./Nav.styled";
+import { NavWrapper, NavTitleRow, NavItemsColDT, NavItemsRowDT, NavItemsColMB, NavItemsRowMB, NavItem } from "./Nav.styled";
+import { MainTitle } from '../../pages/Pages.styled';
 
 export const Nav = (props) => {
 
@@ -29,9 +30,9 @@ export const Nav = (props) => {
     }
 
     return (
-        <NavWrapper color={location == "profile"?`var(--no-bg)`:`var(--main-bg)`}>
+        <NavWrapper color={location == "profile" ? `var(--no-bg)` : `var(--main-bg)`}>
             <NavTitleRow>
-                <Title>{title}</Title>
+                <MainTitle>{title}</MainTitle>
             </NavTitleRow>
             <NavItemsColDT>
                 <NavItemsRowDT>{dtOutput.map((item, key) => <NavItem key={key}><Link to={`/${item.split(" ").join("-")}`}>{item}</Link></NavItem>)}

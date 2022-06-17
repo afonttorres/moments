@@ -6,11 +6,10 @@ import { MainContainer } from '../Pages.styled';
 
 
 export const Home = (props) => {
-    console.log('home');
     return (
         <MainContainer>
-            <Nav />
-            <Feed />
+            <Nav isLogged={true} />
+            <Feed location="home" />
             <Footer />
         </MainContainer>
     );

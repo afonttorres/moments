@@ -14,12 +14,13 @@
     --font-size-icon: 1.65rem;
     --font-size-plain-small: x-small;
     /*BORDER*/
-    --border-color:rgba(37, 57, 111, 50%);
+    --border-color: rgba(37, 57, 111, 50%);
     --ux-border-color: rgba(169, 116, 255, 100%);
     /*BACKGROUNDS*/
     --main-bg: white;
     --ux-bg: rgba(169, 116, 255, 100%);
     --no-bg: transparent;
+    --blocked-bg: rgba(87, 87, 87, 50%);
     /*INTERACTIONS*/
     --interaction-color: var(--ux-bg);
     --interaction-opacity: rgba(169, 116, 255, 75%);

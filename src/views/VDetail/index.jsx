@@ -1,0 +1,1 @@
+export { VDetail } from '../VDetail/VDetail'

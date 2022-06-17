@@ -16,8 +16,8 @@ export const Label = styled.label`
     width: 90%;
     margin: 0 auto;
     font-family: var(--font-family-plain);
-    color: ${props => props.color};
     color: var(--font-color-plain-noBg);
+    color: var(${props => props.color});
     opacity: var(--text-opacity);
     font-size: var(--font-size-plain);
     font-weight: 900;

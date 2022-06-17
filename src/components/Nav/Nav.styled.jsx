@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { Col, Row } from "../../pages/Pages.styled";
 
 export const NavWrapper = styled.nav`
         height: 10vh;
@@ -11,31 +12,18 @@ export const NavWrapper = styled.nav`
         background-color: var(--main-bg);
         background-color: ${props => props.color};
 `;
-export const NavRow = styled.div`
-        display: flex;
-        flex-direction: row;
-        justify-content: center;
-        align-items: center;
+export const NavRow = styled(Row)`
         gap: 15%;
         width: 50%;
         height: 100%;
 `;
+
 export const NavTitleRow = styled(NavRow)`
         float: left;
         text-align: left;
 `;
-export const Title = styled.span`
-        font-size: var(--font-size-main);
-        font-family: var(--font-family-main);
-        font-weight: bold;
-        width: 50%;
-`;
 
-
-export const NavItemsCol = styled.div`
-        display: flex;
-        justify-content: center;
-        align-items: center;
+export const NavItemsCol = styled(Col)`
         width: 50%;
         height: 100%;
 `;

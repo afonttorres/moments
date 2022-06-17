@@ -1,12 +1,14 @@
 import React, { useEffect, useState } from 'react';
-import { useLocation } from 'react-router-dom';
 import { VLogin } from '../../views/VLogin/VLogin';
 import { VSignin } from '../../views/VSignin/VSignin';
-import { Container } from './Login.styled';
+import { MainContainer } from '../Pages.styled';
 
 
 export const Login = (props) => {
-    const [location] = useState(useLocation(0).pathname.toString().substring(1, (useLocation(0).pathname.toString().length)));
+    const [location, setLocation] = useState(window.location.pathname.toString().substring(1, (window.location.pathname.toString().length)));
+    useEffect(() => {
+        setLocation(window.location.pathname.toString().substring(1, (window.location.pathname.toString().length)))
+    }, [window.location.pathname])
 
     const login = (data) => {
         for (let key in data) console.log(`login:${data[key]}`)
@@ -16,9 +18,10 @@ export const Login = (props) => {
     }
 
     const foosObj = { "login": login, "signin": signin };
+    console.log(location)
     return (
-        <Container>{location === "log-in" ? <VLogin location={location} functions={foosObj} /> : <VSignin location={location} functions={foosObj} />}
-        </Container>
-
+        <MainContainer>
+            {location === "log-in" ? <VLogin location={location} functions={foosObj} /> : <VSignin location={location} functions={foosObj} />}
+        </MainContainer>
     );
 }

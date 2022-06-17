@@ -3,7 +3,7 @@ import { Link, useLocation, useParams } from 'react-router-dom';
 import { AddIcon, MBFooter, MBFooterItem, MBFooterRow } from "./Footer.styled";
 
 export const Footer = (props) => {
-    const [location, setLocation] = useState(useLocation(0).pathname.toString().substring(1, (useLocation(0).pathname.toString().length)));
+    const [location, setLocation] = useState(window.location.pathname);
     const [output] = useState([
         { button: "home", content: <i className="fa-solid fa-house"></i> },
         { button: "search", content: <i className="fa-solid fa-magnifying-glass"></i> },
@@ -12,9 +12,11 @@ export const Footer = (props) => {
         { button: "profile", content: <i className="fa-solid fa-circle-user"></i> }
     ]);
     
+    console.log(window.location.pathname)
+    console.log(location.includes(output[0].button))
     return (
         <MBFooter>
-            <MBFooterRow>{output.map((item, key) => key !== 2 ? <MBFooterItem key={key} color={location == item.button ? `var(--interaction-color)` : `var(--font-color-plain-noBg)`}><Link to={`/${item.button}`}>{item.content}</Link></MBFooterItem> : <AddIcon key={key}><Link to={`/${item.button}`}>{item.content}</Link></AddIcon>)}
+            <MBFooterRow>{output.map((item, key) => key !== 2 ? <MBFooterItem key={key} color={location.includes(item.button) ? `var(--interaction-color)` : `var(--font-color-plain-noBg)`}><Link to={`/${item.button}`}>{item.content}</Link></MBFooterItem> : <AddIcon key={key}><Link to={`/${item.button}`}>{item.content}</Link></AddIcon>)}
             </MBFooterRow>
         </MBFooter>
     )

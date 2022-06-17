@@ -63,13 +63,13 @@ export const LogForm = (props) => {
         <Form onSubmit={handleSubmit}>
             {props.location.includes("sign") ?
                 <>
-                    <Label>Your name</Label>
+                    <Label color={filledInputs.includes("name") ? "--interaction-color" : ""}>Your name</Label>
                     <Input border={filledInputs.includes("name") ? `2px solid var(--ux-border-color);` : ""} type="text" name="name" value={userData.name} placeholder="Name" onChange={handleInputChange} />
                 </>
                 : null}
-            <Label>Email</Label>
+            <Label color={filledInputs.includes("email") ? "--interaction-color" : ""}>Email</Label>
             <Input border={filledInputs.includes("email") ? `2px solid var(--ux-border-color);` : ""} type="email" name="email" value={userData.email} placeholder="Email" onChange={handleInputChange} />
-            <Label>Password</Label>
+            <Label color={filledInputs.includes("password") ? "--interaction-color" : ""}>Password</Label>
             <Input border={filledInputs.includes("password") ? `2px solid var(--ux-border-color);` : ""} type="password" name="password" value={userData.password} placeholder="Password" onChange={handleInputChange} />
             <SButton>{props.location.split("-").join(" ")}</SButton>
         </Form>

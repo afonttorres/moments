@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { Row } from "../../pages/Pages.styled";
 
 export const MBFooter = styled.footer`
     height: 10vh;
@@ -15,12 +16,9 @@ export const MBFooter = styled.footer`
         display: none;
     }
 `;
-export const MBFooterRow = styled.div`
+export const MBFooterRow = styled(Row)`
     height: 100%;
     width: 70%;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
     justify-content: space-between;
     gap: 5%;
 `;
