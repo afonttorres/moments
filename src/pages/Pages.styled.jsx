@@ -43,7 +43,7 @@ export const DetailText = styled(Text)`
     opacity: var(--text-opacity);
     font-size: var(--font-size-plain-small);
 `;
-export const CloseButton = styled.button`
+export const ReturnButton = styled.button`
     height: fit-content;
     width: fit-content;
     border: none;
@@ -52,16 +52,32 @@ export const CloseButton = styled.button`
     cursor:pointer;
     position: absolute;
     top: 5vh;
-    left: 15vh;
+    right: 5vh;
     color: var(--font-color-plain-noBg);
+    color: var(${props => props.color});
     background-color: var(--no-bg);
     &:hover, &:focus, &:active{
        color: var(--text-opacity);
     }
+`;
+
+export const BackButton = styled(ReturnButton)`
+    top: 5vh;
+    left: 10vh;
     @media (max-width: 820px) {
         top: 5vh;
         left: 5vh;
     }
+`;
+
+export const CloseButton = styled(ReturnButton)`
+    top: 5vh;
+    right: 10vh;
+    @media (max-width: 820px) {
+        top: 5vh;
+        right: 15vh;
+    }
+
 `;
 export const Col = styled(Container)`
     flex-direction: column;
