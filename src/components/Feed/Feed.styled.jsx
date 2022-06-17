@@ -5,7 +5,7 @@ export const FeedContainer = styled.section`
     width: 90%;
     margin: 0 auto;
     position: relative;
-    top: 30vh;
+    top: 10vh;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;

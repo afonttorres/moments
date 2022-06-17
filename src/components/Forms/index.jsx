@@ -1,1 +1,1 @@
-export { LogForm } from './LogForm';
+export { LogForm, MomentFrom } from './LogForm';

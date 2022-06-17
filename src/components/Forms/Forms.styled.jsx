@@ -21,9 +21,12 @@ export const Label = styled.label`
     opacity: var(--text-opacity);
     font-size: var(--font-size-plain);
     font-weight: 900;
+    &::first-letter{
+        text-transform: uppercase;
+    }
 `;
 export const Input = styled.input`
-    height: 7.5%;
+    min-height: 7.5%;
     width: 90%;
     border: none;
     align-self: center;
@@ -39,10 +42,13 @@ export const Input = styled.input`
     &:focus&:hover&:active{
         border-bottom: 2px solid var(--ux-border-color);
     }
+    &::placeholder{
+        text-transform: capitalize;
+    }
 `;
-export const SLogButton = styled.button`
-    height: 10%;
-    width: 25em;
+export const SButton = styled.button`
+    height: 4vh;
+    width: 25vh;
     background-color: var(--ux-bg);
     border-radius: 2rem;
     color: var(--font-color-plain-bg);
@@ -58,4 +64,12 @@ export const SLogButton = styled.button`
     &:hover, &:focus, &:active{
         background-color: var(--interaction-opacity);
     }
+`;
+
+export const MForm = styled(Form)`
+    height: 75%;
+`;
+
+export const MInput = styled(Input)`
+    min-height: 5%;
 `;

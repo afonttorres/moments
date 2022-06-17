@@ -10,6 +10,7 @@ export const MBFooter = styled.footer`
     display: flex;
     align-items: center;
     justify-content: center;
+    background-color: var(--main-bg);
     @media (min-width: 820px) {
         display: none;
     }
