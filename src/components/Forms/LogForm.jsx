@@ -5,11 +5,13 @@ export const LogForm = (props) => {
 
     const [userData, setUserData] = useState({ name: "", email: "", password: "" });
     const [msg, setMsg] = useState("");
+    const [filledInputs, setFilledInputs] = useState([]);
 
     const handleInputChange = (e) => {
         let name = e.target.name;
         let value = e.target.value;
         setUserData({ ...userData, [name]: value })
+        getFilledInputs();
     }
 
     const handleSubmit = (e) => {
@@ -19,6 +21,14 @@ export const LogForm = (props) => {
         if (!sanitize()) return;
         setAction();
         resetValues();
+    }
+
+    const getFilledInputs = () => {
+        let filledInputs = [];
+        for (let field in userData) {
+            if (userData[field] !== "") filledInputs.push(field);
+        }
+        setFilledInputs(filledInputs);
     }
 
     const setData = () => {
@@ -37,30 +47,30 @@ export const LogForm = (props) => {
         }
         return true;
     }
-    
+
     const setAction = () => {
-        console.log(userData)
         props.location.includes("log") ? props.functions.login(userData) : props.functions.signin(userData);
     }
 
     const resetValues = () => {
         setUserData({ name: "", email: "", password: "" });
         setMsg("");
+        setFilledInputs([]);
     }
 
-    console.log(msg !== "" ? msg : "No message")
+    console.log(msg !== "" ? msg : "No message");
     return (
         <Form onSubmit={handleSubmit}>
             {props.location.includes("sign") ?
                 <>
                     <Label>Your name</Label>
-                    <Input type="text" name="name" value={userData.name} placeholder="Name" onChange={handleInputChange} />
+                    <Input border={filledInputs.includes("name") ? `2px solid var(--ux-border-color);` : ""} type="text" name="name" value={userData.name} placeholder="Name" onChange={handleInputChange} />
                 </>
                 : null}
             <Label>Email</Label>
-            <Input type="email" name="email" value={userData.email} placeholder="Email" onChange={handleInputChange} />
+            <Input border={filledInputs.includes("email") ? `2px solid var(--ux-border-color);` : ""} type="email" name="email" value={userData.email} placeholder="Email" onChange={handleInputChange} />
             <Label>Password</Label>
-            <Input type="password" name="password" value={userData.password} placeholder="Password" onChange={handleInputChange} />
+            <Input border={filledInputs.includes("password") ? `2px solid var(--ux-border-color);` : ""} type="password" name="password" value={userData.password} placeholder="Password" onChange={handleInputChange} />
             <SButton>{props.location.split("-").join(" ")}</SButton>
         </Form>
     )

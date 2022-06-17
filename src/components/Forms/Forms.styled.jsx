@@ -30,8 +30,8 @@ export const Input = styled.input`
     width: 90%;
     border: none;
     align-self: center;
-    border-bottom: ${props => props.border};
     border-bottom: 1px solid var(--border-color);
+    border-bottom: ${props => props.border};
     padding-left: 3%;
     font-family: var(--font-family-plain);
     color: var(--font-family-plain);

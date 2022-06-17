@@ -10,23 +10,47 @@ export const MomentForm = (props) => {
         avatarUrl: "",
     })
     const [msg, setMsg] = useState("");
+    const [filledInputs, setFilledInputs] = useState([]);
 
     const handleInputChange = (e) => {
         let name = e.target.name;
         let value = e.target.value;
-        setMoment({ ...moment, [name]: value })
+        setMoment({ ...moment, [name]: value });
+        getFilledInputs();
     }
 
     const handleSubmit = (e) => {
         e.preventDefault();
         props.action(moment);
+        resetValues();
     }
 
+    const getFilledInputs = () => {
+        let filledInputs = [];
+        for (let field in moment) {
+            if (moment[field] !== "") filledInputs.push(field);
+        }
+        setFilledInputs(filledInputs);
+    }
+
+    const resetValues = () => {
+        setMoment({
+            location: "",
+            title: "",
+            description: "",
+            imgUrl: "",
+            avatarUrl: "",
+        });
+        setMsg("");
+        setFilledInputs([]);
+    }
+
+    console.log(filledInputs)
     return (
         <MForm onSubmit={handleSubmit}>{Object.keys(moment).map((field, key) => (
             <>
                 <Label>{field.replace("Url", " url")}</Label>
-                <MInput type={moment[field].includes("Url") ? "url" : "text"} name={field} value={moment[field]} placeholder={field.replace("Url", " url")} onChange={handleInputChange} />
+                <MInput border={filledInputs.includes(field) ? `2px solid var(--ux-border-color);` : ""} type={moment[field].includes("Url") ? "url" : "text"} name={field} value={moment[field]} placeholder={field.replace("Url", " url")} onChange={handleInputChange} />
             </>
         ))}
             <SButton>Upload</SButton>
