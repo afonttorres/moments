@@ -1,7 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { Link } from 'react-router-dom';
-import { CDetailText, CText, TitleRow, SCardAvatar, InfoDataCol, InfoIconsCol, SButton, ButtonsCol, ButtonsRow, ImgRow, InfoRow, SCard } from "./Card.styled";
-import { TextBold, Text } from "../../pages/Pages.styled";
+import { CDetailText, CText, TitleRow, SCardAvatar, InfoDataCol, InfoIconsCol, SButton, ButtonsCol, ButtonsRow, ImgRow, InfoRow, SCard } from "./Cards.styled";
+import { TextBold, Text, Img } from "../../pages/Pages.styled";
+import { Avatar } from '../../components/Avatar/Avatar';
+import { InlineInfo } from '../../components/InlineInfo/InlineInfo';
+
 
 export const Card = (props) => {
     const [moment, setMoment] = useState(props.moment);
@@ -13,9 +16,12 @@ export const Card = (props) => {
 
     return (
         <SCard>
+
+
+
             <InfoRow>
                 <InfoIconsCol>
-                    <SCardAvatar imgUrl={moment.avatar} />
+                    <Avatar style={{ width: '60%' }} data={moment} />
                 </InfoIconsCol>
                 <InfoDataCol>
                     <TextBold>{moment.user}</TextBold>
@@ -25,13 +31,19 @@ export const Card = (props) => {
                     <SButton><i className="fa-solid fa-ellipsis"></i></SButton>
                 </InfoIconsCol>
             </InfoRow>
-            <Link to={`/${props.location ? props.location : 'home'}/detail/${moment.id}`}>
-                <ImgRow imgUrl={moment.imgUrl}>
-                </ImgRow>
-            </Link>
+
+
+            <ImgRow>
+                <Link to={`/${props.location ? props.location : 'home'}/detail/${moment.id}`}>
+                    <Img imgUrl={moment.imgUrl} />
+                </Link>
+            </ImgRow>
+
             <TitleRow>
                 <TextBold>{moment.user}</TextBold>&nbsp;<CText>{moment.title}</CText>
             </TitleRow>
+
+
             <ButtonsRow>{buttons.map((button, key) =>
                 <ButtonsCol>
                     <SButton key={key}>{button.button}</SButton>

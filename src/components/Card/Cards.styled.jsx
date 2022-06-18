@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { DetailText, Text } from "../../pages/Pages.styled";
+import { Col, DetailText, Img, Row, Text } from "../../pages/Pages.styled";
 
 export const SCard = styled.article`
     height: fit-content;
@@ -75,8 +75,6 @@ export const CText = styled(Text)`
 export const ImgRow = styled(SCardRow)`
     height: 25vh;
     border-radius: .75rem;
-    background: url(${(props) => props.imgUrl});
-    background-size: cover;
     @media (max-width: 820px) {
         height: 70%;
     }
@@ -107,13 +105,16 @@ export const SButton = styled.button`
     opacity: var(--text-opacity);
    }
 `;
-export const SCardAvatar = styled.div`
-    height: 2.5rem;
-    width: 2.5rem;
-    border-radius: 50%;
-    background: url(${props => props.imgUrl}) content-box;
-    border: 1px dashed var(--interaction-color);
-    background-size: cover;
-    background-position: center;
-    padding: 0.05em;
+
+export const DCImgCol = styled(Col)`
+    width: 60%;
+`;
+export const DCImgInfo = styled(Col)`
+    width: 40%;
+`;
+export const DCImg = styled(Img)`
+    border-radius: .75rem 0 0 .75rem;
+`;
+export const DCMainRow = styled(Row)`
+    gap: 0;
 `;

@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { Footer } from "../../components/Footer/Footer";
-import moments from '../../mockData.json';
+import moments from '../../mockMoments.json';
 import { VDetailDT } from "../../views/VDetail/VDetailDT";
 import { VDetailMB } from "../../views/VDetail/VDetailMB";
 import { HiddenContainerDT, HiddenContainerMB } from "../Pages.styled";
@@ -16,7 +15,7 @@ export const MomentDetail = () => {
 
     const [id, setId] = useState(useParams().id)
     const [moment, setMoment] = useState(findMoment());
-    
+
     return (
         <>
             <HiddenContainerMB>

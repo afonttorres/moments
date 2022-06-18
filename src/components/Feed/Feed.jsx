@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import data from '../../mockData.json';
+import data from '../../mockMoments.json';
 import { ViewContainer } from "../../pages/Pages.styled";
 import { Card } from '../Card/Card';
 import { FeedContainer } from "./Feed.styled";

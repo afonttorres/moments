@@ -10,21 +10,28 @@ export const MainContainer = styled.main`
 `;
 export const Container = styled.div`
     width: 100%;
-    height: fit-content;
+    height: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     gap: var(--main-cont-gap);
     overflow: hidden;
+    position: relative;
 `;
 export const ViewContainer = styled(Container)`
     height: 100vh;
 `;
-export const Text = styled.p`
+export const Text = styled.span`
     font-size: var(--font-size-plain);
     font-family: var(--font-family-plain);
     color: var(--font-color-plain-noBg);
+`;
+
+export const TextCapi = styled(Text)`
+    &::first-letter{
+        text-transform: uppercase;
+    }
 `;
 
 export const Title = styled(Text)`
@@ -39,9 +46,21 @@ export const MainTitle = styled(Title)`
 export const TextBold = styled(Text)`
     font-weight: 900;
 `;
+
+export const TextBoldCapi = styled(TextBold)`
+    &::first-letter{
+        text-transform: uppercase;
+    }
+`;
 export const DetailText = styled(Text)`
     opacity: var(--text-opacity);
     font-size: var(--font-size-plain-small);
+`;
+
+export const DetailTextCapi = styled(DetailText)`
+     &::first-letter{
+        text-transform: uppercase;
+    }
 `;
 export const ReturnButton = styled.button`
     height: fit-content;
@@ -115,13 +134,30 @@ export const OverlayContainer = styled(ViewContainer)`
 `;
 
 export const NoScrollContainer = styled.div`
-        width: 100vw;
-        height: 100vh;
-        display: block;
-        top: 0;
-        left: 0;
-        position: fixed;
-        z-index: 4;
-        overflow: hidden;
-        background-color: var(--blocked-bg);
+    width: 100vw;
+    height: 100vh;
+    display: block;
+    top: 0;
+    left: 0;
+    position: fixed;
+    z-index: 4;
+    overflow: hidden;
+    background-color: var(--blocked-bg);
+`;
+
+export const Img = styled.img.attrs(props => ({
+    src: props.imgUrl,
+}))`
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: 0.75rem;
+`;
+
+export const TextLine = styled(Text)`
+    cursor: pointer;
+    & *{
+        width: fit-content;
+        height: inherit;
+    }
 `;
