@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 import moments from '../../mockMoments.json';
 import { VDetailDT } from "../../views/VDetail/VDetailDT";
 import { VDetailMB } from "../../views/VDetail/VDetailMB";
-import { HiddenContainerDT, HiddenContainerMB } from "../Pages.styled";
+import { HiddenContainerDT, HiddenContainerMB } from "../Styles.styled";
 
 export const MomentDetail = () => {
 

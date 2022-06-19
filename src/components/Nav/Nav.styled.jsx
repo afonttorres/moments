@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { Col, Row } from "../../pages/Pages.styled";
+import { Col, Row } from "../../pages/Styles.styled";
 
 export const NavWrapper = styled.nav`
         height: 10vh;

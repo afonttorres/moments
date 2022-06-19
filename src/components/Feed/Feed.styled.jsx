@@ -18,5 +18,6 @@ export const FeedContainer = styled.section`
         height: 58vh;
         overflow: scroll;
         padding-bottom: 0;
+        gap: var(--mid-gap);
     }
 `;

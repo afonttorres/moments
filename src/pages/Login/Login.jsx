@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { VLogin } from '../../views/VLogin/VLogin';
 import { VSignin } from '../../views/VSignin/VSignin';
-import { MainContainer } from '../Pages.styled';
+import { MainContainer } from '../Styles.styled';
 
 
 export const Login = (props) => {

@@ -11,8 +11,9 @@
     /*FONT SIZE*/
     --font-size-plain: small;
     --font-size-main: larger;
-    --font-size-icon: 1.65rem;
     --font-size-plain-small: x-small;
+    --font-size-icon: 1.4rem;
+    --font-size-icon-small: small;
     /*BORDER*/
     --border-color: rgba(37, 57, 111, 50%);
     --ux-border-color: rgba(169, 116, 255, 100%);
@@ -27,4 +28,5 @@
     /*GAP*/
     --main-cont-gap: 2.5%;
     --form-gap: 5%;
+    --mid-gap: 5%;
 }

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Link, useLocation, useParams } from 'react-router-dom';
 import { NavWrapper, NavTitleRow, NavItemsColDT, NavItemsRowDT, NavItemsColMB, NavItemsRowMB, NavItem } from "./Nav.styled";
-import { MainTitle } from '../../pages/Pages.styled';
+import { MainTitle } from '../../pages/Styles.styled';
 
 export const Nav = (props) => {
 

@@ -7,5 +7,8 @@ export const generalServices = {
         let data;
         text.length > maxLength ? data = `${text.substring(0, maxLength)} ...` : data = text;
         return data;
+    },
+    capitalize(text){
+        return text[0].toUpperCase() + text.substring(1, text.length);
     }
 }

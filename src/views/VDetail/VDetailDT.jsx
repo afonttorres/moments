@@ -3,9 +3,8 @@ import { generalServices } from "../../services/generalServices";
 import { Home } from "../../pages/Home/Home";
 import { Profile } from '../../pages/Profile/Profile';
 import { Link } from 'react-router-dom';
-
-import { Text, OverlayContainer, NoScrollContainer, MainContainer, CloseButton } from "../../pages/Pages.styled";
-import { DetailCardDT } from "../../components/Card/DetailCardDT";
+import { OverlayContainer, NoScrollContainer, MainContainer, CloseButton } from "../../pages/Styles.styled";
+import { DetailCardDT } from "../../components/Cards/DetailCardDT";
 
 export const VDetailDT = (props) => {
     const path = window.location.pathname;
@@ -25,7 +24,7 @@ export const VDetailDT = (props) => {
             <>{location.includes("profile") ? <Profile /> : <Home />}</>
             <OverlayContainer>
                 <DetailCardDT moment={moment} />
-                <noscript>si faig botons pel profile també</noscript>
+                <noscript>si faig botons pel profile o input per afegir comentari</noscript>
             </OverlayContainer>
         </MainContainer >
     )

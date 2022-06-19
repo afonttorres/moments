@@ -1,7 +1,8 @@
 import React, { useState } from "react";
-import { Card } from '../../components/Card/Card';
+import { Card } from '../../components/Cards/Card';
+import { DetailCardDT } from "../../components/Cards/DetailCardDT";
 import { Footer } from "../../components/Footer/Footer";
-import { MainContainer, ViewContainer } from '../../pages/Pages.styled';
+import { MainContainer, ViewContainer } from '../../pages/Styles.styled';
 
 
 
@@ -12,9 +13,9 @@ export const VDetailMB = (props) => {
     return (
         <MainContainer>
             <noscript>nav</noscript>
-            <ViewContainer>
-                <Card moment={moment} />
-            </ViewContainer>
+            <noscript>card to be replaced</noscript>
+            {/* <DetailCardDTMB /> */}
+            <Card moment={moment} />
             <Footer />
         </MainContainer>
     )

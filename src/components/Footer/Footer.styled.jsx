@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { Row } from "../../pages/Pages.styled";
+import { Row } from "../../pages/Styles.styled";
 
 export const MBFooter = styled.footer`
     height: 10vh;

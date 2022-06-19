@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { LogForm } from "../../components/Forms/LogForm";
-import { TextBold, Text, Title, Row, ViewContainer } from '../../pages/Pages.styled';
+import { TextBold, Text, Title, Row, ViewContainer } from '../../pages/Styles.styled';
 
 
 export const VLogin = (props) => {

@@ -1,17 +1,16 @@
 import styled from "styled-components";
-import { Container, Img } from "../../pages/Pages.styled";
+import { Container, Img } from "../../pages/Styles.styled";
 
 export const CircleContainer = styled(Container)`
     border-radius: 50%;
-    padding-bottom: 100%;
-    padding-bottom: ${props => props.width};
+    width: 50%;
+    width: ${props => props.width ? props.width : '50%'};
+    padding-bottom: 50%;
+    padding-bottom: ${props => props.width ? props.width : '50%'};
     border: 1px dashed var(--interaction-color);
     height: 0;
     position: relative;
-    width: 100%;
     background-color: white;
-    width: ${props => props.width};
-
 `;
 
 export const BorderContainer = styled(CircleContainer)`

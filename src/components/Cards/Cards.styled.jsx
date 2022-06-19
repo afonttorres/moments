@@ -1,24 +1,23 @@
 import styled from "styled-components";
-import { Col, DetailText, Img, Row, Text } from "../../pages/Pages.styled";
+import { Col, DetailText, Img, Row, Text } from "../../pages/Styles.styled";
 
 export const SCard = styled.article`
-    height: fit-content;
+    height: 60%;
     width: 31%;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    gap: 1%;
     margin: 1%;
     @media (max-width: 820px) {
         width: 100%;
-        height: 60%;
+        height: 100%;
     }
 `;
 
-export const SCardRow = styled.div`
+export const SCardRow = styled(Row)`
     width: 80%;
-    display: flex;
-    flex-direction: row;
     align-items: center;
     margin: 0 auto;
 `;
@@ -34,30 +33,17 @@ export const SCardCol = styled.div`
 `;
 
 export const InfoRow = styled(SCardRow)`
-    height: 6vh;
+    height: 10%;
     width: 85%;
     justify-content: flex-start;
-    margin: auto;
     margin-right: 10%;
-    @media (max-width: 820px) {
-        height: 15%;
-    }
 `;
 
 export const TitleRow = styled(SCardRow)`
+    height: 5%;
     justify-content: flex-start;
     width: 75%;
-    margin: 1.5% auto;
-`;
-
-export const InfoIconsCol = styled(SCardCol)`  
-    width: 20%;
-`;
-export const InfoDataCol = styled(SCardCol)`  
-    width: 60%;
-    align-items: flex-start;
-    justify-content: center;
-    gap: 10%;
+    margin: 2.5% auto 0 auto;
 `;
 
 export const CDetailText = styled(DetailText)`
@@ -66,50 +52,18 @@ export const CDetailText = styled(DetailText)`
     text-transform: capitalize;
 `;
 
-export const CText = styled(Text)`
-    &::first-letter{
-        text-transform: uppercase;
-    }
-`;
-
 export const ImgRow = styled(SCardRow)`
-    height: 25vh;
+    height: 72.5%;
     border-radius: .75rem;
-    @media (max-width: 820px) {
-        height: 70%;
-    }
 `;
 export const ButtonsRow = styled(SCardRow)`
-    height: 6vh;
-    width: 60%;
-    margin-right: 30%;
-    @media (max-width: 820px) {
-        height: 15%;
-    }
+    height: 10%;
+    width: 80%;
 `;
-
-export const ButtonsCol = styled(SCardCol)`
-    flex-direction: row;
-    justify-content: space-around;
-`;
-
-export const SButton = styled.button`
-    border: none;
-    background: none;
-    outline: none;
-    cursor: pointer;
-   & > *{
-    color: var(--font-color-plain-noBg);
-   }
-   & :hover{
-    opacity: var(--text-opacity);
-   }
-`;
-
 export const DCImgCol = styled(Col)`
     width: 60%;
 `;
-export const DCImgInfo = styled(Col)`
+export const DCInfoCol = styled(Col)`
     width: 40%;
 `;
 export const DCImg = styled(Img)`

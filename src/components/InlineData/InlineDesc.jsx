@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from "react";
-import { DetailTextCapi, Row, TextBold, TextLine } from "../../pages/Pages.styled";
+import { DetailTextCapi, TextBold, TextLine } from "../../pages/Styles.styled";
 import { generalServices } from "../../services/generalServices";
 import { Avatar } from "../Avatar/Avatar";
-import { ButtonCol, InfoCol, InfoRow } from "./InlineInfo.styled";
+import { LikeButton } from "../Buttons";
+import { ButtonCol, InfoCol, InfoRow, InlineCont } from "./InlineData.styled";
 
-export const InlineInfo = (props) => {
+export const InlineDesc = (props) => {
     const [data, setData] = useState(props.data);
     const [mainText, setMainText] = useState(data["comment"] || data["description"]);
     const [isShorter, setIsShorter] = useState(false);
@@ -29,8 +30,8 @@ export const InlineInfo = (props) => {
         setIsShorter(false);
     }
 
-    const changeDisplay = (e) =>{
-        console.log(e.target.offsetHeight)
+    const changeDisplay = (e) => {
+        console.log(e.target.innerHTML.length)
     }
 
     const toggleExpand = (event) => {
@@ -38,20 +39,21 @@ export const InlineInfo = (props) => {
         changeDisplay(event)
     }
 
+
     return (
-        <Row id="InlineInfo">
+        <InlineCont id="InlineDesc">
             <ButtonCol>
-                <Avatar style={{ width: '50%' }} data={data} />
+                <Avatar data={data} />
             </ButtonCol>
             <InfoCol>
                 <InfoRow>
-                    <TextLine><TextBold>{data.user}</TextBold>&nbsp;<DetailTextCapi onClick={toggleExpand}>{mainText}</DetailTextCapi></TextLine>
+                    <TextLine><TextBold>{data.user}</TextBold>&nbsp;<DetailTextCapi onClick={toggleExpand}>{generalServices.capitalize(mainText)}</DetailTextCapi></TextLine>
                 </InfoRow>
             </InfoCol>
             <ButtonCol>
-                {data.description ? '...' : '(L)'}
+                {data.description ? null : <LikeButton isLiked={data.isLiked} size={'var(--font-size-icon-small)'} />}
             </ButtonCol>
-        </Row>
+        </InlineCont>
 
     )
 }

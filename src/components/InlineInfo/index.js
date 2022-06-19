@@ -1,1 +1,0 @@
-export {InlineInfo} from '../InlineInfo/InlineInfo';

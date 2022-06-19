@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import data from '../../mockMoments.json';
-import { ViewContainer } from "../../pages/Pages.styled";
-import { Card } from '../Card/Card';
+import { ViewContainer } from "../../pages/Styles.styled";
+import { Card } from '../Cards/Card';
 import { FeedContainer } from "./Feed.styled";
 
 export const Feed = (props) => {

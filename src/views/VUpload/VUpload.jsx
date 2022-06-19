@@ -1,5 +1,5 @@
 import React from "react";
-import { ViewContainer, BackButton, Title } from "../../pages/Pages.styled";
+import { ViewContainer, BackButton, Title } from "../../pages/Styles.styled";
 import { Link } from 'react-router-dom';
 import { MomentForm } from '../../components/Forms/MomentForm';
 
