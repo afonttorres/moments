@@ -7,7 +7,7 @@ export const NavWrapper = styled.nav`
         position: fixed;
         top: 0;
         left: 0;
-        z-index: 3;
+        z-index: var(--nav-i);
         display: flex;
         background-color: var(--main-bg);
         background-color: ${props => props.color};

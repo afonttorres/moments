@@ -7,7 +7,7 @@ export const MBFooter = styled.footer`
     position: fixed;
     bottom: 0;
     left: 0;
-    z-index: 3;
+    z-index: var(--footer-i);
     display: flex;
     align-items: center;
     justify-content: center;

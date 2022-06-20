@@ -21,6 +21,7 @@ export const ReturnButton = styled(Button)`
     position: absolute;
     top: 5vh;
     right: 5vh;
+    z-index: var(--return-buttons-i);
     color: var(${props => props.color ? props.color : '--font-color-plain-noBg'});
     & > *{
         color: var(${props => props.color ? props.color : '--font-color-plain-noBg'});
@@ -42,7 +43,7 @@ export const SCloseButton = styled(ReturnButton)`
     }
 
 `;
-export const BBContent = styled(Col)`
+export const BBMContent = styled(Col)`
     position: absolute;
     bottom: ${props => props.bottom ? props.bottom : '-25vh'};
     left: .75%;
@@ -52,6 +53,7 @@ export const BBContent = styled(Col)`
     background: var(--main-bg);
     justify-content: center;
     align-items: center;
+    z-index: var(--burgers-i);
     transition: bottom 1s;
     & > * {
         width: 25%;
@@ -66,7 +68,7 @@ export const BBContent = styled(Col)`
 }
 `;
 
-export const BBBar = styled.div`
+export const BBMBar = styled.div`
     position: absolute;
     margin: 0 auto;
     height: 0.3em;

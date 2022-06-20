@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useEffect } from "react";
 import { NoScrollContainer, Row } from "../../../pages/Styles.styled";
-import { BBBar, BBContent } from "../Buttons.styled";
+import { BBMBar, BBMContent } from "../Buttons.styled";
 
 
 export const BurgerContentMB = (props) => {
@@ -64,14 +64,14 @@ export const BurgerContentMB = (props) => {
 
     return (
         <NoScrollContainer>
-            <BBContent id={'dragBar'} bottom={bottom}>
-                <BBBar onTouchMove={handleTouches} />
+            <BBMContent id={'dragBar'} bottom={bottom}>
+                <BBMBar onTouchMove={handleTouches} />
                 <>
                     {content.map((button, key) => (
                         <Row onClick={button.action}>{button.content}</Row>
                     ))}
                 </>
-            </BBContent>
+            </BBMContent>
         </NoScrollContainer>
     )
 }

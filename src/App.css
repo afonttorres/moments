@@ -29,4 +29,12 @@
     --main-cont-gap: 2.5%;
     --form-gap: 5%;
     --mid-gap: 5%;
+    /*INDEX*/
+    --nav-i: 3;
+    --footer-i: 3;
+    --noScroll-cont-i: 4;
+    --overlay-cont-i: 5;
+    --burgers-i: 6;
+    --modals-i: 7;
+    --return-buttons-i: 8;
 }

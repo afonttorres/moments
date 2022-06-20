@@ -34,7 +34,7 @@ export const OverlayContainer = styled(ViewContainer)`
     position: fixed;
     top: 10%;
     left: 10%;
-    z-index: 5;
+    z-index: var(--overlay-cont-i);
     background-color: rgba(255, 255, 255, 85%);
     height: 80%;
     width: 80%;
@@ -50,7 +50,7 @@ export const NoScrollContainer = styled.div`
     top: 0;
     left: 0;
     position: fixed;
-    z-index: 4;
+    z-index: var(--noScroll-cont-i);
     overflow: hidden;
     background-color: var(--blocked-bg);
     backdrop-filter: blur(5px);
