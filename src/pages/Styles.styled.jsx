@@ -25,7 +25,7 @@ export const Container = styled.div`
 `;
 export const View = styled(Container)`
     height: 80%;
-    gap: ${props => props.gap? props.gap : 'var(--main-cont-gap)'};
+    gap: ${props => props.gap ? props.gap : 'var(--main-cont-gap)'};
 `;
 export const ViewContainer = styled(Container)`
     height: 100vh;
@@ -56,12 +56,18 @@ export const NoScrollContainer = styled.div`
     backdrop-filter: blur(5px);
 `;
 export const HiddenContainerDT = styled(MainContainer)`
+    position: absolute;
+    top:0;
+    left: 0;
     display: none;
     @media (max-width: 820px) {
         display: flex;
     }
 `;
 export const HiddenContainerMB = styled(MainContainer)`
+    position: absolute;
+    top:0;
+    left: 0;
     @media (max-width: 820px) {
         display: none;
     }
