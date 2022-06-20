@@ -6,7 +6,7 @@ export const Avatar = (props) => {
     const [data, setData] = useState(props.data);
 
     return (
-        <CircleContainer width={props.width ? props.width : null}>
+        <CircleContainer width={props.width}>
             <BorderContainer>
                 <AvatarImg imgUrl={data.avatarUrl} />
             </BorderContainer>

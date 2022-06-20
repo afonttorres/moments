@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import { Card } from '../../components/Cards/Card';
-import { DetailCardDT } from "../../components/Cards/DetailCardDT";
+import { DetailCardMB } from '../../components/Cards/DetailCardMB';
+import {Nav} from '../../components/Nav/Nav';
 import { Footer } from "../../components/Footer/Footer";
 import { MainContainer, ViewContainer } from '../../pages/Styles.styled';
 
@@ -12,10 +12,8 @@ export const VDetailMB = (props) => {
 
     return (
         <MainContainer>
-            <noscript>nav</noscript>
-            <noscript>card to be replaced</noscript>
-            {/* <DetailCardDTMB /> */}
-            <Card moment={moment} />
+            <Nav />
+            <DetailCardMB moment={moment} />
             <Footer />
         </MainContainer>
     )

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { VLogin } from '../../views/VLogin/VLogin';
 import { VSignin } from '../../views/VSignin/VSignin';
-import { MainContainer } from '../Styles.styled';
+import { MainContainer, ViewContainer } from '../Styles.styled';
 
 
 export const Login = (props) => {
@@ -20,8 +20,8 @@ export const Login = (props) => {
     const foosObj = { "login": login, "signin": signin };
     console.log(location)
     return (
-        <MainContainer>
+        <ViewContainer>
             {location === "log-in" ? <VLogin location={location} functions={foosObj} /> : <VSignin location={location} functions={foosObj} />}
-        </MainContainer>
+        </ViewContainer>
     );
 }

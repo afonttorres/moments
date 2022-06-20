@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 import moments from '../../mockMoments.json';
 import { VDetailDT } from "../../views/VDetail/VDetailDT";
 import { VDetailMB } from "../../views/VDetail/VDetailMB";
-import { HiddenContainerDT, HiddenContainerMB } from "../Styles.styled";
+import { HiddenContainerDT, HiddenContainerMB, ViewContainer } from "../Styles.styled";
 
 export const MomentDetail = () => {
 
@@ -17,13 +17,13 @@ export const MomentDetail = () => {
     const [moment, setMoment] = useState(findMoment());
 
     return (
-        <>
+        <ViewContainer>
             <HiddenContainerMB>
                 <VDetailDT moment={moment} />
             </HiddenContainerMB>
             <HiddenContainerDT>
                 <VDetailMB moment={moment} />
             </HiddenContainerDT>
-        </>
+        </ViewContainer>
     )
 };

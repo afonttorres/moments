@@ -2,13 +2,15 @@ import styled from "styled-components";
 
 //CONTAINERS
 export const MainContainer = styled.main`
-    height: 100%;
     width: 100%;
+    height: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    gap: var(--main-cont-gap);
     overflow: hidden;
+    position: relative;
 `;
 export const Container = styled.div`
     width: 100%;
@@ -20,6 +22,10 @@ export const Container = styled.div`
     gap: var(--main-cont-gap);
     overflow: hidden;
     position: relative;
+`;
+export const View = styled(Container)`
+    height: 80%;
+    gap: ${props => props.gap? props.gap : 'var(--main-cont-gap)'};
 `;
 export const ViewContainer = styled(Container)`
     height: 100vh;
@@ -115,41 +121,6 @@ export const TextLine = styled.span`
     cursor: pointer;
 `;
 
-//BUTTONS
-export const ReturnButton = styled.button`
-    height: fit-content;
-    width: fit-content;
-    border: none;
-    box-shadow: none;
-    outline: none;
-    cursor:pointer;
-    position: absolute;
-    top: 5vh;
-    right: 5vh;
-    color: var(--font-color-plain-noBg);
-    color: var(${props => props.color});
-    background-color: var(--no-bg);
-    &:hover, &:focus, &:active{
-       color: var(--text-opacity);
-    }
-`;
-export const BackButton = styled(ReturnButton)`
-    top: 5vh;
-    left: 10vh;
-    @media (max-width: 820px) {
-        top: 5vh;
-        left: 5vh;
-    }
-`;
-export const CloseButton = styled(ReturnButton)`
-    top: 5vh;
-    right: 10vh;
-    @media (max-width: 820px) {
-        top: 5vh;
-        right: 15vh;
-    }
-
-`;
 //IMG
 export const Img = styled.img.attrs(props => ({
     src: props.imgUrl,

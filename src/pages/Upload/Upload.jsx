@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
 import { VUpload } from "../../views/VUpload/VUpload";
-import { MainContainer } from "../Styles.styled";
+import { ViewContainer } from "../Styles.styled";
 export const Upload = () => {
 
     const upload = (data) => {
@@ -9,8 +9,8 @@ export const Upload = () => {
     }
 
     return (
-        <MainContainer>
+        <ViewContainer>
             <VUpload action={upload} />
-        </MainContainer>
+        </ViewContainer>
     )
 }

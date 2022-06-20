@@ -1,16 +1,17 @@
 import React from "react";
-import { ViewContainer, BackButton, Title } from "../../pages/Styles.styled";
+import { MainContainer, Title } from "../../pages/Styles.styled";
 import { Link } from 'react-router-dom';
 import { MomentForm } from '../../components/Forms/MomentForm';
+import { BackButton } from "../../components/Buttons/BackButton";
 
 
 export const VUpload = (props) => {
 
     return (
-        <ViewContainer>
-            <BackButton><Link to="/home"><i className="fa-solid fa-angle-left"></i></Link></BackButton>
+        <MainContainer>
+            <BackButton location={'home'} />
             <Title>Upload</Title>
             <MomentForm action={props.action} />
-        </ViewContainer>
+        </MainContainer>
     )
 }

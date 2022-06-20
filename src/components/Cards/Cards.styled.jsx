@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { Col, DetailText, Img, Row, Text } from "../../pages/Styles.styled";
+import { Col, Container, DetailText, Img, Row, Text } from "../../pages/Styles.styled";
 
 export const SCard = styled.article`
     height: 60%;
@@ -60,6 +60,7 @@ export const ButtonsRow = styled(SCardRow)`
     height: 10%;
     width: 80%;
 `;
+//Desktop
 export const DCImgCol = styled(Col)`
     width: 60%;
 `;
@@ -71,4 +72,16 @@ export const DCImg = styled(Img)`
 `;
 export const DCMainRow = styled(Row)`
     gap: 0;
+`;
+//Mobile
+export const MCInfoRow = styled(Row)`
+    height: fit-content;
+    margin: 2.5%;
+`;
+export const MCImgRow = styled(Row)`    
+    width: 85%;
+    height: 50%;
+`;
+export const MCCommentsCol = styled(Col)`
+    height: 40%;
 `;

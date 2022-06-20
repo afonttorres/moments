@@ -2,9 +2,9 @@ import React, { useState } from "react";
 import { generalServices } from "../../services/generalServices";
 import { Home } from "../../pages/Home/Home";
 import { Profile } from '../../pages/Profile/Profile';
-import { Link } from 'react-router-dom';
-import { OverlayContainer, NoScrollContainer, MainContainer, CloseButton } from "../../pages/Styles.styled";
+import { OverlayContainer, NoScrollContainer, MainContainer } from "../../pages/Styles.styled";
 import { DetailCardDT } from "../../components/Cards/DetailCardDT";
+import { CloseButton } from "../../components/Buttons/CloseButton";
 
 export const VDetailDT = (props) => {
     const path = window.location.pathname;
@@ -15,11 +15,7 @@ export const VDetailDT = (props) => {
     return (
         <MainContainer>
             <NoScrollContainer>
-                <CloseButton color="--font-color-plain-bg">
-                    <Link to={`/${location}`}>
-                        <i className="fa-solid fa-xmark"></i>
-                    </Link>
-                </CloseButton>
+                <CloseButton location={location} color={"--font-color-plain-bg"}/>
             </NoScrollContainer>
             <>{location.includes("profile") ? <Profile /> : <Home />}</>
             <OverlayContainer>

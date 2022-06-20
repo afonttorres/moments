@@ -18,7 +18,7 @@ export const DetailCardDT = (props) => {
                 <DCInfoCol>
                     <InlineDesc data={props.moment} />
                     <Comments comments={comments}/>
-                    <input></input>
+                    <noscript>input</noscript>
                 </DCInfoCol>
             </DCMainRow>
         </ViewContainer>
