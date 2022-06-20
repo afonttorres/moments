@@ -53,6 +53,7 @@ export const NoScrollContainer = styled.div`
     z-index: 4;
     overflow: hidden;
     background-color: var(--blocked-bg);
+    backdrop-filter: blur(5px);
 `;
 export const HiddenContainerDT = styled(MainContainer)`
     display: none;

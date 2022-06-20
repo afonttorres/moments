@@ -10,9 +10,9 @@ export const DetailCardMB = (props) => {
     const [comments, setComment] = useState(commentsData);
 
     return (
-        <View id="DetailCardMB" gap={'0'}>
+        <View id="DetailCardMB" gap={'1%'}>
             <MCInfoRow>
-                <InlineInfo moment={props.moment} />
+                <InlineInfo moment={props.moment} location={props.location}/>
             </MCInfoRow>
 
             <MCImgRow>

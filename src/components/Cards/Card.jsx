@@ -15,7 +15,7 @@ export const Card = (props) => {
         <SCard>
 
             <InfoRow>
-                <InlineInfo moment={props.moment} />
+                <InlineInfo moment={props.moment} location={props.location}/>
             </InfoRow>
 
             <ImgRow>

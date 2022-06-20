@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { Col } from "../../pages/Styles.styled";
 
 export const Button = styled.button`
     height: fit-content;
@@ -20,9 +21,9 @@ export const ReturnButton = styled(Button)`
     position: absolute;
     top: 5vh;
     right: 5vh;
-    color: var(${props => props.color ? props.color: '--font-color-plain-noBg'});
+    color: var(${props => props.color ? props.color : '--font-color-plain-noBg'});
     & > *{
-        color: var(${props => props.color ? props.color: '--font-color-plain-noBg'});
+        color: var(${props => props.color ? props.color : '--font-color-plain-noBg'});
    }
     &:hover, &:focus, &:active{
        color: var(--text-opacity);
@@ -40,4 +41,35 @@ export const SCloseButton = styled(ReturnButton)`
         right: 15vh;
     }
 
+`;
+export const BBContent = styled(Col)`
+    position: absolute;
+    bottom: ${props => props.bottom ? props.bottom : '-25vh'};
+    left: .75%;
+    height: 25vh;
+    width: 98.5%;
+    border-radius: 2rem 2rem 0 0;
+    background: var(--main-bg);
+    justify-content: center;
+    align-items: center;
+    & > * {
+        width: 25%;
+    height: 20%;
+    border: 1px solid var(--ux-bg);
+    border-radius: 0.75rem;
+    background-color: var(--interaction-opacity);
+    color: var(--font-color-plain-bg);
+    font-size: var(--font-size-plain);
+    font-family: var(--font-family-plain);
+    text-transform: capitalize;
+    transition: 1s ease;
+}
+`;
+
+export const BBBar = styled.div`
+    position: absolute;
+    margin: 0 auto;
+    height: 0.3em;
+    width: 10%;
+    top: 2vh;
 `;

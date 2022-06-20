@@ -7,6 +7,7 @@ export const InlineCont = styled(Row)`
 `;
 export const ButtonCol = styled(Col)`
     width: 20%;
+    overflow: visible;
 `;
 export const InfoCol = styled(Col)`
     align-items: flex-start;

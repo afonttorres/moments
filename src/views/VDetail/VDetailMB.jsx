@@ -9,11 +9,12 @@ import { MainContainer, ViewContainer } from '../../pages/Styles.styled';
 export const VDetailMB = (props) => {
 
     const [moment, setMoment] = useState(props.moment);
+    const [location, setLocation] = useState(window.location.pathname);
 
     return (
         <MainContainer>
             <Nav />
-            <DetailCardMB moment={moment} />
+            <DetailCardMB moment={moment} location={location}/>
             <Footer />
         </MainContainer>
     )

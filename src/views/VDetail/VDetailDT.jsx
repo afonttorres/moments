@@ -8,18 +8,18 @@ import { CloseButton } from "../../components/Buttons/CloseButton";
 
 export const VDetailDT = (props) => {
     const path = window.location.pathname;
-    const [location, setLocation] = useState(generalServices.cutString(path, "/", "/detail"));
+    const [location, setLocation] = useState(path);
+    const [nextLocation, setNextLocation] = useState(generalServices.cutString(path, "/", "/detail"));
     const [moment, setMoment] = useState(props.moment);
 
-    console.log(location)
     return (
         <MainContainer>
             <NoScrollContainer>
-                <CloseButton location={location} color={"--font-color-plain-bg"}/>
+                <CloseButton location={nextLocation} color={"--font-color-plain-bg"}/>
             </NoScrollContainer>
             <>{location.includes("profile") ? <Profile /> : <Home />}</>
             <OverlayContainer>
-                <DetailCardDT moment={moment} />
+                <DetailCardDT location={location} moment={moment} />
                 <noscript>si faig botons pel profile o input per afegir comentari</noscript>
             </OverlayContainer>
         </MainContainer >
