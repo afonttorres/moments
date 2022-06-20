@@ -7,8 +7,8 @@ import { BBMBar, BBMContent } from "../Buttons.styled";
 export const BurgerContentMB = (props) => {
 
     const [content, setContent] = useState([
-        { icon: 'icon', content: 'edit', action: () => update() },
-        { icon: 'icon', content: 'delete', action: () => erase() }
+        { icon: 'icon', content: 'edit', action: props.update },
+        { icon: 'icon', content: 'delete', action: props.erase }
     ]);
 
     const [bottom, setBottom] = useState('-25vh');
@@ -46,18 +46,6 @@ export const BurgerContentMB = (props) => {
                 props.toggleContent(false);
             }, ms)
         }
-    }
-
-    const update = () => {
-        console.log('update: ', props.data);
-        props.toggleContent(false);
-        //props.foo
-    }
-
-    const erase = () => {
-        console.log('delete: ', props.data);
-        props.toggleContent(false);
-        //props.foo
     }
 
 

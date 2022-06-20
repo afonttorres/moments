@@ -37,4 +37,9 @@
     --burgers-i: 6;
     --modals-i: 7;
     --return-buttons-i: 8;
+    /*BUTTONS*/
+    --button-height: 4vh;
+    --button-width: 25vh;
+    --button-border: 2rem;
+    --button-bg-color: rgba(169, 116, 255, 100%);
 }

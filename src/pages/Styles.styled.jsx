@@ -46,7 +46,6 @@ export const OverlayContainer = styled(ViewContainer)`
 export const NoScrollContainer = styled.div`
     width: 100vw;
     height: 100vh;
-    display: block;
     top: 0;
     left: 0;
     position: fixed;
@@ -54,6 +53,9 @@ export const NoScrollContainer = styled.div`
     overflow: hidden;
     background-color: var(--blocked-bg);
     backdrop-filter: blur(5px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
 `;
 export const HiddenContainerDT = styled(MainContainer)`
     position: absolute;

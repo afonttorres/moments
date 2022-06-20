@@ -51,27 +51,46 @@ export const BBMContent = styled(Col)`
     width: 98.5%;
     border-radius: 2rem 2rem 0 0;
     background: var(--main-bg);
-    justify-content: center;
-    align-items: center;
     z-index: var(--burgers-i);
     transition: bottom 1s;
     & > * {
-        width: 25%;
-    height: 20%;
-    border: 1px solid var(--ux-bg);
-    border-radius: 0.75rem;
-    background-color: var(--interaction-opacity);
-    color: var(--font-color-plain-bg);
-    font-size: var(--font-size-plain);
-    font-family: var(--font-family-plain);
-    text-transform: capitalize;   
+        color: var(--font-color-plain-bg);
+        font-size: var(--font-size-plain);
+        font-family: var(--font-family-plain);
+        text-transform: capitalize;
+
+        width: var(--button-width);
+        height: var(--button-height);
+        border-radius: var(--button-border);
+        background-color: var(--button-bg-color);   
 }
 `;
 
 export const BBMBar = styled.div`
     position: absolute;
     margin: 0 auto;
-    height: 0.3em;
+    height: 0.5em;
     width: 10%;
     top: 2vh;
+`;
+
+export const BBDContent = styled(Col)`
+    border: 1px solid var(--button-bg-color);
+    border-radius: 0.75rem;
+    width: 25%;
+    height: fit-content;
+    background: var(--main-bg);
+    gap: 0;
+    padding: 2.5%;
+    & > *{
+        height: var(--button-height);
+        width: var(--button-width);
+        margin: 2.5%;
+        background-color: var(--button-bg-color);
+        border-radius: var(--button-border);
+        cursor: pointer;
+       & > *{
+        color: var(--font-color-plain-bg)
+       }
+    }
 `;
