@@ -52,6 +52,7 @@ export const BBContent = styled(Col)`
     background: var(--main-bg);
     justify-content: center;
     align-items: center;
+    transition: bottom 1s;
     & > * {
         width: 25%;
     height: 20%;
@@ -61,8 +62,7 @@ export const BBContent = styled(Col)`
     color: var(--font-color-plain-bg);
     font-size: var(--font-size-plain);
     font-family: var(--font-family-plain);
-    text-transform: capitalize;
-    transition: 1s ease;
+    text-transform: capitalize;   
 }
 `;
 

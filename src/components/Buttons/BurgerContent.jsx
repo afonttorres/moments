@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { useRef } from "react";
 import { useEffect } from "react";
 import { NoScrollContainer, Row } from "../../pages/Styles.styled";
 import { BBBar, BBContent } from "./Buttons.styled";
@@ -16,48 +15,37 @@ export const BurgerContent = (props) => {
     const [bottom, setBottom] = useState('-25vh');
     const [isTouched, setIsTouched] = useState(false);
     const [touches, setTouches] = useState([]);
-    const ms = 1;
 
     useEffect(() => {
         setContent(momentContent);
     }, [props])
 
     useEffect(() => {
-        let bottomToNum = parseInt(bottom.split("vh")[0]);
-        let timerID = setInterval(openBurger, ms);
-        if (bottomToNum >= 0) clearInterval(timerID);
-        return () => clearInterval(timerID);
-    }, [bottom]);
+        setBottom('0vh');
+    }, []);
 
     useEffect(() => {
         if (!isTouched) return;
-        closeBurger();
+        closeContent();
     }, [isTouched])
 
-    useEffect(() => {
-    }, [bottom])
-
-    const closeBurger = () => {
+    const closeContent = () => {
+        const s = 1;
+        const ms = s * 1000;
         let bottomToNum = parseInt(bottom.split("vh")[0]);
 
         let start = touches[0];
         let end = touches[touches.length - 1];
 
         if (start < end) {
-            setInterval(() => {
-                setBottom(`${bottomToNum -= 1}vh`);
-                if (bottomToNum <= -25) setIsOpened(false);
-            }, 5)
+            setBottom(`${bottomToNum -= 25}vh`);
+            setTimeout(() =>{ 
+                setIsOpened(false)
+                console.log('done');
+            }, ms)
         }
     }
 
-    const openBurger = () => {
-        let bottomToNum = parseInt(bottom.split("vh")[0]);
-        setBottom(`${bottomToNum += 1}vh`);
-        if (bottomToNum >= 0) {
-            setBottom('0vh');
-        }
-    }
 
     const handleTouches = (event) => {
         let touch = event.changedTouches[0].screenY;
