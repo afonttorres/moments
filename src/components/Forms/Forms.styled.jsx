@@ -1,37 +1,38 @@
 import styled from "styled-components";
+import { Row, Col } from "../../pages/Styles.styled";
 export const Form = styled.form`
-    height: 50%;
-    width: 30%;
+    height: ${props => props.heightMB ? props.heightMB : '100%'};
+    width: 90%;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     justify-content: center;
+    margin: 0 auto;
     gap:var(--form-gap);
-    @media (max-width: 820px) {
-        height: 50%;
-        width: 85%;
+    @media (min-width: 820px) {
+        height: ${props => props.heightDT ? props.heightDT : '50%'};
+        width: 30%;
     }
 `;
 export const Label = styled.label`
     width: 90%;
     margin: 0 auto;
     font-family: var(--font-family-plain);
-    color: var(--font-color-plain-noBg);
-    color: var(${props => props.color});
     opacity: var(--text-opacity);
     font-size: var(--font-size-plain);
-    font-weight: 900;
+    font-weight: var(--font-weight);
+
+    color: var(${props => props.color});
+
     &::first-letter{
         text-transform: uppercase;
     }
 `;
 export const Input = styled.input`
-    min-height: 7.5%;
-    width: 90%;
+    height: var(--input-height);
+    width: var(--input-width);
     border: none;
     align-self: center;
-    border-bottom: 1px solid var(--border-color);
-    border-bottom: ${props => props.border};
     padding-left: 3%;
     font-family: var(--font-family-plain);
     color: var(--font-family-plain);
@@ -39,24 +40,25 @@ export const Input = styled.input`
     outline: none;
     background-color: transparent;
     box-shadow: none;
+    border-bottom: ${props => props.border};
+
     &:focus&:hover&:active{
-        border-bottom: 2px solid var(--ux-border-color);
+        border-bottom: ${props => props.border};
     }
     &::placeholder{
         text-transform: capitalize;
     }
 `;
-export const SButton = styled.button`
-    height: 4vh;
-    width: 25vh;
-    background-color: var(--ux-bg);
-    border-radius: 2rem;
+export const Button = styled.button`
+    height: var(--button-height);
+    width: var(--button-width);
+    background-color: var(--button-bg-color);
+    border-radius: var(--button-border);
     color: var(--font-color-plain-bg);
     align-self: center;
     border: none;
     outline: none;
     box-shadow: none;
-    margin: 3%;
     cursor: pointer;
     &::first-letter{
         text-transform: uppercase;
@@ -66,12 +68,21 @@ export const SButton = styled.button`
     }
 `;
 
-export const MForm = styled(Form)` 
-    height: ${props => props.formHeight};
-    height: 75%;
+export const SearchBar = styled(Row)`
+    height: var(--input-height);
+    width: 100%;
+    gap: 0;
+    border-bottom: ${props => props.border};
 `;
-
-export const MInput = styled(Input)`
-    min-height: ${props => props.inputHeight};
-    min-height: 5%;
+export const SIconCol = styled(Col)`
+    width: calc(100% - var(--input-width));
+    & > *{
+        color: var(${props => props.color});
+            & > *{
+                color: var(${props => props.color});
+                & > *{
+                color: var(${props => props.color});
+            }
+        }
+    }
 `;

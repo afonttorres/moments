@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Input, Form, Label, SButton } from "./Forms.styled";
+import { Input, Form, Label, Button } from "./Forms.styled";
 
 export const LogForm = (props) => {
 
@@ -60,18 +60,18 @@ export const LogForm = (props) => {
 
     console.log(msg !== "" ? msg : "No message");
     return (
-        <Form onSubmit={handleSubmit}>
+        <Form heightMB={'60%'} onSubmit={handleSubmit}>
             {props.location.includes("sign") ?
                 <>
-                    <Label color={filledInputs.includes("name") ? "--interaction-color" : ""}>Your name</Label>
-                    <Input border={filledInputs.includes("name") ? `2px solid var(--ux-border-color);` : ""} type="text" name="name" value={userData.name} placeholder="Name" onChange={handleInputChange} />
+                    <Label color={filledInputs.includes("name") ? "--interaction-color" : "--font-color-plain-noBg"}>Your name</Label>
+                    <Input border={filledInputs.includes("name") ? `2px solid var(--ux-border-color)`: `1px solid var(--border-color)`} type="text" name="name" value={userData.name} placeholder="Name" onChange={handleInputChange} />
                 </>
                 : null}
-            <Label color={filledInputs.includes("email") ? "--interaction-color" : ""}>Email</Label>
-            <Input border={filledInputs.includes("email") ? `2px solid var(--ux-border-color);` : ""} type="email" name="email" value={userData.email} placeholder="Email" onChange={handleInputChange} />
-            <Label color={filledInputs.includes("password") ? "--interaction-color" : ""}>Password</Label>
-            <Input border={filledInputs.includes("password") ? `2px solid var(--ux-border-color);` : ""} type="password" name="password" value={userData.password} placeholder="Password" onChange={handleInputChange} />
-            <SButton>{props.location.split("-").join(" ")}</SButton>
+            <Label color={filledInputs.includes("email") ? "--interaction-color" : "--font-color-plain-noBg"}>Email</Label>
+            <Input border={filledInputs.includes("email") ? `2px solid var(--ux-border-color)`: `1px solid var(--border-color)`} type="email" name="email" value={userData.email} placeholder="Email" onChange={handleInputChange} />
+            <Label color={filledInputs.includes("password") ? "--interaction-color" : "--font-color-plain-noBg"}>Password</Label>
+            <Input border={filledInputs.includes("password") ? `2px solid var(--ux-border-color)`: `1px solid var(--border-color)`} type="password" name="password" value={userData.password} placeholder="Password" onChange={handleInputChange} />
+            <Button>{props.location.split("-").join(" ")}</Button>
         </Form>
     )
 }

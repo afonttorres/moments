@@ -14,6 +14,8 @@
     --font-size-plain-small: x-small;
     --font-size-icon: 1.4rem;
     --font-size-icon-small: small;
+    /*FONT WEIGHT*/
+    --font-weight: 900;
     /*BORDER*/
     --border-color: rgba(37, 57, 111, 50%);
     --ux-border-color: rgba(169, 116, 255, 100%);
@@ -42,4 +44,9 @@
     --button-width: 25vh;
     --button-border: 2rem;
     --button-bg-color: rgba(169, 116, 255, 100%);
+    /*INPUT*/
+    --input-width: 85%;
+    --input-height: 4vh;
+    /*OPACITY*/
+    --opacity: 50%;
 }

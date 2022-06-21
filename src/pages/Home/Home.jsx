@@ -1,15 +1,17 @@
 import React, { useEffect, useState } from 'react';
-import { Feed } from '../../components/Feed/Feed';
+import { Feed } from '../../components/Feeds/Feed';
 import { Footer } from '../../components/Footer/Footer';
 import { Nav } from '../../components/Nav/Nav';
-import { MainContainer, ViewContainer } from '../Styles.styled';
+import { ViewContainer, View } from '../Styles.styled';
 
 
 export const Home = (props) => {
     return (
         <ViewContainer>
             <Nav isLogged={true} />
-            <Feed location="home" />
+            <View>
+                <Feed location="home" />
+            </View>
             <Footer />
         </ViewContainer>
     );

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { MForm, MInput, Label, SButton } from "./Forms.styled";
+import { Form, Input, Label, Button } from "./Forms.styled";
 export const MomentForm = (props) => {
 
     const [moment, setMoment] = useState({
@@ -47,18 +47,18 @@ export const MomentForm = (props) => {
 
     console.log(filledInputs)
     return (
-        <MForm onSubmit={handleSubmit}>{Object.keys(moment).map((field, key) => (
+        <Form heightDT={'100%'} onSubmit={handleSubmit}>{Object.keys(moment).map((field, key) => (
             <>
-                <Label color={filledInputs.includes(field) ? "--interaction-color" : ""} >{field.replace("Url", " url")}</Label>
-                <MInput 
-                    border={filledInputs.includes(field) ? `2px solid var(--ux-border-color);` : ""} 
+                <Label color={filledInputs.includes(field) ? "--interaction-color" : "--font-color-plain-noBg"} >{field.replace("Url", " url")}</Label>
+                <Input 
+                    border={filledInputs.includes(field) ? `2px solid var(--ux-border-color)`: `1px solid var(--border-color)`} 
                     type={moment[field].includes("Url") ? "url" : "text"} 
                     name={field} value={moment[field]} 
                     placeholder={field.replace("Url", " url")} 
                     onChange={handleInputChange} />
             </>
         ))}
-            <SButton>Upload</SButton>
-        </MForm>
+            <Button>Upload</Button>
+        </Form>
     )
 }

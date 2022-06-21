@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import data from '../../mockMoments.json';
-import { ViewContainer } from "../../pages/Styles.styled";
+import { MainContainer } from "../../pages/Styles.styled";
 import { Card } from '../Cards/Card';
 import { FeedContainer } from "./Feed.styled";
 
@@ -13,10 +13,10 @@ export const Feed = (props) => {
     }, [])
 
     return (
-        <ViewContainer>
+        <MainContainer>
             <FeedContainer>{moments.map((moment, key) =>
                 <Card key={moment.id} moment={moment} location={props.location}/>)}
             </FeedContainer>
-        </ViewContainer>
+        </MainContainer>
     );
 }

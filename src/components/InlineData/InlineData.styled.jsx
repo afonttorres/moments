@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { Col, Row } from "../../pages/Styles.styled";
+import { Col, DetailText, Row, Text } from "../../pages/Styles.styled";
 
 export const InlineCont = styled(Row)`
     min-height: 5vh;
@@ -17,4 +17,7 @@ export const InfoCol = styled(Col)`
 `;
 export const InfoRow = styled(Row)`
     justify-content: flex-start;
+`;
+export const LocationText = styled(DetailText)`
+    text-transform: capitalize;
 `;

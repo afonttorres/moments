@@ -1,9 +1,9 @@
 import React from "react";
-import { DetailTextCapi, TextBold } from "../../pages/Styles.styled";
+import { TextBold } from "../../pages/Styles.styled";
 import { generalServices } from "../../services/generalServices";
 import { Avatar } from "../Avatar/Avatar";
 import { BurgerButton } from "../Buttons";
-import { ButtonCol, InfoCol, InlineCont } from "./InlineData.styled";
+import { ButtonCol, InfoCol, InlineCont, LocationText } from "./InlineData.styled";
 
 export const InlineInfo = (props) => {
     return (
@@ -13,7 +13,7 @@ export const InlineInfo = (props) => {
             </ButtonCol>
             <InfoCol>
                 <TextBold>{props.moment.user}</TextBold>
-                <DetailTextCapi>{props.moment.location}</DetailTextCapi>
+                <LocationText>{props.moment.location}</LocationText>
             </InfoCol>
             <ButtonCol>
                 <BurgerButton location={props.location} data={props.moment} />

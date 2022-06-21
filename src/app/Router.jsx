@@ -7,6 +7,7 @@ import { Login } from '../pages/Login/Login';
 import { Profile } from '../pages/Profile/Profile';
 import { Upload } from '../pages/Upload/Upload';
 import { MomentDetail } from '../pages/Detail/Detail'
+import { Searcher } from '../pages/Searcher/Searcher';
 
 export default function Router() {
     return (
@@ -14,6 +15,7 @@ export default function Router() {
             <Routes>
                 <Route path='/' element={<App />}></Route>
                 <Route path='/home' element={<Home />}></Route>
+                <Route path='/search' element={<Searcher />}></Route>
                 <Route path='/log-in' element={<Login />}></Route>
                 <Route path='/sign-in' element={<Login />}></Route>
                 <Route path='/profile' element={<Profile />}></Route>
