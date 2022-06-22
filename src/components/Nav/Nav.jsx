@@ -6,7 +6,7 @@ import { MainTitle } from '../../pages/Styles.styled';
 export const Nav = (props) => {
 
     const [location] = useState(useLocation(0).pathname.toString().substring(1, (useLocation(0).pathname.toString().length)))
-    const [dtOutput, setDToutput] = useState(["upload", "sign in", "log in"]);
+    const [dtOutput, setDToutput] = useState(["upload", "search", "sign in", "log in"]);
     const [mbOutput, setMBoutput] = useState([<i className="fa-regular fa-bookmark"></i>, <i className="fa-regular fa-heart"></i>]);
     const [title, setTitle] = useState("Moments");
 
@@ -19,7 +19,7 @@ export const Nav = (props) => {
 
     const modifyDToutput = () => {
         let data;
-        if (!location.includes('home') || location !== '') data = ["home", "upload", props.isLogged ? "profile" : "log in"];
+        if (!location.includes('home') || location !== '') data = ["home", "upload", "search", props.isLogged ? "profile" : "log in"];
         if (location.includes('profile')) data[data.length - 1] = "settings";
         if (location.includes('home') || location == '') data.shift();
         setDToutput(data);
