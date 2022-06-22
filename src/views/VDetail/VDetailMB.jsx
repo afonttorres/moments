@@ -8,13 +8,11 @@ import { MainContainer, ViewContainer } from '../../pages/Styles.styled';
 
 export const VDetailMB = (props) => {
 
-    const [moment, setMoment] = useState(props.moment);
-    const [location, setLocation] = useState(window.location.pathname);
-
     return (
         <MainContainer>
+            {/* nav profile -> will need nextLocation -props.location */}
             <Nav />
-            <DetailCardMB moment={moment} location={location} update={props.update} erase={props.erase}/>
+            <DetailCardMB moment={props.moment} update={props.update} erase={props.erase}/>
             <Footer />
         </MainContainer>
     )

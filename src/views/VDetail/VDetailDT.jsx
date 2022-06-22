@@ -8,11 +8,9 @@ import { CloseButton } from "../../components/Buttons/CloseButton";
 
 export const VDetailDT = (props) => {
 
-    const [moment, setMoment] = useState(props.moment);
-
     return (
         <OverlayContainer>
-            <DetailCardDT location={props.location} moment={moment} update={props.update} erase={props.erase} />
+            <DetailCardDT moment={props.moment} update={props.update} erase={props.erase} />
         </OverlayContainer>
     )
 }

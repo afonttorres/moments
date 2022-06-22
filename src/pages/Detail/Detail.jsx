@@ -73,7 +73,6 @@ export const MomentDetail = () => {
         setMomentToUpdate();
     }
 
-
     return (
         <ViewContainer>
             <HiddenContainerMB>
@@ -87,7 +86,7 @@ export const MomentDetail = () => {
             </HiddenContainerMB>
             
             <HiddenContainerDT>
-                <VDetailMB moment={moment} update={update} erase={erase} />
+                <VDetailMB moment={moment} location={nextLocation} update={update} erase={erase} />
             </HiddenContainerDT>
             <>
                 {isUpdateActive || updatedMoment ?
