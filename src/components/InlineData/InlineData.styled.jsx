@@ -7,7 +7,7 @@ export const InlineCont = styled(Row)`
 `;
 export const ButtonCol = styled(Col)`
     width: 20%;
-    overflow: visible;
+    display: ${props => props.display ? props.display : 'flex'};
 `;
 export const InfoCol = styled(Col)`
     align-items: flex-start;

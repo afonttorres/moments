@@ -19,7 +19,7 @@ export const VDetailDT = (props) => {
             </NoScrollContainer>
             <>{location.includes("profile") ? <Profile /> : <Home />}</>
             <OverlayContainer>
-                <DetailCardDT location={location} moment={moment} />
+                <DetailCardDT location={location} moment={moment} update={props.update} erase={props.erase}/>
                 <noscript>si faig botons pel profile o input per afegir comentari</noscript>
             </OverlayContainer>
         </MainContainer >

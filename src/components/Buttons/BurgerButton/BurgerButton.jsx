@@ -13,15 +13,13 @@ export const BurgerButton = (props) => {
     }
 
     const update = () => {
-        console.log('update: ', props.data);
         toggleContent(false);
-        //props.foo
+        props.update(props.data);
     }
 
     const erase = () => {
-        console.log('delete: ', props.data);
         toggleContent(false);
-        //props.foo
+        props.erase(props.data);
     }
 
     return (

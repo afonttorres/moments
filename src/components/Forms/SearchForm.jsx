@@ -27,11 +27,11 @@ export const SearchForm = (props) => {
         <Form heightMB={props.heightMB} heightDT={props.heightDT} onSubmit={handleSubmit}>
             <SearchBar border={search !== "" ? `2px solid var(--ux-border-color)` : `1px solid var(--border-color)`}>
                 <SIconCol color={search !== "" ? '--interaction-color' : '--font-color-plain-noBg'}>
-                    <SearchButton/>
+                    <SearchButton type='submit'/>
                 </SIconCol>
                 <Input
                     onChange={handleChange}
-                    typeof="submit"
+                    typeof="search"
                     name="search"
                     placeholder="Search"
                     value={search}

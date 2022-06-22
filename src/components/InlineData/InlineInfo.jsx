@@ -15,8 +15,8 @@ export const InlineInfo = (props) => {
                 <TextBold>{props.moment.user}</TextBold>
                 <LocationText>{props.moment.location}</LocationText>
             </InfoCol>
-            <ButtonCol>
-                <BurgerButton location={props.location} data={props.moment} />
+            <ButtonCol display={props.display}>
+                <BurgerButton location={props.location} data={props.moment} update={props.update} erase={props.erase}/>
             </ButtonCol>
         </InlineCont>
     )

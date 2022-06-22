@@ -25,7 +25,10 @@ export const Container = styled.div`
 `;
 export const View = styled(Container)`
     height: 80%;
+    border-radius: .75rem;
+    background-color: var(${props => props.bgColor ? props.bgColor : '--no-bg'});
     gap: ${props => props.gap ? props.gap : 'var(--main-cont-gap)'};
+    width: ${props => props.width ? props.width : '100%'};
 `;
 export const ViewContainer = styled(Container)`
     height: 100vh;

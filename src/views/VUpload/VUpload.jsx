@@ -9,10 +9,10 @@ export const VUpload = (props) => {
 
     return (
         <MainContainer>
-            <BackButton location={'home'} />
+            <BackButton location={props.location} action={props.closeUpdate} />
             <View>
-                <Title>Upload</Title>
-                <MomentForm action={props.action} />
+                <Title>{props.moment ? 'Update' : 'Upload'}</Title>
+                <MomentForm action={props.action} moment={props.moment} />
             </View>
         </MainContainer>
     )

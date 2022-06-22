@@ -39,4 +39,8 @@ export const AddIcon = styled.span`
     height: fit-content;
     width: 3.5rem;
     text-align: center;
+    & > *{
+            color: var(--font-color-plain-noBg);
+            color: ${props => props.color};
+        }
 `;

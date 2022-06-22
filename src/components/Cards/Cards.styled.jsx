@@ -10,6 +10,7 @@ export const SCard = styled.article`
     justify-content: center;
     gap: 1%;
     margin: 1%;
+    background-color: var(--main-bg);
     @media (max-width: 820px) {
         width: 100%;
         height: 100%;
@@ -60,7 +61,7 @@ export const ButtonsRow = styled(SCardRow)`
     height: 10%;
     width: 80%;
 `;
-//Desktop
+//DetailDesktop
 export const DCImgCol = styled(Col)`
     width: 60%;
 `;
@@ -73,7 +74,7 @@ export const DCImg = styled(Img)`
 export const DCMainRow = styled(Row)`
     gap: 0;
 `;
-//Mobile
+//DetailMobile
 export const MCInfoRow = styled(Row)`
     height: fit-content;
     padding: 2.5%;
@@ -84,4 +85,26 @@ export const MCImgRow = styled(Row)`
 `;
 export const MCCommentsCol = styled(Col)`
     height: 40%;
+`;
+//Preview
+export const PrevContainer = styled(SCard)`
+    margin:0;
+    height: 75%;
+    width: 28%;
+    border-radius: .75rem;
+    @media (max-width: 820px) {
+        height: 87.25%;
+        width: 98%;
+    }
+`;
+export const PrevNav = styled(Row)`
+    gap: 0;
+    height: 10vh;
+    border-bottom: ${props => props.border ? props.border : 'none'};
+`;
+export const PreNavButtonsCol = styled(Col)`
+    width: 20%;
+`;
+export const PreNavTitleCol = styled(Col)`
+    width: 60%;
 `;

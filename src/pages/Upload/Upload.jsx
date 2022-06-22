@@ -10,7 +10,7 @@ export const Upload = () => {
 
     return (
         <ViewContainer>
-            <VUpload action={upload} />
+            <VUpload action={upload} location={'home'} />
         </ViewContainer>
     )
 }

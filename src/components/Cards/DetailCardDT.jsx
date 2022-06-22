@@ -1,10 +1,11 @@
 import React, { useState } from "react";
 import commentsData from '../../mockComments.json'
-import { ViewContainer } from "../../pages/Styles.styled";
+import { ViewContainer, NoScrollContainer, View } from "../../pages/Styles.styled";
 import { DCImg, DCImgCol, DCInfoCol, DCMainRow } from "./Cards.styled";
 import { InlineDesc } from '../InlineData/InlineDesc';
 import { InlineInfo } from '../InlineData/InlineInfo';
 import { Comments } from "../Comments/Comments";
+
 
 export const DetailCardDT = (props) => {
 
@@ -17,7 +18,7 @@ export const DetailCardDT = (props) => {
                     <DCImg imgUrl={props.moment.imgUrl} />
                 </DCImgCol>
                 <DCInfoCol>
-                    <InlineInfo moment={props.moment} location={props.location}/>
+                    <InlineInfo moment={props.moment} update={props.update} erase={props.erase} />
                     <InlineDesc data={props.moment} />
                     <Comments comments={comments} />
                     <noscript>input</noscript>

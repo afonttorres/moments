@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 import { SCloseButton } from "./Buttons.styled";
 
 export const CloseButton = (props) => {
-    console.log(props)
     return (
         <SCloseButton color={props.color} onClick={props.action}>
             <>

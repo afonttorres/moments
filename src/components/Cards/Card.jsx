@@ -9,13 +9,20 @@ import { InlineInfo } from "../InlineData/InlineInfo";
 
 export const Card = (props) => {
 
-    useEffect(() => { }, [props.moment])
+    useEffect(() => { }, [props.moment]);
+
+    const update = (data)=>{
+        props.update(data);
+    }
+    const erase = (data) =>{
+        props.erase(data);
+    }
 
     return (
         <SCard>
 
             <InfoRow>
-                <InlineInfo moment={props.moment} location={props.location}/>
+                <InlineInfo moment={props.moment} location={props.location} update={update} erase={erase}/>
             </InfoRow>
 
             <ImgRow>
@@ -25,7 +32,7 @@ export const Card = (props) => {
             </ImgRow>
 
             <TitleRow>
-                <TextLine><TextBold>{props.moment.user}</TextBold>&nbsp;<TextCapi>{generalServices.capitalize(props.moment.title)}</TextCapi></TextLine>
+                <TextLine><TextBold>{props.moment.user}</TextBold>&nbsp;<TextCapi>{generalServices.capitalize(props.moment.description)}</TextCapi></TextLine>
             </TitleRow>
 
             <ButtonsRow>
