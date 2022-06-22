@@ -99,6 +99,9 @@ export const SearchBar = styled(Row)`
     gap: 0;
     border-bottom: ${props => props.border};
 `;
+export const SCancelCol=styled(Col)`
+    width: 30%;
+`;
 export const SIconCol = styled(Col)`
     width: calc(100% - var(--input-width));
     & > *{

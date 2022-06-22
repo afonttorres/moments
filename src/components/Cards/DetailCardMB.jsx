@@ -9,8 +9,6 @@ import { useNavigate } from "react-router-dom";
 
 export const DetailCardMB = (props) => {
     const [comments, setComment] = useState(commentsData);
-
-
     return (
             <View id="DetailCardMB" gap={'1%'}>
                 <MCInfoRow>

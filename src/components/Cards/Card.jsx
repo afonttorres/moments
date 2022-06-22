@@ -11,18 +11,11 @@ export const Card = (props) => {
 
     useEffect(() => { }, [props.moment]);
 
-    const update = (data)=>{
-        props.update(data);
-    }
-    const erase = (data) =>{
-        props.erase(data);
-    }
-
     return (
         <SCard>
 
             <InfoRow>
-                <InlineInfo moment={props.moment} location={props.location} update={update} erase={erase}/>
+                <InlineInfo moment={props.moment} location={props.location} update={props.update} erase={props.erase}/>
             </InfoRow>
 
             <ImgRow>

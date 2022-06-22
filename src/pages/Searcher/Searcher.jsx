@@ -5,10 +5,21 @@ import { VSearcher } from "../../views/VSearcher/VSearcher";
 import { ViewContainer } from '../Styles.styled';
 
 export const Searcher = () => {
+
+    const search = (search) =>{
+        console.log(search);
+        //momentService.getMoments(search);
+        //userService.getUsers(search);
+    }
+
+    const cancel = () => {
+        console.log('search canceled');
+    }
+
     return (
         <ViewContainer>
             <Nav isLogged={true} />
-            <VSearcher />
+            <VSearcher search={search} cancel={cancel}/>
             <Footer />
         </ViewContainer>
     )

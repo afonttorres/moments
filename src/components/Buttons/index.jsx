@@ -6,5 +6,6 @@ export { BurgerButton } from './BurgerButton/BurgerButton';
 export { BurgerContentMB } from './BurgerButton/BurgerContentMB';
 export { BurgerContentDT } from './BurgerButton/BurgerContentDT';
 export { SearchButton } from './SearchButton';
-export {TickButton} from './TickButton';
-export {CrossButton} from './CrossButton';
+export { TickButton } from './TickButton';
+export { CrossButton } from './CrossButton';
+export { CancelButton } from './CancelButton';

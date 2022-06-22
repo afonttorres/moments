@@ -4,8 +4,8 @@ import { View, MainTitle, TextBold, TextCapi, TextLine, Img } from "../../pages/
 import { InfoRow, ImgRow, TitleRow, PrevContainer, PrevNav, PreNavButtonsCol, PreNavTitleCol } from "./Cards.styled";
 import { InlineInfo } from "../InlineData/InlineInfo";
 import { CrossButton, TickButton } from "../Buttons";
-export const PreviewCard = (props) => {
 
+export const PreviewCard = (props) => {
     return (
         <View>
             <PrevContainer>

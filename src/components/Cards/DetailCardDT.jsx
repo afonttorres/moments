@@ -8,9 +8,7 @@ import { Comments } from "../Comments/Comments";
 
 
 export const DetailCardDT = (props) => {
-
     const [comments, setComment] = useState(commentsData);
-
     return (
         <ViewContainer id="DetailCardDT">
             <DCMainRow>

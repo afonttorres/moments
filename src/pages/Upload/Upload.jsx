@@ -5,7 +5,8 @@ import { ViewContainer } from "../Styles.styled";
 export const Upload = () => {
 
     const upload = (data) => {
-        console.log(data);
+        console.log('moment to upload: ',data);
+        //momentService.createMoment(data);
     }
 
     return (

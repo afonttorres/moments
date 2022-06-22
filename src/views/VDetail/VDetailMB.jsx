@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { DetailCardMB } from '../../components/Cards/DetailCardMB';
 import {Nav} from '../../components/Nav/Nav';
 import { Footer } from "../../components/Footer/Footer";
-import { MainContainer, ViewContainer } from '../../pages/Styles.styled';
+import { MainContainer } from '../../pages/Styles.styled';
 
 
 
