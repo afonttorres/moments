@@ -1,11 +1,15 @@
 import React, { useEffect, useState } from "react";
+import { generalServices } from "../../services/generalServices";
 import { useNavigate, useParams } from "react-router-dom";
 import moments from '../../mockMoments.json';
-import { HiddenContainerDT, HiddenContainerMB, ViewContainer, NoScrollContainer, View } from "../Styles.styled";
+import { HiddenContainerDT, HiddenContainerMB, ViewContainer, NoScrollContainer, View, MainContainer, OverlayContainer } from "../Styles.styled";
 import { VDetailDT } from "../../views/VDetail/VDetailDT";
 import { VDetailMB } from "../../views/VDetail/VDetailMB";
 import { VUpload } from "../../views/VUpload";
 import { PreviewCard } from "../../components/Cards/PreviewCard";
+import { CloseButton } from "../../components/Buttons/CloseButton";
+import { Home } from "../Home/Home";
+import { Profile } from "../Profile/Profile";
 
 export const MomentDetail = () => {
 
@@ -18,6 +22,9 @@ export const MomentDetail = () => {
     const [id, setId] = useState(useParams().id)
     const [moment, setMoment] = useState(findMoment());
 
+    const path = window.location.pathname;
+    const [location, setLocation] = useState(path);
+    const [nextLocation, setNextLocation] = useState(generalServices.cutString(path, "/", "/detail"));
 
     const [isUpdateActive, setIsUpdateActive] = useState(false);
     const [momentToUpdate, setMomentToUpdate] = useState();
@@ -32,7 +39,7 @@ export const MomentDetail = () => {
     }
 
     const erase = (data) => {
-        console.log('erase: ', data);
+        console.log('delete detail: ', data);
         //momentService.deleteMoment();
         navigate('/home');
     }
@@ -70,10 +77,17 @@ export const MomentDetail = () => {
     return (
         <ViewContainer>
             <HiddenContainerMB>
-                <VDetailDT moment={moment} update={update} erase={erase}/>
+                {!isUpdateActive && updatedMoment == undefined ?
+                    <NoScrollContainer>
+                        <CloseButton location={nextLocation} color={"--font-color-plain-bg"} />
+                        <VDetailDT moment={moment} update={update} erase={erase} />
+                    </NoScrollContainer>
+                    : null}
+                <>{location.includes("profile") ? <Profile /> : <Home />}</>
             </HiddenContainerMB>
+            
             <HiddenContainerDT>
-                <VDetailMB moment={moment} update={update} erase={erase}/>
+                <VDetailMB moment={moment} update={update} erase={erase} />
             </HiddenContainerDT>
             <>
                 {isUpdateActive || updatedMoment ?

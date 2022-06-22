@@ -11,7 +11,6 @@ export const FeedContainer = styled.section`
     justify-content: center;
     align-items: center;   
     overflow-y: scroll;
-    z-index: 0;
     @media (max-width: 820px) {
         justify-content: center;
         width: 100%;

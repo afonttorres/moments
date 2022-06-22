@@ -24,7 +24,7 @@ export const Feed = (props) => {
     }
 
     const erase = (data) => {
-        console.log('feed erase: ', data);
+        console.log('feed delete: ', data);
     }
 
     const showPreview = (data) => {
@@ -51,24 +51,26 @@ export const Feed = (props) => {
         setIsUpdateActive(true);
     }
 
-    const closeUpdate = () =>{
+    const closeUpdate = () => {
         setIsUpdateActive(false);
         setMomentToUpdate();
     }
 
     return (
-        <MainContainer>
-            <FeedContainer>{moments.map((moment, key) =>
-                <Card key={moment.id} moment={moment} location={props.location} update={update} erase={erase} />)}
-            </FeedContainer>
+        <>
+            <MainContainer id='main-feed'>
+                <FeedContainer>{moments.map((moment, key) =>
+                    <Card key={moment.id} moment={moment} location={props.location} update={update} erase={erase} />)}
+                </FeedContainer>
+            </MainContainer>
             <>
                 {isUpdateActive || updatedMoment ?
-                    <NoScrollContainer>
+                    <NoScrollContainer id='noscroll'>
                         {isUpdateActive ? <View bgColor={'--main-bg'} width={'95%'} ><VUpload closeUpdate={closeUpdate} moment={momentToUpdate} action={showPreview} /></View> : null}
                         {updatedMoment ? <PreviewCard moment={updatedMoment} confirm={confirmUpdate} cancel={cancelUpdate} /> : null}
                     </NoScrollContainer>
                     : null}
             </>
-        </MainContainer>
+        </>
     );
 }

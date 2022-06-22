@@ -51,7 +51,7 @@ export const BurgerContentMB = (props) => {
 
 
     return (
-        <NoScrollContainer>
+        <NoScrollContainer id={'noscroll'}>
             <BBMContent id={'dragBar'} bottom={bottom}>
                 <BBMBar onTouchMove={handleTouches} />
                 <>
