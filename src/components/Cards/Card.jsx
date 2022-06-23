@@ -3,13 +3,13 @@ import { Link } from 'react-router-dom';
 import { generalServices } from "../../services/generalServices";
 import { TitleRow, ButtonsRow, ImgRow, InfoRow, SCard } from "./Cards.styled";
 import { TextBold, Img, TextLine, TextCapi } from "../../pages/Styles.styled";
-import { InlineButtons } from "../InlineButtons/InlineButtons.styled";
+import { InlineButtons } from "../InlineButtons/InlineButtons";
 import { InlineInfo } from "../InlineData/InlineInfo";
 
 
 export const Card = (props) => {
 
-    useEffect(() => { }, [props.moment]);
+    useEffect(() => { }, [props]);
 
     return (
         <SCard>
@@ -25,11 +25,11 @@ export const Card = (props) => {
             </ImgRow>
 
             <TitleRow>
-                <TextLine><TextBold>{props.moment.user}</TextBold>&nbsp;<TextCapi>{generalServices.capitalize(props.moment.description)}</TextCapi></TextLine>
+                <TextLine><TextBold>{props.moment.user.alias}</TextBold>&nbsp;<TextCapi>{generalServices.capitalize(props.moment.description)}</TextCapi></TextLine>
             </TitleRow>
 
             <ButtonsRow>
-                <InlineButtons moment={props.moment} />
+                <InlineButtons moment={props.moment} like={props.like} />
             </ButtonsRow>
         </SCard>
     )

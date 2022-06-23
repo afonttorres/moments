@@ -11,8 +11,8 @@ export const BurgerContentDT = (props) => {
     ]);
 
     return (
-        <NoScrollContainer>
-            <CloseButton color={`--font-color-plain-bg`} action={() => props.toggleContent(false)} />
+        <NoScrollContainer id="burgerCont">
+            <CloseButton color={`--font-color-plain-bg`} index={'--last-i'} action={() => props.toggleContent(false)} />
             <BBDContent>{content.map((button, key) => (
                 <Row onClick={button.action}><TextCapi>{button.content}</TextCapi></Row>
             ))}

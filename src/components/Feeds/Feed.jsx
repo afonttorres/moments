@@ -10,7 +10,7 @@ export const Feed = (props) => {
 
         <MainContainer id='main-feed'>
             <FeedContainer>{props.moments.map((moment, key) =>
-                <Card key={moment.id} moment={moment} location={props.location} update={props.update} erase={props.erase} />)}
+                <Card key={moment.id} moment={moment} location={props.location} update={props.update} erase={props.erase} like={props.like} />).reverse()}
             </FeedContainer>
         </MainContainer>
     )

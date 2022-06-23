@@ -19,9 +19,12 @@ export const Button = styled.button`
 `;
 export const ReturnButton = styled(Button)`
     position: absolute;
+    display: block;
     top: 5vh;
     right: 5vh;
-    z-index: var(--return-buttons-i);
+    z-index: var(${props => props.index ? props.index : '--return-buttons-i'});
+    top: ${props => props.top};
+    right: ${props => props.right};
     color: var(${props => props.color ? props.color : '--font-color-plain-noBg'});
     & > *{
         color: var(${props => props.color ? props.color : '--font-color-plain-noBg'});
@@ -32,12 +35,16 @@ export const ReturnButton = styled(Button)`
 `;
 export const SBackButton = styled(ReturnButton)`
     left: 10vh;
+    top: ${props => props.top};
+    right: ${props => props.right};
     @media (max-width: 820px) {
         left: 5vh;
     }
 `;
 export const SCloseButton = styled(ReturnButton)`
     right: 10vh;
+    top: ${props => props.top};
+    right: ${props => props.right};
     @media (max-width: 820px) {
         right: 15vh;
     }

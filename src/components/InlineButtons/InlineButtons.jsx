@@ -4,12 +4,18 @@ import { LikeButton, CommentButton, SaveButton, SendButton } from "../Buttons";
 
 export const InlineButtons = (props) => {
     const [buttons, setButtons] = useState([
-        { button: <LikeButton isLiked={props.moment.isLiked} />, content: props.moment.likes }
+        { button: <LikeButton like={props.like} data={props.moment} />, content: props.moment.likes }
         , { button: <CommentButton />, content: props.moment.comments }
         , { button: <SaveButton isSaved={props.moment.isSaved} />, content: props.moment.saves }
     ]);
 
-    useEffect(() => { }, [props])
+    useEffect(() => {
+        setButtons([
+            { button: <LikeButton like={props.like} data={props.moment} />, content: props.moment.likes }
+            , { button: <CommentButton />, content: props.moment.comments }
+            , { button: <SaveButton isSaved={props.moment.isSaved} />, content: props.moment.saves }
+        ])
+    }, [props])
 
     return (
         <Row>{buttons.map((button, key) => (

@@ -20,7 +20,7 @@ export const Nav = (props) => {
     const modifyDToutput = () => {
         let data;
         if (!location.includes('home') || location !== '') data = ["home", "upload", "search", props.isLogged ? "profile" : "log in"];
-        if (location.includes('profile')) data[data.length - 1] = "settings";
+        if (location.includes('profile')) {data[data.length - 1] = "settings"; setTitle('Profile')}
         if (location.includes('home') || location == '') data.shift();
         setDToutput(data);
     }

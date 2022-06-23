@@ -27,7 +27,7 @@ export const PreviewCard = (props) => {
                     <Img imgUrl={props.moment.imgUrl}/>
                 </ImgRow>
                 <TitleRow>
-                    <TextLine><TextBold>{props.moment.user}</TextBold>&nbsp;<TextCapi>{generalServices.capitalize(props.moment.description)}</TextCapi></TextLine>
+                    <TextLine><TextBold>{props.moment.user.alias}</TextBold>&nbsp;<TextCapi>{generalServices.capitalize(props.moment.description)}</TextCapi></TextLine>
                 </TitleRow>
                 <PrevNav />
             </PrevContainer>

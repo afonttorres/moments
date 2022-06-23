@@ -38,7 +38,8 @@
     --overlay-cont-i: 5;
     --burgers-i: 6;
     --modals-i: 7;
-    --return-buttons-i: 8;
+    --return-buttons-i: 5;
+    --last-i: 10;
     /*BUTTONS*/
     --button-height: 4vh;
     --button-width: 25vh;

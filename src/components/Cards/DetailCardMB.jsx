@@ -5,10 +5,10 @@ import { MCImgRow, MCInfoRow } from "./Cards.styled";
 import { InlineDesc } from '../InlineData/InlineDesc';
 import { Comments } from "../Comments/Comments";
 import { InlineInfo } from "../InlineData/InlineInfo";
-import { useNavigate } from "react-router-dom";
 
 export const DetailCardMB = (props) => {
     const [comments, setComment] = useState(commentsData);
+    console.log(props)
     return (
             <View id="DetailCardMB" gap={'1%'}>
                 <MCInfoRow>

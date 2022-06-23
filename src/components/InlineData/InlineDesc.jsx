@@ -15,6 +15,11 @@ export const InlineDesc = (props) => {
         shortenText();
     }, [])
 
+    useEffect(()=>{
+        setData(props.data);
+        setMainText(data["comment"] || data["description"]);
+    }, [props.data])
+
     useEffect(() => {
     }, [isShorter])
 
@@ -39,7 +44,7 @@ export const InlineDesc = (props) => {
         changeDisplay(event)
     }
 
-
+    console.log(data)
     return (
         <InlineCont id="InlineDesc">
             <ButtonCol>
@@ -47,11 +52,11 @@ export const InlineDesc = (props) => {
             </ButtonCol>
             <InfoCol>
                 <InfoRow>
-                    <TextLine><TextBold>{data.user}</TextBold>&nbsp;<DetailTextCapi onClick={toggleExpand}>{generalServices.capitalize(mainText)}</DetailTextCapi></TextLine>
+                    <TextLine><TextBold>{data.user.alias}</TextBold>&nbsp;<DetailTextCapi onClick={toggleExpand}>{generalServices.capitalize(mainText)}</DetailTextCapi></TextLine>
                 </InfoRow>
             </InfoCol>
             <ButtonCol>
-                {data.description ? null : <LikeButton isLiked={data.isLiked} size={'var(--font-size-icon-small)'} />}
+                {data.description ? null : <LikeButton data={data.isLiked} size={'var(--font-size-icon-small)'} />}
             </ButtonCol>
         </InlineCont>
 

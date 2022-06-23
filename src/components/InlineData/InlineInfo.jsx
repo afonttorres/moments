@@ -12,7 +12,7 @@ export const InlineInfo = (props) => {
                 <Avatar data={props.moment} />
             </ButtonCol>
             <InfoCol>
-                <TextBold>{props.moment.user}</TextBold>
+                <TextBold>{props.moment.user.alias}</TextBold>
                 <LocationText>{props.moment.location}</LocationText>
             </InfoCol>
             <ButtonCol display={props.display}>

@@ -1,132 +1,147 @@
 [
     {
-        "user": "afonttorres",
+        "user": {
+            "alias": "afonttorres",
+            "name": "agnès font",
+            "avatarUrl": "https://images2.alphacoders.com/521/521982.jpg"
+        },
         "location": "la garriga, catalunya",
         "description": "oranged sky",
         "imgUrl": "https://www.publicdomainpictures.net/pictures/30000/nahled/sunset-15.jpg",
-        "avatarUrl": "https://images2.alphacoders.com/521/521982.jpg",
-        "isLiked":true,
+        "isLiked": true,
         "isSaved": false,
-        "likes":89,
+        "likes": 89,
         "comments": 21,
         "saves": 5,
         "id": 1
     },
     {
-        "user": "afonttorres",
-        "location": "barcelona, catalunya",
+        "user": {
+            "alias": "afonttorres",
+            "name": "agnès font",
+            "avatarUrl": "https://images2.alphacoders.com/521/521982.jpg"
+        },
+        "location": "la garriga, catalunya",
         "description": "oranged sky",
         "imgUrl": "https://www.publicdomainpictures.net/pictures/30000/nahled/sunset-15.jpg",
-        "avatarUrl": "https://gourmetdemexico.com.mx/wp-content/uploads/2017/11/remy-ratatouille.jpg",
-        "isLiked":false,
+        "isLiked": true,
         "isSaved": false,
-        "likes":89,
+        "likes": 89,
         "comments": 21,
         "saves": 5,
-        "id": 2
+        "id": 1
     },
     {
-        "user": "afonttorres",
+        "user": {
+            "alias": "afonttorres",
+            "name": "agnès font",
+            "avatarUrl": "https://images2.alphacoders.com/521/521982.jpg"
+        },
         "location": "la garriga, catalunya",
         "description": "oranged sky",
         "imgUrl": "https://www.publicdomainpictures.net/pictures/30000/nahled/sunset-15.jpg",
-        "avatarUrl": "https://images2.alphacoders.com/521/521982.jpg",
-        "isLiked":false,
+        "isLiked": true,
         "isSaved": false,
-        "likes":89,
+        "likes": 89,
         "comments": 21,
         "saves": 5,
-        "id": 3
+        "id": 1
     },
     {
-        "user": "afonttorres",
+        "user": {
+            "alias": "afonttorres",
+            "name": "agnès font",
+            "avatarUrl": "https://images2.alphacoders.com/521/521982.jpg"
+        },
         "location": "la garriga, catalunya",
         "description": "oranged sky",
         "imgUrl": "https://www.publicdomainpictures.net/pictures/30000/nahled/sunset-15.jpg",
-        "avatarUrl": "https://images2.alphacoders.com/521/521982.jpg",
-        "isLiked":true,
+        "isLiked": true,
         "isSaved": false,
-        "likes":89,
+        "likes": 89,
         "comments": 21,
         "saves": 5,
-        "id": 4
+        "id": 1
     },
     {
-        "user": "afonttorres",
+        "user": {
+            "alias": "afonttorres",
+            "name": "agnès font",
+            "avatarUrl": "https://images2.alphacoders.com/521/521982.jpg"
+        },
         "location": "la garriga, catalunya",
         "description": "oranged sky",
         "imgUrl": "https://www.publicdomainpictures.net/pictures/30000/nahled/sunset-15.jpg",
-        "avatarUrl": "https://images2.alphacoders.com/521/521982.jpg",
-        "isLiked":false,
+        "isLiked": true,
         "isSaved": false,
-        "likes":89,
+        "likes": 89,
         "comments": 21,
         "saves": 5,
-        "id": 5
+        "id": 1
     },
     {
-        "user": "afonttorres",
+        "user": {
+            "alias": "afonttorres",
+            "name": "agnès font",
+            "avatarUrl": "https://images2.alphacoders.com/521/521982.jpg"
+        },
         "location": "la garriga, catalunya",
         "description": "oranged sky",
         "imgUrl": "https://www.publicdomainpictures.net/pictures/30000/nahled/sunset-15.jpg",
-        "avatarUrl": "https://images2.alphacoders.com/521/521982.jpg",
-        "isLiked":false,
+        "isLiked": true,
         "isSaved": false,
-        "likes":89,
+        "likes": 89,
         "comments": 21,
         "saves": 5,
-        "id": 6
+        "id": 1
     },
     {
-        "user": "afonttorres",
+        "user": {
+            "alias": "afonttorres",
+            "name": "agnès font",
+            "avatarUrl": "https://images2.alphacoders.com/521/521982.jpg"
+        },
         "location": "la garriga, catalunya",
         "description": "oranged sky",
         "imgUrl": "https://www.publicdomainpictures.net/pictures/30000/nahled/sunset-15.jpg",
-        "avatarUrl": "https://images2.alphacoders.com/521/521982.jpg",
-        "isLiked":false,
-        "isSaved": true,
-        "likes":89,
-        "comments": 21,
-        "saves": 5,
-        "id": 7
-    },
-    {
-        "user": "afonttorres",
-        "location": "la garriga, catalunya",
-        "description": "oranged sky",
-        "imgUrl": "https://www.publicdomainpictures.net/pictures/30000/nahled/sunset-15.jpg",
-        "avatarUrl": "https://images2.alphacoders.com/521/521982.jpg",
-        "isLiked":false,
-        "isSaved": true,
-        "likes":89,
-        "comments": 21,
-        "saves": 5,
-        "id": 8
-    },
-    {
-        "user": "afonttorres",
-        "location": "la garriga, catalunya",
-        "description": "oranged sky",
-        "imgUrl": "https://www.publicdomainpictures.net/pictures/30000/nahled/sunset-15.jpg",
-        "avatarUrl": "https://images2.alphacoders.com/521/521982.jpg",
-        "isLiked":false,
+        "isLiked": true,
         "isSaved": false,
-        "likes":89,
+        "likes": 89,
         "comments": 21,
         "saves": 5,
-        "id": 9
+        "id": 1
     },
     {
-        "user": "afonttorres",
+        "user": {
+            "alias": "afonttorres",
+            "name": "agnès font",
+            "avatarUrl": "https://images2.alphacoders.com/521/521982.jpg"
+        },
         "location": "la garriga, catalunya",
         "description": "oranged sky",
         "imgUrl": "https://www.publicdomainpictures.net/pictures/30000/nahled/sunset-15.jpg",
-        "avatarUrl": "https://images2.alphacoders.com/521/521982.jpg",
-        "isLiked":false,
+        "isLiked": true,
         "isSaved": false,
-        "likes":89,
+        "likes": 89,
         "comments": 21,
         "saves": 5,
-        "id": 10
+        "id": 1
+    },
+    {
+        "user": {
+            "alias": "afonttorres",
+            "name": "agnès font",
+            "avatarUrl": "https://images2.alphacoders.com/521/521982.jpg"
+        },
+        "location": "la garriga, catalunya",
+        "description": "oranged sky",
+        "imgUrl": "https://www.publicdomainpictures.net/pictures/30000/nahled/sunset-15.jpg",
+        "isLiked": true,
+        "isSaved": false,
+        "likes": 89,
+        "comments": 21,
+        "saves": 5,
+        "id": 1
     }
+    
 ]
