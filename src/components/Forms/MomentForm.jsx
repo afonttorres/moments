@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useEffect } from "react";
 import { Form, Input, Label, Button, TextArea } from "./Forms.styled";
 export const MomentForm = (props) => {
 
@@ -9,6 +10,14 @@ export const MomentForm = (props) => {
     })
     const [msg, setMsg] = useState("");
     const [filledInputs, setFilledInputs] = useState([]);
+
+    useEffect(() => {
+        setMoment({
+            location: props.moment ? props.moment.location : "",
+            description: props.moment ? props.moment.description : "",
+            imgUrl: props.moment ? props.moment.imgUrl : ""
+        })
+    }, [props])
 
     const handleInputChange = (e) => {
         let name = e.target.name;
@@ -41,6 +50,7 @@ export const MomentForm = (props) => {
         setFilledInputs([]);
     }
 
+    console.log(props.moment)
     return (
         <Form heightDT={'100%'} onSubmit={handleSubmit}>{Object.keys(moment).map((field, key) => (
             <>
@@ -62,7 +72,7 @@ export const MomentForm = (props) => {
                 </>
             </>
         ))}
-            <Button>{props.moment ? 'Update' : 'Upload'}</Button>
+            <Button>{props.title}</Button>
         </Form>
     )
 }

@@ -11,23 +11,23 @@ export const PreviewCard = (props) => {
             <PrevContainer>
                 <PrevNav border={'1px solid var(--border-color)'}>
                     <PreNavButtonsCol>
-                        <CrossButton action={props.cancel}/>
+                        <CrossButton action={props.cancel} />
                     </PreNavButtonsCol>
                     <PreNavTitleCol>
-                        <MainTitle>Update moment</MainTitle>
+                        <MainTitle>{generalServices.capitalize(props.title)} moment</MainTitle>
                     </PreNavTitleCol>
                     <PreNavButtonsCol>
-                        <TickButton action={props.confirm}/>
+                        <TickButton action={props.confirm} />
                     </PreNavButtonsCol>
                 </PrevNav>
                 <InfoRow>
                     <InlineInfo moment={props.moment} display={'none'} />
                 </InfoRow>
                 <ImgRow>
-                    <Img imgUrl={props.moment.imgUrl}/>
+                    <Img imgUrl={props.moment.imgUrl} />
                 </ImgRow>
                 <TitleRow>
-                    <TextLine><TextBold>{props.moment.user.alias}</TextBold>&nbsp;<TextCapi>{generalServices.capitalize(props.moment.description)}</TextCapi></TextLine>
+                    <TextLine><TextBold>{props.moment.user.alias}</TextBold>&nbsp;<TextCapi>{props.moment.description}</TextCapi></TextLine>
                 </TitleRow>
                 <PrevNav />
             </PrevContainer>

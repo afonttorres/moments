@@ -1,6 +1,5 @@
 import axios from 'axios';
 import { userService } from './userService';
-import mockUser from '../mockUser.json';
 const baseUrl = 'https://62b41b86530b26da4cb67c57.mockapi.io';
 
 export const momentService = {
@@ -11,8 +10,7 @@ export const momentService = {
         return moments;
     },
     postMoment(moment) {
-        let momentUser = { ...moment, "user": mockUser[0] }
-        const postedMoment = axios.post(`${baseUrl}/moments`, momentUser).then(res => {
+        const postedMoment = axios.post(`${baseUrl}/moments`, moment).then(res => {
             return res.data;
         })
         return postedMoment;

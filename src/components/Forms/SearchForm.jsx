@@ -24,6 +24,11 @@ export const SearchForm = (props) => {
         setMsg('');
     }
 
+    const cancel = () =>{
+        resetValues();
+        props.cancel();
+    }
+
     return (
         <Form heightMB={props.heightMB} heightDT={props.heightDT} onSubmit={handleSubmit}>
             <Row>
@@ -40,7 +45,7 @@ export const SearchForm = (props) => {
                     />
                 </SearchBar>
                 <SCancelCol>
-                    <CancelButton action={props.cancel}/>
+                    <CancelButton action={cancel}/>
                 </SCancelCol>
             </Row>
         </Form>

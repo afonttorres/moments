@@ -18,7 +18,8 @@ export const InlineDesc = (props) => {
     useEffect(()=>{
         setData(props.data);
         setMainText(data["comment"] || data["description"]);
-    }, [props.data])
+        shortenText();
+    }, [props])
 
     useEffect(() => {
     }, [isShorter])

@@ -112,6 +112,12 @@ export const DetailText = styled(Text)`
     opacity: var(--text-opacity);
     font-size: var(--font-size-plain-small);
 `;
+export const TitleCapi = styled(Title)`
+ &::first-letter{
+        text-transform: uppercase;
+    }
+`;
+
 export const TextCapi = styled(Text)`
     &::first-letter{
         text-transform: uppercase;

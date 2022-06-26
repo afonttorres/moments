@@ -70,6 +70,7 @@ export const MomentDetail = () => {
         momentService.updateMoment(updatedMoment, updatedMoment.id).then(res => {
             if (res) {
                 setMsg(`Moment with id: ${updatedMoment.id} updated successfully!`)
+                setMoment();
                 getMoment();
                 setUpdatedMoment();
                 setMomentToUpdate();
@@ -105,8 +106,8 @@ export const MomentDetail = () => {
                 <>
                     {isUpdateActive || updatedMoment ?
                         <NoScrollContainer>
-                            {isUpdateActive ? <View bgColor={'--main-bg'} width={'95%'} ><VUpload closeUpdate={closeUpdate} moment={momentToUpdate} action={showPreview} /></View> : null}
-                            {updatedMoment ? <PreviewCard moment={updatedMoment} confirm={confirmUpdate} cancel={cancelUpdate} /> : null}
+                            {isUpdateActive ? <View bgColor={'--main-bg'} width={'95%'} ><VUpload closeUpdate={closeUpdate} moment={momentToUpdate} action={showPreview} title={'update'}/></View> : null}
+                            {updatedMoment ? <PreviewCard moment={updatedMoment} confirm={confirmUpdate} cancel={cancelUpdate} title={'update'}/> : null}
                         </NoScrollContainer>
                         : null}
                 </>

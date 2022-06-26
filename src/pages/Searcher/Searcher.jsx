@@ -7,6 +7,7 @@ import { ViewContainer } from '../Styles.styled';
 export const Searcher = () => {
 
     const search = (search) =>{
+        if (search == '') return;
         console.log(search);
         //momentService.getMoments(search);
         //userService.getUsers(search);
