@@ -50,7 +50,6 @@ export const MomentForm = (props) => {
         setFilledInputs([]);
     }
 
-    console.log(props.moment)
     return (
         <Form heightDT={'100%'} onSubmit={handleSubmit}>{Object.keys(moment).map((field, key) => (
             <>

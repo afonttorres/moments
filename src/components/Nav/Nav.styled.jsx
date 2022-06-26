@@ -14,7 +14,7 @@ export const NavWrapper = styled.nav`
 `;
 export const NavRow = styled(Row)`
         gap: 15%;
-        width: 50%;
+        width: 65%;
         height: 100%;
 `;
 
