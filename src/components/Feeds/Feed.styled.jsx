@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { Img } from "../../pages/Styles.styled";
+import { Col, Img } from "../../pages/Styles.styled";
 
 export const FeedContainer = styled.section`
     height: fit-content;
@@ -23,10 +23,17 @@ export const FeedContainer = styled.section`
 
 export const SearchContainer = styled(FeedContainer)`
      @media (max-width: 820px) {
-        height: 70vh;
+        min-height: 70vh;
+        height: fit-content;
         justify-content: center;
         gap: 0;
     }
+`;
+
+export const SuggestionsCol = styled(Col)`
+        align-items: flex-start;
+        width: 85%;
+        height: fit-content;
 `;
 
 export const FeedImg = styled(Img)`
