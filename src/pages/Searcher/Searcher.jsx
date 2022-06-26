@@ -5,26 +5,33 @@ import { VSearcher } from "../../views/VSearcher/VSearcher";
 import { ViewContainer } from '../Styles.styled';
 import moments from '../../mockMoments.json'
 import { useState } from "react";
+import { momentService } from "../../services/momentService";
 
 export const Searcher = () => {
 
     const [suggestions, setSuggestions] = useState();
+    const [search, setSearch] = useState();
 
-    const search = (search) =>{
-        if (search == '') return;
-        //momentService.getMoments(search);
-        setSuggestions(moments)
+    const searchMoment = (data) =>{
+        if (data == '') return;
+        momentService.searchMoment(data.toLowerCase()).then(res =>{
+            if(res){
+                setSuggestions(res);
+                setSearch(data);
+            }
+        })
     }
 
-    const cancel = () => {
+    const cancelSearch = () => {
         console.log('search canceled');
         setSuggestions();
+        setSearch();
     }
 
     return (
         <ViewContainer>
             <Nav isLogged={true} />
-            <VSearcher search={search} cancel={cancel} suggestions={suggestions}/>
+            <VSearcher searchMoment={searchMoment} cancelSearch={cancelSearch} suggestions={suggestions} search={search}/>
             <Footer />
         </ViewContainer>
     )

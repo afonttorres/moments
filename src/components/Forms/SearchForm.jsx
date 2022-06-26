@@ -1,6 +1,6 @@
 import React from "react";
 import { useState } from "react";
-import { Button, Form, Input, SCancelCol, SearchBar, SIconCol } from "./Forms.styled";
+import { Button, SearcherForm, Input, SCancelCol, SearchBar, SIconCol } from "./Forms.styled";
 import { SearchButton } from '../../components/Buttons/SearchButton';
 import { Col, DetailText, Row } from "../../pages/Styles.styled";
 import { CancelButton } from "../Buttons";
@@ -15,7 +15,7 @@ export const SearchForm = (props) => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        props.search(search);
+        props.searchMoment(search.toLowerCase());
         resetValues();
     }
 
@@ -26,11 +26,11 @@ export const SearchForm = (props) => {
 
     const cancel = () =>{
         resetValues();
-        props.cancel();
+        props.cancelSearch();
     }
 
     return (
-        <Form heightMB={props.heightMB} heightDT={props.heightDT} onSubmit={handleSubmit}>
+        <SearcherForm heightMB={props.heightMB} heightDT={props.heightDT} onSubmit={handleSubmit}>
             <Row>
                 <SearchBar border={search !== "" ? `2px solid var(--ux-border-color)` : `1px solid var(--border-color)`}>
                     <SIconCol color={search !== "" ? '--interaction-color' : '--font-color-plain-noBg'}>
@@ -48,6 +48,6 @@ export const SearchForm = (props) => {
                     <CancelButton action={cancel}/>
                 </SCancelCol>
             </Row>
-        </Form>
+        </SearcherForm>
     )
 }

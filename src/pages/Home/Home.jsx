@@ -8,6 +8,7 @@ import { VUpload } from '../../views/VUpload/VUpload';
 import { PreviewCard } from '../../components/Cards/PreviewCard';
 import { momentService } from '../../services/momentService';
 import { userService } from '../../services/userService';
+import { generalServices } from '../../services/generalServices';
 
 
 export const Home = () => {
@@ -58,7 +59,7 @@ export const Home = () => {
     }
 
     const confirmUpdate = () => {
-        momentService.updateMoment(updatedMoment, updatedMoment.id).then(res =>{
+        momentService.updateMoment(generalServices.objToLowerCase(updatedMoment), updatedMoment.id).then(res =>{
             if(res){
                 setMsg(`Moment with id: ${updatedMoment.id} updated successfully!`)
                 getData();

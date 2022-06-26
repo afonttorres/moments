@@ -39,5 +39,17 @@ export const momentService = {
             return res.data;
         })
         return moment;
+    },
+    searchMoment(search){
+        const moments = axios.get(`${baseUrl}/moments`).then(res=>{
+            if(res.data){
+                let suggestions = [];
+                for(let moment of res.data){
+                    if(moment.description.includes(search)) suggestions.push(moment); 
+                }
+                return suggestions;
+            }
+        })
+        return moments;
     }
 }

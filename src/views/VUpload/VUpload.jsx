@@ -9,7 +9,7 @@ import { useEffect } from "react";
 export const VUpload = (props) => {
 
     useEffect(() => { }, [props])
-    console.log(props.title)
+    
     return (
         <MainContainer>
             <BackButton location={props.location} action={props.closeUpdate} />

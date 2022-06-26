@@ -22,18 +22,25 @@ export const FeedContainer = styled.section`
 `;
 
 export const SearchContainer = styled(FeedContainer)`
-     @media (max-width: 820px) {
-        min-height: 70vh;
+        min-height: 19vh;
+        max-height: 70vh;
         height: fit-content;
         justify-content: center;
+        position: absolute;
+        top: 6vh;
+     @media (max-width: 820px) {
         gap: 0;
     }
 `;
 
 export const SuggestionsCol = styled(Col)`
         align-items: flex-start;
-        width: 85%;
-        height: fit-content;
+        width: 100%;
+        height: 5vh;
+        & > *{
+            width: 85%;
+            margin: 0 auto;
+        }
 `;
 
 export const FeedImg = styled(Img)`

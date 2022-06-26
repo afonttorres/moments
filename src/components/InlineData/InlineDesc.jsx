@@ -45,7 +45,6 @@ export const InlineDesc = (props) => {
         changeDisplay(event)
     }
 
-    console.log(data)
     return (
         <InlineCont id="InlineDesc">
             <ButtonCol>

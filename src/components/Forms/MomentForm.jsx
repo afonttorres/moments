@@ -53,9 +53,10 @@ export const MomentForm = (props) => {
     return (
         <Form heightDT={'100%'} onSubmit={handleSubmit}>{Object.keys(moment).map((field, key) => (
             <>
-                <Label color={filledInputs.includes(field) ? "--interaction-color" : "--font-color-plain-noBg"} >{field.replace("Url", " url")}</Label>
+                <Label key={key} color={filledInputs.includes(field) ? "--interaction-color" : "--font-color-plain-noBg"} >{field.replace("Url", " url")}</Label>
                 <>{field !== 'description' ?
                     <Input
+                        key={key}
                         border={filledInputs.includes(field) ? `2px solid var(--ux-border-color)` : `1px solid var(--border-color)`}
                         type={moment[field].includes("Url") ? "url" : 'text'}
                         name={field} value={moment[field]}
@@ -63,6 +64,7 @@ export const MomentForm = (props) => {
                         onChange={handleInputChange} />
                     :
                     <TextArea
+                        key={key}
                         border={filledInputs.includes(field) ? `2px solid var(--ux-border-color)` : `1px solid var(--border-color)`}
                         type='text'
                         name={field} value={moment[field]}

@@ -56,7 +56,7 @@ export const BurgerContentMB = (props) => {
                 <BBMBar onTouchMove={handleTouches} />
                 <>
                     {content.map((button, key) => (
-                        <Row onClick={button.action}>{button.content}</Row>
+                        <Row key={key} onClick={button.action}>{button.content}</Row>
                     ))}
                 </>
             </BBMContent>

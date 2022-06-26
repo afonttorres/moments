@@ -67,7 +67,7 @@ export const MomentDetail = () => {
     }
 
     const confirmUpdate = () => {
-        momentService.updateMoment(updatedMoment, updatedMoment.id).then(res => {
+        momentService.updateMoment(generalServices.objToLowerCase(updatedMoment), updatedMoment.id).then(res => {
             if (res) {
                 setMsg(`Moment with id: ${updatedMoment.id} updated successfully!`)
                 setMoment();

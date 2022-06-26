@@ -92,7 +92,10 @@ export const Button = styled.button`
         background-color: var(--interaction-opacity);
     }
 `;
-
+export const SearcherForm = styled(Form)`
+    position: absolute;
+    top: 0vh;
+`;
 export const SearchBar = styled(Row)`
     height: var(--input-height);
     width: 100%;

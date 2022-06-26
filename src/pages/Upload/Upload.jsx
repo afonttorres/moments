@@ -6,6 +6,7 @@ import { VUpload } from "../../views/VUpload/VUpload";
 import { NoScrollContainer, ViewContainer } from "../Styles.styled";
 import { PreviewCard } from '../../components/Cards/PreviewCard';
 import { useEffect } from "react";
+import { generalServices } from "../../services/generalServices";
 
 export const Upload = () => {
 
@@ -28,7 +29,7 @@ export const Upload = () => {
     }
 
     const confirm = () => {
-        momentService.postMoment(moment).then(res => {
+        momentService.postMoment(generalServices.objToLowerCase(moment)).then(res => {
             if (res) {
                 setMoment();
                 setIsPreviewACtive(false);
