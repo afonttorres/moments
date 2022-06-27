@@ -9,12 +9,17 @@ import { VUpload } from "../../views/VUpload";
 import { PreviewCard } from "../../components/Cards/PreviewCard";
 import { Home } from "../Home/Home";
 import { Profile } from "../Profile/Profile";
+import { InfoModal } from "../../components/Modals/InfoModal";
+import { ConfirmModal } from "../../components/Modals/ConfirmModal";
 
 export const MomentDetail = () => {
 
     const [id, setId] = useState(useParams().id)
     const [moment, setMoment] = useState();
+
     const [msg, setMsg] = useState();
+    const [question, setQuestion] = useState();
+    const [dialogData, setDialogData] = useState();
 
     const path = window.location.pathname;
     const [location, setLocation] = useState(path);
@@ -25,6 +30,8 @@ export const MomentDetail = () => {
     const [updatedMoment, setUpdatedMoment] = useState();
 
     const navigate = useNavigate();
+    const s = 3;
+    const ms = s * 1000;
 
     useEffect(() => {
         getMoment();
@@ -48,10 +55,15 @@ export const MomentDetail = () => {
     }
 
     const erase = (data) => {
+        openDialog(`Do you really want to delete moment with id: ${data.id}?`, data);
+    }
+
+    const confirmDelete = (data)=>{
+        closeDialog();
         momentService.deleteMoment(data.id).then(res => {
             if (res) {
-                setMsg(`Moment with id: ${data.id} erased successfully!`);
-                navigate('/home');
+                openModal(`Moment with id: ${data.id} erased successfully!`);
+                setTimeout(()=>{navigate('/home');}, ms)
             }
         })
     }
@@ -69,7 +81,7 @@ export const MomentDetail = () => {
     const confirmUpdate = () => {
         momentService.updateMoment(generalServices.objToLowerCase(updatedMoment), updatedMoment.id).then(res => {
             if (res) {
-                setMsg(`Moment with id: ${updatedMoment.id} updated successfully!`)
+                openModal(`Moment with id: ${updatedMoment.id} updated successfully!`)
                 setMoment();
                 getMoment();
                 setUpdatedMoment();
@@ -79,7 +91,6 @@ export const MomentDetail = () => {
     }
 
     const cancelUpdate = () => {
-        console.log('canceled to update: ', momentToUpdate);
         setUpdatedMoment();
         setIsUpdateActive(true);
     }
@@ -89,7 +100,24 @@ export const MomentDetail = () => {
         setMomentToUpdate();
     }
 
-    console.log(msg !== undefined ? msg : 'No msg')
+    const openModal = (msg) =>{
+        setMsg(msg)
+    }
+
+    const openDialog = (question, data) => {
+        setQuestion(question);
+        setDialogData(data)
+    }
+
+    const closeModal = () =>{
+        setMsg();
+    }
+
+    const closeDialog = () => {
+        setQuestion();
+        setDialogData();
+    }
+
     return (
         <>{moment !== undefined ?
             <ViewContainer>
@@ -113,6 +141,8 @@ export const MomentDetail = () => {
                 </>
             </ViewContainer>
             : null}
+            {msg !== undefined ? <InfoModal msg={msg} closeModal={closeModal} /> : null}
+            {question !== undefined ? <ConfirmModal question={question} closeDialog={closeDialog} confirm={confirmDelete} data={dialogData}/> : null}
         </>
 
     )

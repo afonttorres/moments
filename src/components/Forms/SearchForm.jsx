@@ -7,7 +7,6 @@ import { CancelButton } from "../Buttons";
 export const SearchForm = (props) => {
 
     const [search, setSearch] = useState("");
-    const [msg, setMsg] = useState("");
 
     const handleChange = (e) => {
         setSearch(e.target.value);
@@ -15,18 +14,24 @@ export const SearchForm = (props) => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
+        if (!sanitize()) return;
         props.searchMoment(search.toLowerCase());
         resetValues();
     }
 
     const resetValues = () => {
         setSearch('');
-        setMsg('');
     }
 
-    const cancel = () =>{
+    const cancel = () => {
         resetValues();
         props.cancelSearch();
+    }
+
+    const sanitize = () => {
+        if (search === undefined || search == "") { props.openModal('Search input might be empty.'); return false; }
+        if (typeof search !== 'string') { props.openModal('Wrong type of input!'); return false; }
+        return true;
     }
 
     return (
@@ -45,7 +50,7 @@ export const SearchForm = (props) => {
                     />
                 </SearchBar>
                 <SCancelCol>
-                    <CancelButton action={cancel}/>
+                    <CancelButton action={cancel} />
                 </SCancelCol>
             </Row>
         </SearcherForm>

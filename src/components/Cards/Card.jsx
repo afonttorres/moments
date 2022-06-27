@@ -9,8 +9,6 @@ import { InlineInfo } from "../InlineData/InlineInfo";
 
 export const Card = (props) => {
 
-    useEffect(() => { }, [props]);
-
     return (
         <SCard>
 
@@ -29,7 +27,7 @@ export const Card = (props) => {
             </TitleRow>
 
             <ButtonsRow>
-                <InlineButtons moment={props.moment} like={props.like} />
+                <InlineButtons moment={props.moment} like={props.like} save={props.save}/>
             </ButtonsRow>
         </SCard>
     )

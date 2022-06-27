@@ -36,9 +36,9 @@ export const LogForm = (props) => {
     }
     const sanitize = () => {
         for (let key in userData) {
-            if (userData[key] == "") { setMsg("Some inputs might be empty"); return false }
+            if (userData[key] == "") { setMsg("Some inputs might be empty."); return false }
             if (typeof userData[key] !== "string") { setMsg("Wrong type of input!"); return false }
-            if (key == "password" && userData[key].length < 7) { setMsg("Password should have at least 7 characters"); return false }
+            if (key == "password" && userData[key].length < 7) { setMsg("Password should have at least 7 characters."); return false }
             if (key !== "password" && userData.password.length >= 7) {
                 userData[key] = userData[key].toLowerCase();
                 setUserData(userData);

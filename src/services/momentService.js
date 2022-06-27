@@ -34,6 +34,13 @@ export const momentService = {
         })
         return updatedMoment;
     },
+    saveMoment(moment, id){
+        let savedMoment = {...moment, isSaved: !moment.isSaved}
+        const updatedMoment = axios.put(`${baseUrl}/moments/${id}`, savedMoment).then(res =>{
+            return res.data;
+        })
+        return updatedMoment;
+    },
     getMoment(id){
         const moment = axios.get(`${baseUrl}/moments/${id}`).then(res => {
             return res.data;

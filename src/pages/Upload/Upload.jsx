@@ -7,6 +7,7 @@ import { NoScrollContainer, ViewContainer } from "../Styles.styled";
 import { PreviewCard } from '../../components/Cards/PreviewCard';
 import { useEffect } from "react";
 import { generalServices } from "../../services/generalServices";
+import { InfoModal } from "../../components/Modals/InfoModal";
 
 export const Upload = () => {
 
@@ -16,10 +17,11 @@ export const Upload = () => {
 
     const [moment, setMoment] = useState();
     const [isPreviewActive, setIsPreviewACtive] = useState(false);
+    const [msg, setMsg] = useState();
 
-    useEffect(()=>{
+    useEffect(() => {
 
-    },[moment])
+    }, [moment])
 
     const upload = (data) => {
         console.log('moment to upload: ', data);
@@ -33,7 +35,8 @@ export const Upload = () => {
             if (res) {
                 setMoment();
                 setIsPreviewACtive(false);
-                setTimeout(() => navigate('/home'), ms)
+                openModal(`Moment added succesfully!`)
+                setTimeout(() => navigate('/home'), ms);
             }
         })
     }
@@ -42,10 +45,21 @@ export const Upload = () => {
         setIsPreviewACtive(false);
     }
 
+    const openModal = (msg) => {
+        setMsg(msg);
+    }
+
+    const closeModal = () => {
+        setMsg();
+    }
+
     return (
-        <ViewContainer>
-            <VUpload action={upload} location={'home'} moment={moment} title={'upload'}/>
-            <>{isPreviewActive ? <NoScrollContainer><PreviewCard moment={moment} confirm={confirm} cancel={cancel} title={'upload'}/></NoScrollContainer> : null}</>
-        </ViewContainer>
+        <>
+            <ViewContainer>
+                <VUpload action={upload} location={'home'} moment={moment} title={'upload'} openModal={openModal} />
+                <>{isPreviewActive ? <NoScrollContainer><PreviewCard moment={moment} confirm={confirm} cancel={cancel} title={'upload'} /></NoScrollContainer> : null}</>
+            </ViewContainer>
+            <>{msg !== undefined ? <InfoModal msg={msg} closeModal={closeModal} /> : null}</>
+        </>
     )
 }

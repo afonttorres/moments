@@ -37,11 +37,11 @@ export const InlineDesc = (props) => {
     }
 
     const changeDisplay = (e) => {
-        console.log(e.target.innerHTML.length)
+        console.log(e.target)
     }
 
     const toggleExpand = (event) => {
-        !isShorter ? shortenText(event) : lengthenText(event);
+        !isShorter ? shortenText() : lengthenText();
         changeDisplay(event)
     }
 

@@ -6,14 +6,14 @@ export const InlineButtons = (props) => {
     const [buttons, setButtons] = useState([
         { button: <LikeButton like={props.like} data={props.moment} />, content: props.moment.likes }
         , { button: <CommentButton />, content: props.moment.comments }
-        , { button: <SaveButton isSaved={props.moment.isSaved} />, content: props.moment.saves }
+        , { button: <SaveButton save={props.save} data={props.moment} />, content: props.moment.saves }
     ]);
 
     useEffect(() => {
         setButtons([
             { button: <LikeButton like={props.like} data={props.moment} />, content: props.moment.likes }
             , { button: <CommentButton />, content: props.moment.comments }
-            , { button: <SaveButton isSaved={props.moment.isSaved} />, content: props.moment.saves }
+            , { button: <SaveButton save={props.save} data={props.moment} />, content: props.moment.saves }
         ])
     }, [props])
 

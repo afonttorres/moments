@@ -8,7 +8,7 @@ export const MomentForm = (props) => {
         description: props.moment ? props.moment.description : "",
         imgUrl: props.moment ? props.moment.imgUrl : ""
     })
-    const [msg, setMsg] = useState("");
+
     const [filledInputs, setFilledInputs] = useState([]);
 
     useEffect(() => {
@@ -28,8 +28,18 @@ export const MomentForm = (props) => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
+        if (!sanitize()) return;
         props.action(moment);
         resetValues();
+    }
+
+    const sanitize = () => {
+        for (let key in moment) {
+            if (moment[key] === "" || moment[key] === undefined) { props.openModal('Some inputs might be empty.'); return false; }
+            if (typeof moment[key] !== 'string') { props.openModal('Wrong type of input!'); return false; }
+            //confirm modal when moment[key] === props.modal[key]
+        }
+        return true;
     }
 
     const getFilledInputs = () => {
@@ -46,7 +56,6 @@ export const MomentForm = (props) => {
             description: "",
             imgUrl: "",
         });
-        setMsg("");
         setFilledInputs([]);
     }
 

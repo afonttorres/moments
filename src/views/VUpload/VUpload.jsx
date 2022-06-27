@@ -15,7 +15,7 @@ export const VUpload = (props) => {
             <BackButton location={props.location} action={props.closeUpdate} />
             <View>
                 <TitleCapi>{props.title}</TitleCapi>
-                <MomentForm action={props.action} moment={props.moment} title={props.title}/>
+                <MomentForm action={props.action} moment={props.moment} title={props.title} openModal={props.openModal}/>
             </View>
         </MainContainer>
     )

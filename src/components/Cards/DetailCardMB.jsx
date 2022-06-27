@@ -8,7 +8,6 @@ import { InlineInfo } from "../InlineData/InlineInfo";
 
 export const DetailCardMB = (props) => {
     const [comments, setComment] = useState(commentsData);
-    console.log(props)
     return (
             <View id="DetailCardMB" gap={'1%'}>
                 <MCInfoRow>
