@@ -9,16 +9,17 @@ export const InlineDesc = (props) => {
     const [data, setData] = useState(props.data);
     const [mainText, setMainText] = useState(data["comment"] || data["description"]);
     const [isShorter, setIsShorter] = useState(false);
+    const [style, setStyle] = useState();
     const maxLength = 40;
 
     useEffect(() => {
         shortenText();
+        setStyle();
     }, [])
 
-    useEffect(()=>{
-        setData(props.data);
-        setMainText(data["comment"] || data["description"]);
+    useEffect(() => {
         shortenText();
+        setStyle();
     }, [props])
 
     useEffect(() => {
@@ -29,30 +30,27 @@ export const InlineDesc = (props) => {
         if (mainText == shorten) return;
         setMainText(shorten);
         setIsShorter(true);
+        setStyle();
     }
 
     const lengthenText = () => {
         setMainText(data["comment"] || data["description"]);
         setIsShorter(false);
+        setStyle({ overflowY: 'scroll', height: '5vh', paddingRight: '5%' });
     }
 
-    const changeDisplay = (e) => {
-        console.log(e.target)
-    }
-
-    const toggleExpand = (event) => {
+    const toggleExpand = () => {
         !isShorter ? shortenText() : lengthenText();
-        changeDisplay(event)
     }
 
     return (
         <InlineCont id="InlineDesc">
             <ButtonCol>
-                <Avatar data={data}  width={'40%'} />
+                <Avatar data={data} width={'40%'} />
             </ButtonCol>
             <InfoCol>
                 <InfoRow>
-                    <TextLine><TextBold>{data.user.alias}</TextBold>&nbsp;<DetailTextCapi onClick={toggleExpand}>{generalServices.capitalize(mainText)}</DetailTextCapi></TextLine>
+                    <TextLine style={style}><TextBold>{data.user.alias}</TextBold>&nbsp;<DetailTextCapi onClick={toggleExpand}>{generalServices.capitalize(mainText)}</DetailTextCapi></TextLine>
                 </InfoRow>
             </InfoCol>
             <ButtonCol>

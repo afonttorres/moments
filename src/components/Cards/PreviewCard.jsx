@@ -1,7 +1,7 @@
 import React from "react";
 import { generalServices } from "../../services/generalServices";
 import { View, MainTitle, TextBold, TextCapi, TextLine, Img } from "../../pages/Styles.styled";
-import { InfoRow, ImgRow, TitleRow, PrevContainer, PrevNav, PreNavButtonsCol, PreNavTitleCol } from "./Cards.styled";
+import { InfoRow, ImgRow, ScrollableDesc, PrevContainer, PrevNav, PreNavButtonsCol, PreNavTitleCol } from "./Cards.styled";
 import { InlineInfo } from "../InlineData/InlineInfo";
 import { CrossButton, TickButton } from "../Buttons";
 
@@ -26,9 +26,9 @@ export const PreviewCard = (props) => {
                 <ImgRow>
                     <Img imgUrl={props.moment.imgUrl} />
                 </ImgRow>
-                <TitleRow>
+                <ScrollableDesc>
                     <TextLine><TextBold>{props.moment.user.alias}</TextBold>&nbsp;<TextCapi>{props.moment.description}</TextCapi></TextLine>
-                </TitleRow>
+                </ScrollableDesc>
                 <PrevNav />
             </PrevContainer>
         </View >

@@ -65,7 +65,7 @@ export const TextArea = styled.textarea`
     background-color: transparent;
     box-shadow: none;
     border-bottom: ${props => props.border};
-    line-height: calc(var(--input-height)*2);
+    line-height: calc(var(--input-height)/2);
     &:focus&:hover&:active{
         border-bottom: ${props => props.border};
     }

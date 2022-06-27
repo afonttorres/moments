@@ -9,11 +9,15 @@ export const SCard = styled.article`
     align-items: center;
     justify-content: center;
     gap: 1%;
-    margin: 1%;
+    margin: .5%;
+    padding: .5%;
     background-color: var(--main-bg);
+    box-shadow: 1px 2px 10px var(--border-color);;
+    border-radius: 0.75rem;
     @media (max-width: 820px) {
         width: 100%;
         height: 100%;
+        box-shadow: 0px 3px 10px var(--border-color);
     }
 `;
 
@@ -41,10 +45,17 @@ export const InfoRow = styled(SCardRow)`
 `;
 
 export const TitleRow = styled(SCardRow)`
-    height: 5%;
+    height: 10%;
     justify-content: flex-start;
     width: 75%;
-    margin: 2.5% auto 0 auto;
+`;
+
+export const ScrollableDesc = styled(TitleRow)`
+    height: fit-content;
+    overflow-y: scroll;
+    padding-top: 5%;
+    padding-right: 5%;
+    align-items: flex-start;
 `;
 
 export const CDetailText = styled(DetailText)`
@@ -54,7 +65,7 @@ export const CDetailText = styled(DetailText)`
 `;
 
 export const ImgRow = styled(SCardRow)`
-    height: 72.5%;
+    height: 70%;
     border-radius: .75rem;
 `;
 export const ButtonsRow = styled(SCardRow)`
