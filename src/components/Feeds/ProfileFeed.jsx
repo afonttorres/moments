@@ -9,7 +9,7 @@ export const ProfileFeed = (props) => {
             <ProfileFeedContainer>{props.moments.length > 1 ?
                 props.moments.map((moment, key) => (
                     <Link key={key} to={`/profile/detail/${moment.id}`}><FeedImg key={key} imgUrl={moment.imgUrl} /></Link>
-                )) :
+                )).reverse() :
                 <Col><TextCapi>This user doesn't have any moments yet.</TextCapi></Col>
             }
             </ProfileFeedContainer>

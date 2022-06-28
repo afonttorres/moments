@@ -7,7 +7,7 @@ export const Nav = (props) => {
 
     const [location] = useState(useLocation(0).pathname.toString().substring(1, (useLocation(0).pathname.toString().length)))
     const [dtOutput, setDToutput] = useState(["upload", "search", "notifications", "sign in", "log in"]);
-    const [mbOutput, setMBoutput] = useState([<i className="fa-regular fa-bookmark"></i>, <i className="fa-regular fa-heart"></i>]);
+    const [mbOutput, setMBoutput] = useState([{content: <i className="fa-regular fa-bookmark"></i>, linkTo: 'saves'}, {content: <i className="fa-regular fa-heart"></i>, linkTo: 'favorites'}]);
     const [title, setTitle] = useState("Moments");
     const [profileAlias, setProfileAlias] = useState();
     const [style, setStyle] = useState();
@@ -31,7 +31,7 @@ export const Nav = (props) => {
 
     const modifyMBoutput = () => {
         if (location == 'profile') {
-            setMBoutput([<i className="fa-solid fa-bars"></i>]);
+            setMBoutput([{content: <i className="fa-solid fa-bars"></i>}]);
             setStyle({
                 height: '50%',
                 width: '50%',
@@ -52,7 +52,7 @@ return (
             </NavItemsRowDT>
         </NavItemsColDT>
         <NavItemsColMB>
-            <NavItemsRowMB>{mbOutput.map((item, key) => <NavItem style={style} key={key}>{item}</NavItem>)}
+            <NavItemsRowMB>{mbOutput.map((item, key) => <NavItem style={style} key={key}><Link to={`/${item.linkTo}`}>{item.content}</Link></NavItem>)}
             </NavItemsRowMB>
         </NavItemsColMB>
     </NavWrapper>
