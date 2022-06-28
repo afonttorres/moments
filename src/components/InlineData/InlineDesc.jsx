@@ -6,37 +6,36 @@ import { LikeButton } from "../Buttons";
 import { ButtonCol, InfoCol, InfoRow, InlineCont } from "./InlineData.styled";
 
 export const InlineDesc = (props) => {
-    const [data, setData] = useState(props.data);
-    const [mainText, setMainText] = useState(data["comment"] || data["description"]);
+
+    const [text, setText] = useState();
     const [isShorter, setIsShorter] = useState(false);
     const [style, setStyle] = useState();
     const maxLength = 40;
 
     useEffect(() => {
         shortenText();
-        setStyle();
     }, [])
 
     useEffect(() => {
         shortenText();
-        setStyle();
-    }, [props])
+    }, [props.data])
 
     useEffect(() => {
     }, [isShorter])
 
     const shortenText = () => {
-        let shorten = generalServices.shortenText(mainText, maxLength);
-        if (mainText == shorten) return;
-        setMainText(shorten);
+        setText(generalServices.capitalize(props.data.description || props.data.comment));
+        let shorten = generalServices.shortenText(props.data.description || props.data.comment, maxLength);
+        if (text == shorten) return;
         setIsShorter(true);
         setStyle();
+        setText(generalServices.capitalize(shorten));
     }
 
     const lengthenText = () => {
-        setMainText(data["comment"] || data["description"]);
         setIsShorter(false);
         setStyle({ overflowY: 'scroll', height: '5vh', paddingRight: '5%' });
+        setText(generalServices.capitalize(props.data.description || props.data.comment));
     }
 
     const toggleExpand = () => {
@@ -46,15 +45,15 @@ export const InlineDesc = (props) => {
     return (
         <InlineCont id="InlineDesc">
             <ButtonCol>
-                <Avatar data={data} width={'40%'} />
+                <Avatar data={props.data} width={'40%'} />
             </ButtonCol>
             <InfoCol>
                 <InfoRow>
-                    <TextLine style={style}><TextBold>{data.user.alias}</TextBold>&nbsp;<DetailTextCapi onClick={toggleExpand}>{generalServices.capitalize(mainText)}</DetailTextCapi></TextLine>
+                    <TextLine style={style}><TextBold>{props.data.user.alias}</TextBold>&nbsp;<DetailTextCapi onClick={toggleExpand}>{text}</DetailTextCapi></TextLine>
                 </InfoRow>
             </InfoCol>
             <ButtonCol>
-                {data.description ? null : <LikeButton data={data.isLiked} size={'var(--font-size-icon-small)'} />}
+                {props.data.description ? null : <LikeButton data={props.data.isLiked} size={'var(--font-size-icon-small)'} />}
             </ButtonCol>
         </InlineCont>
 

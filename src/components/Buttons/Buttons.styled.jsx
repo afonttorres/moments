@@ -65,7 +65,6 @@ export const BBMContent = styled(Col)`
         font-size: var(--font-size-plain);
         font-family: var(--font-family-plain);
         text-transform: capitalize;
-
         width: var(--button-width);
         height: var(--button-height);
         border-radius: var(--button-border);
@@ -90,14 +89,15 @@ export const BBDContent = styled(Col)`
     gap: 0;
     padding: 2.5%;
     & > *{
+        color: var(--font-color-plain-bg);
+        font-size: var(--font-size-plain);
+        font-family: var(--font-family-plain);
+        text-transform: capitalize;
         height: var(--button-height);
         width: var(--button-width);
         margin: 2.5%;
-        background-color: var(--button-bg-color);
         border-radius: var(--button-border);
+        background-color: var(--button-bg-color);
         cursor: pointer;
-       & > *{
-        color: var(--font-color-plain-bg)
-       }
     }
 `;

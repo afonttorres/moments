@@ -119,7 +119,7 @@ export const TitleCapi = styled(Title)`
 `;
 
 export const TextCapi = styled(Text)`
-    &::first-letter{
+    & > *::first-letter{
         text-transform: uppercase;
     }
 `;

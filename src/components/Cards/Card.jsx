@@ -9,34 +9,37 @@ import { InlineInfo } from "../InlineData/InlineInfo";
 
 export const Card = (props) => {
 
-    const [mainText, setMainText] = useState(props.moment.description);
-    const [isShorter, setIsShorter] = useState();
+    const [isShorter, setIsShorter] = useState(false);
+    const [text, setText] = useState();
     const [style, setStyle] = useState();
     const maxLength = 40;
 
     useEffect(() => {
         shortenText();
-        setStyle();
-    }, [props]);
+    }, [])
 
-    useEffect(()=>{shortenText(); setStyle()},[])
+    useEffect(() => {
+        shortenText();
+    }, [props.moment]);
 
     useEffect(() => {
     }, [isShorter]);
 
     const shortenText = () => {
-        let shorten = generalServices.shortenText(mainText, maxLength);
-        if (mainText == shorten) return;
-        setMainText(shorten);
+        setText(props.moment.description);
+        let shorten = generalServices.shortenText(props.moment.description, maxLength);
+        if (text == shorten) return;
         setIsShorter(true);
         setStyle();
+        setText(generalServices.capitalize(shorten));
     }
 
     const lengthenText = () => {
-        setMainText(props.moment.description);
         setIsShorter(false);
         setStyle({ overflowY: 'scroll', height: '100%', paddingRight: '5%' });
+        setText(generalServices.capitalize(props.moment.description))
     }
+
 
     const toggleExpand = () => {
         !isShorter ? shortenText() : lengthenText();
@@ -56,7 +59,7 @@ export const Card = (props) => {
             </ImgRow>
 
             <TitleRow>
-                <TextLine style={style}><TextBold>{props.moment.user.alias}</TextBold>&nbsp;<TextCapi onClick={toggleExpand}>{generalServices.capitalize(mainText)}</TextCapi></TextLine>
+                <TextLine style={style}><TextBold>{props.moment.user.alias}</TextBold>&nbsp;<TextCapi onClick={toggleExpand}>{text}</TextCapi></TextLine>
             </TitleRow>
 
             <ButtonsRow>

@@ -14,7 +14,7 @@ export const BurgerContentDT = (props) => {
         <NoScrollContainer id="burgerCont">
             <CloseButton color={`--font-color-plain-bg`} index={'--last-i'} action={() => props.toggleContent(false)} />
             <BBDContent>{content.map((button, key) => (
-                <Row key={key} onClick={button.action}><TextCapi key={key}>{button.content}</TextCapi></Row>
+                <Row key={key} onClick={button.action}>{button.content}</Row>
             ))}
             </BBDContent>
         </NoScrollContainer>

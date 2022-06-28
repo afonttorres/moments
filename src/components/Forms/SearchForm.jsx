@@ -4,9 +4,11 @@ import { Button, SearcherForm, Input, SCancelCol, SearchBar, SIconCol } from "./
 import { SearchButton } from '../../components/Buttons/SearchButton';
 import { Col, DetailText, Row } from "../../pages/Styles.styled";
 import { CancelButton } from "../Buttons";
+import { useEffect } from "react";
 export const SearchForm = (props) => {
 
     const [search, setSearch] = useState("");
+    useEffect(()=>{},[props])
 
     const handleChange = (e) => {
         setSearch(e.target.value);
@@ -24,8 +26,8 @@ export const SearchForm = (props) => {
     }
 
     const cancel = () => {
-        resetValues();
         props.cancelSearch();
+        resetValues();
     }
 
     const sanitize = () => {
