@@ -51,3 +51,10 @@ export const FeedImg = styled(Img)`
         opacity: var(--opacity);
     }
 `;
+
+export const ProfileFeedContainer = styled(SearchContainer)`
+    height: calc(50% - 10vh);
+    max-height: 40vh;
+    position: absolute;
+    top: 50%;
+`;

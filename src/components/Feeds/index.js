@@ -1,2 +1,3 @@
 export { Feed } from './Feed';
-export {SearchFeed} from './SearchFeed';
+export { SearchFeed } from './SearchFeed';
+export { ProfileFeed } from './ProfileFeed';

@@ -2,7 +2,7 @@ import React from "react";
 import { Col, Text, DetailText, TextBold } from "../../pages/Styles.styled";
 import { Nav } from "../Navs/Nav";
 import { Avatar } from "../Avatar/Avatar";
-import { ButtonsRow, DescRow, DataRow, AvatarContainer, Banner, HeaderContainer } from "./Header.styled";
+import { DescRow, DataRow, AvatarContainer, Banner, HeaderContainer } from "./Header.styled";
 import { BgButton, NoBgButton } from "../Buttons/Buttons.styled";
 import { generalServices } from "../../services/generalServices";
 
@@ -36,10 +36,10 @@ export const Header = (props) => {
                         <DetailText>{content.description}</DetailText>
                     </Col>
                 </DescRow>
-                <ButtonsRow>
+                <DataRow>
                     <BgButton div={'2.5'} onClick={content.buttons.follow.action}>{content.buttons.follow.content}</BgButton>
                     <NoBgButton div={'2.5'} onClick={content.buttons.message.action} >{content.buttons.message.content}</NoBgButton>
-                </ButtonsRow>
+                </DataRow>
             </Col>
         </HeaderContainer>
     )

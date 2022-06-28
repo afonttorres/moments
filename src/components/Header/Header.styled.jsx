@@ -2,9 +2,12 @@ import styled from "styled-components";
 import { Col, Row } from "../../pages/Styles.styled";
 export const HeaderContainer = styled(Col)`
     border-bottom: 1px solid var(--border-color);
-    height: 50%;
+    height: 35%;
     position: absolute;
     top: 0vh;
+    @media (max-width: 820px) {
+        height: 50%;
+    }
 `;
 export const Banner = styled(Col)`
     &:before{
@@ -22,20 +25,27 @@ export const Banner = styled(Col)`
 `;
 export const AvatarContainer = styled(Col)`
     position: absolute;
-    top: 40%;
+    top: 30%;
     height: fit-content;
-    width: 40%;
+    width: 15%;
+    @media (max-width: 820px) {
+        width: 40%;
+        top: 40%;
+    }
 `;
 export const DataRow = styled(Row)`
-    width: 85%;
+    width: 35%;
     height: 30%;
+    @media (max-width: 820px) {
+        width: 85%;
+    }
 `;
 export const DescRow = styled(Row)`
-    width: 60%;
+    width: 15%;
     height: 40%;
     align-items: center;
     text-align: center;
-`;
-
-export const ButtonsRow = styled(DataRow)`
+    @media (max-width: 820px) {
+        width: 60%;
+    }
 `;

@@ -71,9 +71,6 @@ export const NavItem = styled.span`
             font-size: var(--font-size-plain);
             text-transform: capitalize;
         }
-        & > i{
-            font-size: var(--font-size-icon)
-        }
         &:hover{
             opacity: var(--text-opacity);
         }
