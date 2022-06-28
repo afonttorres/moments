@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Nav } from '../../components/Nav/Nav';
+import { Nav } from '../../components/Navs/Nav';
 import { Footer } from '../../components/Footer/Footer';
 import { ViewContainer } from '../Styles.styled';
 

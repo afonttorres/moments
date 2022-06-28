@@ -9,19 +9,21 @@ export const Nav = (props) => {
     const [dtOutput, setDToutput] = useState(["upload", "search", "notifications", "sign in", "log in"]);
     const [mbOutput, setMBoutput] = useState([<i className="fa-regular fa-bookmark"></i>, <i className="fa-regular fa-heart"></i>]);
     const [title, setTitle] = useState("Moments");
+    const [profileAlias, setProfileAlias] = useState()
 
     useEffect(() => {
         if (props.isLogged == undefined) return;
         modifyDToutput();
         modifyMBoutput();
-    }
-        , [props.isLogged, location])
+        const log = JSON.parse(localStorage.getItem('log'));
+        setProfileAlias(log ? log.alias : 'Profile')
+    }, [props.isLogged, location, profileAlias, title]);
 
     const modifyDToutput = () => {
         let data;
         if (!location.includes('home') || location !== '') data = ["home", "upload", "search", "notifications", props.isLogged ? "profile" : "log in"];
         if (location == "") { data.splice(data.indexOf('home'), 1); setDToutput(data); return; }
-        if (location.includes('profile')) setTitle('Profile');
+        if (location.includes('profile')) setTitle(profileAlias);
         data.splice(data.indexOf(location), 1)
         setDToutput(data);
     }

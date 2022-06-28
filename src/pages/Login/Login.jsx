@@ -20,14 +20,13 @@ export const Login = (props) => {
     }, [window.location.pathname])
 
     const login = (data) => {
-        console.log(data)
         openModal(`${data.email} logged succesfully!`);
         setTimeout(()=>{ navigate('/home');}, ms);
        
     }
     const signin = (data) => {
-        console.log(data)
         openModal(`${generalServices.capitalizeName(data.name)} registred succesfully!`);
+        localStorage.setItem('log', JSON.stringify(data));
         setTimeout(()=>{ navigate('/home');}, ms);
     }
 

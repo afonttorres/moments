@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import data from '../../mockMoments.json';
 import { Feed } from '../../components/Feeds/Feed';
 import { Footer } from '../../components/Footer/Footer';
-import { Nav } from '../../components/Nav/Nav';
+import { Nav } from '../../components/Navs/Nav';
 import { ViewContainer, View, NoScrollContainer } from '../Styles.styled';
 import { VUpload } from '../../views/VUpload/VUpload';
 import { PreviewCard } from '../../components/Cards/PreviewCard';
