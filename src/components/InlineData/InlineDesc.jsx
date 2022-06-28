@@ -45,7 +45,7 @@ export const InlineDesc = (props) => {
     return (
         <InlineCont id="InlineDesc">
             <ButtonCol>
-                <Avatar data={props.data} width={'40%'} />
+                <Avatar data={props.data.user} width={'40%'} />
             </ButtonCol>
             <InfoCol>
                 <InfoRow>

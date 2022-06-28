@@ -101,3 +101,24 @@ export const BBDContent = styled(Col)`
         cursor: pointer;
     }
 `;
+
+export const MainButton = styled(Button)`
+        font-size: var(--font-size-plain);
+        font-family: var(--font-family-plain);
+        text-transform: capitalize;
+        height: var(--button-height);
+        width: calc(var(--button-width)/${props => props.div ? props.div : '1'});
+        border-radius: var(--button-border);
+        cursor: pointer;
+`;
+
+export const BgButton = styled(MainButton)`
+    color: var(--font-color-plain-bg);
+    background-color: var(--button-bg-color);
+`;
+
+export const NoBgButton = styled(MainButton)`
+    color: var(--font-color-plain-NoBg);
+    background-color: var(--main-bg);
+    border: 1px solid var(--ux-border-color);
+`;

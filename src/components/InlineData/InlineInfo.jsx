@@ -9,7 +9,7 @@ export const InlineInfo = (props) => {
     return (
         <InlineCont id="InlineInfo">
             <ButtonCol>
-                <Avatar data={props.moment} />
+                <Avatar data={props.moment.user} />
             </ButtonCol>
             <InfoCol>
                 <TextBold>{props.moment.user.alias}</TextBold>
