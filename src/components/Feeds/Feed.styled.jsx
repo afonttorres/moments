@@ -53,8 +53,12 @@ export const FeedImg = styled(Img)`
 `;
 
 export const ProfileFeedContainer = styled(SearchContainer)`
-    height: calc(50% - 10vh);
-    max-height: 40vh;
+    max-height: calc(100% - 10vh - 40%);
     position: absolute;
-    top: 50%;
+    top: 40%;
+    @media (max-width: 820px) {
+        height: calc(50% - 10vh);
+        max-height: 40vh;
+        top: 50%;
+    }
 `;

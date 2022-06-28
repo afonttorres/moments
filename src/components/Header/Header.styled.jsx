@@ -5,6 +5,7 @@ export const HeaderContainer = styled(Col)`
     height: 35%;
     position: absolute;
     top: 0vh;
+    gap: 0;
     @media (max-width: 820px) {
         height: 50%;
     }
@@ -27,7 +28,7 @@ export const AvatarContainer = styled(Col)`
     position: absolute;
     top: 30%;
     height: fit-content;
-    width: 15%;
+    width: 12%;
     @media (max-width: 820px) {
         width: 40%;
         top: 40%;
@@ -35,10 +36,14 @@ export const AvatarContainer = styled(Col)`
 `;
 export const DataRow = styled(Row)`
     width: 35%;
-    height: 30%;
+    height: 25%;
     @media (max-width: 820px) {
         width: 85%;
     }
+`;
+
+export const ButtonsRow = styled(DataRow)`
+    height: 35%;
 `;
 export const DescRow = styled(Row)`
     width: 15%;
