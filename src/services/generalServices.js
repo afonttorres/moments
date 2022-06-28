@@ -11,6 +11,12 @@ export const generalServices = {
     capitalize(text){
         return text[0].toUpperCase() + text.substring(1, text.length);
     },
+    capitalizeName(str){
+            let capitalized = []
+            str.split(' ').forEach(word => capitalized.push(this.capitalize(word)))
+            return capitalized.join(' ')
+
+    },
     objToLowerCase(obj){
         let lower = {...obj}
         for (let key in obj){

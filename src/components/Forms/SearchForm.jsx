@@ -7,7 +7,9 @@ import { CancelButton } from "../Buttons";
 import { useEffect } from "react";
 export const SearchForm = (props) => {
 
-    const [search, setSearch] = useState("");
+    const [search, setSearch] = useState('');
+    const [isCancelled, setIsCancelled] = useState(false);
+    
     useEffect(()=>{},[props])
 
     const handleChange = (e) => {
@@ -26,13 +28,15 @@ export const SearchForm = (props) => {
     }
 
     const cancel = () => {
-        props.cancelSearch();
+        setIsCancelled(true);
         resetValues();
+        props.cancelSearch();
+        
     }
 
     const sanitize = () => {
-        if (search === undefined || search == "") { props.openModal('Search input might be empty.'); return false; }
-        if (typeof search !== 'string') { props.openModal('Wrong type of input!'); return false; }
+        if ((search === undefined || search == "") && !isCancelled) { props.openModal('Search input might be empty.'); setSearch(''); return false; }
+        if (typeof search !== 'string' || search == ' ') { props.openModal('Wrong type of input!'); setSearch(''); return false; }
         return true;
     }
 

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { LogForm } from "../../components/Forms/LogForm";
-import { TextBold, Text, Title, Row, View, MainContainer, TextLine } from '../../pages/Styles.styled';
+import { TextBold, Text, Title, View, MainContainer, TextLine } from '../../pages/Styles.styled';
 
 
 export const VLogin = (props) => {
@@ -10,7 +10,7 @@ export const VLogin = (props) => {
         <MainContainer>
             <View>
                 <Title>Log in</Title>
-                <LogForm location={props.location} functions={props.functions} />
+                <LogForm location={props.location} functions={props.functions} openModal={props.openModal}/>
                 <TextLine><Text>Don't have an account?</Text>&nbsp;<TextBold><Link to="/sign-in">Sign in</Link></TextBold></TextLine>
             </View>
         </MainContainer>

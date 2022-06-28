@@ -43,7 +43,7 @@ export const Input = styled.input`
     background-color: transparent;
     box-shadow: none;
     border-bottom: ${props => props.border};
-
+    text-transform: ${props => props.capi ? props.capi : 'none'};
     &:focus&:hover&:active{
         border-bottom: ${props => props.border};
     }

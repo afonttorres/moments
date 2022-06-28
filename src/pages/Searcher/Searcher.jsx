@@ -14,16 +14,17 @@ export const Searcher = () => {
     const [msg, setMsg] = useState();
 
     const searchMoment = (data) => {
-        momentService.searchMoment(data.toLowerCase()).then(res => {
+        let search = data.trim().toLowerCase();
+        if (search === '' || search === undefined) return;
+        momentService.searchMoment(search).then(res => {
             if (res) {
                 setSuggestions(res);
-                setSearch(data);
+                setSearch(search);
             }
         })
     }
 
     const cancelSearch = () => {
-        console.log('search canceled');
         setSuggestions();
         setSearch();
     }
@@ -40,7 +41,7 @@ export const Searcher = () => {
         <>
             <ViewContainer>
                 <Nav isLogged={true} />
-                <VSearcher searchMoment={searchMoment} cancelSearch={cancelSearch} suggestions={suggestions} search={search} openModal={openModal}/>
+                <VSearcher searchMoment={searchMoment} cancelSearch={cancelSearch} suggestions={suggestions} search={search} openModal={openModal} />
                 <Footer />
             </ViewContainer>
             <>{msg !== undefined ? <InfoModal msg={msg} closeModal={closeModal} /> : null}</>

@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { Input, Form, Label, Button } from "./Forms.styled";
+import {generalServices} from '../../services/generalServices';
 
 export const LogForm = (props) => {
 
     const [userData, setUserData] = useState({ name: "", email: "", password: "" });
-    const [msg, setMsg] = useState("");
     const [filledInputs, setFilledInputs] = useState([]);
 
     const handleInputChange = (e) => {
@@ -35,15 +35,19 @@ export const LogForm = (props) => {
         if (props.location.includes("log")) delete userData["name"]; setUserData(userData);
     }
     const sanitize = () => {
+        let data = userData;
         for (let key in userData) {
-            if (userData[key] == "") { setMsg("Some inputs might be empty."); return false }
-            if (typeof userData[key] !== "string") { setMsg("Wrong type of input!"); return false }
-            if (key == "password" && userData[key].length < 7) { setMsg("Password should have at least 7 characters."); return false }
-            if (key !== "password" && userData.password.length >= 7) {
-                userData[key] = userData[key].toLowerCase();
-                setUserData(userData);
-                setMsg("");
+            data[key] = data[key].trim();
+            if (data[key] === "" || data[key] === undefined) { props.openModal("Some inputs might be empty."); userData[key] = ''; return false }
+            if (typeof data[key] !== "string" || data[key] === ' ') { props.openModal("Wrong type of input!"); userData[key] = ''; return false }
+            if (key == "password") {
+                if (data[key].includes(' ')) { props.openModal("Password shouldn't contain spaces."); userData[key] = ''; return false }
+                if (data[key].length < 7) { props.openModal("Password should have at least 7 characters."); userData[key] = ''; return false }
             }
+            if (key !== "password" && data.password.length >= 7) {
+                data[key] = data[key].toLowerCase();
+            }
+            setUserData(data);
         }
         return true;
     }
@@ -54,23 +58,21 @@ export const LogForm = (props) => {
 
     const resetValues = () => {
         setUserData({ name: "", email: "", password: "" });
-        setMsg("");
         setFilledInputs([]);
     }
 
-    console.log(msg !== "" ? msg : "No message");
     return (
         <Form heightMB={'60%'} onSubmit={handleSubmit}>
             {props.location.includes("sign") ?
                 <>
                     <Label color={filledInputs.includes("name") ? "--interaction-color" : "--font-color-plain-noBg"}>Your name</Label>
-                    <Input border={filledInputs.includes("name") ? `2px solid var(--ux-border-color)`: `1px solid var(--border-color)`} type="text" name="name" value={userData.name} placeholder="Name" onChange={handleInputChange} />
+                    <Input border={filledInputs.includes("name") ? `2px solid var(--ux-border-color)` : `1px solid var(--border-color)`} capi={'capitalize'} type="text" name="name" value={userData.name} placeholder="Name" onChange={handleInputChange} />
                 </>
                 : null}
             <Label color={filledInputs.includes("email") ? "--interaction-color" : "--font-color-plain-noBg"}>Email</Label>
-            <Input border={filledInputs.includes("email") ? `2px solid var(--ux-border-color)`: `1px solid var(--border-color)`} type="email" name="email" value={userData.email} placeholder="Email" onChange={handleInputChange} />
+            <Input border={filledInputs.includes("email") ? `2px solid var(--ux-border-color)` : `1px solid var(--border-color)`} type="email" name="email" value={userData.email} placeholder="Email" onChange={handleInputChange} />
             <Label color={filledInputs.includes("password") ? "--interaction-color" : "--font-color-plain-noBg"}>Password</Label>
-            <Input border={filledInputs.includes("password") ? `2px solid var(--ux-border-color)`: `1px solid var(--border-color)`} type="password" name="password" value={userData.password} placeholder="Password" onChange={handleInputChange} />
+            <Input border={filledInputs.includes("password") ? `2px solid var(--ux-border-color)` : `1px solid var(--border-color)`} type="password" name="password" value={userData.password} placeholder="Password" onChange={handleInputChange} />
             <Button>{props.location.split("-").join(" ")}</Button>
         </Form>
     )
