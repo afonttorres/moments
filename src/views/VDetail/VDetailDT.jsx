@@ -10,7 +10,7 @@ export const VDetailDT = (props) => {
         <NoScrollContainer>
             <CloseButton location={props.location} color={"--font-color-plain-bg"} />
             <OverlayContainer>
-                <DetailCardDT moment={props.moment} update={props.update} erase={props.erase} />
+                <DetailCardDT moment={props.moment} update={props.update} erase={props.erase} like={props.like} save={props.save}/>
             </OverlayContainer>
             {props.location === 'profile' ? <SliderButtons slide={props.slide}/> : null}
         </NoScrollContainer>

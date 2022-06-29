@@ -10,8 +10,6 @@ export const LikeButton = (props) => {
     }, [props.data.isLiked])
 
     return (
-        <Col>
             <Button onClick={props.like ? ()=>props.like(props.data) : ()=>console.log('still not implemented')} size={props.size}> {content} </Button>
-        </Col>
     )
 }

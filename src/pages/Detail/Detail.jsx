@@ -126,6 +126,22 @@ export const MomentDetail = () => {
         setDialogData();
     }
 
+    const like = (data) => {
+        momentService.likeMoment(data, data.id).then(res => {
+            if (res) {
+                getMoment();
+            }
+        })
+    }
+
+    const save = (data) =>{
+        momentService.saveMoment(data, data.id).then(res => {
+            if (res) {
+                getMoment();
+            }
+        })
+    }
+
     const slide = (direction) => {
         setMoment();
         setIsLoading(true);
@@ -148,13 +164,13 @@ export const MomentDetail = () => {
             <ViewContainer>
                 <HiddenContainerMB>
                     {!isUpdateActive && updatedMoment == undefined ?
-                        <VDetailDT moment={moment} location={nextLocation} update={update} erase={erase} slide={slide} />
+                        <VDetailDT moment={moment} location={nextLocation} update={update} erase={erase}  like={like} save={save} slide={slide} />
                         : null}
                     <>{location.includes("profile") ? <Profile /> : <Home />}</>
                 </HiddenContainerMB>
 
                 <HiddenContainerDT>
-                    <VDetailMB moment={moment} location={nextLocation} update={update} erase={erase} />
+                    <VDetailMB moment={moment} location={nextLocation} update={update} erase={erase}  like={like} save={save} />
                 </HiddenContainerDT>
                 <>
                     {isUpdateActive || updatedMoment ?

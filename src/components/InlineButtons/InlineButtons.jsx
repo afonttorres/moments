@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Row, Col, Text } from "../../pages/Styles.styled";
 import { LikeButton, CommentButton, SaveButton, SendButton } from "../Buttons";
+import { InlineCont } from "../InlineData/InlineData.styled";
 
 export const InlineButtons = (props) => {
     const [buttons, setButtons] = useState([
@@ -18,9 +19,9 @@ export const InlineButtons = (props) => {
     }, [props])
 
     return (
-        <Row>{buttons.map((button, key) => (
+        <InlineCont width={props.width} >{buttons.map((button, key) => (
             <Col key={key}>
-                <Row key={key}>
+                <Row gap={'20%'} key={key}>
                     {button.button}
                     <Text key={key}>{button.content}</Text>
                 </Row>
@@ -29,6 +30,6 @@ export const InlineButtons = (props) => {
             <Col>
                 <SendButton />
             </Col>
-        </Row>
+        </InlineCont>
     )
 }

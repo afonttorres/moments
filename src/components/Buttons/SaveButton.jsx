@@ -10,8 +10,6 @@ export const SaveButton = (props) =>{
     }, [props.data.isSaved])
 
     return (
-        <Col>
-            <Button onClick={()=>props.save(props.data)}> {content} </Button>
-        </Col>
+            <Button onClick={props.save ? ()=> props.save(props.data) : ()=>console.log('still not implemented')}> {content} </Button>
     )
 }

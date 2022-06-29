@@ -9,7 +9,7 @@ export const VSignin = (props) => {
         <MainContainer>
             <View>
                 <Title>Sign in</Title>
-                <LogForm location={props.location} functions={props.functions} openModal={props.openModal}/>
+                <LogForm location={props.location} functions={props.functions} openModal={props.openModal} title={'sign in'}/>
                 <TextLine><Text>Already have an account?</Text>&nbsp;<TextBold><Link to="/log-in">Log in</Link></TextBold></TextLine>
             </View>
         </MainContainer>

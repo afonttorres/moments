@@ -7,7 +7,7 @@ import { ButtonCol, InfoCol, InlineCont, LocationText } from "./InlineData.style
 
 export const InlineInfo = (props) => {
     return (
-        <InlineCont id="InlineInfo">
+        <InlineCont>
             <ButtonCol>
                 <Avatar data={props.moment.user} />
             </ButtonCol>

@@ -6,12 +6,19 @@ import { AddIcon, MBFooter, MBFooterItem, MBFooterRow } from "./Footer.styled";
 export const Footer = (props) => {
     const path = window.location.pathname;
     const [location, setLocation] = useState(path);
+    const [log, setLog] = useState();
+
+    useEffect(()=>{
+        let log = JSON.parse(localStorage.getItem('log'));
+        setLog(log);
+    },[])
+
     const [output] = useState([
         { button: "home", content: <i className="fa-solid fa-house"></i> },
         { button: "search", content: <i className="fa-solid fa-magnifying-glass"></i> },
         { button: "upload", content: "+" },
         { button: "notifications", content: <i className="fa-solid fa-bell"></i> },
-        { button: "profile", content: <i className="fa-solid fa-circle-user"></i> }
+        { button: log ? "profile" : "log-in", content: <i className="fa-solid fa-circle-user"></i> }
     ]);
 
     return (

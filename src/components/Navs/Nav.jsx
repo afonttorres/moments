@@ -15,7 +15,6 @@ export const Nav = (props) => {
 
     useEffect(() => {
         const log = JSON.parse(localStorage.getItem('log'));
-        console.log(log);
         if(!log) return;
         setProfileAlias(log ? log.alias : 'Profile');
         modifyDToutput();
