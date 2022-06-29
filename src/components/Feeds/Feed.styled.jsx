@@ -58,7 +58,8 @@ export const ProfileFeedContainer = styled(SearchContainer)`
     top: 40%;
     @media (max-width: 820px) {
         height: calc(50% - 10vh);
-        max-height: 40vh;
+        max-height: 35vh;
         top: 50%;
+        padding-top: 5%;
     }
 `;
