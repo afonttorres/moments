@@ -115,3 +115,19 @@ export const NoBgButton = styled(MainButton)`
         color: var(--font-color-plain-NoBg);
     }
 `;
+
+export const MainSliderButton = styled(Button)`
+    position: absolute;
+    background-color: rgba(255,255,255,75%);
+    height: 5vh;
+    width: 5vh;
+    border-radius: 50%;
+`;
+
+export const SliderLeft = styled(MainSliderButton)`
+    left: 5%;
+`;
+
+export const SliderRight = styled(MainSliderButton)`
+    right: 5%;
+`;

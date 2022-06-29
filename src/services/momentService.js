@@ -15,48 +15,61 @@ export const momentService = {
         })
         return postedMoment;
     },
-    deleteMoment(id){
-        const deletedMoment = axios.delete(`${baseUrl}/moments/${id}`).then(res =>{
+    deleteMoment(id) {
+        const deletedMoment = axios.delete(`${baseUrl}/moments/${id}`).then(res => {
             return res.data;
         })
         return deletedMoment;
     },
-    updateMoment(moment, id){
-        const updatedMoment = axios.put(`${baseUrl}/moments/${id}`, moment).then(res =>{
+    updateMoment(moment, id) {
+        const updatedMoment = axios.put(`${baseUrl}/moments/${id}`, moment).then(res => {
             return res.data;
         })
         return updatedMoment;
     },
-    likeMoment(moment, id){
-        let likedMoment = {...moment, isLiked: !moment.isLiked}
-        const updatedMoment = axios.put(`${baseUrl}/moments/${id}`, likedMoment).then(res =>{
+    likeMoment(moment, id) {
+        let likedMoment = { ...moment, isLiked: !moment.isLiked }
+        const updatedMoment = axios.put(`${baseUrl}/moments/${id}`, likedMoment).then(res => {
             return res.data;
         })
         return updatedMoment;
     },
-    saveMoment(moment, id){
-        let savedMoment = {...moment, isSaved: !moment.isSaved}
-        const updatedMoment = axios.put(`${baseUrl}/moments/${id}`, savedMoment).then(res =>{
+    saveMoment(moment, id) {
+        let savedMoment = { ...moment, isSaved: !moment.isSaved }
+        const updatedMoment = axios.put(`${baseUrl}/moments/${id}`, savedMoment).then(res => {
             return res.data;
         })
         return updatedMoment;
     },
-    getMoment(id){
+    getMoment(id) {
         const moment = axios.get(`${baseUrl}/moments/${id}`).then(res => {
             return res.data;
         })
         return moment;
     },
-    searchMoment(search){
-        const moments = axios.get(`${baseUrl}/moments`).then(res=>{
-            if(res.data){
+    searchMoment(search) {
+        const moments = axios.get(`${baseUrl}/moments`).then(res => {
+            if (res.data) {
                 let suggestions = [];
-                for(let moment of res.data){
-                    if(moment.description.includes(search)) suggestions.push(moment); 
+                for (let moment of res.data) {
+                    if (moment.description.includes(search)) suggestions.push(moment);
                 }
                 return suggestions;
             }
         })
         return moments;
+    },
+    getProfileIds() {
+        const momentsIds = axios.get(`${baseUrl}/moments`).then(res => {
+            if (res.data) {
+                let ids = [];
+                for (let moment of res.data) {
+                    ids.unshift(parseInt(moment.id));
+                }
+                return ids;
+                
+            }
+        })
+        return momentsIds;
     }
 }

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { generalServices } from "../../services/generalServices";
 import { momentService } from "../../services/momentService";
 import { useNavigate, useParams } from "react-router-dom";
-import { HiddenContainerDT, HiddenContainerMB, ViewContainer, NoScrollContainer, View } from "../Styles.styled";
+import { HiddenContainerDT, HiddenContainerMB, ViewContainer, NoScrollContainer, View, OverlayContainer } from "../Styles.styled";
 import { VDetailDT } from "../../views/VDetail/VDetailDT";
 import { VDetailMB } from "../../views/VDetail/VDetailMB";
 import { VUpload } from "../../views/VUpload";
@@ -29,23 +29,31 @@ export const MomentDetail = () => {
     const [momentToUpdate, setMomentToUpdate] = useState();
     const [updatedMoment, setUpdatedMoment] = useState();
 
+    const [isLoading, setIsLoading] = useState(true);
+    const [momentsIds, setMomentsIds] = useState([]);
+
     const navigate = useNavigate();
-    const s = 3;
+    const s = 1;
     const ms = s * 1000;
+
 
     useEffect(() => {
         getMoment();
-    }, [])
-
-    useEffect(() => {
-
-    }, [moment])
+        getIds();
+        setTimeout((() => setIsLoading(false)), ms);
+    }, [id])
 
     const getMoment = () => {
         momentService.getMoment(id).then(res => {
             if (res) {
-                setMoment(res)
+                setMoment(res);
             }
+        })
+    }
+
+    const getIds = () => {
+        momentService.getProfileIds().then(res => {
+            if (res) setMomentsIds(res);
         })
     }
 
@@ -58,12 +66,12 @@ export const MomentDetail = () => {
         openDialog(`Do you really want to delete moment with id: ${data.id}?`, data);
     }
 
-    const confirmDelete = (data)=>{
+    const confirmDelete = (data) => {
         closeDialog();
         momentService.deleteMoment(data.id).then(res => {
             if (res) {
                 openModal(`Moment with id: ${data.id} erased successfully!`);
-                setTimeout(()=>{navigate('/home');}, ms)
+                setTimeout(() => { navigate('/home'); }, ms)
             }
         })
     }
@@ -100,7 +108,7 @@ export const MomentDetail = () => {
         setMomentToUpdate();
     }
 
-    const openModal = (msg) =>{
+    const openModal = (msg) => {
         setMsg(msg)
     }
 
@@ -109,7 +117,7 @@ export const MomentDetail = () => {
         setDialogData(data)
     }
 
-    const closeModal = () =>{
+    const closeModal = () => {
         setMsg();
     }
 
@@ -118,12 +126,29 @@ export const MomentDetail = () => {
         setDialogData();
     }
 
+    const slide = (direction) => {
+        setMoment();
+        setIsLoading(true);
+        let current = findCurrentPos();
+        direction === 'back' ? current -= 1 : current += 1;
+        if (current > momentsIds.length - 1) current = 0;
+        if (current < 0) current = momentsIds.length - 1;
+        setId(momentsIds[current]);
+        navigate(`/profile/detail/${momentsIds[current]}`)
+    }
+
+    const findCurrentPos = () => {
+        for (let i = 0; i <= momentsIds.length - 1; i++) {
+            if (momentsIds[i] === parseInt(id)) return i;
+        }
+    }
+
     return (
-        <>{moment !== undefined ?
+        <>{moment !== undefined && !isLoading ?
             <ViewContainer>
                 <HiddenContainerMB>
                     {!isUpdateActive && updatedMoment == undefined ?
-                        <VDetailDT moment={moment} location={nextLocation} update={update} erase={erase} />
+                        <VDetailDT moment={moment} location={nextLocation} update={update} erase={erase} slide={slide} />
                         : null}
                     <>{location.includes("profile") ? <Profile /> : <Home />}</>
                 </HiddenContainerMB>
@@ -134,15 +159,19 @@ export const MomentDetail = () => {
                 <>
                     {isUpdateActive || updatedMoment ?
                         <NoScrollContainer>
-                            {isUpdateActive ? <View bgColor={'--main-bg'} width={'95%'} ><VUpload closeUpdate={closeUpdate} moment={momentToUpdate} action={showPreview} title={'update'}/></View> : null}
-                            {updatedMoment ? <PreviewCard moment={updatedMoment} confirm={confirmUpdate} cancel={cancelUpdate} title={'update'}/> : null}
+                            {isUpdateActive ? <View bgColor={'--main-bg'} width={'95%'} ><VUpload closeUpdate={closeUpdate} moment={momentToUpdate} action={showPreview} title={'update'} /></View> : null}
+                            {updatedMoment ? <PreviewCard moment={updatedMoment} confirm={confirmUpdate} cancel={cancelUpdate} title={'update'} /> : null}
                         </NoScrollContainer>
-                        : null}
+                        :
+                        null
+                    }
                 </>
             </ViewContainer>
-            : null}
+            :
+            <ViewContainer>{!isLoading ? <h1>this moment does not exist</h1> : <h1>loader</h1>}</ViewContainer>
+        }
             {msg !== undefined ? <InfoModal msg={msg} closeModal={closeModal} /> : null}
-            {question !== undefined ? <ConfirmModal question={question} closeDialog={closeDialog} confirm={confirmDelete} data={dialogData}/> : null}
+            {question !== undefined ? <ConfirmModal question={question} closeDialog={closeDialog} confirm={confirmDelete} data={dialogData} /> : null}
         </>
 
     )
