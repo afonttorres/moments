@@ -20,7 +20,7 @@ export const Header = (props) => {
     return (
         <HeaderContainer>
             <Banner imgUrl={content.imgUrl}>
-                <Nav isLogged={true} />
+                <Nav />
             </Banner>
             <AvatarContainer>
                 <Avatar data={props.user} width={'95%'} />

@@ -40,7 +40,7 @@ export const Searcher = () => {
     return (
         <>
             <ViewContainer>
-                <Nav isLogged={true} />
+                <Nav />
                 <VSearcher searchMoment={searchMoment} cancelSearch={cancelSearch} suggestions={suggestions} search={search} openModal={openModal} />
                 <Footer />
             </ViewContainer>

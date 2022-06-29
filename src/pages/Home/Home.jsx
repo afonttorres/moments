@@ -124,7 +124,7 @@ export const Home = () => {
     return (
         <>
             <ViewContainer>
-                <Nav isLogged={true} />
+                <Nav />
                 <View>
                     <Feed location="home" moments={moments} update={update} erase={erase} like={like} save={save}/>
                 </View>

@@ -7,23 +7,24 @@ import { PBurgerButton } from "../Buttons";
 export const Nav = (props) => {
 
     const [location] = useState(useLocation(0).pathname.toString().substring(1, (useLocation(0).pathname.toString().length)))
-    const [dtOutput, setDToutput] = useState(["upload", "search", "notifications", "sign in", "log in"]);
+    const [dtOutput, setDToutput] = useState(["upload", "search", "notifications", "sign in"]);
     const [mbOutput, setMBoutput] = useState([{ content: <i className="fa-regular fa-bookmark"></i>, linkTo: 'saved' }, { content: <i className="fa-regular fa-heart"></i>, linkTo: 'favorites' }]);
     const [title, setTitle] = useState("Moments");
     const [profileAlias, setProfileAlias] = useState();
     const [style, setStyle] = useState();
 
     useEffect(() => {
-        if (props.isLogged == undefined) return;
+        const log = JSON.parse(localStorage.getItem('log'));
+        console.log(log);
+        if(!log) return;
+        setProfileAlias(log ? log.alias : 'Profile');
         modifyDToutput();
         modifyMBoutput();
-        const log = JSON.parse(localStorage.getItem('log'));
-        setProfileAlias(log ? log.alias : 'Profile')
-    }, [props.isLogged, location, profileAlias, title]);
+    }, [location, profileAlias, title]);
 
     const modifyDToutput = () => {
         let data;
-        if (!location.includes('home') || location !== '') data = ["home", "upload", "search", "notifications", props.isLogged ? "profile" : "log in"];
+        if (!location.includes('home') || location !== '') data = ["home", "upload", "search", "notifications", "profile"];
         if (location == "") { data.splice(data.indexOf('home'), 1); setDToutput(data); return; }
         if (location.includes('profile')) setTitle(profileAlias);
         data.splice(data.indexOf(location), 1)
