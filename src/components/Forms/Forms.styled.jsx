@@ -74,24 +74,6 @@ export const TextArea = styled.textarea`
     }
 `;
 
-export const Button = styled.button`
-    height: var(--button-height);
-    width: var(--button-width);
-    background-color: var(--button-bg-color);
-    border-radius: var(--button-border);
-    color: var(--font-color-plain-bg);
-    align-self: center;
-    border: none;
-    outline: none;
-    box-shadow: none;
-    cursor: pointer;
-    &::first-letter{
-        text-transform: uppercase;
-    }
-    &:hover, &:focus, &:active{
-        background-color: var(--interaction-opacity);
-    }
-`;
 export const SearcherForm = styled(Form)`
     position: absolute;
     top: 0vh;

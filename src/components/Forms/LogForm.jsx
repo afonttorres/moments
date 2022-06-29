@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Input, Form, Label, Button } from "./Forms.styled";
 import { generalServices } from '../../services/generalServices';
+import { BgButton } from "../Buttons/Buttons.styled";
 
 export const LogForm = (props) => {
 
@@ -76,7 +77,7 @@ export const LogForm = (props) => {
             <Input border={filledInputs.includes("email") ? `2px solid var(--ux-border-color)` : `1px solid var(--border-color)`} type="email" name="email" value={userData.email} placeholder="Email" onChange={handleInputChange} />
             <Label color={filledInputs.includes("password") ? "--interaction-color" : "--font-color-plain-noBg"}>Password</Label>
             <Input border={filledInputs.includes("password") ? `2px solid var(--ux-border-color)` : `1px solid var(--border-color)`} type="password" name="password" value={userData.password} placeholder="Password" onChange={handleInputChange} />
-            <Button>{props.location.split("-").join(" ")}</Button>
+            <BgButton>{props.location.split("-").join(" ")}</BgButton>
         </Form>
     )
 }

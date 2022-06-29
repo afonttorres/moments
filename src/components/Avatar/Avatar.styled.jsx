@@ -5,7 +5,7 @@ export const CircleContainer = styled(Container)`
     border-radius: 50%;
     width: ${props => props.width ? props.width : '50%'};
     padding-bottom: ${props => props.width ? props.width : '50%'};
-    border: 1px dashed var(--interaction-color);
+    border: 2px dashed var(--interaction-color);
     height: 0;
     position: relative;
     background-color: white;
@@ -28,4 +28,5 @@ export const AvatarImg = styled(Img)`
     width: fit-content;
     object-position: center;
     border-radius: 50%;
+    cursor: pointer;
 `;

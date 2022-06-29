@@ -2,9 +2,10 @@ import React from "react";
 import { Col, Text, DetailText, TextBold } from "../../pages/Styles.styled";
 import { Nav } from "../Navs/Nav";
 import { Avatar } from "../Avatar/Avatar";
-import { ButtonsRow, DescRow, DataRow, AvatarContainer, Banner, HeaderContainer } from "./Header.styled";
+import { BurgerContainer, ButtonsRow, DescRow, DataRow, AvatarContainer, Banner, HeaderContainer } from "./Header.styled";
 import { BgButton, NoBgButton } from "../Buttons/Buttons.styled";
 import { generalServices } from "../../services/generalServices";
+import { PBurgerButton } from "../Buttons";
 
 export const Header = (props) => {
 
@@ -13,7 +14,7 @@ export const Header = (props) => {
         followers: '43.5k',
         following: '537',
         description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
-        buttons: {follow: {content: 'follow', action: ()=>console.log('follow not implemented yet')}, message: {content: 'message', action: ()=>console.log('message not implemented yet')}}
+        buttons: { follow: { content: 'follow', action: () => console.log('follow not implemented yet') }, message: { content: 'message', action: () => console.log('message not implemented yet') } }
     }
 
     return (
@@ -22,8 +23,11 @@ export const Header = (props) => {
                 <Nav isLogged={true} />
             </Banner>
             <AvatarContainer>
-                <Avatar data={props.user} />
+                <Avatar data={props.user} width={'95%'} />
             </AvatarContainer>
+            <BurgerContainer>
+                <PBurgerButton />
+            </BurgerContainer>
             <Col>
                 <DataRow>
                     <Col><Text>{content.followers}</Text><DetailText>Followers</DetailText></Col>
@@ -33,7 +37,7 @@ export const Header = (props) => {
                 <DescRow>
                     <Col>
                         <TextBold>{generalServices.capitalizeName(props.user.name)}</TextBold>
-                        <DetailText>{content.description}</DetailText>
+                        <DetailText>{content.description.length < 100 ? content.description : content.description.substring(0, 100)}</DetailText>
                     </Col>
                 </DescRow>
                 <ButtonsRow>

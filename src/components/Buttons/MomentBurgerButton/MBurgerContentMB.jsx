@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import { useEffect } from "react";
 import { NoScrollContainer, Row } from "../../../pages/Styles.styled";
-import { BBMBar, BBMContent } from "../Buttons.styled";
+import { BBMBar, BBMContent, BgButton } from "../Buttons.styled";
 
 
-export const BurgerContentMB = (props) => {
+export const MBurgerContentMB = (props) => {
 
     const [content, setContent] = useState([
         { icon: 'icon', content: 'edit', action: props.update },
@@ -56,7 +56,7 @@ export const BurgerContentMB = (props) => {
                 <BBMBar onTouchMove={handleTouches} />
                 <>
                     {content.map((button, key) => (
-                        <Row key={key} onClick={button.action}>{button.content}</Row>
+                        <BgButton key={key} onClick={button.action}>{button.content}</BgButton>
                     ))}
                 </>
             </BBMContent>

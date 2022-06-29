@@ -53,23 +53,13 @@ export const SCloseButton = styled(ReturnButton)`
 export const BBMContent = styled(Col)`
     position: absolute;
     bottom: ${props => props.bottom ? props.bottom : '-25vh'};
-    left: .75%;
     height: 25vh;
-    width: 98.5%;
+    width: 99%;
+    gap: 5%;
     border-radius: 2rem 2rem 0 0;
     background: var(--main-bg);
     z-index: var(--burgers-i);
     transition: bottom 1s;
-    & > * {
-        color: var(--font-color-plain-bg);
-        font-size: var(--font-size-plain);
-        font-family: var(--font-family-plain);
-        text-transform: capitalize;
-        width: var(--button-width);
-        height: var(--button-height);
-        border-radius: var(--button-border);
-        background-color: var(--button-bg-color);   
-}
 `;
 
 export const BBMBar = styled.div`
@@ -78,28 +68,18 @@ export const BBMBar = styled.div`
     height: 0.5em;
     width: 10%;
     top: 2vh;
+    background-color: var(--button-bg-color);
+    border-radius: var(--button-border); 
 `;
 
 export const BBDContent = styled(Col)`
     border: 1px solid var(--button-bg-color);
     border-radius: 0.75rem;
     width: 25%;
-    height: fit-content;
+    height: 20vh;
     background: var(--main-bg);
-    gap: 0;
+    gap: 10%;
     padding: 2.5%;
-    & > *{
-        color: var(--font-color-plain-bg);
-        font-size: var(--font-size-plain);
-        font-family: var(--font-family-plain);
-        text-transform: capitalize;
-        height: var(--button-height);
-        width: var(--button-width);
-        margin: 2.5%;
-        border-radius: var(--button-border);
-        background-color: var(--button-bg-color);
-        cursor: pointer;
-    }
 `;
 
 export const MainButton = styled(Button)`
@@ -110,15 +90,28 @@ export const MainButton = styled(Button)`
         width: calc(var(--button-width)/${props => props.div ? props.div : '1'});
         border-radius: var(--button-border);
         cursor: pointer;
+        align-self: center;
 `;
 
 export const BgButton = styled(MainButton)`
     color: var(--font-color-plain-bg);
     background-color: var(--button-bg-color);
+    & > *{
+        color: var(--font-color-plain-bg);
+    }
+    & > * :hover, & > *:focus, & > *:active{
+        color: var(--font-color-plain-bg);
+    }
 `;
 
 export const NoBgButton = styled(MainButton)`
     color: var(--font-color-plain-NoBg);
     background-color: var(--main-bg);
     border: 1px solid var(--ux-border-color);
+    & > *{
+        color: var(--font-color-plain-NoBg);
+    }
+    & > * :hover, & > *:focus, & > *:active{
+        color: var(--font-color-plain-NoBg);
+    }
 `;

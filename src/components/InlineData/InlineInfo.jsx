@@ -2,7 +2,7 @@ import React from "react";
 import { TextBold } from "../../pages/Styles.styled";
 import { generalServices } from "../../services/generalServices";
 import { Avatar } from "../Avatar/Avatar";
-import { BurgerButton } from "../Buttons";
+import { MBurgerButton } from "../Buttons/MomentBurgerButton/MBurgerButton";
 import { ButtonCol, InfoCol, InlineCont, LocationText } from "./InlineData.styled";
 
 export const InlineInfo = (props) => {
@@ -16,7 +16,7 @@ export const InlineInfo = (props) => {
                 <LocationText>{props.moment.location}</LocationText>
             </InfoCol>
             <ButtonCol display={props.display}>
-                <BurgerButton location={props.location} data={props.moment} update={props.update} erase={props.erase}/>
+                <MBurgerButton location={props.location} data={props.moment} update={props.update} erase={props.erase}/>
             </ButtonCol>
         </InlineCont>
     )

@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
-import { Col, HiddenContainerDT, HiddenContainerMB, Row } from "../../../pages/Styles.styled";
-import { BurgerContentMB } from "./BurgerContentMB";
+import { HiddenContainerDT, HiddenContainerMB, Row } from "../../../pages/Styles.styled";
+import { MBurgerContentMB } from "./MBurgerContentMB";
 import { Button } from "../Buttons.styled";
-import { BurgerContentDT } from "./BurgerContentDT";
+import { MBurgerContentDT } from "./MBurgerContentDT";
 
-export const BurgerButton = (props) => {
+export const MBurgerButton = (props) => {
     const [button, setButton] = useState(<i className="fa-solid fa-ellipsis"></i>)
     const [contetIsOpened, setContentIsOpened] = useState(false);
 
@@ -23,19 +23,19 @@ export const BurgerButton = (props) => {
     }
 
     return (
-        <Col>
+        <>
             <Button onClick={toggleContent}> {button} </Button>
             <>
                 {!contetIsOpened ? null :
                     <>
                         <HiddenContainerMB>
-                            <BurgerContentDT toggleContent={setContentIsOpened} update={update} erase={erase}/>
+                            <MBurgerContentDT toggleContent={setContentIsOpened} update={update} erase={erase}/>
                         </HiddenContainerMB>
                         <HiddenContainerDT>
-                            <BurgerContentMB toggleContent={setContentIsOpened}  update={update} erase={erase}/>
+                            <MBurgerContentMB toggleContent={setContentIsOpened}  update={update} erase={erase}/>
                         </HiddenContainerDT>
                     </>
                 }</>
-        </Col>
+        </>
     )
 }

@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useEffect } from "react";
+import { BgButton } from "../Buttons/Buttons.styled";
 import { Form, Input, Label, Button, TextArea } from "./Forms.styled";
 export const MomentForm = (props) => {
 
@@ -82,7 +83,7 @@ export const MomentForm = (props) => {
                 </>
             </>
         ))}
-            <Button>{props.title}</Button>
+            <BgButton>{props.title}</BgButton>
         </Form>
     )
 }

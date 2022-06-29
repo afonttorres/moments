@@ -2,12 +2,13 @@ import React, { useEffect, useState } from "react";
 import { Link, useLocation, useParams } from 'react-router-dom';
 import { NavWrapper, NavTitleRow, NavItemsColDT, NavItemsRowDT, NavItemsColMB, NavItemsRowMB, NavItem } from "./Nav.styled";
 import { Col, MainTitle } from '../../pages/Styles.styled';
+import { PBurgerButton } from "../Buttons";
 
 export const Nav = (props) => {
 
     const [location] = useState(useLocation(0).pathname.toString().substring(1, (useLocation(0).pathname.toString().length)))
     const [dtOutput, setDToutput] = useState(["upload", "search", "notifications", "sign in", "log in"]);
-    const [mbOutput, setMBoutput] = useState([{ content: <i className="fa-regular fa-bookmark"></i>, linkTo: 'saves' }, { content: <i className="fa-regular fa-heart"></i>, linkTo: 'favorites' }]);
+    const [mbOutput, setMBoutput] = useState([{ content: <i className="fa-regular fa-bookmark"></i>, linkTo: 'saved' }, { content: <i className="fa-regular fa-heart"></i>, linkTo: 'favorites' }]);
     const [title, setTitle] = useState("Moments");
     const [profileAlias, setProfileAlias] = useState();
     const [style, setStyle] = useState();
@@ -31,13 +32,14 @@ export const Nav = (props) => {
 
     const modifyMBoutput = () => {
         if (location == 'profile') {
-            setMBoutput([{ content: <i className="fa-solid fa-bars"></i> }]);
+            setMBoutput([{ content: <PBurgerButton/> }]);
             setStyle({
                 height: '50%',
                 width: '50%',
                 lineHeight: 'calc(10vh * 0.5)',
                 borderRadius: '50%',
-                backgroundColor: ' rgba(255, 255, 255, 70%)'
+                backgroundColor: ' rgba(255, 255, 255, 70%)',
+                opacity: '100%'
             })
         }
     }
