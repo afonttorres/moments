@@ -49,7 +49,7 @@ export const InlineDesc = (props) => {
             </ButtonCol>
             <InfoCol>
                 <InfoRow>
-                    <TextLine style={style}><TextBold>{props.data.user.alias}</TextBold>&nbsp;<DetailTextCapi onClick={toggleExpand}>{text}</DetailTextCapi></TextLine>
+                    <TextLine style={style}><TextBold>{props.data.user.username}</TextBold>&nbsp;<DetailTextCapi onClick={toggleExpand}>{text}</DetailTextCapi></TextLine>
                 </InfoRow>
             </InfoCol>
             <ButtonCol>

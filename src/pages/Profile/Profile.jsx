@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import mockUser from '../../mockUser.json';
+import mockUsers from '../../mockUser.json';
 import { Footer } from '../../components/Footer/Footer';
 import { ViewContainer } from '../Styles.styled';
 import { VProfile } from '../../views/VProfile/VProfile';
@@ -10,18 +10,27 @@ export const Profile = (props) => {
 
 
     const [moments, setMoments] = useState();
+    const [user, setUser] = useState(mockUsers[0]);
 
     useEffect(() => {
         getData();
+        getUser();
     }, [])
 
     const getData = () => {
         momentService.getAllMoments().then(res => { if (res) setMoments(res) });
     }
 
+    const getUser = () => {
+        const log = JSON.parse(localStorage.getItem('log'));
+        if (!log) return;
+        setUser(mockUsers.filter(user => user.username === log.username)[0]);
+    }
+
+    console.log(user)
     return (
         <ViewContainer>
-            <VProfile user={mockUser[0]} moments={moments}/>
+            <VProfile user={user} moments={moments} />
             <Footer />
         </ViewContainer>
     );

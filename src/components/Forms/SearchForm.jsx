@@ -9,11 +9,16 @@ export const SearchForm = (props) => {
 
     const [search, setSearch] = useState('');
     const [isCancelled, setIsCancelled] = useState(false);
-    
-    useEffect(()=>{},[props])
+
+    useEffect(() => { }, [props])
 
     const handleChange = (e) => {
         setSearch(e.target.value);
+        if (e.target.value.length >= 3) {
+            if (!sanitize()) return;
+            props.searchMoment(search.toLowerCase());
+        }
+
     }
 
     const handleSubmit = (e) => {
@@ -31,7 +36,7 @@ export const SearchForm = (props) => {
         setIsCancelled(true);
         resetValues();
         props.cancelSearch();
-        
+
     }
 
     const sanitize = () => {

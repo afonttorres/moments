@@ -10,16 +10,16 @@ import { PBurgerButton } from "../Buttons";
 export const Header = (props) => {
 
     const content = {
-        imgUrl: 'https://images.unsplash.com/photo-1523049673857-eb18f1d7b578?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1075&q=80',
-        followers: '43.5k',
-        following: '537',
-        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
-        buttons: { follow: { content: 'follow', action: () => console.log('follow not implemented yet') }, message: { content: 'message', action: () => console.log('message not implemented yet') } }
+        buttons:
+        {
+            follow: { content: 'follow', action: () => console.log('follow not implemented yet') },
+            message: { content: 'message', action: () => console.log('message not implemented yet') }
+        }
     }
 
     return (
         <HeaderContainer>
-            <Banner imgUrl={content.imgUrl}>
+            <Banner imgUrl={props.user.bannerUrl}>
                 <Nav />
             </Banner>
             <AvatarContainer>
@@ -30,14 +30,14 @@ export const Header = (props) => {
             </BurgerContainer>
             <Col>
                 <DataRow>
-                    <Col><Text>{content.followers}</Text><DetailText>Followers</DetailText></Col>
+                    <Col><Text>{props.user.followers}</Text><DetailText>Followers</DetailText></Col>
                     <Col></Col>
-                    <Col><Text>{content.following}</Text><DetailText>Following</DetailText></Col>
+                    <Col><Text>{props.user.following}</Text><DetailText>Following</DetailText></Col>
                 </DataRow>
                 <DescRow>
                     <Col>
                         <TextBold>{generalServices.capitalizeName(props.user.name)}</TextBold>
-                        <DetailText>{content.description.length < 100 ? content.description : content.description.substring(0, 100)}</DetailText>
+                        <DetailText>{props.user.description.length < 100 ? props.user.description : props.user.description.substring(0, 100)}</DetailText>
                     </Col>
                 </DescRow>
                 <ButtonsRow>

@@ -5,7 +5,7 @@ import { BgButton } from "../Buttons/Buttons.styled";
 
 export const LogForm = (props) => {
 
-    const [userData, setUserData] = useState({ name: "", alias: "", email: "", password: "" });
+    const [userData, setUserData] = useState({ name: "", username: "", email: "", password: "" });
     const [filledInputs, setFilledInputs] = useState([]);
 
     const handleInputChange = (e) => {
@@ -33,7 +33,7 @@ export const LogForm = (props) => {
     }
 
     const setData = () => {
-        if (props.location.includes("log")) { delete userData["name"]; delete userData["alias"]; } 
+        if (props.location.includes("log")) { delete userData["name"]; delete userData["username"]; } 
         setUserData(userData);
     }
     const sanitize = () => {
@@ -59,7 +59,7 @@ export const LogForm = (props) => {
     }
 
     const resetValues = () => {
-        setUserData({ name: "", alias: "", email: "", password: "" });
+        setUserData({ name: "", username: "", email: "", password: "" });
         setFilledInputs([]);
     }
 
@@ -69,8 +69,8 @@ export const LogForm = (props) => {
                 <>
                     <Label color={filledInputs.includes("name") ? "--interaction-color" : "--font-color-plain-noBg"}>Your name</Label>
                     <Input border={filledInputs.includes("name") ? `2px solid var(--ux-border-color)` : `1px solid var(--border-color)`} capi={'capitalize'} type="text" name="name" value={userData.name} placeholder="Name" onChange={handleInputChange} />
-                    <Label color={filledInputs.includes("alias") ? "--interaction-color" : "--font-color-plain-noBg"}>Alias</Label>
-                    <Input border={filledInputs.includes("alias") ? `2px solid var(--ux-border-color)` : `1px solid var(--border-color)`} type="text" name="alias" value={userData.alias} placeholder="Alias" onChange={handleInputChange} />
+                    <Label color={filledInputs.includes("username") ? "--interaction-color" : "--font-color-plain-noBg"}>username</Label>
+                    <Input border={filledInputs.includes("username") ? `2px solid var(--ux-border-color)` : `1px solid var(--border-color)`} type="text" name="username" value={userData.username} placeholder="username" onChange={handleInputChange} />
                 </>
                 : null}
             <Label color={filledInputs.includes("email") ? "--interaction-color" : "--font-color-plain-noBg"}>Email</Label>

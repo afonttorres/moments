@@ -10,22 +10,22 @@ export const Nav = (props) => {
     const [dtOutput, setDToutput] = useState(["upload", "search", "notifications", "sign in"]);
     const [mbOutput, setMBoutput] = useState([{ content: <i className="fa-regular fa-bookmark"></i>, linkTo: 'saved' }, { content: <i className="fa-regular fa-heart"></i>, linkTo: 'favorites' }]);
     const [title, setTitle] = useState("Moments");
-    const [profileAlias, setProfileAlias] = useState();
+    const [profileUsername, setProfileUsername] = useState();
     const [style, setStyle] = useState();
 
     useEffect(() => {
         const log = JSON.parse(localStorage.getItem('log'));
         if(!log) return;
-        setProfileAlias(log ? log.alias : 'Profile');
+        setProfileUsername(log ? log.username : 'Profile');
         modifyDToutput();
         modifyMBoutput();
-    }, [location, profileAlias, title]);
+    }, [location, profileUsername, title]);
 
     const modifyDToutput = () => {
         let data;
         if (!location.includes('home') || location !== '') data = ["home", "upload", "search", "notifications", "profile"];
         if (location == "") { data.splice(data.indexOf('home'), 1); setDToutput(data); return; }
-        if (location.includes('profile')) setTitle(profileAlias);
+        if (location.includes('profile')) setTitle(profileUsername);
         data.splice(data.indexOf(location), 1)
         setDToutput(data);
     }

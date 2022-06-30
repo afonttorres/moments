@@ -24,7 +24,6 @@ export const Upload = () => {
     }, [moment])
 
     const upload = (data) => {
-        console.log('moment to upload: ', data);
         let momentUser = { ...data, "user": mockUser[0] }
         setMoment(momentUser);
         setIsPreviewACtive(true);
