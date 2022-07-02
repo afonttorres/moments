@@ -45,11 +45,11 @@ export const InlineDesc = (props) => {
     return (
         <InlineCont id="InlineDesc">
             <ButtonCol>
-                <Avatar data={props.data.user} width={'40%'} />
+                <Avatar user={props.user} width={'40%'} />
             </ButtonCol>
             <InfoCol>
                 <InfoRow>
-                    <TextLine style={style}><TextBold>{props.data.user.username}</TextBold>&nbsp;<DetailTextCapi onClick={toggleExpand}>{text}</DetailTextCapi></TextLine>
+                    <TextLine style={style}><TextBold>{props.user.username}</TextBold>&nbsp;<DetailTextCapi onClick={toggleExpand}>{text}</DetailTextCapi></TextLine>
                 </InfoRow>
             </InfoCol>
             <ButtonCol>

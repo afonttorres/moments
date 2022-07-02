@@ -27,7 +27,6 @@ export const Profile = (props) => {
         setUser(mockUsers.filter(user => user.username === log.username)[0]);
     }
 
-    console.log(user)
     return (
         <ViewContainer>
             <VProfile user={user} moments={moments} />

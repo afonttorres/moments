@@ -4,7 +4,7 @@ import { InlineDesc } from "../InlineData/InlineDesc";
 
 export const Comments = (props) => {
     return (
-        <CommentsCont>{props.comments.map((comment, key) => <InlineDesc key={key} data={comment} />)}
+        <CommentsCont>{props.comments.map((comment, key) => <InlineDesc key={key} data={comment} user={props.user}/>)}
         </CommentsCont>
     )
 }

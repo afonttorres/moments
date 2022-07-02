@@ -1,147 +1,278 @@
 [
     {
-        "user": {
-            "alias": "afonttorres",
-            "name": "agnès font",
-            "avatarUrl": "https://images2.alphacoders.com/521/521982.jpg"
-        },
-        "location": "la garriga, catalunya",
-        "description": "oranged sky",
-        "imgUrl": "https://www.publicdomainpictures.net/pictures/30000/nahled/sunset-15.jpg",
+        "location": "lisboa, portugal",
+        "description": "lisboa - up",
+        "imgUrl": "https://www.guruwalk.com/blog/wp-content/uploads/2019/09/que-ver-lisboa.jpg",
         "isLiked": true,
-        "isSaved": false,
+        "isSaved": true,
         "likes": 89,
         "comments": 21,
         "saves": 5,
-        "id": 1
+        "userId": 1,
+        "id": "13"
     },
     {
-        "user": {
-            "alias": "afonttorres",
-            "name": "agnès font",
-            "avatarUrl": "https://images2.alphacoders.com/521/521982.jpg"
-        },
-        "location": "la garriga, catalunya",
-        "description": "oranged sky",
-        "imgUrl": "https://www.publicdomainpictures.net/pictures/30000/nahled/sunset-15.jpg",
+        "location": "space",
+        "description": "rebelions spaceship ",
+        "imgUrl": "https://i.pinimg.com/originals/73/9d/e4/739de46f9247b62e531db01ba79397d0.jpg",
         "isLiked": true,
-        "isSaved": false,
+        "isSaved": true,
         "likes": 89,
         "comments": 21,
         "saves": 5,
-        "id": 1
+        "userId": 1,
+        "id": "14"
     },
     {
-        "user": {
-            "alias": "afonttorres",
-            "name": "agnès font",
-            "avatarUrl": "https://images2.alphacoders.com/521/521982.jpg"
-        },
-        "location": "la garriga, catalunya",
-        "description": "oranged sky",
-        "imgUrl": "https://www.publicdomainpictures.net/pictures/30000/nahled/sunset-15.jpg",
+        "location": "pirineus, catalunya",
+        "description": "mountain",
+        "imgUrl": "https://www.descobrir.cat/ca/img2/2020/09/pirineus-llac-gerber-aiguestortes-gettyimages-466151139-54103.jpg",
         "isLiked": true,
-        "isSaved": false,
+        "isSaved": true,
         "likes": 89,
         "comments": 21,
         "saves": 5,
-        "id": 1
+        "userId": 1,
+        "id": "15"
     },
     {
-        "user": {
-            "alias": "afonttorres",
-            "name": "agnès font",
-            "avatarUrl": "https://images2.alphacoders.com/521/521982.jpg"
-        },
-        "location": "la garriga, catalunya",
-        "description": "oranged sky",
-        "imgUrl": "https://www.publicdomainpictures.net/pictures/30000/nahled/sunset-15.jpg",
+        "location": "hollywood",
+        "description": "reservoir dogs",
+        "imgUrl": "https://i0.wp.com/elpalomitron.com/wp-content/uploads/2017/09/reservoir-dogs-poster.jpg?fit=1000%2c790&ssl=1",
         "isLiked": true,
-        "isSaved": false,
+        "isSaved": true,
         "likes": 89,
         "comments": 21,
         "saves": 5,
-        "id": 1
+        "userId": 1,
+        "id": "16"
     },
     {
-        "user": {
-            "alias": "afonttorres",
-            "name": "agnès font",
-            "avatarUrl": "https://images2.alphacoders.com/521/521982.jpg"
-        },
-        "location": "la garriga, catalunya",
-        "description": "oranged sky",
-        "imgUrl": "https://www.publicdomainpictures.net/pictures/30000/nahled/sunset-15.jpg",
+        "location": "toei animation",
+        "description": "cowboy",
+        "imgUrl": "https://i.blogs.es/100e35/cowboy-bebop-protagonistas/1366_2000.jpeg",
         "isLiked": true,
-        "isSaved": false,
+        "isSaved": true,
         "likes": 89,
         "comments": 21,
         "saves": 5,
-        "id": 1
+        "userId": 1,
+        "id": "17"
     },
     {
-        "user": {
-            "alias": "afonttorres",
-            "name": "agnès font",
-            "avatarUrl": "https://images2.alphacoders.com/521/521982.jpg"
-        },
-        "location": "la garriga, catalunya",
-        "description": "oranged sky",
-        "imgUrl": "https://www.publicdomainpictures.net/pictures/30000/nahled/sunset-15.jpg",
+        "location": "amazones",
+        "description": "medusa's raft",
+        "imgUrl": "https://www.sapiens.cat/uploads/s1/64/83/84/1200px-jean-louis-the-odore-ge-ricault-la-balsa-de-la-medusa-museo-del-louvre-1818-19_57_540x335.jpeg",
         "isLiked": true,
-        "isSaved": false,
+        "isSaved": true,
         "likes": 89,
         "comments": 21,
         "saves": 5,
-        "id": 1
+        "userId": 1,
+        "id": "18"
     },
     {
-        "user": {
-            "alias": "afonttorres",
-            "name": "agnès font",
-            "avatarUrl": "https://images2.alphacoders.com/521/521982.jpg"
-        },
-        "location": "la garriga, catalunya",
-        "description": "oranged sky",
-        "imgUrl": "https://www.publicdomainpictures.net/pictures/30000/nahled/sunset-15.jpg",
+        "location": "ac/dc",
+        "description": "stage",
+        "imgUrl": "https://www.vari-lite.com/content/dam/vari-lite/highlights/touring/acdc/vls-news-acdc-image1.jpg",
         "isLiked": true,
         "isSaved": false,
         "likes": 89,
         "comments": 21,
         "saves": 5,
-        "id": 1
+        "userId": 1,
+        "id": 19
     },
     {
-        "user": {
-            "alias": "afonttorres",
-            "name": "agnès font",
-            "avatarUrl": "https://images2.alphacoders.com/521/521982.jpg"
-        },
-        "location": "la garriga, catalunya",
-        "description": "oranged sky",
-        "imgUrl": "https://www.publicdomainpictures.net/pictures/30000/nahled/sunset-15.jpg",
+        "location": "tokyo, japan",
+        "description": "landscape",
+        "imgUrl": "https://i.pinimg.com/originals/f6/40/9b/f6409bd16c40e2af3d6b0480350bb096.jpg",
         "isLiked": true,
-        "isSaved": false,
+        "isSaved": true,
         "likes": 89,
         "comments": 21,
         "saves": 5,
-        "id": 1
+        "userId": 1,
+        "id": 20
     },
     {
-        "user": {
-            "alias": "afonttorres",
-            "name": "agnès font",
-            "avatarUrl": "https://images2.alphacoders.com/521/521982.jpg"
-        },
-        "location": "la garriga, catalunya",
-        "description": "oranged sky",
-        "imgUrl": "https://www.publicdomainpictures.net/pictures/30000/nahled/sunset-15.jpg",
-        "isLiked": true,
-        "isSaved": false,
+        "location": "positano, italy",
+        "description": "sea town",
+        "imgUrl": "https://media.traveler.es/photos/61375e56030de94d067fbe23/16:9/w_2560%2cc_limit/224902.jpg",
+        "isLiked": false,
+        "isSaved": true,
         "likes": 89,
         "comments": 21,
         "saves": 5,
-        "id": 1
+        "userId": 1,
+        "id": 21
+    },
+    {
+        "location": "disney plus",
+        "description": "monster inc",
+        "imgUrl": "https://i.blogs.es/2e8f82/002536854604_500/450_1000.jpg",
+        "isLiked": true,
+        "isSaved": true,
+        "likes": 89,
+        "comments": 21,
+        "saves": 5,
+        "userId": 1,
+        "id": 22
+    },
+    {
+        "location": "tamariu, catalunya",
+        "description": "platja",
+        "imgUrl": "https://1001beach.com/img/posts/665/1200/tamariu-1.jpg",
+        "isLiked": true,
+        "isSaved": true,
+        "likes": 89,
+        "comments": 21,
+        "saves": 5,
+        "userId": 1,
+        "id": 23
+    },
+    {
+        "location": "pandora",
+        "description": "omaticaya nature",
+        "imgUrl": "https://i.pinimg.com/originals/e2/c5/af/e2c5af3eb9429cd697e1c1aba715e083.jpg",
+        "isLiked": false,
+        "isSaved": true,
+        "likes": 89,
+        "comments": 21,
+        "saves": 5,
+        "userId": 1,
+        "id": 25
+    },
+    {
+        "location": "Barcelona, Catalunya",
+        "description": "Rainy dayyyy",
+        "imgUrl": "https://www.godubrovnik.com/wp-content/uploads/rainy-day.jpg",
+        "isLiked": true,
+        "isSaved": true,
+        "likes": 63,
+        "comments": 29,
+        "saves": 76,
+        "userId": 1,
+        "id": 26
+    },
+    {
+        "location": "Cancúnnnnn",
+        "description": "Ballena azul saltando",
+        "imgUrl": "https://www.desdeabajo.info/media/k2/items/cache/6949f05b21e1fb534ad3be18d1ae1395_XL.jpg",
+        "isLiked": true,
+        "isSaved": true,
+        "likes": 4,
+        "comments": 17,
+        "saves": 81,
+        "userId": 1,
+        "id": 27
+    },
+    {
+        "location": "barcelona",
+        "description": "beach day",
+        "imgUrl": "https://e00-elmundo.uecdn.es/assets/multimedia/imagenes/2022/03/09/16468231897426.jpg",
+        "isLiked": false,
+        "isSaved": true,
+        "likes": 39,
+        "comments": 18,
+        "saves": 63,
+        "userId": 1,
+        "id": 28
+    },
+    {
+        "location": "Barcelona",
+        "description": "Barcelona from the sky",
+        "imgUrl": "https://static.dezeen.com/uploads/2020/11/eixample-barcelona-aerial-view_dezeen_2364_sq.jpg",
+        "isLiked": true,
+        "isSaved": true,
+        "likes": 90,
+        "comments": 15,
+        "saves": 37,
+        "userId": 1,
+        "id": 29
+    },
+    {
+        "location": "Barcelona",
+        "description": "Sagrada Familia",
+        "imgUrl": "https://images.unsplash.com/photo-1587789202069-f57c846b85db?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8YmFyY2Vsb25hJTIwY2l0eXxlbnwwfHwwfHw%3D&w=1000&q=80",
+        "isLiked": false,
+        "isSaved": false,
+        "likes": 56,
+        "comments": 80,
+        "saves": 78,
+        "userId": 1,
+        "id":30
+    },
+    {
+        "location": "barcelona",
+        "description": "ice cream",
+        "imgUrl": "https://i.guim.co.uk/img/media/dee5e48cba9f47d6a239b67e95928f7a31b5d01f/0_0_5087_3054/master/5087.jpg?width=445&quality=45&auto=format&fit=max&dpr=2&s=5947021b0d7a09750aee14d82ae817b9",
+        "isLiked": true,
+        "isSaved": true,
+        "likes": 41,
+        "comments": 35,
+        "saves": 52,
+        "userId": 1,
+        "id": 31
+    },
+    {
+        "location": "grand canyon",
+        "description": "canyons",
+        "imgUrl": "https://i0.wp.com/freeman.la/wp-content/uploads/2019/07/grand-canyon.jpg?fit=1280%2c853&ssl=1",
+        "isLiked": true,
+        "isSaved": true,
+        "likes": 45,
+        "comments": 90,
+        "saves": 73,
+        "userId": 1,
+        "id": 32
+    },
+    {
+        "location": "lofoten",
+        "description": "lofoten",
+        "imgUrl": "https://cdn2.civitatis.com/noruega/svolvaer/galeria/islas-lofoten.jpg",
+        "isLiked": false,
+        "isSaved": false,
+        "likes": 10,
+        "comments": 35,
+        "saves": 86,
+        "userId": 1,
+        "id": 34
+    },
+    {
+        "location": "barcelona",
+        "description": "lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum",
+        "imgUrl": "https://i.guim.co.uk/img/media/dee5e48cba9f47d6a239b67e95928f7a31b5d01f/0_0_5087_3054/master/5087.jpg?width=445&quality=45&auto=format&fit=max&dpr=2&s=5947021b0d7a09750aee14d82ae817b9",
+        "isLiked": true,
+        "isSaved": false,
+        "likes": 22,
+        "comments": 80,
+        "saves": 64,
+        "userId": 1,
+        "id": 35
+    },
+    {
+        "location": "la garriga, catalunya",
+        "description": "intrús - lol",
+        "imgUrl": "https://estaticos.muyinteresante.es/media/cache/1140x_thumb/uploads/images/gallery/5f560db65bafe8096474de3e/6-avestruz-de-cerca_1.jpg",
+        "isLiked": true,
+        "isSaved": true,
+        "likes": 32,
+        "comments": 66,
+        "saves": 87,
+        "userId": 1,
+        "id": 36
+    },
+    {
+        "location": "la garriga, catalunyadddd",
+        "description": "kikiriki",
+        "imgUrl": "https://definicion.de/wp-content/uploads/2021/04/gallo.jpg",
+        "isLiked": true,
+        "isSaved": false,
+        "likes": 90,
+        "comments": 73,
+        "saves": 20,
+        "userId": 1,
+        "id": 37
     }
-    
 ]

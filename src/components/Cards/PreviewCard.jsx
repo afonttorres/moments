@@ -6,6 +6,7 @@ import { InlineInfo } from "../InlineData/InlineInfo";
 import { CrossButton, TickButton } from "../Buttons";
 
 export const PreviewCard = (props) => {
+
     return (
         <View>
             <PrevContainer>
@@ -21,13 +22,13 @@ export const PreviewCard = (props) => {
                     </PreNavButtonsCol>
                 </PrevNav>
                 <InfoRow>
-                    <InlineInfo moment={props.moment} display={'none'} />
+                    <InlineInfo moment={props.moment} user={props.user} display={'none'} />
                 </InfoRow>
                 <ImgRow>
                     <Img imgUrl={props.moment.imgUrl} />
                 </ImgRow>
                 <ScrollableDesc>
-                    <TextLine><TextBold>{props.moment.user.alias}</TextBold>&nbsp;<TextCapi>{props.moment.description}</TextCapi></TextLine>
+                    <TextLine><TextBold>{props.user ? props.user.username : props.moment.userId.username}</TextBold>&nbsp;<TextCapi>{props.moment.description}</TextCapi></TextLine>
                 </ScrollableDesc>
                 <PrevNav />
             </PrevContainer>

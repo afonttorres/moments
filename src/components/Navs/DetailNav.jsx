@@ -9,7 +9,7 @@ export const DetailNav = (props) => {
             <Row>
                 <BackButton top={'unset'} location={props.location}/>
                 <Col>
-                    <Title>{props.moment.user.alias}</Title>
+                    <Title>{props.user.username}</Title>
                     <Text>PUBLICATIONS</Text>
                 </Col>
             </Row>

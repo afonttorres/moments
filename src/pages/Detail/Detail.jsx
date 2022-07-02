@@ -11,11 +11,13 @@ import { Home } from "../Home/Home";
 import { Profile } from "../Profile/Profile";
 import { InfoModal } from "../../components/Modals/InfoModal";
 import { ConfirmModal } from "../../components/Modals/ConfirmModal";
+import { userService } from "../../services/userService";
 
 export const MomentDetail = () => {
 
     const [id, setId] = useState(useParams().id)
     const [moment, setMoment] = useState();
+    const [user, setUser] = useState();
 
     const [msg, setMsg] = useState();
     const [question, setQuestion] = useState();
@@ -47,6 +49,7 @@ export const MomentDetail = () => {
         momentService.getMoment(id).then(res => {
             if (res) {
                 setMoment(res);
+                getUser(parseInt(res.userId));
             }
         })
     }
@@ -55,6 +58,10 @@ export const MomentDetail = () => {
         momentService.getProfileIds().then(res => {
             if (res) setMomentsIds(res);
         })
+    }
+
+    const getUser = (id) => {
+        userService.getUser(id).then(res => { if (res) setUser(res) })
     }
 
     const update = (data) => {
@@ -134,7 +141,7 @@ export const MomentDetail = () => {
         })
     }
 
-    const save = (data) =>{
+    const save = (data) => {
         momentService.saveMoment(data, data.id).then(res => {
             if (res) {
                 getMoment();
@@ -160,23 +167,23 @@ export const MomentDetail = () => {
     }
 
     return (
-        <>{moment !== undefined && !isLoading ?
+        <>{moment !== undefined && user !== undefined && !isLoading ?
             <ViewContainer>
                 <HiddenContainerMB>
                     {!isUpdateActive && updatedMoment == undefined ?
-                        <VDetailDT moment={moment} location={nextLocation} update={update} erase={erase}  like={like} save={save} slide={slide} />
+                        <VDetailDT moment={moment} user={user} location={nextLocation} update={update} erase={erase} like={like} save={save} slide={slide} />
                         : null}
                     <>{location.includes("profile") ? <Profile /> : <Home />}</>
                 </HiddenContainerMB>
 
                 <HiddenContainerDT>
-                    <VDetailMB moment={moment} location={nextLocation} update={update} erase={erase}  like={like} save={save} />
+                    <VDetailMB moment={moment} user={user} location={nextLocation} update={update} erase={erase} like={like} save={save} />
                 </HiddenContainerDT>
                 <>
                     {isUpdateActive || updatedMoment ?
                         <NoScrollContainer>
                             {isUpdateActive ? <View bgColor={'--main-bg'} width={'95%'} ><VUpload closeUpdate={closeUpdate} moment={momentToUpdate} action={showPreview} title={'update'} /></View> : null}
-                            {updatedMoment ? <PreviewCard moment={updatedMoment} confirm={confirmUpdate} cancel={cancelUpdate} title={'update'} /> : null}
+                            {updatedMoment ? <PreviewCard moment={updatedMoment} user={user} confirm={confirmUpdate} cancel={cancelUpdate} title={'update'} /> : null}
                         </NoScrollContainer>
                         :
                         null

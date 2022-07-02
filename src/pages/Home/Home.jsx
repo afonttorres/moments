@@ -10,11 +10,14 @@ import { momentService } from '../../services/momentService';
 import { generalServices } from '../../services/generalServices';
 import { InfoModal } from '../../components/Modals/InfoModal';
 import { ConfirmModal } from '../../components/Modals/ConfirmModal';
+import { userService } from '../../services/userService';
+import { dataService } from '../../services/dataServices';
 
 
 export const Home = () => {
 
     const [moments, setMoments] = useState([]);
+    const [users, setUsers] = useState([]);
     const [msg, setMsg] = useState();
     const [question, setQuestion] = useState();
     const [dialogData, setDialogData] = useState();
@@ -25,14 +28,32 @@ export const Home = () => {
 
     useEffect(() => {
         getData();
+        getUsers();
     }, [])
 
     useEffect(() => {
+        addUserToMoment();
+    }, [users]);
 
+    useEffect(() => {
     }, [moments])
 
     const getData = () => {
         momentService.getAllMoments().then(res => { if (res) setMoments(res) });
+    }
+
+    const getUsers = () => {
+        userService.getUsers().then(res => { if (res) setUsers(res) })
+    }
+
+    const addUserToMoment = () => {
+        let momentsWithUser = [];
+        moments.forEach(moment => {
+            let user = dataService.findUser(moment, users);
+            moment.userId = user;
+            momentsWithUser.push(moment);
+        })
+        setMoments(momentsWithUser);
     }
 
 
@@ -40,7 +61,7 @@ export const Home = () => {
         openDialog(`Do you really want to delete moment with id: ${data.id}?`, data);
     }
 
-    const confirmDelete = (data)=>{
+    const confirmDelete = (data) => {
         closeDialog();
         momentService.deleteMoment(data.id).then(res => {
             if (res) {
@@ -66,14 +87,17 @@ export const Home = () => {
     }
 
     const confirmUpdate = () => {
-        momentService.updateMoment(generalServices.objToLowerCase(updatedMoment), updatedMoment.id).then(res => {
+        let data = updatedMoment;
+        data.userId = data.userId.id;
+        momentService.updateMoment(generalServices.objToLowerCase(data), data.id).then(res => {
             if (res) {
-                openModal(`Moment with id: ${updatedMoment.id} updated successfully!`)
+                openModal(`Moment with id: ${data.id} updated successfully!`)
                 getData();
+                getUsers();
+                setUpdatedMoment();
+                setMomentToUpdate();
             }
         })
-        setUpdatedMoment();
-        setMomentToUpdate();
     }
 
     const cancelUpdate = () => {
@@ -87,17 +111,23 @@ export const Home = () => {
     }
 
     const like = (data) => {
+        data.userId = data.userId.id;
         momentService.likeMoment(data, data.id).then(res => {
             if (res) {
+                console.log(res);
                 getData();
+                getUsers();
             }
         })
     }
 
-    const save = (data) =>{
+    const save = (data) => {
+        data.userId = data.userId.id;
         momentService.saveMoment(data, data.id).then(res => {
             if (res) {
+                console.log(res);
                 getData();
+                getUsers();
             }
         })
     }
@@ -121,12 +151,13 @@ export const Home = () => {
         setDialogData();
     }
 
+
     return (
         <>
             <ViewContainer>
                 <Nav />
                 <View>
-                    <Feed location="home" moments={moments} update={update} erase={erase} like={like} save={save}/>
+                    <Feed location="home" moments={moments} users={users} update={update} erase={erase} like={like} save={save} />
                 </View>
                 <Footer />
                 <>
@@ -139,7 +170,7 @@ export const Home = () => {
                 </>
             </ViewContainer>
             {msg !== undefined ? <InfoModal msg={msg} closeModal={closeModal} /> : null}
-            {question !== undefined ? <ConfirmModal question={question} closeDialog={closeDialog} confirm={confirmDelete} data={dialogData}/> : null}
+            {question !== undefined ? <ConfirmModal question={question} closeDialog={closeDialog} confirm={confirmDelete} data={dialogData} /> : null}
         </>
     );
 }

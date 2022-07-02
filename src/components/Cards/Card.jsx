@@ -9,10 +9,12 @@ import { InlineInfo } from "../InlineData/InlineInfo";
 
 export const Card = (props) => {
 
+
     const [isShorter, setIsShorter] = useState(false);
     const [text, setText] = useState();
     const [style, setStyle] = useState();
     const maxLength = 40;
+
 
     useEffect(() => {
         shortenText();
@@ -47,7 +49,6 @@ export const Card = (props) => {
 
     return (
         <SCard>
-
             <InfoRow>
                 <InlineInfo moment={props.moment} location={props.location} update={props.update} erase={props.erase} />
             </InfoRow>
@@ -59,7 +60,7 @@ export const Card = (props) => {
             </ImgRow>
 
             <TitleRow>
-                <TextLine style={style}><TextBold>{props.moment.user.alias}</TextBold>&nbsp;<TextCapi onClick={toggleExpand}>{text}</TextCapi></TextLine>
+                <TextLine style={style}><TextBold>{props.moment.userId.username}</TextBold>&nbsp;<TextCapi onClick={toggleExpand}>{text}</TextCapi></TextLine>
             </TitleRow>
 
             <ButtonsRow>

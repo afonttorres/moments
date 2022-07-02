@@ -23,7 +23,7 @@ export const Header = (props) => {
                 <Nav />
             </Banner>
             <AvatarContainer>
-                <Avatar data={props.user} width={'95%'} />
+                <Avatar user={props.user} width={'95%'} />
             </AvatarContainer>
             <BurgerContainer>
                 <PBurgerButton />

@@ -11,8 +11,8 @@ export const VDetailMB = (props) => {
 
     return (
         <MainContainer>
-            <DetailNav moment={props.moment} location={props.location}/>
-            <DetailCardMB moment={props.moment} update={props.update} erase={props.erase} like={props.like} save={props.save}/>
+            <DetailNav moment={props.moment} user={props.user} location={props.location}/>
+            <DetailCardMB moment={props.moment} user={props.user} update={props.update} erase={props.erase} like={props.like} save={props.save}/>
             <Footer />
         </MainContainer>
     )

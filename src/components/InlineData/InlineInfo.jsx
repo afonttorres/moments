@@ -6,17 +6,18 @@ import { MBurgerButton } from "../Buttons/MomentBurgerButton/MBurgerButton";
 import { ButtonCol, InfoCol, InlineCont, LocationText } from "./InlineData.styled";
 
 export const InlineInfo = (props) => {
+
     return (
         <InlineCont>
             <ButtonCol>
-                <Avatar data={props.moment.user} />
+                <Avatar user={props.user ? props.user : props.moment.userId} />
             </ButtonCol>
             <InfoCol>
-                <TextBold>{props.moment.user.alias}</TextBold>
+                <TextBold>{props.user ? props.user.username : props.moment.userId.username}</TextBold>
                 <LocationText>{props.moment.location}</LocationText>
             </InfoCol>
             <ButtonCol display={props.display}>
-                <MBurgerButton location={props.location} data={props.moment} update={props.update} erase={props.erase}/>
+                <MBurgerButton location={props.location} data={props.moment} update={props.update} erase={props.erase} />
             </ButtonCol>
         </InlineCont>
     )

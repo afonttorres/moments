@@ -9,10 +9,11 @@ import { InlineButtons } from "../InlineButtons/InlineButtons";
 
 export const DetailCardMB = (props) => {
     const [comments, setComment] = useState(commentsData);
+
     return (
         <View id="DetailCardMB" gap={'1%'}>
             <MCInfoRow>
-                <InlineInfo moment={props.moment} update={props.update} erase={props.erase} />
+                <InlineInfo moment={props.moment} user={props.user} update={props.update} erase={props.erase} />
             </MCInfoRow>
 
             <MCImgRow>
@@ -20,10 +21,9 @@ export const DetailCardMB = (props) => {
             </MCImgRow>
             <InlineButtons moment={props.moment} width={'90%'} like={props.like} save={props.save} />
             <MCInfoRow>
-                <InlineDesc data={props.moment} />
+                <InlineDesc data={props.moment} user={props.user} />
             </MCInfoRow>
-            <Comments comments={comments} />
-
+            {props.moment.comments.length > 1 ? <Comments comments={props.moment.comments} user={props.user} /> : <Comments comments={comments} user={props.user} />}
         </View>
     )
 }
