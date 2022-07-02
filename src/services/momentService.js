@@ -60,6 +60,19 @@ export const momentService = {
         })
         return moments;
     },
+    getProfileMoments(id) {
+        const profMoments = axios.get(`${baseUrl}/moments`).then(res => {
+            if (res.data) {
+                let moments = [];
+                for (let moment of res.data) {
+                    if (parseInt(moment.userId) === parseInt(id)) moments.push(moment);
+                }
+                return moments;
+
+            }
+        })
+        return profMoments;
+    },
     getProfileIds() {
         const momentsIds = axios.get(`${baseUrl}/moments`).then(res => {
             if (res.data) {

@@ -17,6 +17,10 @@ export const Profile = (props) => {
         getUser();
     }, [])
 
+    useEffect(() => {
+        momentService.getProfileMoments(1).then(res => { if (res) console.log(res) })
+    })
+
     const getData = () => {
         momentService.getAllMoments().then(res => { if (res) setMoments(res) });
     }
