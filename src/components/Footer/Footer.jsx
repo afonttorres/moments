@@ -6,11 +6,16 @@ import { AddIcon, MBFooter, MBFooterItem, MBFooterRow } from "./Footer.styled";
 export const Footer = (props) => {
     const path = window.location.pathname;
     const [location, setLocation] = useState(path);
+    const [profileId, setProfileId] = useState(useParams().profileId);
+    const [loggedUser, setLoggedUser] = useState();
+
+
 
     const [output, setOutput] = useState([]);
 
     useEffect(() => {
         let log = JSON.parse(localStorage.getItem('log'));
+        setLoggedUser(log.log_id);
         setOutput([
             { button: "home", content: <i className="fa-solid fa-house"></i> },
             { button: "search", content: <i className="fa-solid fa-magnifying-glass"></i> },
@@ -22,7 +27,7 @@ export const Footer = (props) => {
 
     return (
         <MBFooter>
-            <MBFooterRow>{output.map((item, key) => key !== 2 ? <MBFooterItem key={key} color={location.includes(item.button) ? `var(--interaction-color)` : `var(--font-color-plain-noBg)`}><Link to={`/${item.button}`}>{item.content}</Link></MBFooterItem> : <AddIcon key={key}><Link to={`/${item.button}`}>{item.content}</Link></AddIcon>)}
+            <MBFooterRow>{output.map((item, key) => key !== 2 ? <MBFooterItem key={key} color={location.includes(item.button) && loggedUser === profileId ? `var(--interaction-color)` : `var(--font-color-plain-noBg)`}><Link to={`/${item.button}`}>{item.content}</Link></MBFooterItem> : <AddIcon key={key}><Link to={`/${item.button}`}>{item.content}</Link></AddIcon>)}
             </MBFooterRow>
         </MBFooter>
     )
