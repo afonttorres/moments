@@ -28,7 +28,6 @@ export const Home = () => {
 
     useEffect(() => {
         getData();
-        getUsers();
     }, [])
 
     useEffect(() => {
@@ -39,7 +38,12 @@ export const Home = () => {
     }, [moments])
 
     const getData = () => {
-        momentService.getAllMoments().then(res => { if (res) setMoments(res) });
+        momentService.getAllMoments().then(res => {
+            if (res) {
+                setMoments(res);
+                getUsers();
+            }
+        });
     }
 
     const getUsers = () => {
@@ -93,7 +97,6 @@ export const Home = () => {
             if (res) {
                 openModal(`Moment with id: ${data.id} updated successfully!`)
                 getData();
-                getUsers();
                 setUpdatedMoment();
                 setMomentToUpdate();
             }
@@ -114,9 +117,7 @@ export const Home = () => {
         data.userId = data.userId.id;
         momentService.likeMoment(data, data.id).then(res => {
             if (res) {
-                console.log(res);
                 getData();
-                getUsers();
             }
         })
     }
@@ -125,9 +126,7 @@ export const Home = () => {
         data.userId = data.userId.id;
         momentService.saveMoment(data, data.id).then(res => {
             if (res) {
-                console.log(res);
                 getData();
-                getUsers();
             }
         })
     }

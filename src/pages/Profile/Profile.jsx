@@ -4,37 +4,45 @@ import { Footer } from '../../components/Footer/Footer';
 import { ViewContainer } from '../Styles.styled';
 import { VProfile } from '../../views/VProfile/VProfile';
 import { momentService } from '../../services/momentService';
+import { userService } from '../../services/userService';
+import { useNavigate, useParams } from 'react-router-dom';
 
 
 export const Profile = (props) => {
 
 
     const [moments, setMoments] = useState();
-    const [user, setUser] = useState(mockUsers[0]);
+    const [user, setUser] = useState();
+    const [profileId, setProfileId] = useState(useParams().profileId);
 
     useEffect(() => {
-        getData();
         getUser();
-    }, [])
+    }, [profileId]);
 
-    useEffect(() => {
-        momentService.getProfileMoments(1).then(res => { if (res) console.log(res) })
-    })
-
-    const getData = () => {
-        momentService.getAllMoments().then(res => { if (res) setMoments(res) });
+    const getData = (userId) => {
+        momentService.getProfileMoments(userId).then(res => { if (res) setMoments(res) });
     }
 
     const getUser = () => {
         const log = JSON.parse(localStorage.getItem('log'));
         if (!log) return;
-        setUser(mockUsers.filter(user => user.username === log.username)[0]);
+        let id;
+        profileId ? id = profileId : id = log.log_id;
+        userService.getUser(id).then(res => {
+            if (res) {
+                let userFound = res;
+                getData(parseInt(userFound.id));
+                if (userFound.id === log.log_id) userFound = { ...userFound, logged: true }
+                setUser(userFound);
+            }
+        })
     }
 
-    return (
-        <ViewContainer>
-            <VProfile user={user} moments={moments} />
-            <Footer />
-        </ViewContainer>
-    );
+    if (user)
+        return (
+            <ViewContainer>
+                <VProfile user={user} moments={moments} />
+                <Footer />
+            </ViewContainer>
+        );
 }

@@ -73,12 +73,12 @@ export const momentService = {
         })
         return profMoments;
     },
-    getProfileIds() {
+    getProfileIds(id) {
         const momentsIds = axios.get(`${baseUrl}/moments`).then(res => {
             if (res.data) {
                 let ids = [];
                 for (let moment of res.data) {
-                    ids.unshift(parseInt(moment.id));
+                    if (parseInt(moment.userId) === parseInt(id)) ids.unshift(parseInt(moment.id));
                 }
                 return ids;
 

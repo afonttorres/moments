@@ -7,7 +7,7 @@ export const VSearcher = (props) => {
         <MainContainer>
             <View>
                 <SearchForm heightMB={'fit-content'} heightDT={'fit-content'} searchMoment={props.searchMoment} cancelSearch={props.cancelSearch} openModal={props.openModal}/>
-                <SearchFeed suggestions={props.suggestions} search={props.search}/>
+                <SearchFeed moments={props.moments} suggestions={props.suggestions} search={props.search}/>
             </View>
         </MainContainer>
     )

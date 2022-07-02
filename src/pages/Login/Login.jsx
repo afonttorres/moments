@@ -37,7 +37,7 @@ export const Login = (props) => {
         if (!loggedUser) { openModal(`User does not exist`); return; }
         if (loggedUser.password !== data.password) { openModal(`Password not correct`); return; }
         openModal(`${generalServices.capitalizeName(loggedUser.name)} logged succesfully!`);
-        localStorage.setItem('log', JSON.stringify({ "username": loggedUser.username }));
+        localStorage.setItem('log', JSON.stringify({ "log_id": loggedUser.id }));
         setTimeout(() => { navigate('/home'); }, ms);
 
     }
@@ -58,7 +58,7 @@ export const Login = (props) => {
         userService.createUser(data).then(res => {if(res){
             console.log(res)
             openModal(`${generalServices.capitalizeName(res.name)} registred succesfully!`);
-            localStorage.setItem('log', JSON.stringify({ "username": res.username }));
+            localStorage.setItem('log', JSON.stringify({ "log_id": res.id }));
             setTimeout(() => { navigate('/home'); }, ms);
         }})
     }

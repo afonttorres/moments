@@ -15,7 +15,8 @@ import { userService } from "../../services/userService";
 
 export const MomentDetail = () => {
 
-    const [id, setId] = useState(useParams().id)
+    const [momentId, setMomentId] = useState(useParams().momentId);
+    const [profileId, setProfileId] = useState(useParams().profileId);
     const [moment, setMoment] = useState();
     const [user, setUser] = useState();
 
@@ -41,27 +42,35 @@ export const MomentDetail = () => {
 
     useEffect(() => {
         getMoment();
-        getIds();
         setTimeout((() => setIsLoading(false)), ms);
-    }, [id])
+    }, [momentId])
+
+    useEffect(() => {
+        if(profileId) getUser(profileId);
+    }, [profileId])
 
     const getMoment = () => {
-        momentService.getMoment(id).then(res => {
+        momentService.getMoment(momentId).then(res => {
             if (res) {
                 setMoment(res);
-                getUser(parseInt(res.userId));
+                if (!profileId) getUser(parseInt(res.userId));
             }
         })
     }
 
-    const getIds = () => {
-        momentService.getProfileIds().then(res => {
-            if (res) setMomentsIds(res);
+    const getUser = (id) => {
+        userService.getUser(id).then(res => {
+            if (res) {
+                setUser(res);
+                getIds(parseInt(res.id));
+            }
         })
     }
 
-    const getUser = (id) => {
-        userService.getUser(id).then(res => { if (res) setUser(res) })
+    const getIds = (id) => {
+        momentService.getProfileIds(id).then(res => {
+            if (res) setMomentsIds(res);
+        })
     }
 
     const update = (data) => {
@@ -150,19 +159,20 @@ export const MomentDetail = () => {
     }
 
     const slide = (direction) => {
+        if (momentsIds.length <= 1) return;
         setMoment();
         setIsLoading(true);
         let current = findCurrentPos();
         direction === 'back' ? current -= 1 : current += 1;
         if (current > momentsIds.length - 1) current = 0;
         if (current < 0) current = momentsIds.length - 1;
-        setId(momentsIds[current]);
-        navigate(`/profile/detail/${momentsIds[current]}`)
+        setMomentId(momentsIds[current]);
+        profileId ? navigate(`/profile/${profileId}/detail/${momentsIds[current]}`) : navigate(`/profile/detail/${momentsIds[current]}`);
     }
 
     const findCurrentPos = () => {
         for (let i = 0; i <= momentsIds.length - 1; i++) {
-            if (momentsIds[i] === parseInt(id)) return i;
+            if (momentsIds[i] === parseInt(momentId)) return i;
         }
     }
 
@@ -171,9 +181,8 @@ export const MomentDetail = () => {
             <ViewContainer>
                 <HiddenContainerMB>
                     {!isUpdateActive && updatedMoment == undefined ?
-                        <VDetailDT moment={moment} user={user} location={nextLocation} update={update} erase={erase} like={like} save={save} slide={slide} />
+                        <VDetailDT moment={moment} user={user} location={location} nextLocation={nextLocation} update={update} erase={erase} like={like} save={save} slide={slide} />
                         : null}
-                    <>{location.includes("profile") ? <Profile /> : <Home />}</>
                 </HiddenContainerMB>
 
                 <HiddenContainerDT>

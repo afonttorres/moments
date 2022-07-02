@@ -8,6 +8,7 @@ import { PreviewCard } from '../../components/Cards/PreviewCard';
 import { useEffect } from "react";
 import { generalServices } from "../../services/generalServices";
 import { InfoModal } from "../../components/Modals/InfoModal";
+import { userService } from "../../services/userService";
 
 export const Upload = () => {
 
@@ -18,19 +19,33 @@ export const Upload = () => {
     const [moment, setMoment] = useState();
     const [isPreviewActive, setIsPreviewACtive] = useState(false);
     const [msg, setMsg] = useState();
+    const [user, setUser] = useState();
 
     useEffect(() => {
+        getUser();
+    }, [])
 
+    useEffect(() => {
     }, [moment])
 
+    const getUser = () => {
+        const log = JSON.parse(localStorage.getItem('log'));
+        if (!log) return;
+        let id = parseInt(log.log_id);
+        userService.getUser(id).then(res => {
+            if (res) setUser(res);
+        })
+    }
+
     const upload = (data) => {
-        let momentUser = { ...data, "user": mockUser[0] }
+        let momentUser = { ...data, "userId": user }
         setMoment(momentUser);
         setIsPreviewACtive(true);
     }
 
     const confirm = () => {
-        momentService.postMoment(generalServices.objToLowerCase(moment)).then(res => {
+        let newMoment = { ...moment, userId: moment.userId.id };
+        momentService.postMoment(generalServices.objToLowerCase(newMoment)).then(res => {
             if (res) {
                 setMoment();
                 setIsPreviewACtive(false);

@@ -10,29 +10,33 @@ export const Nav = (props) => {
     const [dtOutput, setDToutput] = useState(["upload", "search", "notifications", "sign in"]);
     const [mbOutput, setMBoutput] = useState([{ content: <i className="fa-regular fa-bookmark"></i>, linkTo: 'saved' }, { content: <i className="fa-regular fa-heart"></i>, linkTo: 'favorites' }]);
     const [title, setTitle] = useState("Moments");
-    const [profileUsername, setProfileUsername] = useState();
+    const [profileUsername, setProfileUsername] = useState(props.user ? props.user.username : 'Profile');
     const [style, setStyle] = useState();
+
+
+    useEffect(() => {
+        setProfileUsername(props.user ? props.user.username : 'Profile');
+    }, [props.user])
 
     useEffect(() => {
         const log = JSON.parse(localStorage.getItem('log'));
-        if(!log) return;
-        setProfileUsername(log ? log.username : 'Profile');
+        if (!log) return;
         modifyDToutput();
         modifyMBoutput();
-    }, [location, profileUsername, title]);
+    }, [location, title, profileUsername]);
 
     const modifyDToutput = () => {
         let data;
         if (!location.includes('home') || location !== '') data = ["home", "upload", "search", "notifications", "profile"];
         if (location == "") { data.splice(data.indexOf('home'), 1); setDToutput(data); return; }
-        if (location.includes('profile')) setTitle(profileUsername);
+        if (location === 'profile' || location.includes('profile')) setTitle(profileUsername);
         data.splice(data.indexOf(location), 1)
         setDToutput(data);
     }
 
     const modifyMBoutput = () => {
-        if (location == 'profile') {
-            setMBoutput([{ content: <PBurgerButton/> }]);
+        if (location === 'profile') {
+            setMBoutput([{ content: <PBurgerButton /> }]);
             setStyle({
                 height: '50%',
                 width: '50%',
@@ -45,7 +49,7 @@ export const Nav = (props) => {
     }
 
     return (
-        <NavWrapper color={location == "profile" ? `var(--no-bg)` : `var(--main-bg)`}>
+        <NavWrapper color={location.includes('profile') ? `var(--no-bg)` : `var(--main-bg)`}>
             <NavTitleRow>
                 <MainTitle>{title}</MainTitle>
             </NavTitleRow>

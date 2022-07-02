@@ -18,10 +18,12 @@ export default function Router() {
                 <Route path='/search' element={<Searcher />}></Route>
                 <Route path='/log-in' element={<Login />}></Route>
                 <Route path='/sign-in' element={<Login />}></Route>
-                <Route path='/profile' element={<Profile />}></Route>
                 <Route path='/upload' element={<Upload />}></Route>
-                <Route path='/home/detail/:id' element={<MomentDetail />}></Route>
-                <Route path='/profile/detail/:id' element={<MomentDetail />}></Route>
+                <Route path='/profile' element={<Profile />}></Route>
+                <Route path='/profile/:profileId' element={<Profile />}></Route>
+                <Route path='/home/detail/:momentId' element={<MomentDetail />}></Route>
+                <Route path='/profile/detail/:momentId' element={<MomentDetail />}></Route>
+                <Route path='/profile/:profileId/detail/:momentId' element={<MomentDetail />}></Route>
             </Routes>
         </BrowserRouter>
     )

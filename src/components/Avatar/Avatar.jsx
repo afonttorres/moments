@@ -9,7 +9,7 @@ export const Avatar = (props) => {
     return (
         <CircleContainer width={props.width}>
             <BorderContainer>
-                <AvatarImg onClick={() => navigate('/profile')} imgUrl={props.user.avatarUrl} />
+                <AvatarImg onClick={() => navigate(`/profile/${props.user.id}`)} imgUrl={props.user.avatarUrl} />
             </BorderContainer>
         </CircleContainer>
     )

@@ -6,8 +6,10 @@ import { BurgerContainer, ButtonsRow, DescRow, DataRow, AvatarContainer, Banner,
 import { BgButton, NoBgButton } from "../Buttons/Buttons.styled";
 import { generalServices } from "../../services/generalServices";
 import { PBurgerButton } from "../Buttons";
+import { useEffect } from "react";
 
 export const Header = (props) => {
+
 
     const content = {
         buttons:
@@ -20,14 +22,18 @@ export const Header = (props) => {
     return (
         <HeaderContainer>
             <Banner imgUrl={props.user.bannerUrl}>
-                <Nav />
+                <Nav user={props.user} />
             </Banner>
             <AvatarContainer>
                 <Avatar user={props.user} width={'95%'} />
             </AvatarContainer>
-            <BurgerContainer>
-                <PBurgerButton />
-            </BurgerContainer>
+            {props.user.logged ?
+                <BurgerContainer>
+                    <PBurgerButton />
+                </BurgerContainer>
+                :
+                null
+            }
             <Col>
                 <DataRow>
                     <Col><Text>{props.user.followers}</Text><DetailText>Followers</DetailText></Col>
