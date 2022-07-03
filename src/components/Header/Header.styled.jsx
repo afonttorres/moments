@@ -15,6 +15,7 @@ export const HeaderContainer = styled(Col)`
 export const Banner = styled(Col)`
     &:before{
         background-image: url(${props => props.imgUrl});
+        background-color: lavender;
         background-position: center;
         background-size: cover;
         content: "";
