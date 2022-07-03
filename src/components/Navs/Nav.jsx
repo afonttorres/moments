@@ -12,6 +12,7 @@ export const Nav = (props) => {
     const [title, setTitle] = useState("Moments");
     const [profileUsername, setProfileUsername] = useState(props.user ? props.user.username : 'Profile');
     const [style, setStyle] = useState();
+    const [loggedUser, setLoggedUser] = useState();
 
 
     useEffect(() => {
@@ -21,6 +22,7 @@ export const Nav = (props) => {
     useEffect(() => {
         const log = JSON.parse(localStorage.getItem('log'));
         if (!log) return;
+        setLoggedUser(log.log_id);
         modifyDToutput();
         modifyMBoutput();
     }, [location, title, profileUsername]);
@@ -35,7 +37,8 @@ export const Nav = (props) => {
     }
 
     const modifyMBoutput = () => {
-        if (location === 'profile') {
+        if (location.includes('profile')) {
+            if ((props.user && props.user.id !== loggedUser)) { setMBoutput([]); return; }
             setMBoutput([{ content: <PBurgerButton /> }]);
             setStyle({
                 height: '50%',

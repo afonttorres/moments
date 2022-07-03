@@ -27,7 +27,7 @@ export const Footer = (props) => {
 
     return (
         <MBFooter>
-            <MBFooterRow>{output.map((item, key) => key !== 2 ? <MBFooterItem key={key} color={location.includes(item.button) && loggedUser === profileId ? `var(--interaction-color)` : `var(--font-color-plain-noBg)`}><Link to={`/${item.button}`}>{item.content}</Link></MBFooterItem> : <AddIcon key={key}><Link to={`/${item.button}`}>{item.content}</Link></AddIcon>)}
+            <MBFooterRow>{output.map((item, key) => key !== 2 ? <MBFooterItem key={key} color={(!location.includes('profile/') && location.includes(item.button)) ? `var(--interaction-color)` : `var(--font-color-plain-noBg)`}><Link to={`/${item.button}`}>{item.content}</Link></MBFooterItem> : <AddIcon key={key}><Link to={`/${item.button}`}>{item.content}</Link></AddIcon>)}
             </MBFooterRow>
         </MBFooter>
     )
