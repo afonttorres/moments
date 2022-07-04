@@ -12,6 +12,7 @@ import { InfoModal } from '../../components/Modals/InfoModal';
 import { ConfirmModal } from '../../components/Modals/ConfirmModal';
 import { userService } from '../../services/userService';
 import { dataService } from '../../services/dataServices';
+import { momentAPIService } from '../../services/momentAPIService';
 
 
 export const Home = () => {
@@ -118,6 +119,12 @@ export const Home = () => {
         momentService.likeMoment(data, data.id).then(res => {
             if (res) {
                 getData();
+            }
+        })
+        
+        momentAPIService.likeMoment(data, data.id).then(res => {
+            if (res) {
+                console.log(res)
             }
         })
     }

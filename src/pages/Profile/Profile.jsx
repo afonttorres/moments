@@ -6,6 +6,7 @@ import { VProfile } from '../../views/VProfile/VProfile';
 import { momentService } from '../../services/momentService';
 import { userService } from '../../services/userService';
 import { useNavigate, useParams } from 'react-router-dom';
+import { momentAPIService } from '../../services/momentAPIService';
 
 
 export const Profile = (props) => {

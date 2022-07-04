@@ -7,6 +7,7 @@ import { useState } from "react";
 import { momentService } from "../../services/momentService";
 import { InfoModal } from "../../components/Modals/InfoModal";
 import { useEffect } from "react";
+import { momentAPIService } from "../../services/momentAPIService";
 
 export const Searcher = () => {
 

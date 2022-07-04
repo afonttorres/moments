@@ -15,7 +15,6 @@ export const Footer = (props) => {
 
     useEffect(() => {
         let log = JSON.parse(localStorage.getItem('log'));
-        setLoggedUser(log.log_id);
         setOutput([
             { button: "home", content: <i className="fa-solid fa-house"></i> },
             { button: "search", content: <i className="fa-solid fa-magnifying-glass"></i> },
@@ -23,6 +22,8 @@ export const Footer = (props) => {
             { button: "notifications", content: <i className="fa-solid fa-bell"></i> },
             { button: log ? "profile" : "log-in", content: <i className="fa-solid fa-circle-user"></i> }
         ])
+        if(!log) return;
+        setLoggedUser(log.log_id);
     }, [])
 
     return (

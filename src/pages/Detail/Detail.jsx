@@ -12,6 +12,7 @@ import { Profile } from "../Profile/Profile";
 import { InfoModal } from "../../components/Modals/InfoModal";
 import { ConfirmModal } from "../../components/Modals/ConfirmModal";
 import { userService } from "../../services/userService";
+import { momentAPIService } from "../../services/momentAPIService";
 
 export const MomentDetail = () => {
 
@@ -46,7 +47,7 @@ export const MomentDetail = () => {
     }, [momentId])
 
     useEffect(() => {
-        if(profileId) getUser(profileId);
+        if (profileId) getUser(profileId);
     }, [profileId])
 
     const getMoment = () => {
