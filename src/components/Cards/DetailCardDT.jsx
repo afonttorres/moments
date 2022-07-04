@@ -6,6 +6,7 @@ import { InlineDesc } from '../InlineData/InlineDesc';
 import { InlineInfo } from '../InlineData/InlineInfo';
 import { Comments } from "../Comments/Comments";
 import { InlineButtons } from '../InlineButtons/InlineButtons';
+import { CommentForm } from "../Forms/CommentForm";
 
 
 export const DetailCardDT = (props) => {
@@ -22,7 +23,7 @@ export const DetailCardDT = (props) => {
                     <InlineDesc data={props.moment} user={props.user} />
                     {props.moment.comments.length >= 1 ? <Comments comments={props.moment.comments} user={props.user} /> : <Comments comments={comments} user={props.user} />}
                     <InlineButtons moment={props.moment} width={'90%'} like={props.like} save={props.save} />
-                    <noscript>input</noscript>
+                    <CommentForm moment={props.moment} createComment={props.createComment}/>
                 </DCInfoCol>
             </DCMainRow>
         </MainContainer>

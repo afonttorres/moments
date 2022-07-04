@@ -13,6 +13,7 @@ import { InfoModal } from "../../components/Modals/InfoModal";
 import { ConfirmModal } from "../../components/Modals/ConfirmModal";
 import { userService } from "../../services/userService";
 import { momentAPIService } from "../../services/momentAPIService";
+import { commentAPIService } from "../../services/commentAPIService";
 
 export const MomentDetail = () => {
 
@@ -50,6 +51,8 @@ export const MomentDetail = () => {
         if (profileId) getUser(profileId);
     }, [profileId])
 
+
+    //GETTERS
     const getMoment = () => {
         momentAPIService.getMoment(momentId).then(res => {
             if (res) {
@@ -74,23 +77,11 @@ export const MomentDetail = () => {
         })
     }
 
+
+    //UPDATE
     const update = (data) => {
         setIsUpdateActive(true);
         setMomentToUpdate(data);
-    }
-
-    const erase = (data) => {
-        openDialog(`Do you really want to delete moment with id: ${data.id}?`, data);
-    }
-
-    const confirmDelete = (data) => {
-        closeDialog();
-        momentAPIService.deleteMoment(data.id).then(res => {
-            if (res) {
-                openModal(`Moment with id: ${data.id} erased successfully!`);
-                setTimeout(() => { navigate('/home'); }, ms)
-            }
-        })
     }
 
     const showPreview = (data) => {
@@ -125,6 +116,50 @@ export const MomentDetail = () => {
         setMomentToUpdate();
     }
 
+    //ERASE
+    const erase = (data) => {
+        openDialog(`Do you really want to delete moment with id: ${data.id}?`, data);
+    }
+
+    const confirmDelete = (data) => {
+        closeDialog();
+        momentAPIService.deleteMoment(data.id).then(res => {
+            if (res) {
+                openModal(`Moment with id: ${data.id} erased successfully!`);
+                setTimeout(() => { navigate('/home'); }, ms)
+            }
+        })
+    }
+
+    //LIKE
+    const like = (data) => {
+        momentAPIService.likeMoment(data, data.id).then(res => {
+            if (res) {
+                getMoment();
+            }
+        })
+    }
+
+    //SAVE
+    const save = (data) => {
+        momentAPIService.saveMoment(data, data.id).then(res => {
+            if (res) {
+                getMoment();
+            }
+        })
+    }
+
+    //CREATE COMMENT
+    const createComment = (comment) => {
+        comment = { ...comment, userId: user.id };
+        commentAPIService.postComment(comment).then(res => {
+            if (res) {
+                getMoment();
+            }
+        })
+    }
+
+    //MODALS
     const openModal = (msg) => {
         setMsg(msg)
     }
@@ -143,22 +178,8 @@ export const MomentDetail = () => {
         setDialogData();
     }
 
-    const like = (data) => {
-        momentAPIService.likeMoment(data, data.id).then(res => {
-            if (res) {
-                getMoment();
-            }
-        })
-    }
 
-    const save = (data) => {
-        momentAPIService.saveMoment(data, data.id).then(res => {
-            if (res) {
-                getMoment();
-            }
-        })
-    }
-
+    //UX METHODS
     const slide = (direction) => {
         if (momentsIds.length <= 1) return;
         setMoment();
@@ -182,12 +203,12 @@ export const MomentDetail = () => {
             <ViewContainer>
                 <HiddenContainerMB>
                     {!isUpdateActive && updatedMoment == undefined ?
-                        <VDetailDT moment={moment} user={user} location={location} nextLocation={nextLocation} update={update} erase={erase} like={like} save={save} slide={slide} />
+                        <VDetailDT moment={moment} user={user} location={location} nextLocation={nextLocation} update={update} erase={erase} like={like} save={save} slide={slide} createComment={createComment} />
                         : null}
                 </HiddenContainerMB>
 
                 <HiddenContainerDT>
-                    <VDetailMB moment={moment} user={user} location={nextLocation} update={update} erase={erase} like={like} save={save} />
+                    <VDetailMB moment={moment} user={user} location={nextLocation} update={update} erase={erase} like={like} save={save} createComment={createComment} />
                 </HiddenContainerDT>
                 <>
                     {isUpdateActive || updatedMoment ?

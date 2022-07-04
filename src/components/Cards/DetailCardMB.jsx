@@ -6,6 +6,7 @@ import { InlineDesc } from '../InlineData/InlineDesc';
 import { Comments } from "../Comments/Comments";
 import { InlineInfo } from "../InlineData/InlineInfo";
 import { InlineButtons } from "../InlineButtons/InlineButtons";
+import { CommentForm } from "../Forms/CommentForm";
 
 export const DetailCardMB = (props) => {
     const [comments, setComment] = useState(commentsData);
@@ -24,6 +25,7 @@ export const DetailCardMB = (props) => {
                 <InlineDesc data={props.moment} user={props.user} />
             </MCInfoRow>
             {props.moment.comments.length >= 1 ? <Comments comments={props.moment.comments} user={props.user} /> : <Comments comments={comments} user={props.user} />}
+            <CommentForm moment={props.moment} createComment={props.createComment}/>
         </View>
     )
 }

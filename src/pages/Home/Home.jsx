@@ -157,8 +157,6 @@ export const Home = () => {
         setDialogData();
     }
 
-
-    console.log(moments)
     return (
         <>
             <ViewContainer>

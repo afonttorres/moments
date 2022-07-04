@@ -1,6 +1,6 @@
 import React from "react";
 import { useState } from "react";
-import { Button, SearcherForm, Input, SCancelCol, SearchBar, SIconCol } from "./Forms.styled";
+import { Button, SearcherForm, Input, FCancelCol, SearchBar, FIconCol } from "./Forms.styled";
 import { SearchButton } from '../../components/Buttons/SearchButton';
 import { Col, DetailText, Row } from "../../pages/Styles.styled";
 import { CancelButton } from "../Buttons";
@@ -24,7 +24,7 @@ export const SearchForm = (props) => {
     const handleSubmit = (e) => {
         e.preventDefault();
         if (!sanitize()) return;
-        props.searchMoment(search.toLowerCase());
+        props.searchMoment(search.toLowerCase().trim());
         resetValues();
     }
 
@@ -49,9 +49,9 @@ export const SearchForm = (props) => {
         <SearcherForm heightMB={props.heightMB} heightDT={props.heightDT} onSubmit={handleSubmit}>
             <Row>
                 <SearchBar border={search !== "" ? `2px solid var(--ux-border-color)` : `1px solid var(--border-color)`}>
-                    <SIconCol color={search !== "" ? '--interaction-color' : '--font-color-plain-noBg'}>
+                    <FIconCol color={search !== "" ? '--interaction-color' : '--font-color-plain-noBg'}>
                         <SearchButton type='submit' />
-                    </SIconCol>
+                    </FIconCol>
                     <Input
                         onChange={handleChange}
                         typeof="search"
@@ -60,9 +60,9 @@ export const SearchForm = (props) => {
                         value={search}
                     />
                 </SearchBar>
-                <SCancelCol>
+                <FCancelCol>
                     <CancelButton action={cancel} />
-                </SCancelCol>
+                </FCancelCol>
             </Row>
         </SearcherForm>
     )

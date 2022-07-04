@@ -78,6 +78,7 @@ export const DCImgCol = styled(Col)`
 `;
 export const DCInfoCol = styled(Col)`
     width: 40%;
+    gap: 1%;
 `;
 export const DCImg = styled(Img)`
     border-radius: .75rem 0 0 .75rem;

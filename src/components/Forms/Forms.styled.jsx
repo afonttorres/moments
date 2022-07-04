@@ -84,10 +84,10 @@ export const SearchBar = styled(Row)`
     gap: 0;
     border-bottom: ${props => props.border};
 `;
-export const SCancelCol=styled(Col)`
+export const FCancelCol = styled(Col)`
     width: 30%;
 `;
-export const SIconCol = styled(Col)`
+export const FIconCol = styled(Col)`
     width: calc(100% - var(--input-width));
     & > *{
         color: var(${props => props.color});
@@ -97,5 +97,22 @@ export const SIconCol = styled(Col)`
                 color: var(${props => props.color});
             }
         }
+    }
+`;
+export const ComForm = styled(Form)`
+    height: fit-content;
+    background-color: transparent;
+    @media (min-width: 820px) {
+        width: 85%;
+    }
+`;
+
+export const ComBar = styled(Row)`
+    height: fit-content;
+    gap: 0;
+   
+    & > input{
+       border: 1px solid var(--border-color);
+       border-radius: .25rem;
     }
 `;
