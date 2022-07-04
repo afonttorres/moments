@@ -47,6 +47,7 @@ export const Card = (props) => {
         !isShorter ? shortenText() : lengthenText();
     }
 
+    
     return (
         <SCard>
             <InfoRow>

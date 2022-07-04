@@ -7,7 +7,7 @@
         },
         "avatarUrl": "https://images2.alphacoders.com/521/521982.jpg",
         "comment": "exemple",
-        "isLiked": true
+        "liked": true
     },
     {
         "user": {
@@ -17,7 +17,7 @@
         },
         "avatarUrl": "https://images2.alphacoders.com/521/521982.jpg",
         "comment": "exemple exemple exemple exemple exemple exemple exemple exemple exemple ",
-        "isLiked": false
+        "liked": false
     },
     {
         "user": {
@@ -27,7 +27,7 @@
         },
         "avatarUrl": "https://images2.alphacoders.com/521/521982.jpg",
         "comment": "exemple exemple exemple exemple exemple ",
-        "isLiked": true
+        "liked": true
     },
     {
         "user": {
@@ -37,7 +37,7 @@
         },
         "avatarUrl": "https://images2.alphacoders.com/521/521982.jpg",
         "comment": "exemple exemple exemple ",
-        "isLiked": false
+        "liked": false
     },
     {
         "user": {
@@ -47,7 +47,7 @@
         },
         "avatarUrl": "https://images2.alphacoders.com/521/521982.jpg",
         "comment": "exemple",
-        "isLiked": false
+        "liked": false
     },
     {
         "user": {
@@ -57,7 +57,7 @@
         },
         "avatarUrl": "ttps://gourmetdemexico.com.mx/wp-content/uploads/2017/11/remy-ratatouille.jpg",
         "comment": "exemple exemple exemple exemple ",
-        "isLiked": false
+        "liked": false
     },
     {
         "user": {
@@ -67,7 +67,7 @@
         },
         "avatarUrl": "https://images2.alphacoders.com/521/521982.jpg",
         "comment": "exempleexemple exemple exemple exemple ",
-        "isLiked": false
+        "liked": false
     },
     {
         "user": {
@@ -77,7 +77,7 @@
         },
         "avatarUrl": "https://images2.alphacoders.com/521/521982.jpg",
         "comment": "exemple exemple exemple exemple exemple exemple exemple exemple exemple exemple exemple ",
-        "isLiked": false
+        "liked": false
     },
     {
         "user": {
@@ -87,7 +87,7 @@
         },
         "avatarUrl": "https://images2.alphacoders.com/521/521982.jpg",
         "comment": "exemple exemple exemple exemple exemple exemple exemple exemple exemple ",
-        "isLiked": true
+        "liked": true
     },
     {
         "user": {
@@ -97,7 +97,7 @@
         },
         "avatarUrl": "https://images2.alphacoders.com/521/521982.jpg",
         "comment": "exemple exemple exemple exemple ",
-        "isLiked": false
+        "liked": false
     },
     {
         "user": {
@@ -107,7 +107,7 @@
         },
         "avatarUrl": "https://images2.alphacoders.com/521/521982.jpg",
         "comment": "exemple exemple exemple exemple ",
-        "isLiked": false
+        "liked": false
     },
     {
         "user": {
@@ -117,7 +117,7 @@
         },
         "avatarUrl": "https://images2.alphacoders.com/521/521982.jpg",
         "comment": "exemple exemple exemple exemple ",
-        "isLiked": false
+        "liked": false
     },
     {
         "user": {
@@ -127,7 +127,7 @@
         },
         "avatarUrl": "https://images2.alphacoders.com/521/521982.jpg",
         "comment": "exemple exemple exemple exemple ",
-        "isLiked": true
+        "liked": true
     },
     {
         "user": {
@@ -137,7 +137,7 @@
         },
         "avatarUrl": "https://images2.alphacoders.com/521/521982.jpg",
         "comment": "exemple exemple exemple exemple ",
-        "isLiked": false
+        "liked": false
     },
     {
         "user": {
@@ -147,7 +147,7 @@
         },
         "avatarUrl": "https://images2.alphacoders.com/521/521982.jpg",
         "comment": "exemple exemple exemple exemple ",
-        "isLiked": false
+        "liked": false
     },
     {
         "user": {
@@ -157,7 +157,7 @@
         },
         "avatarUrl": "https://images2.alphacoders.com/521/521982.jpg",
         "comment": "exemple exemple exemple exemple ",
-        "isLiked": false
+        "liked": false
     },
     {
         "user": {
@@ -167,7 +167,7 @@
         },
         "avatarUrl": "https://images2.alphacoders.com/521/521982.jpg",
         "comment": "exemple exemple exemple exemple ",
-        "isLiked": true
+        "liked": true
     },
     {
         "user": {
@@ -177,6 +177,6 @@
         },
         "avatarUrl": "https://images2.alphacoders.com/521/521982.jpg",
         "comment": "exemple exemple exemple exemple ",
-        "isLiked": false
+        "liked": false
     }
 ]

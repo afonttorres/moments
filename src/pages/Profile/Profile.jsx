@@ -21,7 +21,7 @@ export const Profile = (props) => {
     }, [profileId]);
 
     const getData = (userId) => {
-        momentService.getProfileMoments(userId).then(res => { if (res) setMoments(res) });
+        momentAPIService.getProfileMoments(userId).then(res => { if (res) setMoments(res) });
     }
 
     const getUser = () => {

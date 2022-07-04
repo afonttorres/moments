@@ -23,7 +23,7 @@ export const DetailCardMB = (props) => {
             <MCInfoRow>
                 <InlineDesc data={props.moment} user={props.user} />
             </MCInfoRow>
-            {props.moment.comments.length > 1 ? <Comments comments={props.moment.comments} user={props.user} /> : <Comments comments={comments} user={props.user} />}
+            {props.moment.comments.length >= 1 ? <Comments comments={props.moment.comments} user={props.user} /> : <Comments comments={comments} user={props.user} />}
         </View>
     )
 }

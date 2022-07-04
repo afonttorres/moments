@@ -46,7 +46,7 @@ export const Upload = () => {
 
     const confirm = () => {
         let newMoment = { ...moment, userId: moment.userId.id };
-        momentService.postMoment(generalServices.objToLowerCase(newMoment)).then(res => {
+        momentAPIService.postMoment(generalServices.objToLowerCase(newMoment)).then(res => {
             if (res) {
                 setMoment();
                 setIsPreviewACtive(false);

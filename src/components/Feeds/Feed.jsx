@@ -9,7 +9,7 @@ import { FeedContainer } from "./Feed.styled";
 export const Feed = (props) => {
 
     
-
+   
     return (
         <MainContainer id='main-feed'>
             <FeedContainer>{props.moments.map((moment, key) =>

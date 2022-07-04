@@ -21,13 +21,13 @@ export const Searcher = () => {
     }, [])
 
     const getRandomMoments = () => {
-        momentService.getAllMoments().then(res => { if (res) setMoments([...res, ...res, ...res]) });
+        momentAPIService.getAllMoments().then(res => { if (res) setMoments([...res, ...res, ...res]) });
     }
 
     const searchMoment = (data) => {
         let search = data.trim().toLowerCase();
         if (search === '' || search === undefined) return;
-        momentService.searchMoment(search).then(res => {
+        momentAPIService.searchMoment(search).then(res => {
             if (res) {
                 setSuggestions(res);
                 setSearch(search);

@@ -53,7 +53,7 @@ export const InlineDesc = (props) => {
                 </InfoRow>
             </InfoCol>
             <ButtonCol>
-                {props.data.description ? null : <LikeButton data={props.data.isLiked} size={'var(--font-size-icon-small)'} />}
+                {props.data.description ? null : <LikeButton data={props.data} size={'var(--font-size-icon-small)'} />}
             </ButtonCol>
         </InlineCont>
 

@@ -39,7 +39,7 @@ export const Home = () => {
     }, [moments])
 
     const getData = () => {
-        momentService.getAllMoments().then(res => {
+        momentAPIService.getAllMoments().then(res => {
             if (res) {
                 setMoments(res);
                 getUsers();
@@ -68,7 +68,7 @@ export const Home = () => {
 
     const confirmDelete = (data) => {
         closeDialog();
-        momentService.deleteMoment(data.id).then(res => {
+        momentAPIService.deleteMoment(data.id).then(res => {
             if (res) {
                 openModal(`Moment with id: ${data.id} erased successfully!`)
                 getData()
@@ -94,7 +94,7 @@ export const Home = () => {
     const confirmUpdate = () => {
         let data = updatedMoment;
         data.userId = data.userId.id;
-        momentService.updateMoment(generalServices.objToLowerCase(data), data.id).then(res => {
+        momentAPIService.updateMoment(generalServices.objToLowerCase(data), data.id).then(res => {
             if (res) {
                 openModal(`Moment with id: ${data.id} updated successfully!`)
                 getData();
@@ -116,7 +116,7 @@ export const Home = () => {
 
     const like = (data) => {
         data.userId = data.userId.id;
-        momentService.likeMoment(data, data.id).then(res => {
+        momentAPIService.likeMoment(data, data.id).then(res => {
             if (res) {
                 getData();
             }
@@ -131,7 +131,7 @@ export const Home = () => {
 
     const save = (data) => {
         data.userId = data.userId.id;
-        momentService.saveMoment(data, data.id).then(res => {
+        momentAPIService.saveMoment(data, data.id).then(res => {
             if (res) {
                 getData();
             }
@@ -158,6 +158,7 @@ export const Home = () => {
     }
 
 
+    console.log(moments)
     return (
         <>
             <ViewContainer>

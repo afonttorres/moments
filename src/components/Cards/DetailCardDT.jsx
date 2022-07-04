@@ -20,7 +20,7 @@ export const DetailCardDT = (props) => {
                 <DCInfoCol>
                     <InlineInfo moment={props.moment} user={props.user} update={props.update} erase={props.erase} />
                     <InlineDesc data={props.moment} user={props.user} />
-                    {props.moment.comments.length > 1 ? <Comments comments={props.moment.comments} user={props.user} /> : <Comments comments={comments} user={props.user} />}
+                    {props.moment.comments.length >= 1 ? <Comments comments={props.moment.comments} user={props.user} /> : <Comments comments={comments} user={props.user} />}
                     <InlineButtons moment={props.moment} width={'90%'} like={props.like} save={props.save} />
                     <noscript>input</noscript>
                 </DCInfoCol>

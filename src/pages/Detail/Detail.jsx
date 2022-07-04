@@ -51,7 +51,7 @@ export const MomentDetail = () => {
     }, [profileId])
 
     const getMoment = () => {
-        momentService.getMoment(momentId).then(res => {
+        momentAPIService.getMoment(momentId).then(res => {
             if (res) {
                 setMoment(res);
                 if (!profileId) getUser(parseInt(res.userId));
@@ -69,7 +69,7 @@ export const MomentDetail = () => {
     }
 
     const getIds = (id) => {
-        momentService.getProfileIds(id).then(res => {
+        momentAPIService.getProfileIds(id).then(res => {
             if (res) setMomentsIds(res);
         })
     }
@@ -85,7 +85,7 @@ export const MomentDetail = () => {
 
     const confirmDelete = (data) => {
         closeDialog();
-        momentService.deleteMoment(data.id).then(res => {
+        momentAPIService.deleteMoment(data.id).then(res => {
             if (res) {
                 openModal(`Moment with id: ${data.id} erased successfully!`);
                 setTimeout(() => { navigate('/home'); }, ms)
@@ -104,7 +104,7 @@ export const MomentDetail = () => {
     }
 
     const confirmUpdate = () => {
-        momentService.updateMoment(generalServices.objToLowerCase(updatedMoment), updatedMoment.id).then(res => {
+        momentAPIService.updateMoment(generalServices.objToLowerCase(updatedMoment), updatedMoment.id).then(res => {
             if (res) {
                 openModal(`Moment with id: ${updatedMoment.id} updated successfully!`)
                 setMoment();
@@ -144,7 +144,7 @@ export const MomentDetail = () => {
     }
 
     const like = (data) => {
-        momentService.likeMoment(data, data.id).then(res => {
+        momentAPIService.likeMoment(data, data.id).then(res => {
             if (res) {
                 getMoment();
             }
@@ -152,7 +152,7 @@ export const MomentDetail = () => {
     }
 
     const save = (data) => {
-        momentService.saveMoment(data, data.id).then(res => {
+        momentAPIService.saveMoment(data, data.id).then(res => {
             if (res) {
                 getMoment();
             }
