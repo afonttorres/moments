@@ -41,15 +41,15 @@ export const InlineDesc = (props) => {
     const toggleExpand = () => {
         !isShorter ? shortenText() : lengthenText();
     }
-
+    
     return (
         <InlineCont id="InlineDesc">
             <ButtonCol>
-                <Avatar user={props.user} width={'40%'} />
+                <Avatar user={props.data.creator} width={'40%'} />
             </ButtonCol>
             <InfoCol>
                 <InfoRow>
-                    <TextLine style={style}><TextBold>{props.user.username}</TextBold>&nbsp;<DetailTextCapi onClick={toggleExpand}>{text}</DetailTextCapi></TextLine>
+                    <TextLine style={style}><TextBold>{props.data.creator.username}</TextBold>&nbsp;<DetailTextCapi onClick={toggleExpand}>{text}</DetailTextCapi></TextLine>
                 </InfoRow>
             </InfoCol>
             <ButtonCol>

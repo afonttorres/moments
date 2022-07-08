@@ -61,7 +61,7 @@ export const Card = (props) => {
             </ImgRow>
 
             <TitleRow>
-                <TextLine style={style}><TextBold>{props.moment.userId.username}</TextBold>&nbsp;<TextCapi onClick={toggleExpand}>{text}</TextCapi></TextLine>
+                <TextLine style={style}><TextBold>{props.moment.creator.username}</TextBold>&nbsp;<TextCapi onClick={toggleExpand}>{text}</TextCapi></TextLine>
             </TitleRow>
 
             <ButtonsRow>

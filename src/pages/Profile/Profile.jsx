@@ -7,6 +7,8 @@ import { momentService } from '../../services/momentService';
 import { userService } from '../../services/userService';
 import { useNavigate, useParams } from 'react-router-dom';
 import { momentAPIService } from '../../services/momentAPIService';
+import { userAPIService } from '../../services/userAPIService';
+import { dataService } from '../../services/dataServices';
 
 
 export const Profile = (props) => {
@@ -14,29 +16,38 @@ export const Profile = (props) => {
 
     const [moments, setMoments] = useState();
     const [user, setUser] = useState();
+    const [loggedId, setLoggedId] = useState();
+
     const [profileId, setProfileId] = useState(useParams().profileId);
 
-    useEffect(() => {
-        getUser();
-    }, [profileId]);
+    useEffect(() => { findLogged() }, [])
 
+    useEffect(() => {
+        if(!loggedId) return;
+        getUser();
+    }, [profileId, loggedId]);
+
+    //GETTERS
     const getData = (userId) => {
-        momentAPIService.getProfileMoments(userId).then(res => { if (res) setMoments(res) });
+        momentAPIService.getUserMoments(userId).then(res => { if (res) setMoments(res) })
     }
 
     const getUser = () => {
-        const log = JSON.parse(localStorage.getItem('log'));
-        if (!log) return;
         let id;
-        profileId ? id = profileId : id = log.log_id;
-        userService.getUser(id).then(res => {
+        profileId ? id = profileId : id = loggedId;
+        userAPIService.getUser(id).then(res => {
             if (res) {
-                let userFound = res;
-                getData(parseInt(userFound.id));
-                if (userFound.id === log.log_id) userFound = { ...userFound, logged: true }
-                setUser(userFound);
+                res.id === parseInt(loggedId) ? setUser({ ...res, logged: true }) : setUser(res);
+                getData(id);
             }
         })
+    }
+
+    //LOGGED
+    const findLogged = () => {
+        const logged = dataService.getLoggedUser();
+        if (!logged) return;
+        setLoggedId(logged);
     }
 
     if (user)

@@ -18,7 +18,7 @@ import { momentAPIService } from '../../services/momentAPIService';
 export const Home = () => {
 
     const [moments, setMoments] = useState([]);
-    const [users, setUsers] = useState([]);
+
     const [msg, setMsg] = useState();
     const [question, setQuestion] = useState();
     const [dialogData, setDialogData] = useState();
@@ -32,36 +32,18 @@ export const Home = () => {
     }, [])
 
     useEffect(() => {
-        addUserToMoment();
-    }, [users]);
-
-    useEffect(() => {
     }, [moments])
 
+    //GETTERS
     const getData = () => {
         momentAPIService.getAllMoments().then(res => {
             if (res) {
                 setMoments(res);
-                getUsers();
             }
         });
     }
 
-    const getUsers = () => {
-        userService.getUsers().then(res => { if (res) setUsers(res) })
-    }
-
-    const addUserToMoment = () => {
-        let momentsWithUser = [];
-        moments.forEach(moment => {
-            let user = dataService.findUser(moment, users);
-            moment.userId = user;
-            momentsWithUser.push(moment);
-        })
-        setMoments(momentsWithUser);
-    }
-
-
+    //DELETE
     const erase = (data) => {
         openDialog(`Do you really want to delete moment with id: ${data.id}?`, data);
     }
@@ -69,13 +51,13 @@ export const Home = () => {
     const confirmDelete = (data) => {
         closeDialog();
         momentAPIService.deleteMoment(data.id).then(res => {
-            if (res) {
-                openModal(`Moment with id: ${data.id} erased successfully!`)
-                getData()
-            }
+            if (!res) openModal(`Sorry, you can't delete a moment that is not yours.`)
+            openModal(`Moment with id: ${res.id} erased successfully!`)
+            getData()
         })
     }
 
+    //UPDATE
     const update = (data) => {
         setIsUpdateActive(true);
         setMomentToUpdate(data);
@@ -92,15 +74,12 @@ export const Home = () => {
     }
 
     const confirmUpdate = () => {
-        let data = updatedMoment;
-        data.userId = data.userId.id;
-        momentAPIService.updateMoment(generalServices.objToLowerCase(data), data.id).then(res => {
-            if (res) {
-                openModal(`Moment with id: ${data.id} updated successfully!`)
-                getData();
-                setUpdatedMoment();
-                setMomentToUpdate();
-            }
+        momentAPIService.updateMoment(generalServices.objToLowerCase(updatedMoment)).then(res => {
+            if (!res) openModal(`Sorry, you can't update a moment that is not yours.`);
+            openModal(`Moment with id: ${res.id} updated successfully!`);
+            getData();
+            setUpdatedMoment();
+            setMomentToUpdate();
         })
     }
 
@@ -114,31 +93,22 @@ export const Home = () => {
         setMomentToUpdate();
     }
 
+    //LIKE
     const like = (data) => {
-        data.userId = data.userId.id;
-        momentAPIService.likeMoment(data, data.id).then(res => {
-            if (res) {
-                getData();
-            }
-        })
-        
-        momentAPIService.likeMoment(data, data.id).then(res => {
-            if (res) {
-                console.log(res)
-            }
+        momentAPIService.likeMoment(data.id).then(res => {
+            res ? getData() : openModal(`Sorry, you can't like your own moment!`)
         })
     }
 
+    //SAVE
     const save = (data) => {
-        data.userId = data.userId.id;
-        momentAPIService.saveMoment(data, data.id).then(res => {
-            if (res) {
-                getData();
-            }
+        momentAPIService.saveMoment(data.id).then(res => {
+            res ? getData() : openModal(`Sorry, you can't save your own moment!`)
         })
     }
 
 
+    //MODALS
     const openModal = (msg) => {
         setMsg(msg)
     }
@@ -162,7 +132,7 @@ export const Home = () => {
             <ViewContainer>
                 <Nav />
                 <View>
-                    <Feed location="home" moments={moments} users={users} update={update} erase={erase} like={like} save={save} />
+                    <Feed location="home" moments={moments} update={update} erase={erase} like={like} save={save} />
                 </View>
                 <Footer />
                 <>

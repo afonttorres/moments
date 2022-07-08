@@ -22,13 +22,13 @@ export const PreviewCard = (props) => {
                     </PreNavButtonsCol>
                 </PrevNav>
                 <InfoRow>
-                    <InlineInfo moment={props.moment} user={props.user} display={'none'} />
+                    <InlineInfo moment={props.moment} user={props.moment.creator} display={'none'} />
                 </InfoRow>
                 <ImgRow>
                     <Img imgUrl={props.moment.imgUrl} />
                 </ImgRow>
                 <ScrollableDesc>
-                    <TextLine><TextBold>{props.user ? props.user.username : props.moment.userId.username}</TextBold>&nbsp;<TextCapi>{props.moment.description}</TextCapi></TextLine>
+                    <TextLine><TextBold>{props.moment.creator.username}</TextBold>&nbsp;<TextCapi>{props.moment.description}</TextCapi></TextLine>
                 </ScrollableDesc>
                 <PrevNav />
             </PrevContainer>

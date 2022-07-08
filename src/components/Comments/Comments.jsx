@@ -8,7 +8,7 @@ export const Comments = (props) => {
 
     return (
         <>
-            <CommentsCont>{props.comments.map((comment, key) => <InlineDesc key={key} data={comment} user={props.user} />)}
+            <CommentsCont>{props.comments.map((comment, key) => <InlineDesc key={key} data={comment}/>)}
             </CommentsCont>
         </>
     )

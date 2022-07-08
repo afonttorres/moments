@@ -14,7 +14,7 @@ export const DetailCardMB = (props) => {
     return (
         <View id="DetailCardMB" gap={'1%'}>
             <MCInfoRow>
-                <InlineInfo moment={props.moment} user={props.user} update={props.update} erase={props.erase} />
+                <InlineInfo moment={props.moment} update={props.update} erase={props.erase} />
             </MCInfoRow>
 
             <MCImgRow>
@@ -22,9 +22,9 @@ export const DetailCardMB = (props) => {
             </MCImgRow>
             <InlineButtons moment={props.moment} width={'90%'} like={props.like} save={props.save} />
             <MCInfoRow>
-                <InlineDesc data={props.moment} user={props.user} />
+                <InlineDesc data={props.moment} />
             </MCInfoRow>
-            {props.moment.comments.length >= 1 ? <Comments comments={props.moment.comments} user={props.user} /> : <Comments comments={comments} user={props.user} />}
+            {props.comments.length >= 1 ? <Comments comments={props.comments} user={props.user} /> : <Comments comments={comments} />}
             <CommentForm moment={props.moment} createComment={props.createComment}/>
         </View>
     )

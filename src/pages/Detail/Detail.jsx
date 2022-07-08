@@ -14,13 +14,15 @@ import { ConfirmModal } from "../../components/Modals/ConfirmModal";
 import { userService } from "../../services/userService";
 import { momentAPIService } from "../../services/momentAPIService";
 import { commentAPIService } from "../../services/commentAPIService";
+import { dataService } from "../../services/dataServices";
 
 export const MomentDetail = () => {
 
     const [momentId, setMomentId] = useState(useParams().momentId);
     const [profileId, setProfileId] = useState(useParams().profileId);
+
     const [moment, setMoment] = useState();
-    const [user, setUser] = useState();
+    const [comments, setComments] = useState();
 
     const [msg, setMsg] = useState();
     const [question, setQuestion] = useState();
@@ -41,42 +43,33 @@ export const MomentDetail = () => {
     const s = 1;
     const ms = s * 1000;
 
-
     useEffect(() => {
         getMoment();
         setTimeout((() => setIsLoading(false)), ms);
     }, [momentId])
-
-    useEffect(() => {
-        if (profileId) getUser(profileId);
-    }, [profileId])
-
 
     //GETTERS
     const getMoment = () => {
         momentAPIService.getMoment(momentId).then(res => {
             if (res) {
                 setMoment(res);
-                if (!profileId) getUser(parseInt(res.userId));
+                getComments();
+                getUserMomentsIds();
             }
         })
     }
-
-    const getUser = (id) => {
-        userService.getUser(id).then(res => {
-            if (res) {
-                setUser(res);
-                getIds(parseInt(res.id));
-            }
+    const getComments = () => {
+        commentAPIService.getMomentComents(momentId).then(res => {
+            if (res) setComments(res);
         })
     }
 
-    const getIds = (id) => {
-        momentAPIService.getProfileIds(id).then(res => {
-            if (res) setMomentsIds(res);
+    const getUserMomentsIds = () => {
+        if (!profileId) return;
+        momentAPIService.getUserMomentsIds(profileId).then(res => {
+            if (res) setMomentsIds(res)
         })
     }
-
 
     //UPDATE
     const update = (data) => {
@@ -95,14 +88,14 @@ export const MomentDetail = () => {
     }
 
     const confirmUpdate = () => {
-        momentAPIService.updateMoment(generalServices.objToLowerCase(updatedMoment), updatedMoment.id).then(res => {
-            if (res) {
-                openModal(`Moment with id: ${updatedMoment.id} updated successfully!`)
-                setMoment();
-                getMoment();
-                setUpdatedMoment();
-                setMomentToUpdate();
-            }
+        momentAPIService.updateMoment(generalServices.objToLowerCase(updatedMoment)).then(res => {
+            if (!res) openModal(`Sorry, you can't update a moment that is not yours.`)
+            openModal(`Moment with id: ${res.id} updated successfully!`)
+            setMoment();
+            getMoment();
+            setUpdatedMoment();
+            setMomentToUpdate();
+
         })
     }
 
@@ -122,36 +115,31 @@ export const MomentDetail = () => {
     }
 
     const confirmDelete = (data) => {
+        console.log(data)
         closeDialog();
         momentAPIService.deleteMoment(data.id).then(res => {
-            if (res) {
-                openModal(`Moment with id: ${data.id} erased successfully!`);
-                setTimeout(() => { navigate('/home'); }, ms)
-            }
+            if (!res) openModal(`Sorry, you can't delete a moment that is not yours.`)
+            openModal(`Moment with id: ${res.id} erased successfully!`)
+            setTimeout(() => { navigate('/home'); }, ms);
         })
     }
 
     //LIKE
     const like = (data) => {
-        momentAPIService.likeMoment(data, data.id).then(res => {
-            if (res) {
-                getMoment();
-            }
+        momentAPIService.likeMoment(data.id).then(res => {
+            res ? getMoment() : openModal(`Sorry, you can't like your own moment!`)
         })
     }
 
     //SAVE
     const save = (data) => {
-        momentAPIService.saveMoment(data, data.id).then(res => {
-            if (res) {
-                getMoment();
-            }
+        momentAPIService.saveMoment(data.id).then(res => {
+            res ? getMoment() : openModal(`Sorry, you can't save your own moment!`)
         })
     }
 
     //CREATE COMMENT
     const createComment = (comment) => {
-        comment = { ...comment, userId: user.id };
         commentAPIService.postComment(comment).then(res => {
             if (res) {
                 getMoment();
@@ -199,22 +187,22 @@ export const MomentDetail = () => {
     }
 
     return (
-        <>{moment !== undefined && user !== undefined && !isLoading ?
+        <>{moment !== undefined && comments !== undefined && !isLoading ?
             <ViewContainer>
                 <HiddenContainerMB>
                     {!isUpdateActive && updatedMoment == undefined ?
-                        <VDetailDT moment={moment} user={user} location={location} nextLocation={nextLocation} update={update} erase={erase} like={like} save={save} slide={slide} createComment={createComment} />
+                        <VDetailDT moment={moment} comments={comments} location={location} nextLocation={nextLocation} update={update} erase={erase} like={like} save={save} slide={slide} createComment={createComment} />
                         : null}
                 </HiddenContainerMB>
 
                 <HiddenContainerDT>
-                    <VDetailMB moment={moment} user={user} location={nextLocation} update={update} erase={erase} like={like} save={save} createComment={createComment} />
+                    <VDetailMB moment={moment} comments={comments} location={nextLocation} update={update} erase={erase} like={like} save={save} createComment={createComment} />
                 </HiddenContainerDT>
                 <>
                     {isUpdateActive || updatedMoment ?
                         <NoScrollContainer>
                             {isUpdateActive ? <View bgColor={'--main-bg'} width={'95%'} ><VUpload closeUpdate={closeUpdate} moment={momentToUpdate} action={showPreview} title={'update'} /></View> : null}
-                            {updatedMoment ? <PreviewCard moment={updatedMoment} user={user} confirm={confirmUpdate} cancel={cancelUpdate} title={'update'} /> : null}
+                            {updatedMoment ? <PreviewCard moment={updatedMoment} confirm={confirmUpdate} cancel={cancelUpdate} title={'update'} /> : null}
                         </NoScrollContainer>
                         :
                         null

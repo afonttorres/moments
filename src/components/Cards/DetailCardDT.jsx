@@ -19,9 +19,9 @@ export const DetailCardDT = (props) => {
                     <DCImg imgUrl={props.moment.imgUrl} />
                 </DCImgCol>
                 <DCInfoCol>
-                    <InlineInfo moment={props.moment} user={props.user} update={props.update} erase={props.erase} />
-                    <InlineDesc data={props.moment} user={props.user} />
-                    {props.moment.comments.length >= 1 ? <Comments comments={props.moment.comments} user={props.user} /> : <Comments comments={comments} user={props.user} />}
+                    <InlineInfo moment={props.moment} update={props.update} erase={props.erase} />
+                    <InlineDesc data={props.moment} />
+                    {props.comments.length >= 1 ? <Comments comments={props.comments} /> : <Comments comments={comments} />}
                     <InlineButtons moment={props.moment} width={'90%'} like={props.like} save={props.save} />
                     <CommentForm moment={props.moment} createComment={props.createComment}/>
                 </DCInfoCol>

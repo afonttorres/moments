@@ -28,10 +28,13 @@ export const Login = (props) => {
         setLocation(window.location.pathname.toString().substring(1, (window.location.pathname.toString().length)))
     }, [window.location.pathname])
 
+
+    //GETTERS
     const getUsers = () => {
         userService.getUsers().then(res => { if (res) setUsers(res) });
     }
 
+    //LOGIN
     const login = (data) => {
         let loggedUser = findUser(data);
         if (!loggedUser) { openModal(`User does not exist`); return; }
@@ -39,8 +42,9 @@ export const Login = (props) => {
         openModal(`${generalServices.capitalizeName(loggedUser.name)} logged succesfully!`);
         localStorage.setItem('log', JSON.stringify({ "log_id": loggedUser.id }));
         setTimeout(() => { navigate('/home'); }, ms);
-
     }
+
+    //SIGNIN
     const signin = (data) => {
         let loggedUser = findUser(data);
         console.log(loggedUser);
@@ -54,17 +58,22 @@ export const Login = (props) => {
         return users.filter((user, key) => user.email === data.email)[0];
     }
 
-    const createUser = (data) =>{
-        userService.createUser(data).then(res => {if(res){
-            console.log(res)
-            openModal(`${generalServices.capitalizeName(res.name)} registred succesfully!`);
-            localStorage.setItem('log', JSON.stringify({ "log_id": res.id }));
-            setTimeout(() => { navigate('/home'); }, ms);
-        }})
+    //CREATE
+    const createUser = (data) => {
+        userService.createUser(data).then(res => {
+            if (res) {
+                console.log(res)
+                openModal(`${generalServices.capitalizeName(res.name)} registred succesfully!`);
+                localStorage.setItem('log', JSON.stringify({ "log_id": res.id }));
+                setTimeout(() => { navigate('/home'); }, ms);
+            }
+        })
     }
 
     const foosObj = { "login": login, "signin": signin };
 
+
+    //MODAL
     const openModal = (msg) => {
         setMsg(msg);
     }
@@ -76,7 +85,7 @@ export const Login = (props) => {
     return (
         <>
             <ViewContainer>
-                {location === "log-in" ? <VLogin location={location} functions={foosObj} openModal={openModal} /> : <VSignin location={location} functions={foosObj} openModal={openModal} />}
+                {location === "log-in" || location === '' ? <VLogin location={location} functions={foosObj} openModal={openModal} /> : <VSignin location={location} functions={foosObj} openModal={openModal} />}
             </ViewContainer>
             <>{msg !== undefined ? <InfoModal msg={msg} closeModal={closeModal} /> : null}</>
         </>

@@ -10,7 +10,7 @@ export const SearchFeed = (props) => {
     return (
         <SearchContainer>{props.suggestions == undefined ?
             <>{props.moments.map((moment, key) => (
-                <Link key={key} to={`/profile/${moment.userId}/detail/${moment.id}`}><FeedImg key={key} imgUrl={moment.imgUrl} /></Link>
+                <Link key={key} to={`/profile/${moment.creator.id}/detail/${moment.id}`}><FeedImg key={key} imgUrl={moment.imgUrl} /></Link>
             ))}
             </> :
             <>
@@ -19,7 +19,7 @@ export const SearchFeed = (props) => {
                     <Col><TextCapi>Sorry, we did not found "{props.search}"</TextCapi></Col>
                     :
                     <>{props.suggestions.map((moment, key) => (
-                        <Link key={key}  to={`/profile/${moment.userId}/detail/${moment.id}`}><FeedImg key={key} imgUrl={moment.imgUrl} /></Link>
+                        <Link key={key}  to={`/profile/${moment.creator.id}/detail/${moment.id}`}><FeedImg key={key} imgUrl={moment.imgUrl} /></Link>
                     ))
                     }
                     </>}

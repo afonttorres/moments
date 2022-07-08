@@ -10,10 +10,10 @@ export const InlineInfo = (props) => {
     return (
         <InlineCont>
             <ButtonCol>
-                <Avatar user={props.user ? props.user : props.moment.userId} />
+                <Avatar user={props.moment.creator} />
             </ButtonCol>
             <InfoCol>
-                <TextBold>{props.user ? props.user.username : props.moment.userId.username}</TextBold>
+                <TextBold>{props.moment.creator.username}</TextBold>
                 <LocationText>{props.moment.location}</LocationText>
             </InfoCol>
             <ButtonCol display={props.display}>

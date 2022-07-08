@@ -10,6 +10,8 @@ import { generalServices } from "../../services/generalServices";
 import { InfoModal } from "../../components/Modals/InfoModal";
 import { userService } from "../../services/userService";
 import { momentAPIService } from "../../services/momentAPIService";
+import { userAPIService } from "../../services/userAPIService";
+import { dataService } from "../../services/dataServices";
 
 export const Upload = () => {
 
@@ -20,33 +22,47 @@ export const Upload = () => {
     const [moment, setMoment] = useState();
     const [isPreviewActive, setIsPreviewACtive] = useState(false);
     const [msg, setMsg] = useState();
+
+    const [loggedId, setLoggedId] = useState();
     const [user, setUser] = useState();
 
     useEffect(() => {
-        getUser();
+        findLogged();
     }, [])
+
+    useEffect(() => {
+        if(!loggedId) return;
+        getUser();
+    }, [loggedId])
 
     useEffect(() => {
     }, [moment])
 
+
+    //GETTERS
     const getUser = () => {
-        const log = JSON.parse(localStorage.getItem('log'));
-        if (!log) return;
-        let id = parseInt(log.log_id);
-        userService.getUser(id).then(res => {
-            if (res) setUser(res);
+        userAPIService.getUser(loggedId).then(res => {
+            if (res) {
+               const castedUser = generalServices.castObj({...res}, ['avatarUrl', 'username', 'id']);
+               setUser(castedUser)
+            }
         })
     }
 
+    const findLogged = () =>{
+        const logged = dataService.getLoggedUser();
+        if(!logged) return;
+        setLoggedId(logged);
+    }
+
+    //UPLOAD
     const upload = (data) => {
-        let momentUser = { ...data, "userId": user }
-        setMoment(momentUser);
+        setMoment({ ...data, "creator": user });
         setIsPreviewACtive(true);
     }
 
     const confirm = () => {
-        let newMoment = { ...moment, userId: moment.userId.id };
-        momentAPIService.postMoment(generalServices.objToLowerCase(newMoment)).then(res => {
+        momentAPIService.postMoment(generalServices.objToLowerCase(moment)).then(res => {
             if (res) {
                 setMoment();
                 setIsPreviewACtive(false);
@@ -60,6 +76,7 @@ export const Upload = () => {
         setIsPreviewACtive(false);
     }
 
+    //MODALS
     const openModal = (msg) => {
         setMsg(msg);
     }
