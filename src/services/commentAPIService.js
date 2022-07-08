@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { dataService } from './dataServices';
 const baseUrl = "http://localhost:8080";
-const loggedId = parseInt(dataService.getLoggedUser());
+const loggedId = dataService.getLoggedUser() ? parseInt(dataService.getLoggedUser()) : 1;
 
 export const commentAPIService = {
     getAllComments() {

@@ -6,7 +6,7 @@ export const dataService = {
     },
     getLoggedUser() {
         const log = JSON.parse(localStorage.getItem('log'));
-        if (!log) return 1;
+        if (!log) return null;
         return log.log_id;
     }
 }

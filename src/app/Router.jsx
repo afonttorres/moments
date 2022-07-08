@@ -8,6 +8,7 @@ import { Profile } from '../pages/Profile/Profile';
 import { Upload } from '../pages/Upload/Upload';
 import { MomentDetail } from '../pages/Detail/Detail'
 import { Searcher } from '../pages/Searcher/Searcher';
+import { Print } from '../pages/Print/Print';
 
 export default function Router() {
     return (
@@ -24,6 +25,7 @@ export default function Router() {
                 <Route path='/home/detail/:momentId' element={<MomentDetail />}></Route>
                 <Route path='/profile/detail/:momentId' element={<MomentDetail />}></Route>
                 <Route path='/profile/:profileId/detail/:momentId' element={<MomentDetail />}></Route>
+                <Route path='/moments/:momentId/print' element={<Print />}></Route>
             </Routes>
         </BrowserRouter>
     )

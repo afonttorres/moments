@@ -1,13 +1,13 @@
-import React,{useEffect, useState} from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import {NoScrollContainer} from '../../../pages/Styles.styled';
-import {BBMContent, BgButton, BBMBar} from '../Buttons.styled';
+import { NoScrollContainer } from '../../../pages/Styles.styled';
+import { BBMContent, BgButton, BBMBar } from '../Buttons.styled';
 
-export const PBurgerContentMB = (props) =>{
+export const PBurgerContentMB = (props) => {
     const [content, setContent] = useState([
-        { icon: 'icon', content: 'settings'},
-        { icon: 'icon', content: 'saved'},
-        { icon: 'icon', content: 'favorites'}
+        { icon: 'icon', content: 'settings' },
+        { icon: 'icon', content: 'saved' },
+        { icon: 'icon', content: 'favorites' }
     ]);
 
     const [bottom, setBottom] = useState('-25vh');
@@ -46,13 +46,11 @@ export const PBurgerContentMB = (props) =>{
             }, ms)
         }
     }
-
-
-
+    
     return (
         <NoScrollContainer id={'noscroll'}>
-            <BBMContent id={'dragBar'} bottom={bottom}>
-                <BBMBar onTouchMove={handleTouches} />
+            <BBMContent onTouchMove={handleTouches} id={'dragBar'} bottom={bottom}>
+                <BBMBar />
                 <>
                     {content.map((button, key) => (
                         <BgButton key={key}><Link to={`/${button.content}`}>{button.content}</Link></BgButton>

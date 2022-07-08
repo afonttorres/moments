@@ -1,20 +1,20 @@
-import React, { useState } from "react";
-import { useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { NoScrollContainer, Row } from "../../../pages/Styles.styled";
 import { BBMBar, BBMContent, BgButton } from "../Buttons.styled";
 
 
 export const MBurgerContentMB = (props) => {
+    console.log(props)
 
     const [content, setContent] = useState([
         { icon: 'icon', content: 'edit', action: props.update },
-        { icon: 'icon', content: 'delete', action: props.erase }
+        { icon: 'icon', content: 'delete', action: props.erase },
+        { icon: 'icon', content: 'print', action: props.print }
     ]);
 
     const [bottom, setBottom] = useState('-25vh');
     const [isTouched, setIsTouched] = useState(false);
     const [touches, setTouches] = useState([]);
-
 
     useEffect(() => {
         setBottom('0vh');
@@ -48,12 +48,10 @@ export const MBurgerContentMB = (props) => {
         }
     }
 
-
-
     return (
         <NoScrollContainer id={'noscroll'}>
-            <BBMContent id={'dragBar'} bottom={bottom}>
-                <BBMBar onTouchMove={handleTouches} />
+            <BBMContent onTouchMove={handleTouches} id={'dragBar'} bottom={bottom}>
+                <BBMBar />
                 <>
                     {content.map((button, key) => (
                         <BgButton key={key} onClick={button.action}>{button.content}</BgButton>

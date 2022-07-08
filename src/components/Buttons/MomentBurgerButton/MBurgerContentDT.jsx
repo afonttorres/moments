@@ -7,7 +7,8 @@ import { BBDContent, BgButton } from "../Buttons.styled";
 export const MBurgerContentDT = (props) => {
     const [content, setContent] = useState([
         { icon: 'icon', content: 'edit', action: props.update },
-        { icon: 'icon', content: 'delete', action: props.erase }
+        { icon: 'icon', content: 'delete', action: props.erase },
+        { icon: 'icon', content: 'print', action: props.print }
     ]);
 
     return (
