@@ -6,7 +6,7 @@ import { PBurgerButton } from "../Buttons";
 
 export const Nav = (props) => {
 
-    const [location] = useState(useLocation(0).pathname.toString().substring(1, (useLocation(0).pathname.toString().length)))
+    const [location, setLocation] = useState(useLocation(0).pathname.toString().substring(1, (useLocation(0).pathname.toString().length)))
     const [dtOutput, setDToutput] = useState(["upload", "search", "notifications", "sign in"]);
     const [mbOutput, setMBoutput] = useState([{ content: <i className="fa-regular fa-bookmark"></i>, linkTo: 'saved' }, { content: <i className="fa-regular fa-heart"></i>, linkTo: 'favorites' }]);
     const [title, setTitle] = useState("Moments");
@@ -27,11 +27,16 @@ export const Nav = (props) => {
         modifyMBoutput();
     }, [location, title, profileUsername]);
 
+    useEffect(()=>{
+        setLocation(window.location.pathname);
+    },[window.location.pathname])
+
     const modifyDToutput = () => {
         let data;
         if (!location.includes('home') || location !== '') data = ["home", "upload", "search", "notifications", "profile"];
         if (location == "") { data.splice(data.indexOf('home'), 1); setDToutput(data); return; }
         if (location === 'profile' || location.includes('profile')) setTitle(profileUsername);
+        if(location.includes('profile/')){setDToutput(data); return; }
         data.splice(data.indexOf(location), 1)
         setDToutput(data);
     }
