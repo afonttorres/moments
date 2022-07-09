@@ -5,7 +5,7 @@ import { ViewContainer } from '../Styles.styled';
 import { VProfile } from '../../views/VProfile/VProfile';
 import { momentService } from '../../services/momentService';
 import { userService } from '../../services/userService';
-import { useNavigate, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { momentAPIService } from '../../services/momentAPIService';
 import { userAPIService } from '../../services/userAPIService';
 import { dataService } from '../../services/dataServices';
@@ -23,7 +23,7 @@ export const Profile = (props) => {
     useEffect(() => { findLogged() }, [])
 
     useEffect(() => {
-        if(!loggedId) return;
+        if (!loggedId) return;
         getUser();
     }, [profileId, loggedId]);
 
@@ -50,11 +50,16 @@ export const Profile = (props) => {
         setLoggedId(logged);
     }
 
-    if (user)
-        return (
-            <ViewContainer>
-                <VProfile user={user} moments={moments} />
-                <Footer />
-            </ViewContainer>
-        );
+    return (
+        <>
+            {user ?
+                <ViewContainer>
+                    <VProfile user={user} moments={moments} />
+                    <Footer />
+                </ViewContainer>
+                :
+                null
+            }
+        </>
+    );
 }

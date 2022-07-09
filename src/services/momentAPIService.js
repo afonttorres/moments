@@ -2,7 +2,6 @@ import axios from 'axios';
 import { dataService } from './dataServices';
 import { generalServices } from './generalServices';
 const baseUrl = "http://localhost:8080";
-const loggedId = dataService.getLoggedUser() ? parseInt(dataService.getLoggedUser()) : 1;
 
 
 export const momentAPIService = {
@@ -13,34 +12,33 @@ export const momentAPIService = {
         return moments;
     },
     postMoment(moment) {
-        const castedMoment = { ...generalServices.castObj(moment, ['imgUrl', 'location', 'description']), userId: loggedId };
+        const castedMoment = { ...generalServices.castObj(moment, ['imgUrl', 'location', 'description']), userId: parseInt(dataService.getLoggedUser()) };
         const postedMoment = axios.post(`${baseUrl}/moments`, castedMoment).then(res => {
             return res.data;
         })
         return postedMoment;
     },
     deleteMoment(id) {
-        console.log(loggedId);
-        const deletedMoment = axios.delete(`${baseUrl}/moments/${id}`, { data: { "id": loggedId } }).then(res => {
+        const deletedMoment = axios.delete(`${baseUrl}/moments/${id}`, { data: { "id": parseInt(dataService.getLoggedUser()) } }).then(res => {
             return res.data;
         })
         return deletedMoment;
     },
     updateMoment(moment) {
-        const castedMoment = { ...generalServices.castObj(moment, ['imgUrl', 'location', 'description']), userId: loggedId };
+        const castedMoment = { ...generalServices.castObj(moment, ['imgUrl', 'location', 'description']), userId: parseInt(dataService.getLoggedUser()) };
         const updatedMoment = axios.put(`${baseUrl}/moments/${moment.id}`, castedMoment).then(res => {
             return res.data;
         })
         return updatedMoment;
     },
     likeMoment(id) {
-        const updatedMoment = axios.patch(`${baseUrl}/moments/${id}/like`, { "id": loggedId }).then(res => {
+        const updatedMoment = axios.patch(`${baseUrl}/moments/${id}/like`, { "id": parseInt(dataService.getLoggedUser()) }).then(res => {
             return res.data;
         })
         return updatedMoment;
     },
     saveMoment(id) {
-        const updatedMoment = axios.patch(`${baseUrl}/moments/${id}/save`, { "id": loggedId }).then(res => {
+        const updatedMoment = axios.patch(`${baseUrl}/moments/${id}/save`, { "id": parseInt(dataService.getLoggedUser()) }).then(res => {
             return res.data;
         })
         return updatedMoment;

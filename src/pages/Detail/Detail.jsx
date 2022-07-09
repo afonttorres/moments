@@ -89,13 +89,10 @@ export const MomentDetail = () => {
 
     const confirmUpdate = () => {
         momentAPIService.updateMoment(generalServices.objToLowerCase(updatedMoment)).then(res => {
-            if (!res) openModal(`Sorry, you can't update a moment that is not yours.`)
-            openModal(`Moment with id: ${res.id} updated successfully!`)
-            setMoment();
+            !res ? openModal(`Sorry, you can't update a moment that is not yours.`) : openModal(`Moment with id: ${res.id} updated successfully!`);
             getMoment();
             setUpdatedMoment();
             setMomentToUpdate();
-
         })
     }
 
@@ -115,11 +112,9 @@ export const MomentDetail = () => {
     }
 
     const confirmDelete = (data) => {
-        console.log(data)
         closeDialog();
         momentAPIService.deleteMoment(data.id).then(res => {
-            if (!res) openModal(`Sorry, you can't delete a moment that is not yours.`)
-            openModal(`Moment with id: ${res.id} erased successfully!`)
+            !res ? openModal(`Sorry, you can't delete a moment that is not yours.`) : openModal(`Moment with id: ${res.id} erased successfully!`);
             setTimeout(() => { navigate('/home'); }, ms);
         })
     }
@@ -127,14 +122,14 @@ export const MomentDetail = () => {
     //LIKE
     const like = (data) => {
         momentAPIService.likeMoment(data.id).then(res => {
-            res ? getMoment() : openModal(`Sorry, you can't like your own moment!`)
+            res ? getMoment() : openModal(`Sorry, you can't like your own moment!`);
         })
     }
 
     //SAVE
     const save = (data) => {
         momentAPIService.saveMoment(data.id).then(res => {
-            res ? getMoment() : openModal(`Sorry, you can't save your own moment!`)
+            res ? getMoment() : openModal(`Sorry, you can't save your own moment!`);
         })
     }
 

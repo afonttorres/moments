@@ -51,8 +51,7 @@ export const Home = () => {
     const confirmDelete = (data) => {
         closeDialog();
         momentAPIService.deleteMoment(data.id).then(res => {
-            if (!res) openModal(`Sorry, you can't delete a moment that is not yours.`)
-            openModal(`Moment with id: ${res.id} erased successfully!`)
+            !res ? openModal(`Sorry, you can't delete a moment that is not yours.`) : openModal(`Moment with id: ${res.id} erased successfully!`);
             getData()
         })
     }
@@ -75,8 +74,7 @@ export const Home = () => {
 
     const confirmUpdate = () => {
         momentAPIService.updateMoment(generalServices.objToLowerCase(updatedMoment)).then(res => {
-            if (!res) openModal(`Sorry, you can't update a moment that is not yours.`);
-            openModal(`Moment with id: ${res.id} updated successfully!`);
+            !res ? openModal(`Sorry, you can't update a moment that is not yours.`) : openModal(`Moment with id: ${res.id} updated successfully!`);
             getData();
             setUpdatedMoment();
             setMomentToUpdate();
@@ -96,14 +94,14 @@ export const Home = () => {
     //LIKE
     const like = (data) => {
         momentAPIService.likeMoment(data.id).then(res => {
-            res ? getData() : openModal(`Sorry, you can't like your own moment!`)
+            res ? getData() : openModal(`Sorry, you can't like your own moment!`);
         })
     }
 
     //SAVE
     const save = (data) => {
         momentAPIService.saveMoment(data.id).then(res => {
-            res ? getData() : openModal(`Sorry, you can't save your own moment!`)
+            res ? getData() : openModal(`Sorry, you can't save your own moment!`);
         })
     }
 
