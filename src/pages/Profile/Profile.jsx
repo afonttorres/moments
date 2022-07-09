@@ -44,7 +44,6 @@ export const Profile = (props) => {
     const getUser = () => {
         let id;
         profileId ? id = profileId : id = loggedId;
-        console.log(id)
         userAPIService.getUser(id).then(res => {
             if (res) {
                 res.id === parseInt(loggedId) ? setUser({ ...res, logged: true }) : setUser(res);

@@ -91,6 +91,13 @@ export const Row = styled(Container)`
     }
 `;
 
+//TOUCHABLE CONTENT
+export const Touchable = styled(Col)`
+    height: fit-content;
+    width: fit-content;
+    gap: inherit;
+`;
+
 //TEXT
 export const Text = styled.span`
     font-size: var(--font-size-plain);
@@ -149,3 +156,4 @@ export const Img = styled.img.attrs(props => ({
         object-fit: cover;
         border-radius: 0.75rem;
 `;
+

@@ -89,11 +89,11 @@ export const DCMainRow = styled(Row)`
 //DetailMobile
 export const MCInfoRow = styled(Row)`
     height: fit-content;
-    padding: 2.5%;
+    padding: 5.5%;
 `;
 export const MCImgRow = styled(Row)`    
     width: 85%;
-    height: 95em;
+    height: 160em;
 `;
 export const MCCommentsCol = styled(Col)`
     height: 40%;
