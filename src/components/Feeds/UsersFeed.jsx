@@ -1,6 +1,11 @@
 import React from "react"
+import { Avatar } from "../Avatar/Avatar"
+import { UserFeed } from "./Feed.styled"
 export const UsersFeed = ({ users }) => {
 
-    console.log(users)
-    return users.map((user) => user.username+' ');
+    return (
+        <UserFeed>
+            {users.map((user) => <Avatar width={'17.5%'} user={user}/>)}
+        </UserFeed>
+    )
 }

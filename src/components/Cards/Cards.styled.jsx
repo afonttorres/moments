@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { Col, Container, DetailText, Img, Row, Text } from "../../pages/Styles.styled";
 
 export const SCard = styled.article`
-    height: 60%;
+    height: 30em;
     width: 31%;
     display: flex;
     flex-direction: column;
@@ -16,7 +16,7 @@ export const SCard = styled.article`
     border-radius: 0.75rem;
     @media (max-width: 820px) {
         width: 100%;
-        height: 100%;
+        height: 90%;
         box-shadow: 0px 3px 10px var(--border-color);
     }
 `;
@@ -93,7 +93,7 @@ export const MCInfoRow = styled(Row)`
 `;
 export const MCImgRow = styled(Row)`    
     width: 85%;
-    height: 100%;
+    height: 95em;
 `;
 export const MCCommentsCol = styled(Col)`
     height: 40%;

@@ -11,11 +11,16 @@ export const FeedContainer = styled.section`
     justify-content: center;
     align-items: center;   
     overflow-y: scroll;
-    min-height: 60vh;
+    min-height: 65vh;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+    &::-webkit-scrollbar{
+        display: none;
+    }
     @media (max-width: 820px) {
         justify-content: center;
         width: 100%;
-        height: 58vh;
+        min-height: 65vh;
         overflow: scroll;
         gap: var(--mid-gap);
     }
@@ -61,5 +66,28 @@ export const ProfileFeedContainer = styled(SearchContainer)`
         max-height: 35vh;
         top: 50%;
         padding-top: 5%;
+    }
+`;
+
+export const UserFeed = styled.section`
+    height: calc(80vh - 58vh - 10vh);
+    width: 95%;
+    display: -webkit-inline-box;
+    column-gap: 2%;;
+    /* grid-auto-flow: column; */
+    overflow-x: scroll;
+    align-items: center;
+    justify-content: flex-start;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+    &::-webkit-scrollbar{
+        display: none;
+    }
+    @media (min-width: 820px) {
+        height: 20%;
+        & > *{
+            padding-bottom: 5%;
+            width: 5%;
+        }
     }
 `;
