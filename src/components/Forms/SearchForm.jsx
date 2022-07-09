@@ -61,7 +61,7 @@ export const SearchForm = (props) => {
                     />
                 </SearchBar>
                 <FCancelCol>
-                    <CancelButton action={cancel} />
+                    <CancelButton type='reset' action={cancel} />
                 </FCancelCol>
             </Row>
         </SearcherForm>

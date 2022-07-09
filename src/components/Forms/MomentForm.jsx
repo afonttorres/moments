@@ -83,7 +83,7 @@ export const MomentForm = (props) => {
                 </>
             </>
         ))}
-            <BgButton>{props.title}</BgButton>
+            <BgButton type="submit">{props.title}</BgButton>
         </Form>
     )
 }

@@ -13,11 +13,14 @@ import { ConfirmModal } from '../../components/Modals/ConfirmModal';
 import { userService } from '../../services/userService';
 import { dataService } from '../../services/dataServices';
 import { momentAPIService } from '../../services/momentAPIService';
+import { UsersFeed } from '../../components/Feeds/UsersFeed';
+import {userAPIService} from '../../services/userAPIService';
 
 
 export const Home = () => {
 
     const [moments, setMoments] = useState([]);
+    const [users, setUsers] = useState([]);
 
     const [msg, setMsg] = useState();
     const [question, setQuestion] = useState();
@@ -29,10 +32,11 @@ export const Home = () => {
 
     useEffect(() => {
         getData();
+        getUsers();
     }, [])
 
     useEffect(() => {
-    }, [moments])
+    }, [moments, users])
 
     //GETTERS
     const getData = () => {
@@ -41,6 +45,12 @@ export const Home = () => {
                 setMoments(res);
             }
         });
+    }
+
+    const getUsers = () =>{
+        userAPIService.getAllUsers().then(res =>{
+            if(res) setUsers(res);
+        })
     }
 
     //DELETE
@@ -130,6 +140,7 @@ export const Home = () => {
             <ViewContainer>
                 <Nav />
                 <View>
+                    <UsersFeed users={users}/>
                     <Feed location="home" moments={moments} update={update} erase={erase} like={like} save={save} />
                 </View>
                 <Footer />
