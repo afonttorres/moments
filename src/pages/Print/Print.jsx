@@ -7,6 +7,7 @@ import { Col, ViewContainer } from "../Styles.styled";
 import { PreviewCard } from "../../components/Cards/PreviewCard";
 import { Comments } from "../../components/Comments/Comments";
 import { InlineDesc } from "../../components/InlineData/InlineDesc";
+import { VPrint } from "../../views/VPrint/VPrint";
 
 export const Print = () => {
 
@@ -15,6 +16,8 @@ export const Print = () => {
     const { momentId } = useParams();
 
     const navigate = useNavigate();
+    const printDelay = 3*1000;
+    const backDelay = 15*1000;
 
     useEffect(() => {
         if (!momentId) return;
@@ -23,8 +26,8 @@ export const Print = () => {
 
     useEffect(() => {
         if (!comments) return;
-        setTimeout(() => { print() }, 1000);
-        // setTimeout(() => { navigate(`/home/detail/${momentId}`) }, 15 * 1000)
+        // setTimeout(() => { print() }, printDelay);
+        // setTimeout(() => { navigate(`/home/detail/${momentId}`) }, backDelay);
     }, [comments])
 
     const getMoment = () => {
@@ -49,12 +52,7 @@ export const Print = () => {
     if (comments)
         return (
             <ViewContainer>
-                <Col id='print'>
-                    <PreviewCard moment={moment} title={'print'} />
-                    <>{comments.length >= 1 ? comments.map((comment) => (
-                        <InlineDesc data={comment} />
-                    )).reverse() : null}</>
-                </Col>
+                <VPrint moment={moment} comments={comments} />
             </ViewContainer>
         )
 

@@ -12,7 +12,7 @@ export const SCard = styled.article`
     margin: .5%;
     padding: .5%;
     background-color: var(--main-bg);
-    box-shadow: 1px 2px 10px var(--border-color);;
+    box-shadow: 1px 2px 10px var(--border-color);
     border-radius: 0.75rem;
     @media (max-width: 820px) {
         width: 100%;
