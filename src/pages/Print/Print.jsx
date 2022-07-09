@@ -26,8 +26,8 @@ export const Print = () => {
 
     useEffect(() => {
         if (!comments) return;
-        // setTimeout(() => { print() }, printDelay);
-        // setTimeout(() => { navigate(`/home/detail/${momentId}`) }, backDelay);
+        setTimeout(() => { print() }, printDelay);
+        setTimeout(() => { navigate(`/home/detail/${momentId}`) }, backDelay);
     }, [comments])
 
     const getMoment = () => {
