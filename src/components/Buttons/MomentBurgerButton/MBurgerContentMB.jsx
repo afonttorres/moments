@@ -4,7 +4,6 @@ import { BBMBar, BBMContent, BgButton } from "../Buttons.styled";
 
 
 export const MBurgerContentMB = (props) => {
-    console.log(props)
 
     const [content, setContent] = useState([
         { icon: 'icon', content: 'edit', action: props.update },

@@ -17,7 +17,7 @@ export const Print = () => {
 
     const navigate = useNavigate();
     const printDelay = 3*1000;
-    const backDelay = 15*1000;
+    const backDelay = 10*1000;
 
     useEffect(() => {
         if (!momentId) return;

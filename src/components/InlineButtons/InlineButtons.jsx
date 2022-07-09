@@ -29,7 +29,7 @@ export const InlineButtons = (props) => {
             </Col>))}
             <Col></Col>
             <Col>
-                <SendButton />
+                <SendButton moment={props.moment}/>
             </Col>
         </InlineCont>
     )

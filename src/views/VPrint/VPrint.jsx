@@ -26,8 +26,7 @@ export const VPrint = ({ moment, comments }) => {
     const setSize = () =>{
         comments.length < 5 ? setCommentsSize(comments.length) : setCommentsSize(5);
     }
-
-    console.log(comments.length, commentsSize)
+    
     return (
         <View>
             <PrintCard>
