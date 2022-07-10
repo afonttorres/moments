@@ -42,6 +42,7 @@ export const NavItemsRowDT = styled(NavRow)`
         float: right;
         justify-content: flex-end;
         gap: 20%;
+        overflow: visible;
         @media (max-width: 820px) {
         display: none;
         & > * {

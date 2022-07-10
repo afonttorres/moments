@@ -16,15 +16,15 @@ export const Nav = (props) => {
     const [loggedUser, setLoggedUser] = useState();
 
 
+    useEffect(()=>{setLoggedUser(dataService.getLoggedUser())},[])
     useEffect(() => {
         setProfileUsername(props.user ? props.user.username : 'Profile');
     }, [props.user])
 
     useEffect(() => {
-        setLoggedUser(dataService.getLoggedUser());
         modifyDToutput();
         modifyMBoutput();
-    }, [location, title, profileUsername]);
+    }, [location, title, profileUsername, loggedUser]);
 
     useEffect(() => {
         let path =  window.location.pathname;
@@ -33,7 +33,7 @@ export const Nav = (props) => {
 
     const modifyDToutput = () => {
         let data;
-        if (!location.includes('home') || location !== '') data = ["home", "upload", "search", "notifications", "profile"];
+        if (!location.includes('home') || location !== '') data = ["home", "upload", "search", "notifications", loggedUser ? 'profile' : 'log in'];
         if (location == "") { data.splice(data.indexOf('home'), 1); setDToutput(data); return; }
         if (location === 'profile' || location.includes('profile')) setTitle(profileUsername);
         if (location.includes('profile/')) { setDToutput(data); return; }

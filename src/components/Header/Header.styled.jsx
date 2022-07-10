@@ -24,7 +24,7 @@ export const Banner = styled(Col)`
         right: 0;
         bottom: 0;
         position: absolute;
-        opacity: .75;
+        opacity: .5;
     }
 `;
 export const AvatarContainer = styled(Col)`
