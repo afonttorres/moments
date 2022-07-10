@@ -3,6 +3,7 @@ import { Link, useLocation, useParams } from 'react-router-dom';
 import { NavWrapper, NavTitleRow, NavItemsColDT, NavItemsRowDT, NavItemsColMB, NavItemsRowMB, NavItem } from "./Nav.styled";
 import { Col, MainTitle } from '../../pages/Styles.styled';
 import { PBurgerButton } from "../Buttons";
+import { dataService } from "../../services/dataServices";
 
 export const Nav = (props) => {
 
@@ -20,24 +21,23 @@ export const Nav = (props) => {
     }, [props.user])
 
     useEffect(() => {
-        const log = JSON.parse(localStorage.getItem('log'));
-        if (!log) return;
-        setLoggedUser(log.log_id);
+        setLoggedUser(dataService.getLoggedUser());
         modifyDToutput();
         modifyMBoutput();
     }, [location, title, profileUsername]);
 
-    useEffect(()=>{
-        setLocation(window.location.pathname);
-    },[window.location.pathname])
+    useEffect(() => {
+        let path =  window.location.pathname;
+        path !== location ? setLocation(path.substring(1, path.length)) : setLocation(location)
+    }, [window.location.pathname])
 
     const modifyDToutput = () => {
         let data;
         if (!location.includes('home') || location !== '') data = ["home", "upload", "search", "notifications", "profile"];
         if (location == "") { data.splice(data.indexOf('home'), 1); setDToutput(data); return; }
         if (location === 'profile' || location.includes('profile')) setTitle(profileUsername);
-        if(location.includes('profile/')){setDToutput(data); return; }
-        data.splice(data.indexOf(location), 1)
+        if (location.includes('profile/')) { setDToutput(data); return; }
+        data.splice(data.indexOf(location), 1);
         setDToutput(data);
     }
 

@@ -1,62 +1,69 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { NoScrollContainer } from '../../../pages/Styles.styled';
 import { BBMContent, BgButton, BBMBar } from '../Buttons.styled';
+import { InfoModal } from "../../Modals/InfoModal";
 
 export const PBurgerContentMB = (props) => {
+
+    const navigate = useNavigate();
+
     const [content, setContent] = useState([
-        { icon: 'icon', content: 'settings' },
-        { icon: 'icon', content: 'saved' },
-        { icon: 'icon', content: 'favorites' }
+        { icon: 'icon', content: 'settings', action: () => navigate(`/settings`) },
+        { icon: 'icon', content: 'saved', action: () => navigate(`/saved`) },
+        { icon: 'icon', content: 'favorites', action: () => navigate(`/favorites`) },
+        { icon: 'icon', content: 'log out', action: () => logOut() }
     ]);
 
-    const [bottom, setBottom] = useState('-25vh');
-    const [isTouched, setIsTouched] = useState(false);
-    const [touches, setTouches] = useState([]);
-
+    const [bottom, setBottom] = useState('-35vh');
+    const [startTouch, setStartTouch] = useState();
+    const [msg, setMsg] = useState();
 
     useEffect(() => {
         setBottom('0vh');
     }, []);
 
-    useEffect(() => {
-        if (!isTouched) return;
-        closeContent();
-    }, [isTouched])
-
-
-    const handleTouches = (event) => {
-        let touch = event.changedTouches[0].screenY;
-        setTouches([...touches, touch]);
-        if (touches.length >= 3) setIsTouched(true);
+    const logOut = () => {
+        const s = 3;
+        const ms = s * 1000;
+        localStorage.removeItem('log');
+        setTimeout(() => { openModal(`Logged out successfully!`) }, [0 * 1000]);
+        // setTimeout(() => { props.toggleContent(false) }, [ms]);
+        setTimeout(() => { navigate('/log-in') }, ms);
     }
 
-    const closeContent = () => {
+    const setDisplay = (e) => {
         const s = 1;
         const ms = s * 1000;
-        let bottomToNum = parseInt(bottom.split("vh")[0]);
-
-        let start = touches[0];
-        let end = touches[touches.length - 1];
-
-        if (start < end) {
-            setBottom(`${bottomToNum -= 25}vh`);
-            setTimeout(() => {
-                props.toggleContent(false);
-            }, ms)
+        const endTouch = e.changedTouches[0].screenY;
+        if (startTouch < endTouch) {
+            setBottom(`${parseInt(bottom.split("vh")[0]) - 35}vh`);
+            setTimeout(() => { props.toggleContent(false) }, ms);
         }
     }
-    
+
+    //MODALS
+    const openModal = (msg) => {
+        setMsg(msg)
+    }
+
+    const closeModal = () => {
+        setMsg();
+    }
+
     return (
-        <NoScrollContainer id={'noscroll'}>
-            <BBMContent onTouchMove={handleTouches} id={'dragBar'} bottom={bottom}>
-                <BBMBar />
-                <>
-                    {content.map((button, key) => (
-                        <BgButton key={key}><Link to={`/${button.content}`}>{button.content}</Link></BgButton>
-                    ))}
-                </>
-            </BBMContent>
-        </NoScrollContainer>
+        <>
+            <NoScrollContainer id={'noscroll'}>
+                <BBMContent onTouchStart={(e) => { setStartTouch(e.changedTouches[0].screenY) }} onTouchEnd={(e) => setDisplay(e)} height={'35vh'} bottom={bottom}>
+                    <BBMBar />
+                    <>
+                        {content.map((button, key) => (
+                            <BgButton onClick={button.action} key={key}>{button.content}</BgButton>
+                        ))}
+                    </>
+                </BBMContent>
+            </NoScrollContainer>
+            <>{msg !== undefined ? <InfoModal id='MODAL' msg={msg} closeModal={closeModal} /> : null}</>
+        </>
     )
 }

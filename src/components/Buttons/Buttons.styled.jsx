@@ -53,7 +53,7 @@ export const SCloseButton = styled(ReturnButton)`
 export const BBMContent = styled(Col)`
     position: absolute;
     bottom: ${props => props.bottom ? props.bottom : '-25vh'};
-    height: 25vh;
+    height:${props => props.height ? props.height : '25vh'};
     width: 99%;
     gap: 5%;
     border-radius: 2rem 2rem 0 0;

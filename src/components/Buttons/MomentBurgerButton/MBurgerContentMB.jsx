@@ -12,44 +12,26 @@ export const MBurgerContentMB = (props) => {
     ]);
 
     const [bottom, setBottom] = useState('-25vh');
-    const [isTouched, setIsTouched] = useState(false);
-    const [touches, setTouches] = useState([]);
+    const [startTouch, setStartTouch] = useState();
+    const s = 1;
+    const ms = s*1000;
+
 
     useEffect(() => {
         setBottom('0vh');
     }, []);
 
-    useEffect(() => {
-        if (!isTouched) return;
-        closeContent();
-    }, [isTouched])
-
-
-    const handleTouches = (event) => {
-        let touch = event.changedTouches[0].screenY;
-        setTouches([...touches, touch]);
-        if (touches.length >= 3) setIsTouched(true);
-    }
-
-    const closeContent = () => {
-        const s = 1;
-        const ms = s * 1000;
-        let bottomToNum = parseInt(bottom.split("vh")[0]);
-
-        let start = touches[0];
-        let end = touches[touches.length - 1];
-
-        if (start < end) {
-            setBottom(`${bottomToNum -= 25}vh`);
-            setTimeout(() => {
-                props.toggleContent(false);
-            }, ms)
+    const setDisplay = (e) =>{
+        const endTouch = e.changedTouches[0].screenY;
+        if(startTouch < endTouch){
+            setBottom(`${parseInt(bottom.split("vh")[0]) - 25}vh`);
+            setTimeout(()=>{props.toggleContent(false)},ms);
         }
     }
 
     return (
         <NoScrollContainer id={'noscroll'}>
-            <BBMContent onTouchMove={handleTouches} id={'dragBar'} bottom={bottom}>
+            <BBMContent onTouchStart={(e)=>{setStartTouch(e.changedTouches[0].screenY)}} onTouchEnd={(e)=>setDisplay(e)} bottom={bottom}>
                 <BBMBar />
                 <>
                     {content.map((button, key) => (
