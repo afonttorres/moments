@@ -43,7 +43,7 @@ export const Nav = (props) => {
 
     const modifyMBoutput = () => {
         if (location.includes('profile')) {
-            if ((props.user && props.user.id !== loggedUser)) { setMBoutput([]); return; }
+            if ((props.user && props.user.id !== parseInt(loggedUser))) { setMBoutput([]); return; }
             setMBoutput([{ content: <PBurgerButton /> }]);
             setStyle({
                 height: '50%',
