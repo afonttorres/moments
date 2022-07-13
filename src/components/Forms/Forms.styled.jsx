@@ -122,11 +122,9 @@ export const SetForm = styled(Form)`
     height: calc(100% - ${props => props.heightDT ? props.heightDT : '35%'} - 10vh - 5%);
     position: absolute;
     top: calc(${props => props.heightDT ? props.heightDT : '35%'} + 2.5%);
-    box-shadow: 0px 3px 10px var(--border-color);
+    /* box-shadow: 0px 3px 10px var(--border-color); */
     @media (max-width: 820px) {
-        /* border: 1px solid var(--border-color); */
         box-shadow: none;
-        
         height: calc(100% - ${props => props.heightMB ? props.heightMB : '50%'} - 10vh - 5%);
         top: calc(${props => props.heightMB ? props.heightMB : '50%'} + 1%);
     }

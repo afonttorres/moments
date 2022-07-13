@@ -10,22 +10,11 @@ export const userAPIService = {
         const user = axios.get(`${baseUrl}/users/${id}`).then(res => res.data);
         return user;
     },
-
-
-    // {
-    //     "username": "rfv",
-    //     "email": "email",
-    //     "name": "rafel",
-    //     "password": "password123"
-    // }
-
     createUser(req) {
-        console.log(req)
         const newUser = axios.post(`${baseUrl}/users`, req).then(res => res.data);
         return newUser;
     },
     updateUser(req) {
-        console.log(req)
         const updatedUser = axios.put(`${baseUrl}/users/${req.id}`, req).then(res => res.data);
         return updatedUser;
     },

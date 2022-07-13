@@ -38,10 +38,16 @@ export const SettingsForm = ({ user, checkUser, showPreview, update }) => {
     }
 
     const resetInputs = () => {
-        // let data = {};
-        // Object.keys(formData).forEach((key)=> data = {...data, [key]:''});
-        // setFormData(data);
-        setFormData(generalServices.castObj(user, ["name", "username", "email", "description", "avatarUrl", "bannerUrl"]));
+        setFormData(
+            {
+                name: user.name,
+                username: user.username,
+                email: user.email,
+                description: user.description,
+                avatarUrl: user.avatarUrl,
+                bannerUrl: user.bannerUrl,
+            }
+        )
         setFilledInputs([]);
     }
 
