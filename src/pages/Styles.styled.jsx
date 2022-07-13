@@ -98,6 +98,18 @@ export const Touchable = styled(Col)`
     gap: inherit;
 `;
 
+export const NonTouchable = styled(Col)`
+    position: absolute;
+    height: ${props => props.heightDT ? props.heightDT : '100 %'};
+    top: 0vh;
+    left: 0vh;
+    width: 100%;
+    z-index: var(--last-i);
+    background: transparent;
+    @media (max-width: 820px) {
+        height: ${props => props.heightMB ? props.heightMB : '100 %'};
+    }
+`;
 //TEXT
 export const Text = styled.span`
     font-size: var(--font-size-plain);

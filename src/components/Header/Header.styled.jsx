@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { Col, Row } from "../../pages/Styles.styled";
+import { Col, MainTitle, Row } from "../../pages/Styles.styled";
 export const HeaderContainer = styled(Col)`
     border-bottom: 1px solid var(--border-color);
     height: 35%;
@@ -81,4 +81,10 @@ export const DescRow = styled(Row)`
     @media (max-width: 820px) {
         width: 60%;
     }
+`;
+
+export const UsernameTitle = styled(MainTitle)`
+    position: absolute;
+    top: 5vh;
+    left: 5vh;
 `;

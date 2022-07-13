@@ -68,7 +68,7 @@ export const MomentForm = (props) => {
                     <Input
                         key={key}
                         border={filledInputs.includes(field) ? `2px solid var(--ux-border-color)` : `1px solid var(--border-color)`}
-                        type={moment[field].includes("Url") ? "url" : 'text'}
+                        type={field.includes("Url") ? "url" : 'text'}
                         name={field} value={moment[field]}
                         placeholder={field.replace("Url", " url")}
                         onChange={handleInputChange} />

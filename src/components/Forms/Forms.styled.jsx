@@ -116,3 +116,50 @@ export const ComBar = styled(Row)`
        border-radius: .25rem;
     }
 `;
+
+export const SetForm = styled(Form)`
+    padding: 2.5%;
+    height: calc(100% - ${props => props.heightDT ? props.heightDT : '35%'} - 10vh - 5%);
+    position: absolute;
+    top: calc(${props => props.heightDT ? props.heightDT : '35%'} + 2.5%);
+    box-shadow: 0px 3px 10px var(--border-color);
+    @media (max-width: 820px) {
+        border: 1px solid var(--border-color);
+        box-shadow: none;
+        
+        height: calc(100% - ${props => props.heightMB ? props.heightMB : '50%'} - 10vh - 5%);
+        top: calc(${props => props.heightMB ? props.heightMB : '50%'} + 1%);
+    }
+    & > input{
+        border: solid;
+    }
+`;
+
+export const SetBtnPos = styled.div`
+    height: fit-content;
+    width: fit-content;
+    position: fixed;
+    top: 5vh;
+    right: 5vh;
+    z-index: var(--last-i);
+    & > button{
+        width: calc(var(--button-width)/2)
+    }
+    @media (max-width: 820px) {
+        top: 2.5vh;
+        right: 2.5vh;
+    }
+`;
+
+export const SetFormRow = styled(Row)`
+    height: fit-content;
+    width: 100%;
+    & > label{
+        height: 100%;
+        width: 25%;
+        line-height: var(--input-height);
+    }
+    & > input{
+        width: 100%;
+    }
+`;

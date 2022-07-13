@@ -2,14 +2,16 @@ import React from "react";
 import { Col, Text, DetailText, TextBold } from "../../pages/Styles.styled";
 import { Nav } from "../Navs/Nav";
 import { Avatar } from "../Avatar/Avatar";
-import { BurgerContainer, ButtonsRow, DescRow, DataRow, AvatarContainer, Banner, HeaderContainer } from "./Header.styled";
+import { BurgerContainer, ButtonsRow, DescRow, DataRow, AvatarContainer, Banner, HeaderContainer, UsernameTitle } from "./Header.styled";
 import { BgButton, NoBgButton } from "../Buttons/Buttons.styled";
 import { generalServices } from "../../services/generalServices";
 import { PBurgerButton } from "../Buttons";
-import { useEffect } from "react";
+import { useLocation } from 'react-router-dom';
+import { useState } from "react";
 
 export const Header = (props) => {
 
+    const [location, setLocation] = useState(useLocation(0).pathname);
 
     const content = {
         buttons:
@@ -22,7 +24,7 @@ export const Header = (props) => {
     return (
         <HeaderContainer>
             <Banner imgUrl={props.user.bannerUrl}>
-                <Nav user={props.user} />
+                {location.includes('profile') ? <Nav user={props.user} /> : <UsernameTitle>{props.user.username}</UsernameTitle>}
             </Banner>
             <AvatarContainer>
                 <Avatar user={props.user} width={'95%'} />
@@ -42,7 +44,7 @@ export const Header = (props) => {
                 </DataRow>
                 <DescRow>
                     <Col>
-                        <TextBold>{generalServices.capitalizeName(props.user.name)}</TextBold>
+                        <TextBold style={{textTransform:'capitalize'}}> {props.user.name}</TextBold>
                         <DetailText>{props.user.description ? props.user.description.substring(0, 100) : 'Go to settings to update your profile!'}</DetailText>
                     </Col>
                 </DescRow>
