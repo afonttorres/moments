@@ -19,11 +19,7 @@ export const SettingsForm = ({ user, checkUser, showPreview, update }) => {
     )
 
     const [filledInputs, setFilledInputs] = useState([]);
-    const navigate = useNavigate();
-    const s = 3;
-    const ms = s * 1000;
-
-
+   
     const handleInputChange = (e) => {
         let name = e.target.name;
         let value = e.target.value;
@@ -36,7 +32,6 @@ export const SettingsForm = ({ user, checkUser, showPreview, update }) => {
     const getFilledInputs = () => {
         let filledInputs = [];
         for (let field in formData) {
-            console.log(user[field])
             if (formData[field] !== "" && formData[field] !== checkUser[field]) filledInputs.push(field);
         }
         setFilledInputs(filledInputs);
@@ -55,10 +50,8 @@ export const SettingsForm = ({ user, checkUser, showPreview, update }) => {
         //sanitize
         update();
         resetInputs();
-        setTimeout(() => { navigate('/profile') }, ms)
     }
 
-    console.log(formData);
     return (
         <SetForm onSubmit={updateData}>
             {Object.keys(formData).map((field, key) => (

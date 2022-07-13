@@ -20,15 +20,15 @@ export const userAPIService = {
     // }
 
     createUser(req) {
+        console.log(req)
         const newUser = axios.post(`${baseUrl}/users`, req).then(res => res.data);
         return newUser;
     },
-
-    // {
-    //     "email":"nft@gmail.com",
-    //     "password": "password123"
-    // }
-
+    updateUser(req) {
+        console.log(req)
+        const updatedUser = axios.put(`${baseUrl}/users/${req.id}`, req).then(res => res.data);
+        return updatedUser;
+    },
     logUser(req) {
         const logged = axios.put(`${baseUrl}/users/log`, req).then(res => res.data);
         return logged;

@@ -1,17 +1,20 @@
 import React, { useEffect } from "react";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { dataService } from "../../services/dataServices";
 import { userAPIService } from "../../services/userAPIService";
 import { VSettings } from "../../views/VSettings/VSettings";
 import { Footer } from '../../components/Footer/Footer';
 import { ViewContainer } from "../Styles.styled";
-import { isValidDateValue } from "@testing-library/user-event/dist/utils";
 
 export const Settings = () => {
 
     const [loggedId, setLoggedId] = useState();
     const [user, setUser] = useState();
     const [checkUser, setCheckUser] = useState();
+    const navigate = useNavigate();
+    const s = 3;
+    const ms = s * 1000;
 
     useEffect(() => {
         findLogged();
@@ -43,7 +46,11 @@ export const Settings = () => {
     }
 
     const update = () =>{
-        
+        userAPIService.updateUser(user).then(res => {
+            if(res){
+                setTimeout(() => { navigate('/profile') }, ms)
+            }
+        })
     }
 
 
