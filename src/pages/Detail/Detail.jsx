@@ -7,14 +7,11 @@ import { VDetailDT } from "../../views/VDetail/VDetailDT";
 import { VDetailMB } from "../../views/VDetail/VDetailMB";
 import { VUpload } from "../../views/VUpload";
 import { PreviewCard } from "../../components/Cards/PreviewCard";
-import { Home } from "../Home/Home";
-import { Profile } from "../Profile/Profile";
 import { InfoModal } from "../../components/Modals/InfoModal";
 import { ConfirmModal } from "../../components/Modals/ConfirmModal";
-import { userService } from "../../services/userService";
 import { momentAPIService } from "../../services/momentAPIService";
 import { commentAPIService } from "../../services/commentAPIService";
-import { dataService } from "../../services/dataServices";
+import { Loader } from "../../components/Loader/Loader";
 
 export const MomentDetail = () => {
 
@@ -205,7 +202,7 @@ export const MomentDetail = () => {
                 </>
             </ViewContainer>
             :
-            <ViewContainer>{!isLoading ? <h1>this moment does not exist</h1> : <h1>loader</h1>}</ViewContainer>
+            <ViewContainer>{!isLoading ? <h1>this moment does not exist</h1> : <Loader />}</ViewContainer>
         }
             {msg !== undefined ? <InfoModal msg={msg} closeModal={closeModal} /> : null}
             {question !== undefined ? <ConfirmModal question={question} closeDialog={closeDialog} confirm={confirmDelete} data={dialogData} /> : null}

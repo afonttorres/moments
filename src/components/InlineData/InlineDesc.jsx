@@ -33,9 +33,12 @@ export const InlineDesc = (props) => {
     }
 
     const lengthenText = () => {
-        setIsShorter(false);
+        console.log('hi')
+        console.log(props.data.description.length <= maxLength || props.data.comment <= maxLength)
+        if(props.data.description.length <= maxLength || props.data.comment <= maxLength) return;
         setStyle({ overflowY: 'scroll', height: '5vh', paddingRight: '5%' });
         setText(generalServices.capitalize(props.data.description || props.data.comment));
+        setIsShorter(false);
     }
 
     const toggleExpand = () => {

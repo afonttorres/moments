@@ -48,8 +48,6 @@ export const Settings = () => {
     }
 
     const update = (data) => {
-        console.log(user)
-        console.log({ ...user, ...data })
         userAPIService.updateUser({ ...user, ...data }).then(res => {
             if (res) {
                 setTimeout(() => { navigate('/profile') }, ms)
