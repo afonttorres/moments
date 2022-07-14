@@ -62,11 +62,11 @@ export const SettingsForm = ({ user, checkUser, showPreview, update, openModal }
         let data;
         for (let field in formData) {
             data = { ...data, [field]: formData[field].trim() };
-            if (typeof formData[field] !== 'string')  {openModal(`Wrong type of input`); return };
-            if (typeof formData[field] !== 'string')  {openModal(`Wrong type of input`); return };
+            if (typeof formData[field] !== 'string') { openModal(`Wrong type of input`); return };
+            if (typeof formData[field] !== 'string') { openModal(`Wrong type of input`); return };
             let token = generalServices.regex(formData[field], field);
             if (token) { openModal(`${generalServices.capitalize(field)} can't contain ${token}`); return };
-            if (field.includes('username') && formData[field].includes(' ')) {openModal(`Username can't contain spaces`); return };
+            if (field.includes('username') && formData[field].includes(' ')) { openModal(`Username can't contain spaces`); return };
             if (!field.includes('description') || field.includes('Url'))
                 data = { ...data, [field]: formData[field].toLowerCase() };
         }
@@ -85,6 +85,7 @@ export const SettingsForm = ({ user, checkUser, showPreview, update, openModal }
                         name={field}
                         placeholder={field.replace("Url", " url")}
                         onChange={handleInputChange}
+                        onFocus={(e) => e.target.select()}
                     />
                 </SetFormRow>
             ))}

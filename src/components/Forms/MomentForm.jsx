@@ -71,7 +71,9 @@ export const MomentForm = (props) => {
                         type={field.includes("Url") ? "url" : 'text'}
                         name={field} value={moment[field]}
                         placeholder={field.replace("Url", " url")}
-                        onChange={handleInputChange} />
+                        onChange={handleInputChange}
+                        onFocus={(e) => e.target.select()}  
+                        />
                     :
                     <TextArea
                         key={key}
@@ -79,7 +81,9 @@ export const MomentForm = (props) => {
                         type='text'
                         name={field} value={moment[field]}
                         placeholder={field}
-                        onChange={handleInputChange} />}
+                        onChange={handleInputChange}
+                        onFocus={(e) => e.target.select()} 
+                        />}
                 </>
             </>
         ))}
