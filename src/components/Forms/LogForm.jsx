@@ -42,6 +42,7 @@ export const LogForm = (props) => {
             data[key] = data[key].trim();
             if (data[key] === "" || data[key] === undefined) { props.openModal("Some inputs might be empty."); userData[key] = ''; return false }
             if (typeof data[key] !== "string" || data[key] === ' ') { props.openModal("Wrong type of input!"); userData[key] = ''; return false }
+            if (key == 'username' && data[key].includes(' ')) { props.openModal("Username shouldn't contain spaces."); userData[key] = ''; return false }
             if (key == "password") {
                 if (data[key].includes(' ')) { props.openModal("Password shouldn't contain spaces."); userData[key] = ''; return false }
                 if (data[key].length < 7) { props.openModal("Password should have at least 7 characters."); userData[key] = ''; return false }
@@ -68,15 +69,15 @@ export const LogForm = (props) => {
             {props.location.includes("sign") ?
                 <>
                     <Label color={filledInputs.includes("name") ? "--interaction-color" : "--font-color-plain-noBg"}>Your name</Label>
-                    <Input border={filledInputs.includes("name") ? `2px solid var(--ux-border-color)` : `1px solid var(--border-color)`} capi={'capitalize'} type="text" name="name" value={userData.name} placeholder="Name" onChange={handleInputChange} />
+                    <Input border={filledInputs.includes("name") ? `2px solid var(--ux-border-color)` : `1px solid var(--border-color)`} capi={'capitalize'} type="text" name="name" value={userData.name} placeholder="Name" onChange={handleInputChange} onFocus={(e) => e.target.select()} />
                     <Label color={filledInputs.includes("username") ? "--interaction-color" : "--font-color-plain-noBg"}>username</Label>
-                    <Input border={filledInputs.includes("username") ? `2px solid var(--ux-border-color)` : `1px solid var(--border-color)`} type="text" name="username" value={userData.username} placeholder="username" onChange={handleInputChange} />
+                    <Input border={filledInputs.includes("username") ? `2px solid var(--ux-border-color)` : `1px solid var(--border-color)`} type="text" name="username" value={userData.username} placeholder="username" onChange={handleInputChange} onFocus={(e) => e.target.select()} />
                 </>
                 : null}
             <Label color={filledInputs.includes("email") ? "--interaction-color" : "--font-color-plain-noBg"}>Email</Label>
-            <Input border={filledInputs.includes("email") ? `2px solid var(--ux-border-color)` : `1px solid var(--border-color)`} type="email" name="email" value={userData.email} placeholder="Email" onChange={handleInputChange} />
+            <Input border={filledInputs.includes("email") ? `2px solid var(--ux-border-color)` : `1px solid var(--border-color)`} type="email" name="email" value={userData.email} placeholder="Email" onChange={handleInputChange} onFocus={(e) => e.target.select()} />
             <Label color={filledInputs.includes("password") ? "--interaction-color" : "--font-color-plain-noBg"}>Password</Label>
-            <Input border={filledInputs.includes("password") ? `2px solid var(--ux-border-color)` : `1px solid var(--border-color)`} type="password" name="password" value={userData.password} placeholder="Password" onChange={handleInputChange} />
+            <Input border={filledInputs.includes("password") ? `2px solid var(--ux-border-color)` : `1px solid var(--border-color)`} type="password" name="password" value={userData.password} placeholder="Password" onChange={handleInputChange}onFocus={(e) => e.target.select()}  />
             <BgButton type="submit">{props.title}</BgButton>
         </Form>
     )

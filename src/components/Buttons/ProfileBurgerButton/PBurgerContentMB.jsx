@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { NoScrollContainer } from '../../../pages/Styles.styled';
 import { BBMContent, BgButton, BBMBar } from '../Buttons.styled';
 import { InfoModal } from "../../Modals/InfoModal";
+import { Loader } from '../../Loader/Loader';
 
 export const PBurgerContentMB = (props) => {
 
@@ -18,18 +19,31 @@ export const PBurgerContentMB = (props) => {
     const [bottom, setBottom] = useState('-35vh');
     const [startTouch, setStartTouch] = useState();
     const [msg, setMsg] = useState();
+    const [isLoading, setIsLoading] = useState(false);
+    const s = 3;
+    const ms = s * 1000;
+
+    useEffect(() => {
+        if (!isLoading) return;
+    }, [isLoading])
+
 
     useEffect(() => {
         setBottom('0vh');
     }, []);
 
     const logOut = () => {
-        const s = 3;
-        const ms = s * 1000;
         localStorage.removeItem('log');
-        setTimeout(() => { openModal(`Logged out successfully!`) }, [0 * 1000]);
-        // setTimeout(() => { props.toggleContent(false) }, [ms]);
-        setTimeout(() => { navigate('/log-in') }, ms);
+        setBottom('-35vh');
+        setTimeout(() => {
+            openModal(`Logged out successfully!`);
+        }, ms * .5);
+        setTimeout(() => {
+            closeModal();
+            setIsLoading(true);
+        }, ms);
+        // setTimeout(() => { props.toggleContent(false) }, ms * 1.5)
+        setTimeout(() => { navigate('/log-in') }, ms * 2);
     }
 
     const setDisplay = (e) => {
@@ -52,7 +66,7 @@ export const PBurgerContentMB = (props) => {
     }
 
     return (
-        <>
+        <>{!isLoading ?
             <NoScrollContainer id={'noscroll'}>
                 <BBMContent onTouchStart={(e) => { setStartTouch(e.changedTouches[0].screenY) }} onTouchEnd={(e) => setDisplay(e)} height={'35vh'} bottom={bottom}>
                     <BBMBar />
@@ -63,6 +77,9 @@ export const PBurgerContentMB = (props) => {
                     </>
                 </BBMContent>
             </NoScrollContainer>
+            :
+            <Loader index={'var(--last-i)'} bg={'var(--main-bg)'} position={'fixed'}/>
+            }
             <>{msg !== undefined ? <InfoModal id='MODAL' msg={msg} closeModal={closeModal} /> : null}</>
         </>
     )

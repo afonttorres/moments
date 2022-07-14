@@ -33,6 +33,12 @@ export const View = styled(Container)`
 `;
 export const ViewContainer = styled(Container)`
     height: 100vh;
+    width: 100vw;
+    top: 0;
+    left: 0;
+    background-color: ${props => props.bg ? props.bg : 'unset'};
+    position: ${props => props.position ? props.position : 'relative'};
+    z-index: ${props => props.index ? props.index : 'auto'}
 `;
 export const OverlayContainer = styled(ViewContainer)`
     position: fixed;

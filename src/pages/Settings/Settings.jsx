@@ -50,6 +50,7 @@ export const Settings = () => {
     const update = (data) => {
         userAPIService.updateUser({ ...user, ...data }).then(res => {
             if (res) {
+                setTimeout(()=>{openModal(`Your settings have been updated successfully!`)}, ms*.5)
                 setTimeout(() => { navigate('/profile') }, ms)
             }
         })

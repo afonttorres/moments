@@ -5,13 +5,14 @@ import { ViewContainer } from '../Styles.styled';
 import { InfoModal } from '../../components/Modals/InfoModal';
 import { useNavigate } from 'react-router-dom';
 import { generalServices } from '../../services/generalServices';
-import { userService } from '../../services/userService';
 import { userAPIService } from '../../services/userAPIService';
 import { dataService } from '../../services/dataServices';
 
 
+
 export const Login = (props) => {
     const [location, setLocation] = useState(window.location.pathname.toString().substring(1, (window.location.pathname.toString().length)));
+    
     const [msg, setMsg] = useState();
 
     const navigate = useNavigate();
@@ -31,9 +32,8 @@ export const Login = (props) => {
     const signin = (data) => {
         userAPIService.createUser(data).then(res => {
             if (!res) { openModal(`User: ${data.email} already exists, please log yourself in.`); return; }
-            console.log(res)
-            openModal(`${generalServices.capitalizeName(res.name)} registred succesfully!`);
             localStorage.setItem('log', JSON.stringify({ "log_id": res.id }));
+            setTimeout(()=>{openModal(`${generalServices.capitalizeName(res.name)} registred succesfully!`);},ms*.5)
             setTimeout(() => { navigate('/home'); }, ms);
         })
     }
@@ -41,7 +41,7 @@ export const Login = (props) => {
     const login = (data) => {
         userAPIService.logUser(data).then(res => {
             if (!res) { openModal(`User: ${data.email} does not exist or password might be wrong`); return; }
-            openModal(`${generalServices.capitalizeName(res.name)} logged succesfully!`);
+            setTimeout(()=>{ openModal(`${generalServices.capitalizeName(res.name)} logged succesfully!`);},ms*.5)
             localStorage.setItem('log', JSON.stringify({ "log_id": res.id }));
             setTimeout(() => { navigate('/home'); }, ms);
         })

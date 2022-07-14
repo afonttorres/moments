@@ -1,15 +1,23 @@
 import React from "react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { NoScrollContainer } from "../../../pages/Styles.styled";
 import { BBDContent, BgButton } from "../Buttons.styled";
 import { CloseButton } from "../CloseButton";
 import { InfoModal } from "../../Modals/InfoModal";
+import { Loader } from '../../Loader/Loader';
 
 export const PBurgerContentDT = (props) => {
 
     const navigate = useNavigate();
     const [msg, setMsg] = useState();
+    const [isLoading, setIsLoading] = useState(false);
+    const s = 3;
+    const ms = s * 1000;
+
+    useEffect(() => {
+        if (!isLoading) return;
+    }, [isLoading])
 
     const [content, setContent] = useState([
         { icon: 'icon', content: 'settings', action: () => navigate(`/settings`) },
@@ -19,13 +27,15 @@ export const PBurgerContentDT = (props) => {
     ]);
 
     const logOut = () => {
-        console.log('hi')
-        const s = 3;
-        const ms = s * 1000;
+        setTimeout(() => {
+            openModal(`Logged out successfully!`);
+        }, ms * .5);
+        setTimeout(() => {
+            closeModal();
+            setIsLoading(true);
+        }, ms);
         localStorage.removeItem('log');
-        setTimeout(() => { openModal(`Logged out successfully!`) }, [1 * 1000]);
-        // setTimeout(() => { props.toggleContent(false) }, [ms]);
-        setTimeout(() => { navigate('/log-in') }, ms);
+        setTimeout(() => { navigate('/log-in') }, ms * 2);
     }
 
     //MODALS
@@ -39,13 +49,18 @@ export const PBurgerContentDT = (props) => {
 
     return (
         <>
-            <NoScrollContainer id="burgerCont">
-                <CloseButton color={`--font-color-plain-bg`} index={'--last-i'} action={() => props.toggleContent(false)} />
-                <BBDContent>{content.map((button, key) => (
-                    <BgButton onClick={button.action} key={key}>{button.content}</BgButton>
-                ))}
-                </BBDContent>
-            </NoScrollContainer>
+            {!isLoading ?
+                <NoScrollContainer id="burgerCont">
+                    <CloseButton color={`--font-color-plain-bg`} index={'--last-i'} action={() => props.toggleContent(false)} />
+                    <BBDContent>{content.map((button, key) => (
+                        <BgButton onClick={button.action} key={key}>{button.content}</BgButton>
+                    ))}
+                    </BBDContent>
+                </NoScrollContainer>
+
+                :
+                <Loader index={'200'} bg={'var(--main-bg)'} position={'fixed'} />
+            }
             <>{msg !== undefined ? <InfoModal id='MODAL' msg={msg} closeModal={closeModal} /> : null}</>
         </>
     )

@@ -1,20 +1,18 @@
 import React, { useEffect, useState } from 'react';
-import data from '../../mockMoments.json';
 import { Feed } from '../../components/Feeds/Feed';
 import { Footer } from '../../components/Footer/Footer';
 import { Nav } from '../../components/Navs/Nav';
 import { ViewContainer, View, NoScrollContainer } from '../Styles.styled';
 import { VUpload } from '../../views/VUpload/VUpload';
 import { PreviewCard } from '../../components/Cards/PreviewCard';
-import { momentService } from '../../services/momentService';
 import { generalServices } from '../../services/generalServices';
 import { InfoModal } from '../../components/Modals/InfoModal';
 import { ConfirmModal } from '../../components/Modals/ConfirmModal';
-import { userService } from '../../services/userService';
-import { dataService } from '../../services/dataServices';
 import { momentAPIService } from '../../services/momentAPIService';
 import { UsersFeed } from '../../components/Feeds/UsersFeed';
-import {userAPIService} from '../../services/userAPIService';
+import { userAPIService } from '../../services/userAPIService';
+import { Loader } from '../../components/Loader/Loader';
+import { MainSliderButton } from '../../components/Buttons/Buttons.styled';
 
 
 export const Home = () => {
@@ -30,13 +28,16 @@ export const Home = () => {
     const [momentToUpdate, setMomentToUpdate] = useState();
     const [updatedMoment, setUpdatedMoment] = useState();
 
-    useEffect(() => {
-        getData();
-        getUsers();
-    }, [])
+    const s = 3;
+    const ms = s * 1000;
 
     useEffect(() => {
-    }, [moments, users])
+        setMoments();
+        setTimeout(() => {
+            getData();
+            getUsers();
+        }, ms)
+    }, [])
 
     //GETTERS
     const getData = () => {
@@ -47,9 +48,9 @@ export const Home = () => {
         });
     }
 
-    const getUsers = () =>{
-        userAPIService.getAllUsers().then(res =>{
-            if(res) setUsers(res);
+    const getUsers = () => {
+        userAPIService.getAllUsers().then(res => {
+            if (res) setUsers(res);
         })
     }
 
@@ -60,9 +61,10 @@ export const Home = () => {
 
     const confirmDelete = (data) => {
         closeDialog();
+        setMoments();
         momentAPIService.deleteMoment(data.id).then(res => {
             !res ? openModal(`Sorry, you can't delete a moment that is not yours.`) : openModal(`Moment with id: ${res.id} erased successfully!`);
-            getData()
+            setTimeout(() => { getData() }, ms * .5)
         })
     }
 
@@ -85,9 +87,11 @@ export const Home = () => {
     const confirmUpdate = () => {
         momentAPIService.updateMoment(generalServices.objToLowerCase(updatedMoment)).then(res => {
             !res ? openModal(`Sorry, you can't update a moment that is not yours.`) : openModal(`Moment with id: ${res.id} updated successfully!`);
-            getData();
-            setUpdatedMoment();
-            setMomentToUpdate();
+            setTimeout(() => {
+                getData();
+                setUpdatedMoment();
+                setMomentToUpdate();
+            }, ms * .5);
         })
     }
 
@@ -136,25 +140,28 @@ export const Home = () => {
     }
 
     return (
-        <>
-            <ViewContainer>
-                <Nav />
-                <View>
-                    <UsersFeed users={users}/>
-                    <Feed location="home" moments={moments} update={update} erase={erase} like={like} save={save} />
-                </View>
-                <Footer />
-                <>
-                    {isUpdateActive || updatedMoment ?
-                        <NoScrollContainer id='noscroll'>
-                            {isUpdateActive ? <View bgColor={'--main-bg'} width={'95%'} ><VUpload closeUpdate={closeUpdate} moment={momentToUpdate} action={showPreview} title={'update'} /></View> : null}
-                            {updatedMoment ? <PreviewCard moment={updatedMoment} confirm={confirmUpdate} cancel={cancelUpdate} title={'update'} /> : null}
-                        </NoScrollContainer>
-                        : null}
-                </>
-            </ViewContainer>
-            {msg !== undefined ? <InfoModal msg={msg} closeModal={closeModal} /> : null}
-            {question !== undefined ? <ConfirmModal question={question} closeDialog={closeDialog} confirm={confirmDelete} data={dialogData} /> : null}
+        <>{moments ?
+            <>
+                <ViewContainer>
+                    <Nav />
+                    <View>
+                        <UsersFeed users={users} />
+                        <Feed location="home" moments={moments} update={update} erase={erase} like={like} save={save} />
+                    </View>
+                    <Footer />
+                    <>
+                        {isUpdateActive || updatedMoment ?
+                            <NoScrollContainer id='noscroll'>
+                                {isUpdateActive ? <View bgColor={'--main-bg'} width={'95%'} ><VUpload closeUpdate={closeUpdate} moment={momentToUpdate} action={showPreview} title={'update'} /></View> : null}
+                                {updatedMoment ? <PreviewCard moment={updatedMoment} confirm={confirmUpdate} cancel={cancelUpdate} title={'update'} /> : null}
+                            </NoScrollContainer>
+                            : null}
+                    </>
+                </ViewContainer>
+                {msg !== undefined ? <InfoModal msg={msg} closeModal={closeModal} /> : null}
+                {question !== undefined ? <ConfirmModal question={question} closeDialog={closeDialog} confirm={confirmDelete} data={dialogData} /> : null}
+            </>
+            : <Loader />}
         </>
     );
 }

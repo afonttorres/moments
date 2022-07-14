@@ -9,6 +9,7 @@ import { useLocation, useParams } from 'react-router-dom';
 import { momentAPIService } from '../../services/momentAPIService';
 import { userAPIService } from '../../services/userAPIService';
 import { dataService } from '../../services/dataServices';
+import { Loader } from '../../components/Loader/Loader';
 
 
 export const Profile = (props) => {
@@ -20,21 +21,26 @@ export const Profile = (props) => {
     const [location, setLocation] = useState(useLocation().pathname);
 
     const [profileId, setProfileId] = useState(useParams().profileId);
+    const s = 3;
+    const ms = s * 1000;
 
-    useEffect(() => { findLogged() }, [])
+    useEffect(() => {
+        findLogged()
+    }, [])
 
     useEffect(() => {
         if (!loggedId) return;
-        getUser();
+        setUser();
+        setTimeout(() => { getUser() }, ms)
     }, [profileId, loggedId, location]);
 
-    useEffect(()=>{
+    useEffect(() => {
         let path = window.location.pathname;
-        if(location === path) return;
-        if(path.includes('/profile/')) return;
+        if (location === path) return;
+        if (path.includes('/profile/')) return;
         setLocation(path);
         setProfileId();
-    },[window.location.pathname])
+    }, [window.location.pathname])
 
     //GETTERS
     const getData = (userId) => {
@@ -67,7 +73,7 @@ export const Profile = (props) => {
                     <Footer />
                 </ViewContainer>
                 :
-                null
+                <Loader />
             }
         </>
     );

@@ -15,6 +15,7 @@ export const DetailCardMB = (props) => {
 
     const setDirection = (e) => {
         const endTouch = e.changedTouches[0].screenY;
+        if(startTouch == endTouch || startTouch -20 < endTouch) return;
         startTouch > endTouch ? props.slide('forward') : props.slide('back');
     }
 

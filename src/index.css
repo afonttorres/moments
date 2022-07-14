@@ -28,3 +28,8 @@ i {
   font-size: var(--font-size-icon);
   
 }
+
+::selection{
+  background-color: var(--interaction-color);
+  color: white;
+}
