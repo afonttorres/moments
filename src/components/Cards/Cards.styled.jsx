@@ -56,6 +56,11 @@ export const ScrollableDesc = styled(TitleRow)`
     padding-top: 5%;
     padding-right: 5%;
     align-items: flex-start;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+    &::-webkit-scrollbar{
+        display: none;
+    }
 `;
 
 export const CDetailText = styled(DetailText)`

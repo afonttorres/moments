@@ -24,8 +24,8 @@ export const Card = (props) => {
         shortenText();
     }, [props.moment]);
 
-    useEffect(() => {
-    }, [isShorter]);
+    // useEffect(() => {
+    // }, [isShorter]);
 
     const shortenText = () => {
         setText(props.moment.description);
@@ -37,9 +37,10 @@ export const Card = (props) => {
     }
 
     const lengthenText = () => {
-        setIsShorter(false);
+        if(props.moment.description.length <= maxLength) return;
         setStyle({ overflowY: 'scroll', height: '100%', paddingRight: '5%' });
-        setText(generalServices.capitalize(props.moment.description))
+        setText(generalServices.capitalize(props.moment.description));
+        setIsShorter(false);
     }
 
 

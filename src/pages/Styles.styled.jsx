@@ -157,6 +157,11 @@ export const DetailTextCapi = styled(DetailText)`
 //TEXT LINE
 export const TextLine = styled.span`
     cursor: pointer;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+    &::-webkit-scrollbar{
+        display: none;
+    }
 `;
 
 //IMG

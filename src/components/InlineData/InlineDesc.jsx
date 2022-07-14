@@ -20,9 +20,6 @@ export const InlineDesc = (props) => {
         shortenText();
     }, [props.data])
 
-    useEffect(() => {
-    }, [isShorter])
-
     const shortenText = () => {
         setText(generalServices.capitalize(props.data.description || props.data.comment));
         let shorten = generalServices.shortenText(props.data.description || props.data.comment, maxLength);
@@ -33,9 +30,8 @@ export const InlineDesc = (props) => {
     }
 
     const lengthenText = () => {
-        console.log('hi')
-        console.log(props.data.description.length <= maxLength || props.data.comment <= maxLength)
-        if(props.data.description.length <= maxLength || props.data.comment <= maxLength) return;
+        let data = props.data.description ? props.data.description : props.data.comment;
+        if(data.length <= maxLength) return;
         setStyle({ overflowY: 'scroll', height: '5vh', paddingRight: '5%' });
         setText(generalServices.capitalize(props.data.description || props.data.comment));
         setIsShorter(false);
