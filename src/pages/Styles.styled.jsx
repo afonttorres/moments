@@ -53,7 +53,7 @@ export const NoScrollContainer = styled.div`
     top: 0;
     left: 0;
     position: fixed;
-    z-index: var(--noScroll-cont-i);
+    z-index: ${props => props.index? props.index :  'var(--noScroll-cont-i)'};
     overflow: hidden;
     background-color: var(--blocked-bg);
     backdrop-filter: blur(5px);

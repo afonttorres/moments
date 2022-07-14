@@ -5,13 +5,12 @@ import { useNavigate } from 'react-router-dom';
 import { BgButton } from "../Buttons/Buttons.styled";
 import { SetFormRow, Input, Label, SetBtnPos, SetForm } from "./Forms.styled";
 
-export const SettingsForm = ({ user, checkUser, showPreview, update }) => {
+export const SettingsForm = ({ user, checkUser, showPreview, update, openModal }) => {
 
     const [formData, setFormData] = useState(
         {
             name: user.name,
             username: user.username,
-            email: user.email,
             description: user.description,
             avatarUrl: user.avatarUrl,
             bannerUrl: user.bannerUrl,
@@ -19,7 +18,7 @@ export const SettingsForm = ({ user, checkUser, showPreview, update }) => {
     )
 
     const [filledInputs, setFilledInputs] = useState([]);
-   
+
     const handleInputChange = (e) => {
         let name = e.target.name;
         let value = e.target.value;
@@ -42,7 +41,6 @@ export const SettingsForm = ({ user, checkUser, showPreview, update }) => {
             {
                 name: user.name,
                 username: user.username,
-                email: user.email,
                 description: user.description,
                 avatarUrl: user.avatarUrl,
                 bannerUrl: user.bannerUrl,
@@ -53,9 +51,26 @@ export const SettingsForm = ({ user, checkUser, showPreview, update }) => {
 
     const updateData = (e) => {
         e.preventDefault();
-        //sanitize
-        update();
+        let data = sanitize();
+        if (!data) return;
+        update(data);
         resetInputs();
+    }
+
+
+    const sanitize = () => {
+        let data;
+        for (let field in formData) {
+            data = { ...data, [field]: formData[field].trim() };
+            if (typeof formData[field] !== 'string')  {openModal(`Wrong type of input`); return };
+            if (typeof formData[field] !== 'string')  {openModal(`Wrong type of input`); return };
+            let token = generalServices.regex(formData[field], field);
+            if (token) { openModal(`${generalServices.capitalize(field)} can't contain ${token}`); return };
+            if (field.includes('username') && formData[field].includes(' ')) {openModal(`Username can't contain spaces`); return };
+            if (!field.includes('description') || field.includes('Url'))
+                data = { ...data, [field]: formData[field].toLowerCase() };
+        }
+        return data;
     }
 
     return (
@@ -66,7 +81,7 @@ export const SettingsForm = ({ user, checkUser, showPreview, update }) => {
                     <Input
                         border={filledInputs.includes(field) ? `2px solid var(--ux-border-color)` : `1px solid var(--border-color)`}
                         value={formData[field]}
-                        type={field.includes("Url") ? "url" : 'text'}
+                        type={field.includes("Url") ? 'url' : 'text'}
                         name={field}
                         placeholder={field.replace("Url", " url")}
                         onChange={handleInputChange}

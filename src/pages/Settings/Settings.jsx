@@ -6,12 +6,14 @@ import { userAPIService } from "../../services/userAPIService";
 import { VSettings } from "../../views/VSettings/VSettings";
 import { Footer } from '../../components/Footer/Footer';
 import { ViewContainer } from "../Styles.styled";
+import { InfoModal } from "../../components/Modals/InfoModal";
 
 export const Settings = () => {
 
     const [loggedId, setLoggedId] = useState();
     const [user, setUser] = useState();
     const [checkUser, setCheckUser] = useState();
+    const [msg, setMsg] = useState();
     const navigate = useNavigate();
     const s = 3;
     const ms = s * 1000;
@@ -42,22 +44,35 @@ export const Settings = () => {
     }
 
     const showPreview = (data) => {
-        setUser({...user, ...data});
+        setUser({ ...user, ...data });
     }
 
-    const update = () =>{
-        userAPIService.updateUser(user).then(res => {
-            if(res){
+    const update = (data) => {
+        console.log(user)
+        console.log({ ...user, ...data })
+        userAPIService.updateUser({ ...user, ...data }).then(res => {
+            if (res) {
                 setTimeout(() => { navigate('/profile') }, ms)
             }
         })
     }
 
+    //MODALS
+    const openModal = (msg) => {
+        setMsg(msg)
+    }
+
+    const closeModal = () => {
+        setMsg();
+    }
 
     return (
-        <ViewContainer>
-            {user ? <VSettings user={user} checkUser={checkUser} showPreview={showPreview} update={update}/> : null}
-            <Footer />
-        </ViewContainer>
+        <>
+            <ViewContainer>
+                {user ? <VSettings user={user} checkUser={checkUser} showPreview={showPreview} update={update} openModal={openModal} closeModal={closeModal} /> : null}
+                <Footer />
+            </ViewContainer>
+            {msg !== undefined ? <InfoModal index={'var(--last-i)'} msg={msg} closeModal={closeModal} /> : null}
+        </>
     )
 }
