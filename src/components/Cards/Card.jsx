@@ -37,7 +37,7 @@ export const Card = (props) => {
     }
 
     const lengthenText = () => {
-        if(props.moment.description.length <= maxLength) return;
+        if (props.moment.description.length <= maxLength) return;
         setStyle({ overflowY: 'scroll', height: '100%', paddingRight: '5%' });
         setText(generalServices.capitalize(props.moment.description));
         setIsShorter(false);
@@ -48,7 +48,7 @@ export const Card = (props) => {
         !isShorter ? shortenText() : lengthenText();
     }
 
-    
+
     return (
         <SCard>
             <InfoRow>
@@ -62,7 +62,13 @@ export const Card = (props) => {
             </ImgRow>
 
             <TitleRow>
-                <TextLine style={style}><TextBold>{props.moment.creator.username}</TextBold>&nbsp;<TextCapi onClick={toggleExpand}>{text}</TextCapi></TextLine>
+                <TextLine style={style}>
+                    <TextBold>
+                        {props.moment.creator.username}
+                    </TextBold>&nbsp;
+                    <TextCapi onClick={toggleExpand}>{text}
+                    </TextCapi>
+                    </TextLine>
             </TitleRow>
 
             <ButtonsRow>

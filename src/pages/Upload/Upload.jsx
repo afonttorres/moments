@@ -63,7 +63,6 @@ export const Upload = () => {
     }
 
     const confirm = () => {
-        // setIsLoading(true);
         momentAPIService.postMoment(generalServices.objToLowerCase(moment)).then(res => {
             if (res) {
                 setMoment();
