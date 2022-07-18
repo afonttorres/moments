@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { generalServices } from "../../services/generalServices";
-import { momentService } from "../../services/momentService";
+import { formatUtil } from "../../utils/format";
 import { useNavigate, useParams } from "react-router-dom";
 import { HiddenContainerDT, HiddenContainerMB, ViewContainer, NoScrollContainer, View, OverlayContainer } from "../Styles.styled";
 import { VDetailDT } from "../../views/VDetail/VDetailDT";
@@ -29,7 +28,7 @@ export const MomentDetail = () => {
 
     const path = window.location.pathname;
     const [location, setLocation] = useState(path);
-    const [nextLocation, setNextLocation] = useState(generalServices.cutString(path, "/", "/detail"));
+    const [nextLocation, setNextLocation] = useState(formatUtil.cutString(path, "/", "/detail"));
 
     const [isUpdateActive, setIsUpdateActive] = useState(false);
     const [momentToUpdate, setMomentToUpdate] = useState();
@@ -88,7 +87,7 @@ export const MomentDetail = () => {
 
     const confirmUpdate = () => {
         setIsLoading(true);
-        momentAPIService.updateMoment(generalServices.objToLowerCase(updatedMoment)).then(res => {
+        momentAPIService.updateMoment(formatUtil.objToLowerCase(updatedMoment)).then(res => {
             !res ? openModal(`Sorry, you can't update a moment that is not yours.`) : openModal(`Moment with id: ${res.id} updated successfully!`);
             getMoment();
             setUpdatedMoment();

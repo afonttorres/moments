@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { dataService } from "../../services/dataServices";
+import { authUtil } from "../../utils/auth";
 import { userAPIService } from "../../services/userAPIService";
 import { VSettings } from "../../views/VSettings/VSettings";
 import { Footer } from '../../components/Footer/Footer';
@@ -29,7 +29,7 @@ export const Settings = () => {
 
 
     const findLogged = () => {
-        const logged = dataService.getLoggedUser();
+        const logged = authUtil.getLoggedUser();
         if (!logged) return;
         setLoggedId(logged);
     }

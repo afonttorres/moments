@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Link } from 'react-router-dom';
-import { generalServices } from "../../services/generalServices";
+import { formatUtil } from '../../utils/format';
 import { TitleRow, ButtonsRow, ImgRow, InfoRow, SCard } from "./Cards.styled";
 import { TextBold, Img, TextLine, TextCapi } from "../../pages/Styles.styled";
 import { InlineButtons } from "../InlineButtons/InlineButtons";
@@ -29,17 +29,17 @@ export const Card = (props) => {
 
     const shortenText = () => {
         setText(props.moment.description);
-        let shorten = generalServices.shortenText(props.moment.description, maxLength);
+        let shorten = formatUtil.shortenText(props.moment.description, maxLength);
         if (text == shorten) return;
         setIsShorter(true);
         setStyle();
-        setText(generalServices.capitalize(shorten));
+        setText(formatUtil.capitalize(shorten));
     }
 
     const lengthenText = () => {
         if (props.moment.description.length <= maxLength) return;
         setStyle({ overflowY: 'scroll', height: '100%', paddingRight: '5%' });
-        setText(generalServices.capitalize(props.moment.description));
+        setText(formatUtil.capitalize(props.moment.description));
         setIsShorter(false);
     }
 
@@ -68,7 +68,7 @@ export const Card = (props) => {
                     </TextBold>&nbsp;
                     <TextCapi onClick={toggleExpand}>{text}
                     </TextCapi>
-                    </TextLine>
+                </TextLine>
             </TitleRow>
 
             <ButtonsRow>

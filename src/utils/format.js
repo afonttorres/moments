@@ -1,4 +1,4 @@
-export const generalServices = {
+export const formatUtil = {
     cutString(str, char1, char2) {
         return str.substring((str.indexOf(char1)) + 1, str.indexOf(char2))
     },

@@ -5,7 +5,7 @@ import { Nav } from '../../components/Navs/Nav';
 import { ViewContainer, View, NoScrollContainer } from '../Styles.styled';
 import { VUpload } from '../../views/VUpload/VUpload';
 import { PreviewCard } from '../../components/Cards/PreviewCard';
-import { generalServices } from '../../services/generalServices';
+import { formatUtil } from '../../utils/format';
 import { InfoModal } from '../../components/Modals/InfoModal';
 import { ConfirmModal } from '../../components/Modals/ConfirmModal';
 import { momentAPIService } from '../../services/momentAPIService';
@@ -89,7 +89,7 @@ export const Home = () => {
     }
 
     const confirmUpdate = () => {
-        momentAPIService.updateMoment(generalServices.objToLowerCase(updatedMoment)).then(res => {
+        momentAPIService.updateMoment(formatUtil.objToLowerCase(updatedMoment)).then(res => {
             if (!res) { openModal(`Sorry, you can't update a moment that is not yours.`); return }
             openModal(`Moment with id: ${res.id} updated successfully!`);
             setTimeout(() => {

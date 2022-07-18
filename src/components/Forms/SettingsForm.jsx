@@ -1,9 +1,9 @@
 import React from "react";
 import { useState } from "react";
-import { generalServices } from "../../services/generalServices";
-import { useNavigate } from 'react-router-dom';
+import { formatUtil } from "../../utils/format";
 import { BgButton } from "../Buttons/Buttons.styled";
 import { SetFormRow, Input, Label, SetBtnPos, SetForm } from "./Forms.styled";
+import {regexUtil} from '../../utils/regex';
 
 export const SettingsForm = ({ user, checkUser, showPreview, update, openModal }) => {
 
@@ -64,8 +64,8 @@ export const SettingsForm = ({ user, checkUser, showPreview, update, openModal }
             if (typeof formData[field] !== 'string') { openModal(`Wrong type of input`); return };
             if (formData[field].length < 1) { openModal(`Some inputs might be empty`); return };
             data = { ...data, [field]: formData[field].trim() };
-            let token = generalServices.regex(formData[field], field);
-            if (token) { openModal(`${generalServices.capitalize(field)} can't contain ${token}`); return };
+            let token = formatUtil.regex(formData[field], field);
+            if (token) { openModal(`${formatUtil.capitalize(field)} can't contain ${token}`); return };
             if (field.includes('username') && formData[field].includes(' ')) { openModal(`Username can't contain spaces`); return };
             if (!field.includes('description') || field.includes('Url'))
                 data = { ...data, [field]: formData[field].toLowerCase() };

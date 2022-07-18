@@ -5,7 +5,7 @@ import { Footer } from "../../components/Footer/Footer";
 import { Nav } from "../../components/Navs/Nav";
 import { VLikesAndSaves } from "../../views/VLikesAndSaves/VLikesAndSaves";
 import { momentAPIService } from "../../services/momentAPIService";
-import { ViewContainer } from "../Styles.styled";
+import { MainTitle, ViewContainer } from "../Styles.styled";
 
 export const Saves = () =>{
 
@@ -24,7 +24,7 @@ export const Saves = () =>{
     return (
         <ViewContainer>
             <Nav />
-            <>{moments ? <VLikesAndSaves moments={moments} adj={'saved'}/> : <span>You don't have any saved moment</span>}</>
+            <>{moments ? <VLikesAndSaves moments={moments} adj={'saved'}/> : <MainTitle>You don't have any saved moment</MainTitle>}</>
             <Footer/>
         </ViewContainer>
     )

@@ -1,6 +1,5 @@
 import React from "react";
 import { TextBold } from "../../pages/Styles.styled";
-import { generalServices } from "../../services/generalServices";
 import { Avatar } from "../Avatar/Avatar";
 import { MBurgerButton } from "../Buttons/MomentBurgerButton/MBurgerButton";
 import { ButtonCol, InfoCol, InlineCont, LocationText } from "./InlineData.styled";

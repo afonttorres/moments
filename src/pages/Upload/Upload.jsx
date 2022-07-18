@@ -1,16 +1,15 @@
 import React, { useState } from "react";
 import mockUser from '../../mockUser.json';
 import { useNavigate } from "react-router-dom";
-import { momentService } from "../../services/momentService";
 import { VUpload } from "../../views/VUpload/VUpload";
 import { NoScrollContainer, ViewContainer } from "../Styles.styled";
 import { PreviewCard } from '../../components/Cards/PreviewCard';
 import { useEffect } from "react";
-import { generalServices } from "../../services/generalServices";
+import { formatUtil } from "../../utils/format";
 import { InfoModal } from "../../components/Modals/InfoModal";
 import { momentAPIService } from "../../services/momentAPIService";
 import { userAPIService } from "../../services/userAPIService";
-import { dataService } from "../../services/dataServices";
+import { authUtil } from "../../utils/auth";
 import { Loader } from '../../components/Loader/Loader';
 
 export const Upload = () => {
@@ -44,14 +43,14 @@ export const Upload = () => {
     const getUser = () => {
         userAPIService.getUser(loggedId).then(res => {
             if (res) {
-                const castedUser = generalServices.castObj({ ...res }, ['avatarUrl', 'username', 'id']);
+                const castedUser = formatUtil.castObj({ ...res }, ['avatarUrl', 'username', 'id']);
                 setUser(castedUser)
             }
         })
     }
 
     const findLogged = () => {
-        const logged = dataService.getLoggedUser();
+        const logged = authUtil.getLoggedUser();
         if (!logged) return;
         setLoggedId(logged);
     }
@@ -63,7 +62,7 @@ export const Upload = () => {
     }
 
     const confirm = () => {
-        momentAPIService.postMoment(generalServices.objToLowerCase(moment)).then(res => {
+        momentAPIService.postMoment(formatUtil.objToLowerCase(moment)).then(res => {
             if (res) {
                 setMoment();
                 setIsPreviewACtive(false);

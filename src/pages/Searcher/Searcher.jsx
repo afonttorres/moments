@@ -4,7 +4,6 @@ import { Nav } from '../../components/Navs/Nav';
 import { VSearcher } from "../../views/VSearcher/VSearcher";
 import { ViewContainer } from '../Styles.styled';
 import { useState } from "react";
-import { momentService } from "../../services/momentService";
 import { InfoModal } from "../../components/Modals/InfoModal";
 import { useEffect } from "react";
 import { momentAPIService } from "../../services/momentAPIService";

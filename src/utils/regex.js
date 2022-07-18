@@ -1,5 +1,5 @@
-export const regex = {
-    regex(){
+export const regexUtil = {
+    regex(str, field){
         let invalidInputs = ['""', '#', '$', '%', '&', '(', ')', '=', '?', '¿', '!', '¡', '*', '+', '{', '}', '[', ']', '<', '>'];
         let inputs = [];
         if (field.includes('Url')) return;

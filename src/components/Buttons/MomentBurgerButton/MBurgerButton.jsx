@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { HiddenContainerDT, HiddenContainerMB, Row } from "../../../pages/Styles.styled";
 import { MBurgerContentMB } from "./MBurgerContentMB";
 import { Button } from "../Buttons.styled";

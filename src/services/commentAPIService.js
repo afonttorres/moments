@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { dataService } from './dataServices';
+import { authUtil } from '../utils/auth';
 const baseUrl = "http://localhost:8080";
 
 export const commentAPIService = {
@@ -16,9 +16,9 @@ export const commentAPIService = {
         return comments;
     },
     postComment(req) {
-        const comment = axios.post(`${baseUrl}/comments`, {...req, userId: parseInt(dataService.getLoggedUser())}).then(res => {
+        const comment = axios.post(`${baseUrl}/comments`, { ...req, userId: parseInt(authUtil.getLoggedUser()) }).then(res => {
             return res.data
         })
         return comment;
-    },
+    }
 }

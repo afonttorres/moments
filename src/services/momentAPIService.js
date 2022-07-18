@@ -1,6 +1,6 @@
 import axios from 'axios';
-import { dataService } from './dataServices';
-import { generalServices } from './generalServices';
+import { authUtil } from '../utils/auth';
+import { formatUtil } from '../utils/format';
 const baseUrl = "http://localhost:8080";
 
 
@@ -16,7 +16,7 @@ export const momentAPIService = {
         return moments;
     },
     postMoment(moment) {
-        const castedMoment = { ...generalServices.castObj(moment, ['imgUrl', 'location', 'description']), userId: parseInt(dataService.getLoggedUser()) };
+        const castedMoment = { ...formatUtil.castObj(moment, ['imgUrl', 'location', 'description']), userId: parseInt(authUtil.getLoggedUser()) };
         const postedMoment = axios.post(`${baseUrl}/moments`, castedMoment)
             .then(res => {
                 return res.data;
@@ -37,7 +37,7 @@ export const momentAPIService = {
         return deletedMoment;
     },
     updateMoment(moment) {
-        const castedMoment = { ...generalServices.castObj(moment, ['imgUrl', 'location', 'description']), userId: parseInt(dataService.getLoggedUser()) };
+        const castedMoment = { ...formatUtil.castObj(moment, ['imgUrl', 'location', 'description']), userId: parseInt(authUtil.getLoggedUser()) };
         const updatedMoment = axios.put(`${baseUrl}/moments/${moment.id}`, castedMoment)
             .then(res => {
                 return res.data;
@@ -78,38 +78,38 @@ export const momentAPIService = {
     },
     getUserMomentsIds(id) {
         const momentsIds = axios.get(`${baseUrl}/users/${id}/moments`)
-        .then(res => {
-            if (res.data) {
-                let ids = [];
-                for (let moment of res.data) {
-                    ids.unshift(parseInt(moment.id));
+            .then(res => {
+                if (res.data) {
+                    let ids = [];
+                    for (let moment of res.data) {
+                        ids.unshift(parseInt(moment.id));
+                    }
+                    return ids;
                 }
-                return ids;
-            }
-        })
-        .catch(err =>{
-            console.log(err);
-        })
+            })
+            .catch(err => {
+                console.log(err);
+            })
         return momentsIds;
     },
-    getUserLikes(){
+    getUserLikes() {
         const moments = axios.get(`${baseUrl}/fav-moments`)
-        .then(res => {
-            return res.data;
-        })
-        .catch(err =>{
-            console.log(err)
-        })
+            .then(res => {
+                return res.data;
+            })
+            .catch(err => {
+                console.log(err)
+            })
         return moments;
     },
-    getUserSaves(){
+    getUserSaves() {
         const moments = axios.get(`${baseUrl}/saved-moments`)
-        .then(res =>{
-            return res.data;
-        })
-        .catch(err =>{
-            console.log(err)
-        })
+            .then(res => {
+                return res.data;
+            })
+            .catch(err => {
+                console.log(err)
+            })
         return moments;
     }
 }

@@ -1,10 +1,11 @@
 import React from "react";
-import { useState } from "react";
-import { Button, SearcherForm, Input, FCancelCol, SearchBar, FIconCol } from "./Forms.styled";
+import { useState, useEffect } from "react";
+import { SearcherForm, Input, FCancelCol, SearchBar, FIconCol } from "./Forms.styled";
 import { SearchButton } from '../../components/Buttons/SearchButton';
-import { Col, DetailText, Row } from "../../pages/Styles.styled";
+import { Row } from "../../pages/Styles.styled";
 import { CancelButton } from "../Buttons";
-import { useEffect } from "react";
+import {regexUtil} from '../../utils/regex';
+
 export const SearchForm = (props) => {
 
     const [search, setSearch] = useState('');

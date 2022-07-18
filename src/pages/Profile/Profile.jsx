@@ -3,12 +3,10 @@ import mockUsers from '../../mockUser.json';
 import { Footer } from '../../components/Footer/Footer';
 import { ViewContainer } from '../Styles.styled';
 import { VProfile } from '../../views/VProfile/VProfile';
-import { momentService } from '../../services/momentService';
-import { userService } from '../../services/userService';
 import { useLocation, useParams } from 'react-router-dom';
 import { momentAPIService } from '../../services/momentAPIService';
 import { userAPIService } from '../../services/userAPIService';
-import { dataService } from '../../services/dataServices';
+import { authUtil } from '../../utils/auth';
 import { Loader } from '../../components/Loader/Loader';
 
 
@@ -60,7 +58,7 @@ export const Profile = (props) => {
 
     //LOGGED
     const findLogged = () => {
-        const logged = dataService.getLoggedUser();
+        const logged = authUtil.getLoggedUser();
         if (!logged) return;
         setLoggedId(logged);
     }

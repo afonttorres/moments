@@ -5,7 +5,7 @@ import { Nav } from "../../components/Navs/Nav";
 import { Footer } from "../../components/Footer/Footer";
 import { VLikesAndSaves } from '../../views/VLikesAndSaves/VLikesAndSaves';
 import { momentAPIService } from "../../services/momentAPIService";
-import { ViewContainer } from "../Styles.styled"
+import { MainTitle, ViewContainer } from "../Styles.styled"
 export const Likes = () => {
 
     const [moments, setMoments] = useState();
@@ -23,7 +23,7 @@ export const Likes = () => {
     return (
         <ViewContainer>
             <Nav />
-            <>{moments ? <VLikesAndSaves moments={moments} adj={'favorite'}/> : <span>You don't have any liked moment</span>}</>
+            <>{moments ? <VLikesAndSaves moments={moments} adj={'favorite'}/> : <MainTitle>You don't have any favorite moment</MainTitle>}</>
             <Footer />
         </ViewContainer>
     )

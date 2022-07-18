@@ -1,5 +1,4 @@
-import React, { useState } from "react";
-import { useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { NoScrollContainer} from "../../../pages/Styles.styled";
 import { CloseButton } from "../CloseButton";
 import { BBDContent, BgButton } from "../Buttons.styled";

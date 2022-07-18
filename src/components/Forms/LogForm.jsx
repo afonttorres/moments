@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from "react";
-import { Input, Form, Label, Button } from "./Forms.styled";
-import { generalServices } from '../../services/generalServices';
+import React, { useState } from "react";
+import { Input, Form, Label } from "./Forms.styled";
 import { BgButton } from "../Buttons/Buttons.styled";
+import {regexUtil} from '../../utils/regex';
 
 export const LogForm = (props) => {
 

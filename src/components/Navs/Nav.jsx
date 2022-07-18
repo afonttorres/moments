@@ -3,7 +3,7 @@ import { Link, useLocation, useParams } from 'react-router-dom';
 import { NavWrapper, NavTitleRow, NavItemsColDT, NavItemsRowDT, NavItemsColMB, NavItemsRowMB, NavItem } from "./Nav.styled";
 import { Col, MainTitle } from '../../pages/Styles.styled';
 import { PBurgerButton } from "../Buttons";
-import { dataService } from "../../services/dataServices";
+import {authUtil} from '../../utils/auth';
 
 export const Nav = (props) => {
 
@@ -16,7 +16,7 @@ export const Nav = (props) => {
     const [loggedUser, setLoggedUser] = useState();
 
 
-    useEffect(()=>{setLoggedUser(dataService.getLoggedUser())},[])
+    useEffect(()=>{setLoggedUser(authUtil.getLoggedUser())},[])
     useEffect(() => {
         setProfileUsername(props.user ? props.user.username : 'Profile');
     }, [props.user])

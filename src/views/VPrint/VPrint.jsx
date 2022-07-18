@@ -2,7 +2,7 @@ import React from "react";
 import { useState, useEffect } from "react";
 import { InlineDesc } from "../../components/InlineData/InlineDesc";
 import { Title, View } from "../../pages/Styles.styled";
-import { generalServices } from "../../services/generalServices";
+import { formatUtil } from "../../utils/format";
 import { PrintCard, PrintImg, PrintOverlay, PrintInfoContainer, PrintImgContainer } from "./Print.styled";
 
 
@@ -35,7 +35,7 @@ export const VPrint = ({ moment, comments }) => {
                     <PrintOverlay bottom={styles ? styles.bottom : null} opacity={styles ? styles.opacity : null} />
                 </PrintImgContainer>
                 <PrintInfoContainer comments={commentsSize}>
-                    <Title>{generalServices.capitalize(moment.description)}</Title>
+                    <Title>{formatUtil.capitalize(moment.description)}</Title>
                     {comments ? comments.map((comment, key) => (
                         <>{key >= comments.length - commentsSize? <InlineDesc key={comment.id} data={comment} /> : null}</>
                     )).reverse() : null}

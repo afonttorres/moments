@@ -1,10 +1,9 @@
 import React, { useState } from "react";
-import { Row } from "../../pages/Styles.styled";
-import { commentAPIService } from "../../services/commentAPIService";
-import { generalServices } from "../../services/generalServices";
+import { formatUtil } from "../../utils/format";
 import { CancelButton } from "../Buttons";
 import { Button } from "../Buttons/Buttons.styled";
 import { ComBar, ComForm, FCancelCol, FIconCol, Input } from "./Forms.styled";
+import {regexUtil} from '../../utils/regex';
 
 export const CommentForm = (props) => {
     const [comment, setComment] = useState('');
@@ -44,7 +43,7 @@ export const CommentForm = (props) => {
                     onChange={handleChange}
                     typeof="text"
                     name="comment"
-                    placeholder={generalServices.capitalize("Type your comment!")}
+                    placeholder={formatUtil.capitalize("Type your comment!")}
                     value={comment}
                 />
 

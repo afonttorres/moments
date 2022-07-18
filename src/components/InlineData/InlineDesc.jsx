@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { DetailTextCapi, TextBold, TextLine } from "../../pages/Styles.styled";
-import { generalServices } from "../../services/generalServices";
+import { formatUtil } from '../../utils/format';
 import { Avatar } from "../Avatar/Avatar";
 import { LikeButton } from "../Buttons";
 import { ButtonCol, InfoCol, InfoRow, InlineCont } from "./InlineData.styled";
@@ -21,26 +21,26 @@ export const InlineDesc = (props) => {
     }, [props.data])
 
     const shortenText = () => {
-        setText(generalServices.capitalize(props.data.description || props.data.comment));
-        let shorten = generalServices.shortenText(props.data.description || props.data.comment, maxLength);
+        setText(formatUtil.capitalize(props.data.description || props.data.comment));
+        let shorten = formatUtil.shortenText(props.data.description || props.data.comment, maxLength);
         if (text == shorten) return;
         setIsShorter(true);
         setStyle();
-        setText(generalServices.capitalize(shorten));
+        setText(formatUtil.capitalize(shorten));
     }
 
     const lengthenText = () => {
         let data = props.data.description ? props.data.description : props.data.comment;
-        if(data.length <= maxLength) return;
+        if (data.length <= maxLength) return;
         setStyle({ overflowY: 'scroll', height: '5vh', paddingRight: '5%' });
-        setText(generalServices.capitalize(props.data.description || props.data.comment));
+        setText(formatUtil.capitalize(props.data.description || props.data.comment));
         setIsShorter(false);
     }
 
     const toggleExpand = () => {
         !isShorter ? shortenText() : lengthenText();
     }
-    
+
     return (
         <InlineCont id="InlineDesc">
             <ButtonCol>

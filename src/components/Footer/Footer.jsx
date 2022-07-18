@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import { generalServices } from "../../services/generalServices";
 import { Link, useLocation, useParams } from 'react-router-dom';
 import { AddIcon, MBFooter, MBFooterItem, MBFooterRow } from "./Footer.styled";
 

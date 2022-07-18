@@ -1,5 +1,5 @@
 import React from "react";
-import { generalServices } from "../../services/generalServices";
+import { formatUtil } from "../../utils/format";
 import { View, MainTitle, TextBold, TextCapi, TextLine, Img } from "../../pages/Styles.styled";
 import { InfoRow, ImgRow, ScrollableDesc, PrevContainer, PrevNav, PreNavButtonsCol, PreNavTitleCol } from "./Cards.styled";
 import { InlineInfo } from "../InlineData/InlineInfo";
@@ -15,7 +15,7 @@ export const PreviewCard = (props) => {
                         <CrossButton action={props.cancel} />
                     </PreNavButtonsCol>
                     <PreNavTitleCol>
-                        <MainTitle>{generalServices.capitalize(props.title)} moment</MainTitle>
+                        <MainTitle>{formatUtil.capitalize(props.title)} moment</MainTitle>
                     </PreNavTitleCol>
                     <PreNavButtonsCol>
                         <TickButton action={props.confirm} />

@@ -4,15 +4,15 @@ import { VSignin } from '../../views/VSignin/VSignin';
 import { ViewContainer } from '../Styles.styled';
 import { InfoModal } from '../../components/Modals/InfoModal';
 import { useNavigate } from 'react-router-dom';
-import { generalServices } from '../../services/generalServices';
+import {formatUtil} from '../../utils/format';
 import { userAPIService } from '../../services/userAPIService';
-import { dataService } from '../../services/dataServices';
+import { authUtil } from '../../utils/auth';
 
 
 
 export const Login = (props) => {
     const [location, setLocation] = useState(window.location.pathname.toString().substring(1, (window.location.pathname.toString().length)));
-    
+
     const [msg, setMsg] = useState();
 
     const navigate = useNavigate();
@@ -33,7 +33,7 @@ export const Login = (props) => {
         userAPIService.createUser(data).then(res => {
             if (!res) { openModal(`User: ${data.email} already exists, please log yourself in.`); return; }
             localStorage.setItem('log', JSON.stringify({ "log_id": res.id }));
-            setTimeout(()=>{openModal(`${generalServices.capitalizeName(res.name)} registred succesfully!`);},ms*.5)
+            setTimeout(() => { openModal(`${formatUtil.capitalizeName(res.name)} registred succesfully!`); }, ms * .5)
             setTimeout(() => { navigate('/home'); }, ms);
         })
     }
@@ -41,7 +41,7 @@ export const Login = (props) => {
     const login = (data) => {
         userAPIService.logUser(data).then(res => {
             if (!res) { openModal(`User: ${data.email} does not exist or password might be wrong`); return; }
-            setTimeout(()=>{ openModal(`${generalServices.capitalizeName(res.name)} logged succesfully!`);},ms*.5)
+            setTimeout(() => { openModal(`${formatUtil.capitalizeName(res.name)} logged succesfully!`); }, ms * .5)
             localStorage.setItem('log', JSON.stringify({ "log_id": res.id }));
             setTimeout(() => { navigate('/home'); }, ms);
         })
@@ -49,7 +49,7 @@ export const Login = (props) => {
 
     //CHECK IF SOMEONE IS LOGGED
     const checkIfUserLogged = (action) => {
-        const logged = dataService.getLoggedUser();
+        const logged = authUtil.getLoggedUser();
         if (!logged) return;
         openModal(`Please, log out before ${action.split("-").join(" ")}`);
         return;
