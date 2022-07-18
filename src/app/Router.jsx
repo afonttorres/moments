@@ -10,6 +10,8 @@ import { MomentDetail } from '../pages/Detail/Detail'
 import { Searcher } from '../pages/Searcher/Searcher';
 import { Print } from '../pages/Print/Print';
 import { Settings } from '../pages/Settings/Settings';
+import { Likes } from '../pages/Likes/Likes';
+import { Saves } from '../pages/Saves/Saves';
 
 export default function Router() {
     return (
@@ -28,6 +30,8 @@ export default function Router() {
                 <Route path='/profile/:profileId/detail/:momentId' element={<MomentDetail />}></Route>
                 <Route path='/moments/:momentId/print' element={<Print />}></Route>
                 <Route path='/settings' element={<Settings />}></Route>
+                <Route path='/favorites' element={<Likes />}></Route>
+                <Route path='/saved' element={<Saves />}></Route>
             </Routes>
         </BrowserRouter>
     )

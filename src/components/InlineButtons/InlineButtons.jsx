@@ -12,9 +12,9 @@ export const InlineButtons = (props) => {
 
     useEffect(() => {
         setButtons([
-            { button: <LikeButton like={props.like} data={props.moment} />, content: props.moment.liked? parseInt(props.moment.likes)+1 : props.moment.likes }
+            { button: <LikeButton like={props.like} data={props.moment} />, content: props.moment.likesCount }
             , { button: <CommentButton data={props.moment}/>, content: props.moment.commentsCount }
-            , { button: <SaveButton save={props.save} data={props.moment} />, content: props.moment.saved ? parseInt(props.moment.saves)+1 : props.moment.saves }
+            , { button: <SaveButton save={props.save} data={props.moment} />, content: props.moment.savesCount }
         ])
     }, [props])
 

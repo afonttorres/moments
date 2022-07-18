@@ -13,6 +13,9 @@ import { UsersFeed } from '../../components/Feeds/UsersFeed';
 import { userAPIService } from '../../services/userAPIService';
 import { Loader } from '../../components/Loader/Loader';
 import { MainSliderButton } from '../../components/Buttons/Buttons.styled';
+import { likeAPIService } from '../../services/likeAPIService';
+import { saveAPIService } from '../../services/saveAPIService';
+import { useNavigate } from 'react-router-dom';
 
 
 export const Home = () => {
@@ -28,6 +31,8 @@ export const Home = () => {
     const [momentToUpdate, setMomentToUpdate] = useState();
     const [updatedMoment, setUpdatedMoment] = useState();
 
+    const navigate = useNavigate();
+
     const s = 3;
     const ms = s * 1000;
 
@@ -42,9 +47,8 @@ export const Home = () => {
     //GETTERS
     const getData = () => {
         momentAPIService.getAllMoments().then(res => {
-            if (res) {
-                setMoments(res);
-            }
+            if (!res) return;
+            setMoments(res);
         });
     }
 
@@ -112,15 +116,17 @@ export const Home = () => {
 
     //LIKE
     const like = (data) => {
-        momentAPIService.likeMoment(data.id).then(res => {
-            res ? getData() : openModal(`Sorry, you can't like your own moment!`);
+        likeAPIService.like(data.id).then(res => {
+            if (!res) return;
+            res.includes('id') ? getData() : openModal(`Sorry, you can't like your own moment!`);
         })
     }
 
     //SAVE
     const save = (data) => {
-        momentAPIService.saveMoment(data.id).then(res => {
-            res ? getData() : openModal(`Sorry, you can't save your own moment!`);
+        saveAPIService.save(data.id).then(res => {
+            if (!res) return;
+            res.includes('id') ? getData() : openModal(`Sorry, you can't save your own moment!`);
         })
     }
 

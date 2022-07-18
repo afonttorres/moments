@@ -12,6 +12,8 @@ import { ConfirmModal } from "../../components/Modals/ConfirmModal";
 import { momentAPIService } from "../../services/momentAPIService";
 import { commentAPIService } from "../../services/commentAPIService";
 import { Loader } from "../../components/Loader/Loader";
+import { likeAPIService } from "../../services/likeAPIService";
+import { saveAPIService } from "../../services/saveAPIService";
 
 export const MomentDetail = () => {
 
@@ -120,14 +122,14 @@ export const MomentDetail = () => {
 
     //LIKE
     const like = (data) => {
-        momentAPIService.likeMoment(data.id).then(res => {
+        likeAPIService.like(data.id).then(res => {
             res ? getMoment() : openModal(`Sorry, you can't like your own moment!`);
         })
     }
 
     //SAVE
     const save = (data) => {
-        momentAPIService.saveMoment(data.id).then(res => {
+        saveAPIService.save(data.id).then(res => {
             res ? getMoment() : openModal(`Sorry, you can't save your own moment!`);
         })
     }

@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { Col, Img } from "../../pages/Styles.styled";
+import { Col, Img, Row } from "../../pages/Styles.styled";
 
 export const FeedContainer = styled.section`
     height: fit-content;
@@ -90,4 +90,20 @@ export const UserFeed = styled.section`
             width: 5%;
         }
     }
+`;
+
+export const TitleRow = styled(Row)`
+    height: 10vh;
+    width: 85%;
+    margin: 0 auto;
+    position: absolute;
+    top: 0vh;
+    justify-content: flex-start;
+    
+`;
+export const LikesSavesFeed = styled(SearchContainer)`
+    position: absolute;
+    top: calc(10vh + 2vh);
+    width: 99%;
+    margin: 0 auto;
 `;
