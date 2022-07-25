@@ -9,7 +9,7 @@ export const commentAPIService = {
                 return res.data;
             })
             .catch(err => {
-                return err.response.data.message;
+                return { error: err.response.data.message };
             })
         return comments;
     },
@@ -19,7 +19,7 @@ export const commentAPIService = {
                 return res.data;
             })
             .catch(err => {
-                return err.response.data.message;
+                return { error: err.response.data.message };
             })
         return comments;
     },
@@ -29,7 +29,7 @@ export const commentAPIService = {
                 return res.data
             })
             .catch(err => {
-                return err.response.data.message;
+                return { error: err.response.data.message };
             })
         return comment;
     }

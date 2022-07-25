@@ -44,13 +44,14 @@ export const Home = () => {
     const getData = () => {
         momentAPIService.getAllMoments().then(res => {
             if (!res) return;
-            setMoments(res);
+            res.error ? openModal(res.error) : setMoments(res);
         });
     }
 
     const getUsers = () => {
         userAPIService.getAllUsers().then(res => {
-            if (res) setUsers(res);
+            if (!res) return;
+            res.error ? openModal(res.error) : setUsers(res);
         })
     }
 
@@ -61,9 +62,15 @@ export const Home = () => {
 
     const confirmDelete = (data) => {
         closeDialog();
-        setMoments();
         momentAPIService.deleteMoment(data.id).then(res => {
-            !res ? openModal(`Sorry, you can't delete a moment that is not yours.`) : openModal(`Moment with id: ${res.id} erased successfully!`);
+            if (!res) return;
+            if (res.error) {
+                openModal(res.error);
+                //openModal(`Sorry, you can't delete a moment that is not yours.`)
+                return;
+            }
+            setMoments();
+            openModal(`Moment with id: ${res.id} erased successfully!`);
             setTimeout(() => { getData() }, ms * .5)
         })
     }
@@ -86,7 +93,16 @@ export const Home = () => {
 
     const confirmUpdate = () => {
         momentAPIService.updateMoment(formatUtil.objToLowerCase(updatedMoment)).then(res => {
-            if (!res) { openModal(`Sorry, you can't update a moment that is not yours.`); return }
+            if (!res) return;
+            if (res.error) {
+                openModal(res.error);
+                //openModal(`Sorry, you can't update a moment that is not yours.`);
+                if (res.error.includes("Incorrect User")) {
+                    setUpdatedMoment();
+                    setMomentToUpdate();
+                }
+                return;
+            }
             openModal(`Moment with id: ${res.id} updated successfully!`);
             setTimeout(() => {
                 closeModal();
@@ -113,17 +129,17 @@ export const Home = () => {
     //LIKE
     const like = (data) => {
         likeAPIService.like(data.id).then(res => {
-            if (!res) return;
-            console.log(res)
+            if (res === null || res === undefined) return;
             res.error ? openModal(res.error) : getData();
             //openModal(`Sorry, you can't like your own moment!`);
+
         })
     }
 
     //SAVE
     const save = (data) => {
         saveAPIService.save(data.id).then(res => {
-            if (!res) return;
+            if (res === null || res === undefined) return;
             res.error ? openModal(res.error) : getData();
             //openModal(`Sorry, you can't save your own moment!`);
         })

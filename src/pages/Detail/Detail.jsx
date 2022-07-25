@@ -48,23 +48,36 @@ export const MomentDetail = () => {
     //GETTERS
     const getMoment = () => {
         momentAPIService.getMoment(momentId).then(res => {
-            if (res) {
-                setMoment(res);
-                getComments();
-                getUserMomentsIds();
+            if (!res) return;
+            if (res.error) {
+                openModal(res.error);
+                return;
             }
+            setMoment(res);
+            getComments();
+            getUserMomentsIds();
         })
     }
     const getComments = () => {
         commentAPIService.getMomentComents(momentId).then(res => {
-            if (res) setComments(res);
+            if (!res) return;
+            if (res.error) {
+                openModal(res.error);
+                return;
+            }
+            setComments(res);
         })
     }
 
     const getUserMomentsIds = () => {
         if (!profileId) return;
         momentAPIService.getUserMomentsIds(profileId).then(res => {
-            if (res) setMomentsIds(res)
+            if (!res) return;
+            if (res.error) {
+                openModal(res.error);
+                return;
+            }
+            setMomentsIds(res)
         })
     }
 
@@ -87,11 +100,22 @@ export const MomentDetail = () => {
     const confirmUpdate = () => {
         setIsLoading(true);
         momentAPIService.updateMoment(formatUtil.objToLowerCase(updatedMoment)).then(res => {
-            !res ? openModal(`Sorry, you can't update a moment that is not yours.`) : openModal(`Moment with id: ${res.id} updated successfully!`);
-            getMoment();
+            if (!res) return;
             setUpdatedMoment();
-            setMomentToUpdate();
-            setTimeout((() => setIsLoading(false)), ms * 3);
+            setMomentToUpdate()
+            if (res.error) {
+                setIsLoading(false);
+                openModal(res.error);
+                return;
+            }
+            openModal(`Moment with id: ${res.id} updated successfully!`);
+            setTimeout(() => {
+                closeModal();
+            }, ms * .5)
+            setTimeout(() => {
+                getMoment();
+                setTimeout((() => setIsLoading(false)), ms * 3);
+            }, ms);
         })
     }
 
@@ -121,7 +145,7 @@ export const MomentDetail = () => {
     //LIKE
     const like = (data) => {
         likeAPIService.like(data.id).then(res => {
-            if (!res) return;
+            if (res === null || res === undefined) return;
             res.error ? openModal(res.error) : getMoment();
             //openModal(`Sorry, you can't like your own moment!`);
         })
@@ -130,7 +154,7 @@ export const MomentDetail = () => {
     //SAVE
     const save = (data) => {
         saveAPIService.save(data.id).then(res => {
-            if (!res) return;
+            if (res === null || res === undefined) return;
             res.error ? openModal(res.error) : getMoment();
             //openModal(`Sorry, you can't save your own moment!`);
         })
