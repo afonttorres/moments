@@ -1,19 +1,16 @@
 import React, { useEffect, useState } from "react";
-import { Link, useLocation, useParams } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
+import { authUtil } from "../../utils/auth";
 import { AddIcon, MBFooter, MBFooterItem, MBFooterRow } from "./Footer.styled";
 
 export const Footer = (props) => {
-    const path = window.location.pathname;
-    const [location, setLocation] = useState(path);
-    const [profileId, setProfileId] = useState(useParams().profileId);
-    const [loggedUser, setLoggedUser] = useState();
-
-
+    const path = useLocation().pathname;
+    const location = path;
 
     const [output, setOutput] = useState([]);
 
     useEffect(() => {
-        let log = JSON.parse(localStorage.getItem('log'));
+        let log = authUtil.getLoggedUser();
         setOutput([
             { button: "home", content: <i className="fa-solid fa-house"></i> },
             { button: "search", content: <i className="fa-solid fa-magnifying-glass"></i> },
@@ -21,8 +18,6 @@ export const Footer = (props) => {
             { button: "notifications", content: <i className="fa-solid fa-bell"></i> },
             { button: log ? "profile" : "log-in", content: <i className="fa-solid fa-circle-user"></i> }
         ])
-        if(!log) return;
-        setLoggedUser(log.log_id);
     }, [])
 
     return (

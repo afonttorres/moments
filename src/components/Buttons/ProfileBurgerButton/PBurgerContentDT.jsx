@@ -19,12 +19,12 @@ export const PBurgerContentDT = (props) => {
         if (!isLoading) return;
     }, [isLoading])
 
-    const [content, setContent] = useState([
+    const content = [
         { icon: 'icon', content: 'settings', action: () => navigate(`/settings`) },
         { icon: 'icon', content: 'saved', action: () => navigate(`/saved`) },
         { icon: 'icon', content: 'favorites', action: () => navigate(`/favorites`) },
         { icon: 'icon', content: 'log out', action: () => logOut() }
-    ]);
+    ];
 
     const logOut = () => {
         setTimeout(() => {

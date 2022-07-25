@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import { Col } from "../../pages/Styles.styled";
 import { Button } from "./Buttons.styled";
 
 export const LikeButton = (props) => {

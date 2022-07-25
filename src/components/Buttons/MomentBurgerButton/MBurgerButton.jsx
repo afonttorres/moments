@@ -1,12 +1,12 @@
 import React, { useState } from "react";
-import { HiddenContainerDT, HiddenContainerMB, Row } from "../../../pages/Styles.styled";
+import { HiddenContainerDT, HiddenContainerMB } from "../../../pages/Styles.styled";
 import { MBurgerContentMB } from "./MBurgerContentMB";
 import { Button } from "../Buttons.styled";
 import { MBurgerContentDT } from "./MBurgerContentDT";
 import { useNavigate } from "react-router-dom";
 
 export const MBurgerButton = (props) => {
-    const [button, setButton] = useState(<i className="fa-solid fa-ellipsis"></i>)
+    const button = <i className="fa-solid fa-ellipsis"></i>;
     const [contetIsOpened, setContentIsOpened] = useState(false);
 
     const navigate = useNavigate();

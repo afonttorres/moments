@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import mockUser from '../../mockUser.json';
 import { useNavigate } from "react-router-dom";
 import { VUpload } from "../../views/VUpload/VUpload";
 import { NoScrollContainer, ViewContainer } from "../Styles.styled";
@@ -10,7 +9,6 @@ import { InfoModal } from "../../components/Modals/InfoModal";
 import { momentAPIService } from "../../services/momentAPIService";
 import { userAPIService } from "../../services/userAPIService";
 import { authUtil } from "../../utils/auth";
-import { Loader } from '../../components/Loader/Loader';
 
 export const Upload = () => {
 
@@ -21,7 +19,6 @@ export const Upload = () => {
     const [moment, setMoment] = useState();
     const [isPreviewActive, setIsPreviewACtive] = useState(false);
     const [msg, setMsg] = useState();
-    const [isLoadding, setIsLoading] = useState(false);
 
     const [loggedId, setLoggedId] = useState();
     const [user, setUser] = useState();
@@ -92,7 +89,6 @@ export const Upload = () => {
                 <>{isPreviewActive ? <NoScrollContainer><PreviewCard moment={moment} confirm={confirm} cancel={cancel} title={'upload'} /></NoScrollContainer> : null}</>
             </ViewContainer>
             <>{msg !== undefined ? <InfoModal msg={msg} closeModal={closeModal} /> : null}</>
-            <>{isLoadding ? <Loader /> : null}</>
         </>
     )
 }

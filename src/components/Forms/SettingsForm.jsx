@@ -3,7 +3,7 @@ import { useState } from "react";
 import { formatUtil } from "../../utils/format";
 import { BgButton } from "../Buttons/Buttons.styled";
 import { SetFormRow, Input, Label, SetBtnPos, SetForm } from "./Forms.styled";
-import {regexUtil} from '../../utils/regex';
+// import {regexUtil} from '../../utils/regex';
 
 export const SettingsForm = ({ user, checkUser, showPreview, update, openModal }) => {
 

@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import commentsData from '../../mockComments.json'
 import { Img, Touchable, View } from "../../pages/Styles.styled";
 import { MCImgRow, MCInfoRow } from "./Cards.styled";
 import { InlineDesc } from '../InlineData/InlineDesc';
@@ -7,15 +6,13 @@ import { Comments } from "../Comments/Comments";
 import { InlineInfo } from "../InlineData/InlineInfo";
 import { InlineButtons } from "../InlineButtons/InlineButtons";
 import { CommentForm } from "../Forms/CommentForm";
-import { useEffect } from "react";
 
 export const DetailCardMB = (props) => {
-    const [comments, setComment] = useState(commentsData);
     const [startTouch, setStartTouch] = useState();
 
     const setDirection = (e) => {
         const endTouch = e.changedTouches[0].screenY;
-        if(startTouch == endTouch || startTouch -20 < endTouch) return;
+        if(startTouch === endTouch || startTouch -20 < endTouch) return;
         startTouch > endTouch ? props.slide('forward') : props.slide('back');
     }
 
@@ -33,7 +30,7 @@ export const DetailCardMB = (props) => {
                     <InlineDesc data={props.moment} />
                 </MCInfoRow>
             </Touchable>
-            {props.comments.length >= 1 ? <Comments comments={props.comments} user={props.user} /> : <Comments comments={comments} />}
+            {props.comments ? <Comments comments={props.comments} user={props.user} /> : null}
             <CommentForm moment={props.moment} createComment={props.createComment} />
         </View>
     )

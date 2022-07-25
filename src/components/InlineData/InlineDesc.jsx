@@ -23,7 +23,7 @@ export const InlineDesc = (props) => {
     const shortenText = () => {
         setText(formatUtil.capitalize(props.data.description || props.data.comment));
         let shorten = formatUtil.shortenText(props.data.description || props.data.comment, maxLength);
-        if (text == shorten) return;
+        if (text === shorten) return;
         setIsShorter(true);
         setStyle();
         setText(formatUtil.capitalize(shorten));

@@ -9,12 +9,12 @@ export const PBurgerContentMB = (props) => {
 
     const navigate = useNavigate();
 
-    const [content, setContent] = useState([
+    const content = [
         { icon: 'icon', content: 'settings', action: () => navigate(`/settings`) },
         { icon: 'icon', content: 'saved', action: () => navigate(`/saved`) },
         { icon: 'icon', content: 'favorites', action: () => navigate(`/favorites`) },
         { icon: 'icon', content: 'log out', action: () => logOut() }
-    ]);
+    ];
 
     const [bottom, setBottom] = useState('-35vh');
     const [startTouch, setStartTouch] = useState();
@@ -78,8 +78,8 @@ export const PBurgerContentMB = (props) => {
                 </BBMContent>
             </NoScrollContainer>
             :
-            <Loader index={'var(--last-i)'} bg={'var(--main-bg)'} position={'fixed'}/>
-            }
+            <Loader index={'var(--last-i)'} bg={'var(--main-bg)'} position={'fixed'} />
+        }
             <>{msg !== undefined ? <InfoModal id='MODAL' msg={msg} closeModal={closeModal} /> : null}</>
         </>
     )

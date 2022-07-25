@@ -3,7 +3,7 @@ import { formatUtil } from "../../utils/format";
 import { CancelButton } from "../Buttons";
 import { Button } from "../Buttons/Buttons.styled";
 import { ComBar, ComForm, FCancelCol, FIconCol, Input } from "./Forms.styled";
-import {regexUtil} from '../../utils/regex';
+// import {regexUtil} from '../../utils/regex';
 
 export const CommentForm = (props) => {
     const [comment, setComment] = useState('');
@@ -21,8 +21,8 @@ export const CommentForm = (props) => {
     }
 
     const sanitize = () => {
-        if ((comment === undefined || comment == "")) { return false; }
-        if (typeof comment !== 'string' || comment == ' ') { return false; }
+        if ((comment === undefined || comment === "")) { return false; }
+        if (typeof comment !== 'string' || comment === ' ') { return false; }
         return true;
     }
 

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 import { LogForm } from "../../components/Forms/LogForm";
 import { TextBold, Text, Title, View, MainContainer, TextLine } from '../../pages/Styles.styled';

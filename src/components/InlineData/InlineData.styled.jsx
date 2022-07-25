@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { Col, DetailText, Row, Text } from "../../pages/Styles.styled";
+import { Col, DetailText, Row } from "../../pages/Styles.styled";
 
 export const InlineCont = styled(Row)`
     min-height: 5vh;

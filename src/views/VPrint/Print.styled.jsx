@@ -35,7 +35,7 @@ export const PrintImgContainer = styled(Col)`
 `;
 
 export const PrintInfoContainer = styled(Col)`
-    height: calc(7vh + (6vh * ${props => props.comments == 0 ? 1 : props.comments}));
+    height: calc(7vh + (6vh * ${props => props.comments === 0 ? 1 : props.comments}));
     width: 85%;
     margin: 0 auto;
 `;

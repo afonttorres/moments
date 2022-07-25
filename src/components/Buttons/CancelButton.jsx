@@ -1,16 +1,14 @@
-import React, { useState, useEffect } from "react";
-import { Col, DetailText } from "../../pages/Styles.styled";
+import React from "react";
+import { DetailText } from "../../pages/Styles.styled";
 import { Button } from "./Buttons.styled";
 
 export const CancelButton = (props) => {
-    const [content, setContent] = useState('Cancel')
+    const content = 'cancel';
     return (
-        <Col>
-            <Button onClick={props.action}>
-                <DetailText>
-                    {content}
-                </DetailText>
-            </Button>
-        </Col>
+        <Button onClick={props.action}>
+            <DetailText>
+                {content}
+            </DetailText>
+        </Button>
     )
 }

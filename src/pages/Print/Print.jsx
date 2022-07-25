@@ -3,10 +3,7 @@ import { useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { momentAPIService } from '../../services/momentAPIService';
 import { commentAPIService } from "../../services/commentAPIService";
-import { Col, ViewContainer } from "../Styles.styled";
-import { PreviewCard } from "../../components/Cards/PreviewCard";
-import { Comments } from "../../components/Comments/Comments";
-import { InlineDesc } from "../../components/InlineData/InlineDesc";
+import { ViewContainer } from "../Styles.styled";
 import { VPrint } from "../../views/VPrint/VPrint";
 
 export const Print = () => {

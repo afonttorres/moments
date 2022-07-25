@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { formatUtil } from "../../utils/format";
 import { useNavigate, useParams } from "react-router-dom";
-import { HiddenContainerDT, HiddenContainerMB, ViewContainer, NoScrollContainer, View, OverlayContainer } from "../Styles.styled";
+import { HiddenContainerDT, HiddenContainerMB, ViewContainer, NoScrollContainer, View } from "../Styles.styled";
 import { VDetailDT } from "../../views/VDetail/VDetailDT";
 import { VDetailMB } from "../../views/VDetail/VDetailMB";
 import { VUpload } from "../../views/VUpload";
@@ -17,7 +17,7 @@ import { saveAPIService } from "../../services/saveAPIService";
 export const MomentDetail = () => {
 
     const [momentId, setMomentId] = useState(useParams().momentId);
-    const [profileId, setProfileId] = useState(useParams().profileId);
+    const { profileId } = useParams();
 
     const [moment, setMoment] = useState();
     const [comments, setComments] = useState();
@@ -26,9 +26,8 @@ export const MomentDetail = () => {
     const [question, setQuestion] = useState();
     const [dialogData, setDialogData] = useState();
 
-    const path = window.location.pathname;
-    const [location, setLocation] = useState(path);
-    const [nextLocation, setNextLocation] = useState(formatUtil.cutString(path, "/", "/detail"));
+    const location = window.location.pathname;
+    const nextLocation = formatUtil.cutString(location, "/", "/detail");
 
     const [isUpdateActive, setIsUpdateActive] = useState(false);
     const [momentToUpdate, setMomentToUpdate] = useState();
@@ -92,7 +91,7 @@ export const MomentDetail = () => {
             getMoment();
             setUpdatedMoment();
             setMomentToUpdate();
-            setTimeout((() => setIsLoading(false)), ms*3);
+            setTimeout((() => setIsLoading(false)), ms * 3);
         })
     }
 
@@ -122,14 +121,18 @@ export const MomentDetail = () => {
     //LIKE
     const like = (data) => {
         likeAPIService.like(data.id).then(res => {
-            res ? getMoment() : openModal(`Sorry, you can't like your own moment!`);
+            if (!res) return;
+            res.error ? openModal(res.error) : getMoment();
+            //openModal(`Sorry, you can't like your own moment!`);
         })
     }
 
     //SAVE
     const save = (data) => {
         saveAPIService.save(data.id).then(res => {
-            res ? getMoment() : openModal(`Sorry, you can't save your own moment!`);
+            if (!res) return;
+            res.error ? openModal(res.error) : getMoment();
+            //openModal(`Sorry, you can't save your own moment!`);
         })
     }
 
@@ -185,7 +188,7 @@ export const MomentDetail = () => {
         <>{moment !== undefined && comments !== undefined && !isLoading ?
             <ViewContainer>
                 <HiddenContainerMB>
-                    {!isUpdateActive && updatedMoment == undefined ?
+                    {!isUpdateActive && updatedMoment === undefined ?
                         <VDetailDT moment={moment} comments={comments} location={location} nextLocation={nextLocation} update={update} erase={erase} like={like} save={save} slide={slide} createComment={createComment} />
                         : null}
                 </HiddenContainerMB>

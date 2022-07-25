@@ -1,6 +1,5 @@
 import React from "react";
 import { View, TitleCapi, MainContainer } from "../../pages/Styles.styled";
-import { Link } from 'react-router-dom';
 import { MomentForm } from '../../components/Forms/MomentForm';
 import { BackButton } from "../../components/Buttons/BackButton";
 import { useEffect } from "react";

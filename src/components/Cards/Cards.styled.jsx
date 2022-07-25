@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { Col, Container, DetailText, Img, Row, Text } from "../../pages/Styles.styled";
+import { Col, DetailText, Img, Row } from "../../pages/Styles.styled";
 
 export const SCard = styled.article`
     height: 30em;

@@ -1,11 +1,10 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { useLocation, useNavigate } from "react-router-dom";
-import { Col } from "../../pages/Styles.styled";
 import { Button } from "./Buttons.styled";
 
 export const CommentButton = ({ data }) => {
-    const [content, setContent] = useState(<i className="fa-regular fa-comment-dots"></i>);
-    const [location] = useState(useLocation().pathname);
+    const content = <i className="fa-regular fa-comment-dots"></i>;
+    const location = useLocation().pathname;
 
 
     const navigate = useNavigate();

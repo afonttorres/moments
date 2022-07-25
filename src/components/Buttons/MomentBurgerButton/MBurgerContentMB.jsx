@@ -1,15 +1,15 @@
 import React, { useState, useEffect } from "react";
-import { NoScrollContainer, Row } from "../../../pages/Styles.styled";
+import { NoScrollContainer } from "../../../pages/Styles.styled";
 import { BBMBar, BBMContent, BgButton } from "../Buttons.styled";
 
 
 export const MBurgerContentMB = (props) => {
 
-    const [content, setContent] = useState([
+    const content = [
         { icon: 'icon', content: 'edit', action: props.update },
         { icon: 'icon', content: 'delete', action: props.erase },
         { icon: 'icon', content: 'print', action: props.print }
-    ]);
+    ];
 
     const [bottom, setBottom] = useState('-25vh');
     const [startTouch, setStartTouch] = useState();

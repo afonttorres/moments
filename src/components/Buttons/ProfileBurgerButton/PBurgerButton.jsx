@@ -5,7 +5,7 @@ import { PBurgerContentMB } from "./PBurgerContentMB";
 import { Button } from "../Buttons.styled";
 import { useState } from "react";
 export const PBurgerButton = (props) =>{
-    const [button, setButton] = useState(<i className="fa-solid fa-bars"></i>)
+    const button = <i className="fa-solid fa-bars"></i>;
     const [contetIsOpened, setContentIsOpened] = useState(false);
 
     const toggleContent = () => {

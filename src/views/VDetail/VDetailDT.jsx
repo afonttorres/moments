@@ -1,14 +1,12 @@
-import React, { useState } from "react";
+import React from "react";
 import { OverlayContainer, NoScrollContainer } from "../../pages/Styles.styled";
 import { DetailCardDT } from "../../components/Cards/DetailCardDT";
 import { CloseButton } from "../../components/Buttons/CloseButton";
 import { SliderButtons } from "../../components/Buttons";
 import { Profile } from "../../pages/Profile/Profile";
 import { Home } from "../../pages/Home/Home";
-import { useParams } from "react-router-dom";
 
 export const VDetailDT = (props) => {
-
     
     return (
         <>

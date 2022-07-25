@@ -6,11 +6,10 @@ import { BurgerContainer, ButtonsRow, DescRow, DataRow, AvatarContainer, Banner,
 import { BgButton, NoBgButton } from "../Buttons/Buttons.styled";
 import { PBurgerButton } from "../Buttons";
 import { useLocation } from 'react-router-dom';
-import { useState } from "react";
 
 export const Header = (props) => {
 
-    const [location, setLocation] = useState(useLocation(0).pathname);
+    const location = useLocation(0).pathname;
 
     const content = {
         buttons:

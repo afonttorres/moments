@@ -30,7 +30,7 @@ export const Card = (props) => {
     const shortenText = () => {
         setText(props.moment.description);
         let shorten = formatUtil.shortenText(props.moment.description, maxLength);
-        if (text == shorten) return;
+        if (text === shorten) return;
         setIsShorter(true);
         setStyle();
         setText(formatUtil.capitalize(shorten));

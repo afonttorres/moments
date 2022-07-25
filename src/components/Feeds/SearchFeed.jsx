@@ -1,14 +1,12 @@
-import React, { useState } from "react";
-import { useEffect } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
-import data from '../../mockMoments.json';
 import { TextCapi, TitleCapi, Col } from "../../pages/Styles.styled";
 import { SearchContainer, SuggestionsCol, FeedImg } from "./Feed.styled";
 
 export const SearchFeed = (props) => {
 
     return (
-        <SearchContainer>{props.suggestions == undefined ?
+        <SearchContainer>{props.suggestions === undefined ?
             <>{props.moments.map((moment, key) => (
                 <Link key={key} to={`/profile/${moment.creator.id}/detail/${moment.id}`}><FeedImg key={key} imgUrl={moment.imgUrl} /></Link>
             ))}

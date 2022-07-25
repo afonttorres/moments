@@ -11,7 +11,7 @@ export const momentAPIService = {
                 return res.data;
             })
             .catch(err => {
-                console.log(err);
+                return err.response.data.message;
             })
         return moments;
     },
@@ -22,7 +22,7 @@ export const momentAPIService = {
                 return res.data;
             })
             .catch(err => {
-                console.log(err);
+                return err.response.data.message;
             })
         return postedMoment;
     },
@@ -32,7 +32,7 @@ export const momentAPIService = {
                 return res.data;
             })
             .catch(err => {
-                console.log(err);
+                return err.response.data.message;
             })
         return deletedMoment;
     },
@@ -43,7 +43,7 @@ export const momentAPIService = {
                 return res.data;
             })
             .catch(err => {
-                console.log(err);
+                return err.response.data.message;
             })
         return updatedMoment;
     },
@@ -52,7 +52,7 @@ export const momentAPIService = {
             return res.data;
         })
             .catch(err => {
-                console.log(err);
+                return err.response.data.message;
             })
         return moment;
     },
@@ -62,7 +62,7 @@ export const momentAPIService = {
                 return res.data;
             })
             .catch(err => {
-                console.log(err);
+                return err.response.data.message;
             })
         return suggestions;
     },
@@ -72,7 +72,7 @@ export const momentAPIService = {
                 return res.data;
             })
             .catch(err => {
-                console.log(err);
+                return err.response.data.message;
             })
         return userMoments;
     },
@@ -88,7 +88,7 @@ export const momentAPIService = {
                 }
             })
             .catch(err => {
-                console.log(err);
+                return err.response.data.message;
             })
         return momentsIds;
     },
@@ -98,7 +98,7 @@ export const momentAPIService = {
                 return res.data;
             })
             .catch(err => {
-                console.log(err)
+                return err.response.data.message;
             })
         return moments;
     },
@@ -108,7 +108,7 @@ export const momentAPIService = {
                 return res.data;
             })
             .catch(err => {
-                console.log(err)
+                return err.response.data.message;
             })
         return moments;
     }

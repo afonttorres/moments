@@ -5,15 +5,15 @@ import { InlineCont } from "../InlineData/InlineData.styled";
 
 export const InlineButtons = (props) => {
     const [buttons, setButtons] = useState([
-        { button: <LikeButton like={props.like} data={props.moment} />, content: props.moment.liked? parseInt(props.moment.likes)+1 : props.moment.likes }
-        , { button: <CommentButton />, content: props.moment.commentsCount}
-        , { button: <SaveButton save={props.save} data={props.moment} />, content: props.moment.saved ? parseInt(props.moment.saves)+1 : props.moment.saves }
+        { button: <LikeButton like={props.like} data={props.moment} />, content: props.moment.likesCount }
+        , { button: <CommentButton />, content: props.moment.commentsCount }
+        , { button: <SaveButton save={props.save} data={props.moment} />, content: props.moment.savesCount }
     ]);
 
     useEffect(() => {
         setButtons([
             { button: <LikeButton like={props.like} data={props.moment} />, content: props.moment.likesCount }
-            , { button: <CommentButton data={props.moment}/>, content: props.moment.commentsCount }
+            , { button: <CommentButton data={props.moment} />, content: props.moment.commentsCount }
             , { button: <SaveButton save={props.save} data={props.moment} />, content: props.moment.savesCount }
         ])
     }, [props])
@@ -28,7 +28,7 @@ export const InlineButtons = (props) => {
             </Col>))}
             <Col></Col>
             <Col>
-                <SendButton moment={props.moment}/>
+                <SendButton moment={props.moment} />
             </Col>
         </InlineCont>
     )

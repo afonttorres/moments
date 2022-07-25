@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import mockUsers from '../../mockUser.json';
 import { Footer } from '../../components/Footer/Footer';
 import { ViewContainer } from '../Styles.styled';
 import { VProfile } from '../../views/VProfile/VProfile';

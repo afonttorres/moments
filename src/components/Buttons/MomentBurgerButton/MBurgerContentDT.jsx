@@ -1,14 +1,14 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { NoScrollContainer} from "../../../pages/Styles.styled";
 import { CloseButton } from "../CloseButton";
 import { BBDContent, BgButton } from "../Buttons.styled";
 
 export const MBurgerContentDT = (props) => {
-    const [content, setContent] = useState([
+    const content = [
         { icon: 'icon', content: 'edit', action: props.update },
         { icon: 'icon', content: 'delete', action: props.erase },
         { icon: 'icon', content: 'print', action: props.print }
-    ]);
+    ];
 
     return (
         <NoScrollContainer id="burgerCont">

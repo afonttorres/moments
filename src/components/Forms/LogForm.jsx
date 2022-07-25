@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Input, Form, Label } from "./Forms.styled";
 import { BgButton } from "../Buttons/Buttons.styled";
-import {regexUtil} from '../../utils/regex';
+// import {regexUtil} from '../../utils/regex';
 
 export const LogForm = (props) => {
 
@@ -17,7 +17,7 @@ export const LogForm = (props) => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        if (props.location == undefined) return;
+        if (props.location === undefined) return;
         setData();
         if (!sanitize()) return;
         setAction();
@@ -42,8 +42,8 @@ export const LogForm = (props) => {
             data[key] = data[key].trim();
             if (data[key] === "" || data[key] === undefined) { props.openModal("Some inputs might be empty."); userData[key] = ''; return false }
             if (typeof data[key] !== "string" || data[key] === ' ') { props.openModal("Wrong type of input!"); userData[key] = ''; return false }
-            if (key == 'username' && data[key].includes(' ')) { props.openModal("Username shouldn't contain spaces."); userData[key] = ''; return false }
-            if (key == "password") {
+            if (key === 'username' && data[key].includes(' ')) { props.openModal("Username shouldn't contain spaces."); userData[key] = ''; return false }
+            if (key === "password") {
                 if (data[key].includes(' ')) { props.openModal("Password shouldn't contain spaces."); userData[key] = ''; return false }
                 if (data[key].length < 7) { props.openModal("Password should have at least 7 characters."); userData[key] = ''; return false }
             }

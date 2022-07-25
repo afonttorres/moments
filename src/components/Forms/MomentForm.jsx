@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useEffect } from "react";
 import { BgButton } from "../Buttons/Buttons.styled";
-import { Form, Input, Label, Button, TextArea } from "./Forms.styled";
+import { Form, Input, Label, TextArea } from "./Forms.styled";
 export const MomentForm = (props) => {
 
     const [moment, setMoment] = useState({

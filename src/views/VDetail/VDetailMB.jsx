@@ -1,6 +1,5 @@
-import React, { useState } from "react";
+import React from "react";
 import { DetailCardMB } from '../../components/Cards/DetailCardMB';
-import {Nav} from '../../components/Navs/Nav';
 import { Footer } from "../../components/Footer/Footer";
 import { MainContainer } from '../../pages/Styles.styled';
 import { DetailNav } from "../../components/Navs/DetailNav";

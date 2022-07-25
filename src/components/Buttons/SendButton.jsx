@@ -1,10 +1,9 @@
-import React, { useState, useEffect } from "react";
-import { Col } from "../../pages/Styles.styled";
+import React, { useState } from "react";
 import { Button } from "./Buttons.styled";
 import {InfoModal} from "../Modals/InfoModal";
 
 export const SendButton = ({moment}) => {
-    const [content, setContent] = useState(<i className="fa-regular fa-paper-plane"></i>);
+    const content = <i className="fa-regular fa-paper-plane"></i>;
     const [msg, setMsg] = useState();
 
     const shareLink = () => {

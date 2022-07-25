@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
-import { Link, useLocation, useParams } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { NavWrapper, NavTitleRow, NavItemsColDT, NavItemsRowDT, NavItemsColMB, NavItemsRowMB, NavItem } from "./Nav.styled";
-import { Col, MainTitle } from '../../pages/Styles.styled';
+import { MainTitle } from '../../pages/Styles.styled';
 import { PBurgerButton } from "../Buttons";
 import {authUtil} from '../../utils/auth';
 
@@ -34,7 +34,7 @@ export const Nav = (props) => {
     const modifyDToutput = () => {
         let data;
         if (!location.includes('home') || location !== '') data = ["home", "upload", "search", "notifications", loggedUser ? 'profile' : 'log in'];
-        if (location == "") { data.splice(data.indexOf('home'), 1); setDToutput(data); return; }
+        if (location === "") { data.splice(data.indexOf('home'), 1); setDToutput(data); return; }
         if (location === 'profile' || location.includes('profile')) setTitle(profileUsername);
         if (location.includes('profile/')) { setDToutput(data); return; }
         data.splice(data.indexOf(location), 1);
