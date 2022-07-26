@@ -36,10 +36,13 @@ export const Settings = () => {
 
     const getUser = () => {
         userAPIService.getUser(loggedId).then(res => {
-            if (res) {
-                setUser(res);
-                setCheckUser(res);
+            if (!res) return;
+            if (res.error) {
+                openModal(res.error);
+                return;
             }
+            setUser(res);
+            setCheckUser(res);
         })
     }
 
@@ -49,10 +52,13 @@ export const Settings = () => {
 
     const update = (data) => {
         userAPIService.updateUser({ ...user, ...data }).then(res => {
-            if (res) {
-                setTimeout(()=>{openModal(`Your settings have been updated successfully!`)}, ms*.5)
-                setTimeout(() => { navigate('/profile') }, ms)
+            if (!res) return;
+            if (res.error) {
+                openModal(res.error);
+                return;
             }
+            setTimeout(() => { openModal(`Your settings have been updated successfully!`) }, ms * .5)
+            setTimeout(() => { navigate('/profile') }, ms)
         })
     }
 

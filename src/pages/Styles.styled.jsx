@@ -100,7 +100,7 @@ export const Row = styled(Container)`
 //TOUCHABLE CONTENT
 export const Touchable = styled(Col)`
     height: fit-content;
-    width: fit-content;
+    width: 100%;
     gap: inherit;
 `;
 

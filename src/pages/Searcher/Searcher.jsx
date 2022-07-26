@@ -20,17 +20,27 @@ export const Searcher = () => {
     }, [])
 
     const getRandomMoments = () => {
-        momentAPIService.getAllMoments().then(res => { if (res) setMoments([...res, ...res, ...res]) });
+        momentAPIService.getAllMoments().then(res => {
+            if (!res) return;
+            if (res.error) {
+                openModal(res.error);
+                return;
+            }
+            setMoments([...res, ...res, ...res])
+        });
     }
 
     const searchMoment = (data) => {
         let search = data.trim().toLowerCase();
         if (search === '' || search === undefined) return;
         momentAPIService.searchMoment(search).then(res => {
-            if (res) {
-                setSuggestions(res);
-                setSearch(search);
+            if (!res) return;
+            if (res.error) {
+                openModal(res.error);
+                return;
             }
+            setSuggestions(res);
+            setSearch(search);
         })
     }
 
@@ -47,12 +57,11 @@ export const Searcher = () => {
         setMsg();
     }
 
-    if(moments)
     return (
         <>
             <ViewContainer>
                 <Nav />
-                <VSearcher moments={moments} searchMoment={searchMoment} cancelSearch={cancelSearch} suggestions={suggestions} search={search} openModal={openModal} />
+                {moments ? <VSearcher moments={moments} searchMoment={searchMoment} cancelSearch={cancelSearch} suggestions={suggestions} search={search} openModal={openModal} /> : null}
                 <Footer />
             </ViewContainer>
             <>{msg !== undefined ? <InfoModal msg={msg} closeModal={closeModal} /> : null}</>

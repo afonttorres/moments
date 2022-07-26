@@ -94,20 +94,16 @@ export const Home = () => {
     const confirmUpdate = () => {
         momentAPIService.updateMoment(formatUtil.objToLowerCase(updatedMoment)).then(res => {
             if (!res) return;
+            setUpdatedMoment();
+            setMomentToUpdate();
             if (res.error) {
                 openModal(res.error);
                 //openModal(`Sorry, you can't update a moment that is not yours.`);
-                if (res.error.includes("Incorrect User")) {
-                    setUpdatedMoment();
-                    setMomentToUpdate();
-                }
                 return;
             }
             openModal(`Moment with id: ${res.id} updated successfully!`);
             setTimeout(() => {
                 closeModal();
-                setUpdatedMoment();
-                setMomentToUpdate();
                 setMoments();
             }, ms * .5)
             setTimeout(() => {

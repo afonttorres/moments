@@ -17,7 +17,9 @@ export const Saves = () =>{
 
     const getData = () =>{
         momentAPIService.getUserSaves().then(res =>{
-            if(res) setMoments(res);
+            if(!res) return;
+            if(res.error) return;
+            setMoments(res);
         })
     }
 

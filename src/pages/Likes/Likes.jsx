@@ -16,7 +16,9 @@ export const Likes = () => {
 
     const getData = () => {
         momentAPIService.getUserLikes().then(res => {
-            if (res) setMoments(res);
+            if(!res) return;
+            if(res.error) return;
+            setMoments(res);
         })
     }
 

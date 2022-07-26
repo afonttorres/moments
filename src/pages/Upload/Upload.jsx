@@ -39,10 +39,13 @@ export const Upload = () => {
     //GETTERS
     const getUser = () => {
         userAPIService.getUser(loggedId).then(res => {
-            if (res) {
-                const castedUser = formatUtil.castObj({ ...res }, ['avatarUrl', 'username', 'id']);
-                setUser(castedUser)
+            if (!res) return;
+            if (res.error) {
+                openModal(res.error);
+                return;
             }
+            const castedUser = formatUtil.castObj({ ...res }, ['avatarUrl', 'username', 'id']);
+            setUser(castedUser)
         })
     }
 
@@ -60,12 +63,15 @@ export const Upload = () => {
 
     const confirm = () => {
         momentAPIService.postMoment(formatUtil.objToLowerCase(moment)).then(res => {
-            if (res) {
-                setMoment();
-                setIsPreviewACtive(false);
-                openModal(`Moment added succesfully!`)
-                setTimeout(() => navigate('/home'), ms*.5);
+            if (!res) return;
+            if (res.error) {
+                openModal(res.error);
+                return;
             }
+            setMoment();
+            setIsPreviewACtive(false);
+            openModal(`Moment added succesfully!`)
+            setTimeout(() => navigate('/home'), ms * .5);
         })
     }
 

@@ -13,8 +13,8 @@ export const Print = () => {
     const { momentId } = useParams();
 
     const navigate = useNavigate();
-    const printDelay = 3*1000;
-    const backDelay = 10*1000;
+    const printDelay = 3 * 1000;
+    const backDelay = 10 * 1000;
 
     useEffect(() => {
         if (!momentId) return;
@@ -29,28 +29,27 @@ export const Print = () => {
 
     const getMoment = () => {
         momentAPIService.getMoment(momentId).then(res => {
-            if (res) {
-                setMoment(res)
-                getComments();
-            }
+            if (!res || res.error) return;
+            setMoment(res)
+            getComments();
         })
     }
 
     const getComments = () => {
         commentAPIService.getMomentComents(momentId).then(res => {
-            if (res) setComments(res);
+            if (!res || res.error) return;
+            setComments(res);
         })
     }
 
     const print = () => {
         window.print();
     }
-
-    if (comments)
-        return (
-            <ViewContainer>
-                <VPrint moment={moment} comments={comments} />
-            </ViewContainer>
-        )
+    
+    return (
+        <ViewContainer>
+            {comments ? <VPrint moment={moment} comments={comments} /> : null}
+        </ViewContainer>
+    )
 
 }

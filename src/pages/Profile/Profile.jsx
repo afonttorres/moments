@@ -41,17 +41,21 @@ export const Profile = (props) => {
 
     //GETTERS
     const getData = (userId) => {
-        momentAPIService.getUserMoments(userId).then(res => { if (res) setMoments(res) })
+        momentAPIService.getUserMoments(userId).then(res => {
+            if (!res) return;
+            if (res.error) return;
+            setMoments(res);
+        })
     }
 
     const getUser = () => {
         let id;
         profileId ? id = profileId : id = loggedId;
         userAPIService.getUser(id).then(res => {
-            if (res) {
-                res.id === parseInt(loggedId) ? setUser({ ...res, logged: true }) : setUser(res);
-                getData(id);
-            }
+            if (!res) return;
+            if (res.error) return;
+            res.id === parseInt(loggedId) ? setUser({ ...res, logged: true }) : setUser(res);
+            getData(id);
         })
     }
 

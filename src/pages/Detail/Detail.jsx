@@ -163,9 +163,12 @@ export const MomentDetail = () => {
     //CREATE COMMENT
     const createComment = (comment) => {
         commentAPIService.postComment(comment).then(res => {
-            if (res) {
-                getMoment();
+            if (!res) return;
+            if (res.error) {
+                openModal(res.error);
+                return;
             }
+            getMoment();
         })
     }
 
