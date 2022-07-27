@@ -137,7 +137,13 @@ export const MomentDetail = () => {
     const confirmDelete = (data) => {
         closeDialog();
         momentAPIService.deleteMoment(data.id).then(res => {
-            !res ? openModal(`Sorry, you can't delete a moment that is not yours.`) : openModal(`Moment with id: ${res.id} erased successfully!`);
+            if (!res) return;
+            if (res.error) {
+                openModal(res.error);
+                //openModal(`Sorry, you can't delete a moment that is not yours.`);
+                return;
+            }
+            openModal(`Moment with id: ${res.id} erased successfully!`);
             setTimeout(() => { navigate('/home'); }, ms);
         })
     }
