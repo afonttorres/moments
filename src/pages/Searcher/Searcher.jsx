@@ -32,7 +32,6 @@ export const Searcher = () => {
 
     const searchMoment = (data) => {
         let search = data.trim().toLowerCase();
-        if (search === '' || search === undefined) return;
         momentAPIService.searchMoment(search).then(res => {
             if (!res) return;
             if (res.error) {

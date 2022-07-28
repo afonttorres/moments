@@ -5,7 +5,6 @@ import { SearchButton } from '../../components/Buttons/SearchButton';
 import { Row } from "../../pages/Styles.styled";
 import { CancelButton } from "../Buttons";
 import { validationUtil } from "../../utils/validation";
-// import {regexUtil} from '../../utils/regex';
 
 export const SearchForm = (props) => {
 
@@ -24,6 +23,7 @@ export const SearchForm = (props) => {
     }
 
     const handleSubmit = (e) => {
+        setIsCancelled(false);
         e.preventDefault();
         if (!sanitize()) return;
         props.searchMoment(search.toLowerCase().trim());
@@ -42,7 +42,8 @@ export const SearchForm = (props) => {
     }
 
     const sanitize = () => {
-        if(!validationUtil.validationSum(search, 'search')) return true;
+        if (!validationUtil.validationSum(search, 'search')) return true;
+        if (isCancelled) return;
         props.openModal(validationUtil.validationSum(search, 'search'));
     }
 

@@ -1,7 +1,7 @@
 import React from "react";
 import { useState } from "react";
 import { formatUtil } from "../../utils/format";
-import { regexUtil, validationUtil } from "../../utils/validation";
+import { validationUtil } from "../../utils/validation";
 import { BgButton } from "../Buttons/Buttons.styled";
 import { SetFormRow, Input, Label, SetBtnPos, SetForm } from "./Forms.styled";
 
@@ -67,6 +67,7 @@ export const SettingsForm = ({ user, checkUser, showPreview, update, openModal }
                 validationUtil.spacing(formData[field], field),
                 validationUtil.regex(formData[field], field)
             ];
+            // eslint-disable-next-line
             validations.forEach(val => { if (val) invalid = val })
         }
         if (invalid) {

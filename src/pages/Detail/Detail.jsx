@@ -227,7 +227,7 @@ export const MomentDetail = () => {
                 </HiddenContainerMB>
 
                 <HiddenContainerDT>
-                    <VDetailMB moment={moment} comments={comments} location={nextLocation} update={update} erase={erase} like={like} save={save} slide={slide} createComment={createComment} />
+                    <VDetailMB moment={moment} comments={comments} location={nextLocation} update={update} erase={erase} like={like} save={save} slide={slide} createComment={createComment} openModal={openModal} />
                 </HiddenContainerDT>
                 <>
                     {isUpdateActive || updatedMoment ?

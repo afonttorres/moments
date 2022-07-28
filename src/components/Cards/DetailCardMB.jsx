@@ -31,7 +31,7 @@ export const DetailCardMB = (props) => {
                 </MCInfoRow>
             </Touchable>
             {props.comments ? <Comments comments={props.comments} user={props.user} /> : null}
-            <CommentForm moment={props.moment} createComment={props.createComment} />
+            <CommentForm moment={props.moment} createComment={props.createComment} openModal={props.openModal}/>
         </View>
     )
 }

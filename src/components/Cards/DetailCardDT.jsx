@@ -21,7 +21,7 @@ export const DetailCardDT = (props) => {
                     <InlineDesc data={props.moment} />
                     {props.comments ? <Comments comments={props.comments} /> : null}
                     <InlineButtons moment={props.moment} width={'90%'} like={props.like} save={props.save} />
-                    <CommentForm moment={props.moment} createComment={props.createComment} />
+                    <CommentForm moment={props.moment} createComment={props.createComment} openModal={props.openModal}/>
                 </DCInfoCol>
             </DCMainRow>
         </MainContainer>

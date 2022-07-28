@@ -5,7 +5,7 @@ import { formatUtil } from "./format";
 export const validationUtil = {
     fields: ['name', 'username', 'email', 'password', 'location', 'description', 'search', 'comment', 'imgUrl', 'avatarUrl', 'bannerUrl'],
     notEmpty(str, field) {
-        if (str !== undefined || str !== null || str.length > 1) return;
+        if (str !== undefined && str !== null && str.length !== 0) return;
         return { msg: `${formatUtil.capitalize(field)} can't be empty.` }
     },
     type(str, field) {
