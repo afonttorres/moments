@@ -18,6 +18,12 @@ export const validationUtil = {
         if (!str.includes(' ')) return;
         return { msg: `${formatUtil.capitalize(field)} can't contain spaces.` }
     },
+    sizing(str, field) {
+        let maxSize = 250;
+        let minSize = 7;
+        if (str.length >= maxSize) return { msg: `${formatUtil.capitalize(field)} should have a maximum of ${maxSize} characters.` }
+        if (str.length <= minSize && field === 'password') return { msg: `${formatUtil.capitalize(field)} should have at least ${minSize} characters.` }
+    },
     regex(str, field) {
         let invalidInputs = ['""', '#', '$', '%', '&', '@', '(', ')', '=', '?', '¿', '!', '¡', '*', '+', '{', '}', '[', ']', '<', '>',
             'à', 'á', 'À', 'Á', 'è', 'é', 'È', 'É', 'í', 'ì', 'Í', 'Ì', 'ó', 'ò', 'Ò', 'Ó', 'ú', 'ù', 'Ú', 'Ù'];
@@ -39,11 +45,30 @@ export const validationUtil = {
             validationUtil.notEmpty(str, field),
             validationUtil.type(str, field),
             validationUtil.spacing(str, field),
+            validationUtil.sizing(str, field),
             validationUtil.regex(str, field)
         ];
         validations.forEach(val => { if (val) invalid = val })
-        if (!invalid) return;
+        if (!invalid) return true;
         return this.print(invalid);
+    },
+    validationSumObj(obj) {
+        let invalid;
+        for (let field in obj) {
+            let validations = [
+                this.notEmpty(obj[field], field),
+                this.type(obj[field], field),
+                this.spacing(obj[field], field),
+                this.sizing(obj[field], field),
+                this.regex(obj[field], field)
+            ];
+            // eslint-disable-next-line
+            validations.forEach(val => { if (val) invalid = val })
+        }
+        if (invalid) {
+            return (this.print(invalid));
+        }
+        return true;
     },
     print(validation) {
         if (!validation) return;

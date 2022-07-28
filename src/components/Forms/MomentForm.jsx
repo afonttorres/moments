@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useEffect } from "react";
+import { validationUtil } from "../../utils/validation";
 import { BgButton } from "../Buttons/Buttons.styled";
 import { Form, Input, Label, TextArea } from "./Forms.styled";
 export const MomentForm = (props) => {
@@ -35,12 +36,12 @@ export const MomentForm = (props) => {
     }
 
     const sanitize = () => {
-        for (let key in moment) {
-            if (moment[key] === "" || moment[key] === undefined) { props.openModal('Some inputs might be empty.'); return false; }
-            if (typeof moment[key] !== 'string') { props.openModal('Wrong type of input!'); return false; }
-            //confirm modal when moment[key] === props.modal[key]
+        const validation = validationUtil.validationSumObj(moment)
+        if (typeof validation !== 'boolean') {
+            props.openModal(validation);
+            return;
         }
-        return true;
+        return validation;
     }
 
     const getFilledInputs = () => {

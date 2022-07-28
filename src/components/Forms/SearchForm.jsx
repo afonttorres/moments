@@ -42,9 +42,13 @@ export const SearchForm = (props) => {
     }
 
     const sanitize = () => {
-        if (!validationUtil.validationSum(search, 'search')) return true;
+        const validation = validationUtil.validationSum(search, 'search');
         if (isCancelled) return;
-        props.openModal(validationUtil.validationSum(search, 'search'));
+        if (typeof validation !== 'boolean') {
+            props.openModal(validation);
+            return;
+        }
+        return validation;
     }
 
     return (

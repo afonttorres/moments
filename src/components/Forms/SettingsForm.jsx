@@ -51,6 +51,7 @@ export const SettingsForm = ({ user, checkUser, showPreview, update, openModal }
 
     const updateData = (e) => {
         e.preventDefault();
+        console.log(sanitize())
         if (!sanitize()) return;
         formData.username = formData.username.toLowerCase();
         update(formatUtil.objToTrimed(formData));
@@ -59,22 +60,12 @@ export const SettingsForm = ({ user, checkUser, showPreview, update, openModal }
 
 
     const sanitize = () => {
-        let invalid;
-        for (let field in formData) {
-            let validations = [
-                validationUtil.notEmpty(formData[field], field),
-                validationUtil.type(formData[field], field),
-                validationUtil.spacing(formData[field], field),
-                validationUtil.regex(formData[field], field)
-            ];
-            // eslint-disable-next-line
-            validations.forEach(val => { if (val) invalid = val })
-        }
-        if (invalid) {
-            openModal(validationUtil.print(invalid));
+        const validation = validationUtil.validationSumObj(formData)
+        if (typeof validation !== 'boolean') {
+            openModal(validation);
             return;
         }
-        return true;
+        return validation;
     }
 
     return (

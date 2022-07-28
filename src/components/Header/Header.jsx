@@ -43,7 +43,7 @@ export const Header = (props) => {
                 <DescRow>
                     <Col>
                         <TextBold style={{ textTransform: 'capitalize' }}> {props.user.name}</TextBold>
-                        <DetailText>{props.user.description ? props.user.description.substring(0, 100) : 'Go to settings to update your profile!'}</DetailText>
+                        <DetailText>{props.user.description ? props.user.description : 'Go to settings to update your profile!'}</DetailText>
                     </Col>
                 </DescRow>
                 <ButtonsRow>

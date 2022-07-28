@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Input, Form, Label } from "./Forms.styled";
 import { BgButton } from "../Buttons/Buttons.styled";
-// import {regexUtil} from '../../utils/regex';
+import { validationUtil } from "../../utils/validation";
 
 export const LogForm = (props) => {
 
@@ -37,22 +37,12 @@ export const LogForm = (props) => {
         setUserData(userData);
     }
     const sanitize = () => {
-        let data = userData;
-        for (let key in userData) {
-            data[key] = data[key].trim();
-            if (data[key] === "" || data[key] === undefined) { props.openModal("Some inputs might be empty."); userData[key] = ''; return false }
-            if (typeof data[key] !== "string" || data[key] === ' ') { props.openModal("Wrong type of input!"); userData[key] = ''; return false }
-            if (key === 'username' && data[key].includes(' ')) { props.openModal("Username shouldn't contain spaces."); userData[key] = ''; return false }
-            if (key === "password") {
-                if (data[key].includes(' ')) { props.openModal("Password shouldn't contain spaces."); userData[key] = ''; return false }
-                if (data[key].length < 7) { props.openModal("Password should have at least 7 characters."); userData[key] = ''; return false }
-            }
-            if (key !== "password" && data.password.length >= 7) {
-                data[key] = data[key].toLowerCase();
-            }
-            setUserData(data);
+        const validation = validationUtil.validationSumObj(userData)
+        if (typeof validation !== 'boolean') {
+            props.openModal(validation);
+            return;
         }
-        return true;
+        return validation;
     }
 
     const setAction = () => {

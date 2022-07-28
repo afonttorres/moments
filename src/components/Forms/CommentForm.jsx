@@ -23,9 +23,13 @@ export const CommentForm = (props) => {
     }
 
     const sanitize = () => {
-        if (!validationUtil.validationSum(comment, 'comment')) return true;
+        const validation = validationUtil.validationSum(comment, 'comment');
         if (isCancelled) return;
-        props.openModal(validationUtil.validationSum(comment, 'comment'));
+        if (typeof validation !== 'boolean') {
+            props.openModal(validation);
+            return;
+        }
+        return validation;
     }
 
     const resetValues = () => {
