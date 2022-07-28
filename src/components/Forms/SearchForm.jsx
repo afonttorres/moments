@@ -4,6 +4,7 @@ import { SearcherForm, Input, FCancelCol, SearchBar, FIconCol } from "./Forms.st
 import { SearchButton } from '../../components/Buttons/SearchButton';
 import { Row } from "../../pages/Styles.styled";
 import { CancelButton } from "../Buttons";
+import { validationUtil } from "../../utils/validation";
 // import {regexUtil} from '../../utils/regex';
 
 export const SearchForm = (props) => {
@@ -41,9 +42,8 @@ export const SearchForm = (props) => {
     }
 
     const sanitize = () => {
-        if ((search === undefined || search === "") && !isCancelled) { props.openModal('Search input might be empty.'); setSearch(''); return false; }
-        if (typeof search !== 'string' || search === ' ') { props.openModal('Wrong type of input!'); setSearch(''); return false; }
-        return true;
+        if(!validationUtil.validationSum(search, 'search')) return true;
+        props.openModal(validationUtil.validationSum(search, 'search'));
     }
 
     return (

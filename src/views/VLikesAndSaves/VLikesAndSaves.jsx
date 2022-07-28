@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { TitleRow, FeedImg, LikesSavesFeed } from "../../components/Feeds/Feed.styled";
 import { MainTitle, View } from "../../pages/Styles.styled";
 
@@ -11,7 +12,7 @@ export const VLikesAndSaves = ({ moments, adj }) => {
             </TitleRow>
             <LikesSavesFeed>
                 {moments.map((moment, key) => (
-                    <FeedImg imgUrl={moment.imgUrl} />
+                    <Link to={`/profile/${moment.creator.id}/detail/${moment.id}`}><FeedImg imgUrl={moment.imgUrl} /></Link>
                 )).reverse()}
             </LikesSavesFeed>
         </View>

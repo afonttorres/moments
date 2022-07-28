@@ -24,6 +24,13 @@ export const formatUtil = {
         }
         return lower;
     },
+    objToTrimed(obj) {
+        let trimed = { ...obj }
+        for (let key in obj) {
+            if (typeof obj[key] === 'string') trimed = { ...trimed, [key]: obj[key].trim() }
+        }
+        return trimed;
+    },
     castObj(obj, remainingKeys) {
         let newObj = {};
         for (let key in obj) {
@@ -32,18 +39,5 @@ export const formatUtil = {
             }
         }
         return newObj
-    },
-    regex(str, field) {
-        let invalidInputs = ['""', '#', '$', '%', '&', '(', ')', '=', '?', '¿', '!', '¡', '*', '+', '{', '}', '[', ']', '<', '>'];
-        let inputs = [];
-        if (field.includes('Url')) return;
-        if (field.includes('description')) invalidInputs = invalidInputs.filter(input => input !== '!' && input !== '?');
-        invalidInputs.forEach(input => {
-            if (str.includes(input)) {
-                inputs.push(input);
-            }
-        })
-        if (inputs.length === 0) return;
-        return inputs;
     }
 }

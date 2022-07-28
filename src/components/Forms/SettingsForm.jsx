@@ -1,9 +1,9 @@
 import React from "react";
 import { useState } from "react";
 import { formatUtil } from "../../utils/format";
+import { regexUtil, validationUtil } from "../../utils/validation";
 import { BgButton } from "../Buttons/Buttons.styled";
 import { SetFormRow, Input, Label, SetBtnPos, SetForm } from "./Forms.styled";
-// import {regexUtil} from '../../utils/regex';
 
 export const SettingsForm = ({ user, checkUser, showPreview, update, openModal }) => {
 
@@ -51,26 +51,29 @@ export const SettingsForm = ({ user, checkUser, showPreview, update, openModal }
 
     const updateData = (e) => {
         e.preventDefault();
-        let data = sanitize();
-        if (!data) return;
-        update(data);
+        if (!sanitize()) return;
+        formData.username = formData.username.toLowerCase();
+        update(formatUtil.objToTrimed(formData));
         resetInputs();
     }
 
 
     const sanitize = () => {
-        let data;
+        let invalid;
         for (let field in formData) {
-            if (typeof formData[field] !== 'string') { openModal(`Wrong type of input`); return };
-            if (formData[field].length < 1) { openModal(`Some inputs might be empty`); return };
-            data = { ...data, [field]: formData[field].trim() };
-            let token = formatUtil.regex(formData[field], field);
-            if (token) { openModal(`${formatUtil.capitalize(field)} can't contain ${token}`); return };
-            if (field.includes('username') && formData[field].includes(' ')) { openModal(`Username can't contain spaces`); return };
-            if (!field.includes('description') || field.includes('Url'))
-                data = { ...data, [field]: formData[field].toLowerCase() };
+            let validations = [
+                validationUtil.notEmpty(formData[field], field),
+                validationUtil.type(formData[field], field),
+                validationUtil.spacing(formData[field], field),
+                validationUtil.regex(formData[field], field)
+            ];
+            validations.forEach(val => { if (val) invalid = val })
         }
-        return data;
+        if (invalid) {
+            openModal(validationUtil.print(invalid));
+            return;
+        }
+        return true;
     }
 
     return (
