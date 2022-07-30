@@ -13,6 +13,9 @@ import { commentAPIService } from "../../services/commentAPIService";
 import { Loader } from "../../components/Loader/Loader";
 import { likeAPIService } from "../../services/likeAPIService";
 import { saveAPIService } from "../../services/saveAPIService";
+import { Profile } from "../../pages/Profile/Profile";
+import { Home } from "../../pages/Home/Home";
+
 
 export const MomentDetail = () => {
 
@@ -222,7 +225,11 @@ export const MomentDetail = () => {
             <ViewContainer>
                 <HiddenContainerMB>
                     {!isUpdateActive && updatedMoment === undefined ?
-                        <VDetailDT moment={moment} comments={comments} location={location} nextLocation={nextLocation} update={update} erase={erase} like={like} save={save} slide={slide} createComment={createComment} />
+                        <>
+                            <VDetailDT moment={moment} comments={comments} location={location} nextLocation={nextLocation} update={update} erase={erase} like={like} save={save} slide={slide} createComment={createComment} />
+                            <>{location.includes("profile") ? <Profile /> : <Home />}</>
+                        </>
+
                         : null}
                 </HiddenContainerMB>
 

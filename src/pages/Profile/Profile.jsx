@@ -67,15 +67,9 @@ export const Profile = (props) => {
     }
 
     return (
-        <>
-            {user ?
-                <ViewContainer>
-                    <VProfile user={user} moments={moments} />
-                    <Footer />
-                </ViewContainer>
-                :
-                <Loader />
-            }
-        </>
+        <ViewContainer>
+            {user ? <VProfile user={user} moments={moments} /> : <Loader />}
+            <Footer />
+        </ViewContainer>
     );
 }

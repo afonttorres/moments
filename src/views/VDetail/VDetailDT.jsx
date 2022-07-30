@@ -1,13 +1,23 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { OverlayContainer, NoScrollContainer } from "../../pages/Styles.styled";
 import { DetailCardDT } from "../../components/Cards/DetailCardDT";
 import { CloseButton } from "../../components/Buttons/CloseButton";
 import { SliderButtons } from "../../components/Buttons";
-import { Profile } from "../../pages/Profile/Profile";
-import { Home } from "../../pages/Home/Home";
 
 export const VDetailDT = (props) => {
-    
+
+
+    const s = 3;
+    const ms = s * 1000;
+    const [timerOn, setTimerOn] = useState(false);
+
+    useEffect(() => {
+        setTimeout(() => {
+            setTimerOn(true);
+        }, ms);
+    }, [timerOn])
+
+    if(timerOn)
     return (
         <>
             <NoScrollContainer>
@@ -17,7 +27,6 @@ export const VDetailDT = (props) => {
                 </OverlayContainer>
                 {props.location.includes("profile") ? <SliderButtons slide={props.slide} /> : null}
             </NoScrollContainer>
-            <>{props.location.includes("profile") ? <Profile /> : <Home />}</>
         </>
     )
 }
