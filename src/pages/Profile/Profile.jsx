@@ -5,8 +5,8 @@ import { VProfile } from '../../views/VProfile/VProfile';
 import { useLocation, useParams } from 'react-router-dom';
 import { momentAPIService } from '../../services/momentAPIService';
 import { userAPIService } from '../../services/userAPIService';
-import { authUtil } from '../../utils/auth';
 import { Loader } from '../../components/Loader/Loader';
+import { AuthService } from '../../services/AuthService';
 
 
 export const Profile = (props) => {
@@ -26,7 +26,7 @@ export const Profile = (props) => {
     }, [])
 
     useEffect(() => {
-        // if (!loggedId) return;
+        if (!loggedId) return;
         setUser();
         setTimeout(() => { getUser() }, ms)
     }, [profileId, loggedId, location]);
@@ -61,9 +61,9 @@ export const Profile = (props) => {
 
     //LOGGED
     const findLogged = () => {
-        const logged = authUtil.getLoggedUser();
+        const logged = AuthService.getAuth();
         if (!logged) return;
-        setLoggedId(logged);
+        setLoggedId(logged.id);
     }
 
     return (

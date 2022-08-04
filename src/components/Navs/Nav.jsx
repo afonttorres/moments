@@ -3,7 +3,7 @@ import { Link, useLocation } from 'react-router-dom';
 import { NavWrapper, NavTitleRow, NavItemsColDT, NavItemsRowDT, NavItemsColMB, NavItemsRowMB, NavItem } from "./Nav.styled";
 import { MainTitle } from '../../pages/Styles.styled';
 import { PBurgerButton } from "../Buttons";
-import {authUtil} from '../../utils/auth';
+import { AuthService } from "../../services/AuthService";
 
 export const Nav = (props) => {
 
@@ -16,7 +16,7 @@ export const Nav = (props) => {
     const [loggedUser, setLoggedUser] = useState();
 
 
-    useEffect(()=>{setLoggedUser(authUtil.getLoggedUser())},[])
+    useEffect(()=>{setLoggedUser(AuthService.getAuth())},[])
     useEffect(() => {
         setProfileUsername(props.user ? props.user.username : 'Profile');
     }, [props.user])
@@ -43,7 +43,8 @@ export const Nav = (props) => {
 
     const modifyMBoutput = () => {
         if (location.includes('profile')) {
-            if ((props.user && props.user.id !== parseInt(loggedUser))) { setMBoutput([]); return; }
+            if(!props.user || !loggedUser) return;
+            if ((props.user.id !== loggedUser.id)) { setMBoutput([]); return; }
             setMBoutput([{ content: <PBurgerButton /> }]);
             setStyle({
                 height: '50%',

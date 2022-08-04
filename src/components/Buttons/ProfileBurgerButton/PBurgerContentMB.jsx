@@ -4,6 +4,7 @@ import { NoScrollContainer } from '../../../pages/Styles.styled';
 import { BBMContent, BgButton, BBMBar } from '../Buttons.styled';
 import { InfoModal } from "../../Modals/InfoModal";
 import { Loader } from '../../Loader/Loader';
+import { AuthService } from "../../../services/AuthService";
 
 export const PBurgerContentMB = (props) => {
 
@@ -33,8 +34,8 @@ export const PBurgerContentMB = (props) => {
     }, []);
 
     const logOut = () => {
-        localStorage.removeItem('log');
-        setBottom('-35vh');
+        AuthService.logOut();
+            setBottom('-35vh');
         setTimeout(() => {
             openModal(`Logged out successfully!`);
         }, ms * .5);

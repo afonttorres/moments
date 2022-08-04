@@ -4,8 +4,8 @@ import { VSignin } from '../../views/VSignin/VSignin';
 import { ViewContainer } from '../Styles.styled';
 import { InfoModal } from '../../components/Modals/InfoModal';
 import { useNavigate } from 'react-router-dom';
-import { authUtil } from '../../utils/auth';
 import { authAPIService } from '../../services/authAPIService';
+import { AuthService } from '../../services/AuthService';
 
 
 export const Login = (props) => {
@@ -26,10 +26,10 @@ export const Login = (props) => {
         setTimeout(() => { checkIfUserLogged(location) }, ms)
     }, [location])
 
-    useEffect(()=>{
-        if(!username) return;
+    useEffect(() => {
+        if (!username) return;
         console.log(username);
-    },[username])
+    }, [username])
 
     //SIGNIN (CREATE)
     const signin = (data) => {
@@ -57,15 +57,15 @@ export const Login = (props) => {
                 openModal(res.error);
                 return;
             }
-            setTimeout(() => { openModal(`${res.username} logged succesfully!`); }, ms * .5)
-            localStorage.setItem('log', JSON.stringify(res.token));
+            setTimeout(() => { openModal(`${res.username} logged succesfully!`); }, ms * .5);
+            AuthService.saveLog(res);
             setTimeout(() => { navigate('/home'); }, ms);
         })
     }
 
     //CHECK IF SOMEONE IS LOGGED
     const checkIfUserLogged = (action) => {
-        const logged = authUtil.getLoggedUser();
+        const logged = AuthService.getAuth();
         if (!logged) return;
         openModal(`Please, log out before ${action.split("-").join(" ")}`);
         return;

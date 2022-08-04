@@ -6,6 +6,7 @@ import { BBDContent, BgButton } from "../Buttons.styled";
 import { CloseButton } from "../CloseButton";
 import { InfoModal } from "../../Modals/InfoModal";
 import { Loader } from '../../Loader/Loader';
+import { AuthService } from "../../../services/AuthService";
 
 export const PBurgerContentDT = (props) => {
 
@@ -34,7 +35,7 @@ export const PBurgerContentDT = (props) => {
             closeModal();
             setIsLoading(true);
         }, ms);
-        localStorage.removeItem('log');
+        AuthService.logOut();
         setTimeout(() => { navigate('/log-in') }, ms * 2);
     }
 
