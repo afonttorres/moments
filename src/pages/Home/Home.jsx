@@ -123,8 +123,8 @@ export const Home = () => {
     }
 
     //LIKE
-    const like = (data) => {
-        likeAPIService.like(data.id).then(res => {
+    const like = (id) => {
+        likeAPIService.like(id).then(res => {
             if (res === null || res === undefined) return;
             res.error ? openModal(res.error) : getData();
             //openModal(`Sorry, you can't like your own moment!`);
@@ -133,8 +133,8 @@ export const Home = () => {
     }
 
     //SAVE
-    const save = (data) => {
-        saveAPIService.save(data.id).then(res => {
+    const save = (id) => {
+        saveAPIService.save(id).then(res => {
             if (res === null || res === undefined) return;
             res.error ? openModal(res.error) : getData();
             //openModal(`Sorry, you can't save your own moment!`);
@@ -162,28 +162,29 @@ export const Home = () => {
     }
 
     return (
-        <>{moments ?
-            <>
-                <ViewContainer>
-                    <Nav />
+        <>
+            <ViewContainer>
+                <Nav />
+                {moments ?
                     <View>
                         <UsersFeed users={users} />
                         <Feed location="home" moments={moments} update={update} erase={erase} like={like} save={save} />
                     </View>
-                    <Footer />
-                    <>
-                        {isUpdateActive || updatedMoment ?
-                            <NoScrollContainer id='noscroll'>
-                                {isUpdateActive ? <View bgColor={'--main-bg'} width={'95%'} ><VUpload closeUpdate={closeUpdate} moment={momentToUpdate} action={showPreview} title={'update'} /></View> : null}
-                                {updatedMoment ? <PreviewCard moment={updatedMoment} confirm={confirmUpdate} cancel={cancelUpdate} title={'update'} /> : null}
-                            </NoScrollContainer>
-                            : null}
-                    </>
-                </ViewContainer>
-                {msg !== undefined ? <InfoModal msg={msg} closeModal={closeModal} /> : null}
-                {question !== undefined ? <ConfirmModal question={question} closeDialog={closeDialog} confirm={confirmDelete} data={dialogData} /> : null}
-            </>
-            : <Loader />}
+                    :
+                    <Loader />
+                }
+                <Footer />
+                <>
+                    {isUpdateActive || updatedMoment ? (
+                        <NoScrollContainer id='noscroll'>
+                            {isUpdateActive ? <View bgColor={'--main-bg'} width={'95%'} ><VUpload closeUpdate={closeUpdate} moment={momentToUpdate} action={showPreview} title={'update'} /></View> : null}
+                            {updatedMoment ? <PreviewCard moment={updatedMoment} confirm={confirmUpdate} cancel={cancelUpdate} title={'update'} /> : null}
+                        </NoScrollContainer>
+                    ):null}
+                </>
+            </ViewContainer>
+            {msg !== undefined ? <InfoModal msg={msg} closeModal={closeModal} /> : null}
+            {question !== undefined ? <ConfirmModal question={question} closeDialog={closeDialog} confirm={confirmDelete} data={dialogData} /> : null}
         </>
     );
 }

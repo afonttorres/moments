@@ -26,7 +26,7 @@ export const Profile = (props) => {
     }, [])
 
     useEffect(() => {
-        if (!loggedId) return;
+        // if (!loggedId) return;
         setUser();
         setTimeout(() => { getUser() }, ms)
     }, [profileId, loggedId, location]);

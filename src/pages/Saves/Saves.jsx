@@ -6,28 +6,46 @@ import { Nav } from "../../components/Navs/Nav";
 import { VLikesAndSaves } from "../../views/VLikesAndSaves/VLikesAndSaves";
 import { momentAPIService } from "../../services/momentAPIService";
 import { MainTitle, ViewContainer } from "../Styles.styled";
+import { InfoModal } from "../../components/Modals/InfoModal";
 
-export const Saves = () =>{
+export const Saves = () => {
 
     const [moments, setMoments] = useState();
-    
-    useEffect(()=>{
-        getData();
-    },[])
+    const [msg, setMsg] = useState();
 
-    const getData = () =>{
-        momentAPIService.getUserSaves().then(res =>{
-            if(!res) return;
-            if(res.error) return;
+    useEffect(() => {
+        getData();
+    }, [])
+
+    const getData = () => {
+        momentAPIService.getUserSaves().then(res => {
+            if (res.error) {
+                openModal("Log yourself in to see your saved moments!");
+                return;
+            }
             setMoments(res);
         })
     }
 
+    //MODALS
+
+    const openModal = (msg) => {
+        setMsg(msg)
+    }
+
+    const closeModal = () => {
+        setMsg();
+    }
+
     return (
-        <ViewContainer>
-            <Nav />
-            <>{moments ? <VLikesAndSaves moments={moments} adj={'saved'}/> : <MainTitle>You don't have any saved moment</MainTitle>}</>
-            <Footer/>
-        </ViewContainer>
+        <>
+            <ViewContainer>
+                <Nav />
+                <>{moments ? <VLikesAndSaves moments={moments} adj={'saved'} /> : <MainTitle style={{ textAlign: "center" }}>You don't have any saved moments</MainTitle>}</>
+                <Footer />
+            </ViewContainer>
+            {msg !== undefined ? <InfoModal msg={msg} closeModal={closeModal} /> : null}
+        </>
+
     )
 }

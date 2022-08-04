@@ -7,6 +7,6 @@ export const authUtil = {
     getLoggedUser() {
         const log = JSON.parse(localStorage.getItem('log'));
         if (!log) return null;
-        return log.log_id;
+        return log;
     }
 }

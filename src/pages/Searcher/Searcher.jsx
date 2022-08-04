@@ -35,7 +35,7 @@ export const Searcher = () => {
         momentAPIService.searchMoment(search).then(res => {
             if (!res) return;
             if (res.error) {
-                openModal(res.error);
+                openModal("Log yourself in to look for any moment!");
                 return;
             }
             setSuggestions(res);

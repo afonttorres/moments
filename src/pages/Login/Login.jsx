@@ -4,15 +4,13 @@ import { VSignin } from '../../views/VSignin/VSignin';
 import { ViewContainer } from '../Styles.styled';
 import { InfoModal } from '../../components/Modals/InfoModal';
 import { useNavigate } from 'react-router-dom';
-import { formatUtil } from '../../utils/format';
-import { userAPIService } from '../../services/userAPIService';
 import { authUtil } from '../../utils/auth';
-
+import { authAPIService } from '../../services/authAPIService';
 
 
 export const Login = (props) => {
     const [location, setLocation] = useState(window.location.pathname.toString().substring(1, (window.location.pathname.toString().length)));
-
+    const [username, setUsername] = useState();
     const [msg, setMsg] = useState();
 
     const navigate = useNavigate();
@@ -28,31 +26,39 @@ export const Login = (props) => {
         setTimeout(() => { checkIfUserLogged(location) }, ms)
     }, [location])
 
+    useEffect(()=>{
+        if(!username) return;
+        console.log(username);
+    },[username])
+
     //SIGNIN (CREATE)
     const signin = (data) => {
-        userAPIService.createUser(data).then(res => {
+        authAPIService.register(data).then(res => {
             if (!res) return;
             if (res.error) {
                 openModal(res.error);
                 // openModal(`User: ${data.email} already exists, please log yourself in.`);
                 return;
             }
-            localStorage.setItem('log', JSON.stringify({ "log_id": res.id }));
-            setTimeout(() => { openModal(`${formatUtil.capitalizeName(res.name)} registred succesfully!`); }, ms * .5)
-            setTimeout(() => { navigate('/home'); }, ms);
+            setTimeout(() => { openModal(res); }, ms * .5)
+            setTimeout(() => { navigate('/log-in'); }, ms);
         })
     }
 
     const login = (data) => {
-        userAPIService.logUser(data).then(res => {
+        authAPIService.login(data).then(res => {
             if (!res) return;
             if (res.error) {
+                if (res.error.includes("Unauth")) {
+                    openModal(`Wrong password!`);
+                    setUsername(data.username);
+                    return;
+                }
                 openModal(res.error);
-                // openModal(`User: ${data.email} does not exist or password might be wrong`);
                 return;
             }
-            setTimeout(() => { openModal(`${formatUtil.capitalizeName(res.name)} logged succesfully!`); }, ms * .5)
-            localStorage.setItem('log', JSON.stringify({ "log_id": res.id }));
+            setTimeout(() => { openModal(`${res.username} logged succesfully!`); }, ms * .5)
+            localStorage.setItem('log', JSON.stringify(res.token));
             setTimeout(() => { navigate('/home'); }, ms);
         })
     }
@@ -81,7 +87,7 @@ export const Login = (props) => {
     return (
         <>
             <ViewContainer>
-                {location === "log-in" || location === '' ? <VLogin location={location} functions={foosObj} openModal={openModal} /> : <VSignin location={location} functions={foosObj} openModal={openModal} />}
+                {location === "log-in" || location === '' ? <VLogin location={location} functions={foosObj} openModal={openModal} username={username} /> : <VSignin location={location} functions={foosObj} openModal={openModal} />}
             </ViewContainer>
             <>{msg !== undefined ? <InfoModal msg={msg} closeModal={closeModal} /> : null}</>
         </>

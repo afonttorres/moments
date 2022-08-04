@@ -2,11 +2,17 @@ import React, { useState } from "react";
 import { Input, Form, Label } from "./Forms.styled";
 import { BgButton } from "../Buttons/Buttons.styled";
 import { validationUtil } from "../../utils/validation";
+import { useEffect } from "react";
 
 export const LogForm = (props) => {
 
     const [userData, setUserData] = useState({ name: "", username: "", email: "", password: "" });
     const [filledInputs, setFilledInputs] = useState([]);
+
+
+    useEffect(() => {
+        setUserData({ ...userData, username: props.username });
+    }, [props.username])
 
     const handleInputChange = (e) => {
         let name = e.target.name;
@@ -33,7 +39,7 @@ export const LogForm = (props) => {
     }
 
     const setData = () => {
-        if (props.location.includes("log")) { delete userData["name"]; delete userData["username"]; } 
+        if (props.location.includes("log")) { delete userData["name"]; delete userData["email"]; }
         setUserData(userData);
     }
     const sanitize = () => {
@@ -56,18 +62,18 @@ export const LogForm = (props) => {
 
     return (
         <Form heightMB={'60%'} onSubmit={handleSubmit}>
-            {props.location.includes("sign") ?
-                <>
-                    <Label color={filledInputs.includes("name") ? "--interaction-color" : "--font-color-plain-noBg"}>Your name</Label>
-                    <Input border={filledInputs.includes("name") ? `2px solid var(--ux-border-color)` : `1px solid var(--border-color)`} capi={'capitalize'} type="text" name="name" value={userData.name} placeholder="Name" onChange={handleInputChange} onFocus={(e) => e.target.select()} />
-                    <Label color={filledInputs.includes("username") ? "--interaction-color" : "--font-color-plain-noBg"}>username</Label>
-                    <Input border={filledInputs.includes("username") ? `2px solid var(--ux-border-color)` : `1px solid var(--border-color)`} type="text" name="username" value={userData.username} placeholder="username" onChange={handleInputChange} onFocus={(e) => e.target.select()} />
-                </>
-                : null}
-            <Label color={filledInputs.includes("email") ? "--interaction-color" : "--font-color-plain-noBg"}>Email</Label>
-            <Input border={filledInputs.includes("email") ? `2px solid var(--ux-border-color)` : `1px solid var(--border-color)`} type="email" name="email" value={userData.email} placeholder="Email" onChange={handleInputChange} onFocus={(e) => e.target.select()} />
+            {props.location.includes("sign") &&
+                (
+                    <>
+                        <Label color={filledInputs.includes("name") ? "--interaction-color" : "--font-color-plain-noBg"}>Your name</Label>
+                        <Input border={filledInputs.includes("name") ? `2px solid var(--ux-border-color)` : `1px solid var(--border-color)`} capi={'capitalize'} type="text" name="name" value={userData.name} placeholder="Name" onChange={handleInputChange} onFocus={(e) => e.target.select()} />
+                        <Label color={filledInputs.includes("email") ? "--interaction-color" : "--font-color-plain-noBg"}>Email</Label>
+                        <Input border={filledInputs.includes("email") ? `2px solid var(--ux-border-color)` : `1px solid var(--border-color)`} type="email" name="email" value={userData.email} placeholder="Email" onChange={handleInputChange} onFocus={(e) => e.target.select()} />
+                    </>)}
+            <Label color={filledInputs.includes("username") ? "--interaction-color" : "--font-color-plain-noBg"}>username</Label>
+            <Input border={filledInputs.includes("username") ? `2px solid var(--ux-border-color)` : `1px solid var(--border-color)`} type="text" name="username" value={userData.username} placeholder="username" onChange={handleInputChange} onFocus={(e) => e.target.select()} />
             <Label color={filledInputs.includes("password") ? "--interaction-color" : "--font-color-plain-noBg"}>Password</Label>
-            <Input border={filledInputs.includes("password") ? `2px solid var(--ux-border-color)` : `1px solid var(--border-color)`} type="password" name="password" value={userData.password} placeholder="Password" onChange={handleInputChange}onFocus={(e) => e.target.select()}  />
+            <Input border={filledInputs.includes("password") ? `2px solid var(--ux-border-color)` : `1px solid var(--border-color)`} type="password" name="password" value={userData.password} placeholder="Password" onChange={handleInputChange} onFocus={(e) => e.target.select()} />
             <BgButton type="submit">{props.title}</BgButton>
         </Form>
     )

@@ -62,7 +62,7 @@ export const momentAPIService = {
                 return res.data;
             })
             .catch(err => {
-                return { error: err.response.data.message };
+                return { error: err.response.data.error };
             })
         return suggestions;
     },
@@ -98,7 +98,7 @@ export const momentAPIService = {
                 return res.data;
             })
             .catch(err => {
-                return { error: err.response.data.message };
+                return { error: err.response.data.error };
             })
         return moments;
     },
@@ -108,7 +108,7 @@ export const momentAPIService = {
                 return res.data;
             })
             .catch(err => {
-                return { error: err.response.data.message };
+                return { error: err.response.data.error };
             })
         return moments;
     }

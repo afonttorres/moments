@@ -152,8 +152,8 @@ export const MomentDetail = () => {
     }
 
     //LIKE
-    const like = (data) => {
-        likeAPIService.like(data.id).then(res => {
+    const like = (id) => {
+        likeAPIService.like(id).then(res => {
             if (res === null || res === undefined) return;
             res.error ? openModal(res.error) : getMoment();
             //openModal(`Sorry, you can't like your own moment!`);
@@ -161,8 +161,8 @@ export const MomentDetail = () => {
     }
 
     //SAVE
-    const save = (data) => {
-        saveAPIService.save(data.id).then(res => {
+    const save = (id) => {
+        saveAPIService.save(id).then(res => {
             if (res === null || res === undefined) return;
             res.error ? openModal(res.error) : getMoment();
             //openModal(`Sorry, you can't save your own moment!`);
