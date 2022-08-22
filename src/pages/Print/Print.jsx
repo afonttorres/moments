@@ -36,7 +36,7 @@ export const Print = () => {
     }
 
     const getComments = () => {
-        commentAPIService.getMomentComents(momentId).then(res => {
+        commentAPIService.getMomentComments(momentId).then(res => {
             if (!res || res.error) return;
             setComments(res);
         })

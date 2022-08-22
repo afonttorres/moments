@@ -15,6 +15,7 @@ import { likeAPIService } from "../../services/likeAPIService";
 import { saveAPIService } from "../../services/saveAPIService";
 import { Profile } from "../../pages/Profile/Profile";
 import { Home } from "../../pages/Home/Home";
+import { AuthService } from "../../services/AuthService";
 
 
 export const MomentDetail = () => {
@@ -62,7 +63,7 @@ export const MomentDetail = () => {
         })
     }
     const getComments = () => {
-        commentAPIService.getMomentComents(momentId).then(res => {
+        commentAPIService.getMomentComments(momentId).then(res => {
             if (!res) return;
             if (res.error) {
                 openModal(res.error);
@@ -86,6 +87,10 @@ export const MomentDetail = () => {
 
     //UPDATE
     const update = (data) => {
+        if (!AuthService.isCreator(data)) {
+            openModal(`You can't update a moment that is not yours.`)
+            return;
+        }
         setIsUpdateActive(true);
         setMomentToUpdate(data);
     }
@@ -96,7 +101,8 @@ export const MomentDetail = () => {
     }
 
     const updateData = (data) => {
-        let moment = { ...momentToUpdate, ...data }
+        let moment = { ...momentToUpdate, ...data };
+        console.table(moment)
         setUpdatedMoment(moment);
     }
 
@@ -134,7 +140,9 @@ export const MomentDetail = () => {
 
     //ERASE
     const erase = (data) => {
-        openDialog(`Do you really want to delete moment with id: ${data.id}?`, data);
+        AuthService.isCreator(data) ? 
+        openDialog(`Do you really want to delete moment with id: ${data.id}?`, data) :
+        openModal(`You can't erase a moment that is not yours`); 
     }
 
     const confirmDelete = (data) => {
