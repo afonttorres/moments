@@ -42,7 +42,7 @@ export const Saves = () => {
         <>
             <ViewContainer>
                 <Nav />
-                {moments ? <>{moments.length > 0 ? <VLikesAndSaves moments={moments} adj={'favorite'} /> : <MainTitle style={{ textAlign: "center" }}>You don't have any saved moment</MainTitle>}</> : <Loader />}
+                {moments ? <>{moments.length > 0 ? <VLikesAndSaves moments={moments} adj={'saved'} /> : <MainTitle style={{ textAlign: "center" }}>You don't have any saved moment</MainTitle>}</> : <Loader />}
                 <Footer />
             </ViewContainer>
             {msg !== undefined ? <InfoModal msg={msg} closeModal={closeModal} /> : null}

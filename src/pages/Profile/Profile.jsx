@@ -27,7 +27,7 @@ export const Profile = (props) => {
 
     useEffect(() => {
         reset();
-        setTimeout(() => { getUser(getId()) }, ms)
+        setTimeout(() => { getUser() }, ms)
     }, [profileId, loggedId, location]);
 
     useEffect(() => {
@@ -47,7 +47,9 @@ export const Profile = (props) => {
         })
     }
 
-    const getUser = (id) => {
+    const getUser = () => {
+        let id = getId();
+        if(!id) return;
         userAPIService.getUser(id).then(res => {
             if (!res) return;
             if (res.error) return;
@@ -66,7 +68,6 @@ export const Profile = (props) => {
     const getId = () =>{
         let id;
         profileId ? id = profileId : id = loggedId;
-        if (!id) return;
         return id;
     }
 
@@ -75,6 +76,7 @@ export const Profile = (props) => {
         setMoments();
     }
 
+    console.log(user)
     return (
         <ViewContainer>
             {moments ? <VProfile user={user} moments={moments} /> : <Loader />}
