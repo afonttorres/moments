@@ -1,7 +1,6 @@
 import React, { useEffect } from "react";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { authUtil } from "../../utils/auth";
 import { userAPIService } from "../../services/userAPIService";
 import { VSettings } from "../../views/VSettings/VSettings";
 import { Footer } from '../../components/Footer/Footer';

@@ -64,7 +64,8 @@ export const Profile = (props) => {
     }
 
     const getId = () =>{
-        let id = profileId ? id = profileId : id = loggedId;
+        let id;
+        profileId ? id = profileId : id = loggedId;
         if (!id) return;
         return id;
     }

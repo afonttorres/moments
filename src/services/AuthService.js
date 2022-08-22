@@ -19,7 +19,7 @@ export const AuthService = {
         return auth;
     },
     isLogged(id){
-        return id == this.getAuth().id;
+        return +id === +this.getAuth().id;
     },
     findUser(moment, users) {
         for (let user of users) {
