@@ -7,6 +7,7 @@ import { VLikesAndSaves } from '../../views/VLikesAndSaves/VLikesAndSaves';
 import { momentAPIService } from "../../services/momentAPIService";
 import { MainTitle, ViewContainer } from "../Styles.styled"
 import { InfoModal } from "../../components/Modals/InfoModal";
+import { Loader } from "../../components/Loader/Loader";
 export const Likes = () => {
 
     const [moments, setMoments] = useState();
@@ -26,7 +27,7 @@ export const Likes = () => {
                 }, ms * .5);
                 return;
             }
-            res.length > 0 ? setMoments(res) : setMoments();
+            setMoments(res);
         })
     }
 
@@ -44,7 +45,7 @@ export const Likes = () => {
         <>
             <ViewContainer>
                 <Nav />
-                <>{moments ? <VLikesAndSaves moments={moments} adj={'favorite'} /> : <MainTitle style={{ textAlign: "center" }}>You don't have any favorite moments</MainTitle>}</>
+                {moments ? <>{moments.length > 0 ? <VLikesAndSaves moments={moments} adj={'favorite'} /> : <MainTitle style={{ textAlign: "center" }}>You don't have any favorite moments</MainTitle>}</> : <Loader />}
                 <Footer />
             </ViewContainer>
             {msg !== undefined ? <InfoModal msg={msg} closeModal={closeModal} /> : null}

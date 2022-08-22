@@ -34,7 +34,7 @@ export const likeAPIService = {
                 return res.data;
             })
             .catch(err => {
-                return { error: err.response.data.message };
+                return { error: err.response.data.error };
             })
         return like;
     }

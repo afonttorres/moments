@@ -7,6 +7,7 @@ import { VLikesAndSaves } from "../../views/VLikesAndSaves/VLikesAndSaves";
 import { momentAPIService } from "../../services/momentAPIService";
 import { MainTitle, ViewContainer } from "../Styles.styled";
 import { InfoModal } from "../../components/Modals/InfoModal";
+import { Loader } from "../../components/Loader/Loader";
 
 export const Saves = () => {
 
@@ -23,7 +24,7 @@ export const Saves = () => {
                 openModal("Log yourself in to see your saved moments!");
                 return;
             }
-            res.length > 0 ? setMoments(res) : setMoments();
+            setMoments(res);
         })
     }
 
@@ -41,7 +42,7 @@ export const Saves = () => {
         <>
             <ViewContainer>
                 <Nav />
-                <>{moments ? <VLikesAndSaves moments={moments} adj={'saved'} /> : <MainTitle style={{ textAlign: "center" }}>You don't have any saved moments</MainTitle>}</>
+                {moments ? <>{moments.length > 0 ? <VLikesAndSaves moments={moments} adj={'favorite'} /> : <MainTitle style={{ textAlign: "center" }}>You don't have any saved moment</MainTitle>}</> : <Loader />}
                 <Footer />
             </ViewContainer>
             {msg !== undefined ? <InfoModal msg={msg} closeModal={closeModal} /> : null}

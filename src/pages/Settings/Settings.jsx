@@ -7,6 +7,7 @@ import { VSettings } from "../../views/VSettings/VSettings";
 import { Footer } from '../../components/Footer/Footer';
 import { ViewContainer } from "../Styles.styled";
 import { InfoModal } from "../../components/Modals/InfoModal";
+import { AuthService } from "../../services/AuthService";
 
 export const Settings = () => {
 
@@ -29,7 +30,7 @@ export const Settings = () => {
 
 
     const findLogged = () => {
-        const logged = authUtil.getLoggedUser();
+        const logged = AuthService.getAuth().id;
         if (!logged) return;
         setLoggedId(logged);
     }

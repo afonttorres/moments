@@ -52,11 +52,10 @@ export const commentAPIService = {
         console.log(req)
         const comment = axios.post(`/comments`, req)
             .then(res => {
-                console.table(res)
                 return res.data
             })
             .catch(err => {
-                return { error: err.response.data.message };
+                return { error: err.response.data.error };
             })
         return comment;
     }

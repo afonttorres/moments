@@ -18,6 +18,9 @@ export const AuthService = {
         if (!auth) return false;
         return auth;
     },
+    isLogged(id){
+        return id == this.getAuth().id;
+    },
     findUser(moment, users) {
         for (let user of users) {
             if (parseInt(user.id) === parseInt(moment.userId)) return (user);
