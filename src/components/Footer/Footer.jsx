@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Link, useLocation } from 'react-router-dom';
-import { authUtil } from "../../utils/auth";
+import { AuthService } from "../../services/AuthService";
 import { AddIcon, MBFooter, MBFooterItem, MBFooterRow } from "./Footer.styled";
 
 export const Footer = (props) => {
@@ -10,7 +10,7 @@ export const Footer = (props) => {
     const [output, setOutput] = useState([]);
 
     useEffect(() => {
-        let log = authUtil.getLoggedUser();
+        let log = AuthService.getAuth();
         setOutput([
             { button: "home", content: <i className="fa-solid fa-house"></i> },
             { button: "search", content: <i className="fa-solid fa-magnifying-glass"></i> },

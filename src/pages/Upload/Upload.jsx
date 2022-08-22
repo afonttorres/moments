@@ -8,7 +8,7 @@ import { formatUtil } from "../../utils/format";
 import { InfoModal } from "../../components/Modals/InfoModal";
 import { momentAPIService } from "../../services/momentAPIService";
 import { userAPIService } from "../../services/userAPIService";
-import { authUtil } from "../../utils/auth";
+import { AuthService } from "../../services/AuthService";
 
 export const Upload = () => {
 
@@ -45,14 +45,12 @@ export const Upload = () => {
                 return;
             }
             const castedUser = formatUtil.castObj({ ...res }, ['avatarUrl', 'username', 'id']);
-            setUser(castedUser)
+            setUser(castedUser);
         })
     }
 
     const findLogged = () => {
-        const logged = authUtil.getLoggedUser();
-        if (!logged) return;
-        setLoggedId(logged);
+        AuthService.getAuth() ? setLoggedId(AuthService.getAuth().id) : openModal(`Moments can't be uploaded if you are not logged`);
     }
 
     //UPLOAD
@@ -62,6 +60,7 @@ export const Upload = () => {
     }
 
     const confirm = () => {
+        delete moment.creator;
         momentAPIService.postMoment(formatUtil.objToLowerCase(moment)).then(res => {
             if (!res) return;
             if (res.error) {
@@ -86,6 +85,9 @@ export const Upload = () => {
 
     const closeModal = () => {
         setMsg();
+        setTimeout(() => {
+            navigate('/log-in');
+        }, ms);
     }
 
     return (

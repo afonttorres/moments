@@ -14,6 +14,7 @@ import { userAPIService } from '../../services/userAPIService';
 import { Loader } from '../../components/Loader/Loader';
 import { likeAPIService } from '../../services/likeAPIService';
 import { saveAPIService } from '../../services/saveAPIService';
+import { AuthService } from '../../services/AuthService';
 
 
 export const Home = () => {
@@ -57,7 +58,9 @@ export const Home = () => {
 
     //DELETE
     const erase = (data) => {
-        openDialog(`Do you really want to delete moment with id: ${data.id}?`, data);
+        AuthService.isCreator(data) ? 
+        openDialog(`Do you really want to delete moment with id: ${data.id}?`, data) :
+        openModal(`You can't erase a moment that is not yours`); 
     }
 
     const confirmDelete = (data) => {
@@ -66,7 +69,6 @@ export const Home = () => {
             if (!res) return;
             if (res.error) {
                 openModal(res.error);
-                //openModal(`Sorry, you can't delete a moment that is not yours.`)
                 return;
             }
             setMoments();
@@ -77,12 +79,17 @@ export const Home = () => {
 
     //UPDATE
     const update = (data) => {
+        if (!AuthService.isCreator(data)) {
+            openModal(`You can't update a moment that is not yours.`)
+            return;
+        }
         setIsUpdateActive(true);
         setMomentToUpdate(data);
     }
 
     const updateData = (data) => {
-        let moment = { ...momentToUpdate, ...data }
+        let moment = { ...momentToUpdate, ...data };
+        console.table(moment)
         setUpdatedMoment(moment);
     }
 
@@ -98,7 +105,6 @@ export const Home = () => {
             setMomentToUpdate();
             if (res.error) {
                 openModal(res.error);
-                //openModal(`Sorry, you can't update a moment that is not yours.`);
                 return;
             }
             openModal(`Moment with id: ${res.id} updated successfully!`);
@@ -180,7 +186,7 @@ export const Home = () => {
                             {isUpdateActive ? <View bgColor={'--main-bg'} width={'95%'} ><VUpload closeUpdate={closeUpdate} moment={momentToUpdate} action={showPreview} title={'update'} /></View> : null}
                             {updatedMoment ? <PreviewCard moment={updatedMoment} confirm={confirmUpdate} cancel={cancelUpdate} title={'update'} /> : null}
                         </NoScrollContainer>
-                    ):null}
+                    ) : null}
                 </>
             </ViewContainer>
             {msg !== undefined ? <InfoModal msg={msg} closeModal={closeModal} /> : null}

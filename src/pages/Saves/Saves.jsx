@@ -23,7 +23,7 @@ export const Saves = () => {
                 openModal("Log yourself in to see your saved moments!");
                 return;
             }
-            setMoments(res);
+            res.length > 0 ? setMoments(res) : setMoments();
         })
     }
 

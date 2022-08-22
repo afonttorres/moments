@@ -26,7 +26,7 @@ export const Likes = () => {
                 }, ms * .5);
                 return;
             }
-            setMoments(res);
+            res.length > 0 ? setMoments(res) : setMoments();
         })
     }
 
