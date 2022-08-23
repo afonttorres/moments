@@ -9,6 +9,8 @@ import { InfoModal } from "../../components/Modals/InfoModal";
 import { momentAPIService } from "../../services/momentAPIService";
 import { userAPIService } from "../../services/userAPIService";
 import { AuthService } from "../../services/AuthService";
+import { cloudinaryAPIService } from "../../services/cloudinaryAPIService";
+import { Loader } from "../../components/Loader/Loader";
 
 export const Upload = () => {
 
@@ -19,6 +21,7 @@ export const Upload = () => {
     const [moment, setMoment] = useState();
     const [isPreviewActive, setIsPreviewACtive] = useState(false);
     const [msg, setMsg] = useState();
+    const [isLoading, setIsLoading] = useState(false);
 
     const [loggedId, setLoggedId] = useState();
     const [user, setUser] = useState();
@@ -34,6 +37,10 @@ export const Upload = () => {
 
     useEffect(() => {
     }, [moment])
+
+    useEffect(() => {
+        if (!isLoading) return;
+    }, [isLoading])
 
 
     //GETTERS
@@ -53,7 +60,21 @@ export const Upload = () => {
         AuthService.getAuth() ? setLoggedId(AuthService.getAuth().id) : openModal(`Moments can't be uploaded if you are not logged`);
     }
 
-    //UPLOAD
+    //UPLOAD IMG
+    const uploadImg = (data) => {
+        let { file, ...rest } = data;
+        setIsLoading(true);
+        cloudinaryAPIService.uploadImage(file).then(res => {
+            if (!res) {
+                openModal('Something went wrong')
+                return
+            };
+            setMoment({ ...rest, imgUrl: res.url });
+            setIsLoading(false);
+        })
+    }
+
+    //UPLOAD MOMENT
     const upload = (data) => {
         setMoment({ ...data, "creator": user });
         setIsPreviewACtive(true);
@@ -67,7 +88,7 @@ export const Upload = () => {
                 openModal(res.error);
                 return;
             }
-            setMoment();
+            console.log(res)
             setIsPreviewACtive(false);
             openModal(`Moment added succesfully!`)
             setTimeout(() => navigate('/home'), ms * .5);
@@ -90,13 +111,19 @@ export const Upload = () => {
         }, ms);
     }
 
+    console.log(isLoading)
     return (
         <>
             <ViewContainer>
-                <VUpload action={upload} location={'home'} moment={moment} title={'upload'} openModal={openModal} />
-                <>{isPreviewActive ? <NoScrollContainer><PreviewCard moment={moment} confirm={confirm} cancel={cancel} title={'upload'} /></NoScrollContainer> : null}</>
+                {isLoading ? <Loader />
+                    : <>
+                        <VUpload action={upload} uploadImg={uploadImg} location={'home'} moment={moment} title={'upload'} openModal={openModal} />
+                        <>{isPreviewActive ? <NoScrollContainer><PreviewCard moment={moment} confirm={confirm} cancel={cancel} title={'upload'} /></NoScrollContainer> : null}</>
+                    </>
+                }
             </ViewContainer>
             <>{msg !== undefined ? <InfoModal msg={msg} closeModal={closeModal} /> : null}</>
+
         </>
     )
 }

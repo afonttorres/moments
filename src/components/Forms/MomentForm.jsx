@@ -21,9 +21,15 @@ export const MomentForm = (props) => {
         })
     }, [props])
 
+    const handleFileChange = (e) => {
+        console.log(e.target.name, e.target.files[0]);
+        let data = { ...moment, file: e.target.files[0] };
+        props.uploadImg(data);
+    }
+
     const handleInputChange = (e) => {
         let name = e.target.name;
-        let value = e.target.value;
+        let value = e.target.value ? e.target.value : "";
         setMoment({ ...moment, [name]: value });
         getFilledInputs();
     }
@@ -61,6 +67,7 @@ export const MomentForm = (props) => {
         setFilledInputs([]);
     }
 
+    console.log(props.moment);
     return (
         <Form heightDT={'100%'} onSubmit={handleSubmit}>{Object.keys(moment).map((field, key) => (
             <>
@@ -69,12 +76,13 @@ export const MomentForm = (props) => {
                     <Input
                         key={key}
                         border={filledInputs.includes(field) ? `2px solid var(--ux-border-color)` : `1px solid var(--border-color)`}
-                        type={field.includes("Url") ? "url" : 'text'}
+                        type={field.includes("Url") && !props.moment ? "file" : 'text'}
                         name={field} value={moment[field]}
                         placeholder={field.replace("Url", " url")}
-                        onChange={handleInputChange}
-                        onFocus={(e) => e.target.select()}  
-                        />
+                        onChange={field.includes("Url") && !props.moment ? handleFileChange : handleInputChange}
+                        // onChange={handleInputChange}
+                        onFocus={(e) => e.target.select()}
+                    />
                     :
                     <TextArea
                         key={key}
@@ -83,8 +91,8 @@ export const MomentForm = (props) => {
                         name={field} value={moment[field]}
                         placeholder={field}
                         onChange={handleInputChange}
-                        onFocus={(e) => e.target.select()} 
-                        />}
+                        onFocus={(e) => e.target.select()}
+                    />}
                 </>
             </>
         ))}
