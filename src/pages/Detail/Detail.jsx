@@ -16,6 +16,7 @@ import { saveAPIService } from "../../services/saveAPIService";
 import { Profile } from "../../pages/Profile/Profile";
 import { Home } from "../../pages/Home/Home";
 import { AuthService } from "../../services/AuthService";
+import { cloudinaryAPIService } from "../../services/cloudinaryAPIService";
 
 
 export const MomentDetail = () => {
@@ -85,6 +86,20 @@ export const MomentDetail = () => {
         })
     }
 
+    //UPLOAD IMG
+    const uploadImg = (data) => {
+        let { file, ...rest } = data;
+        setIsLoading(true);
+        cloudinaryAPIService.uploadImage(file).then(res => {
+            if (!res) {
+                openModal('Something went wrong')
+                return
+            };
+            updateData({ ...rest, imgUrl: res.url });
+            setIsLoading(false);
+        })
+    }
+
     //UPDATE
     const update = (data) => {
         if (!AuthService.isCreator(data)) {
@@ -102,8 +117,8 @@ export const MomentDetail = () => {
 
     const updateData = (data) => {
         let moment = { ...momentToUpdate, ...data };
-        console.table(moment)
         setUpdatedMoment(moment);
+        setIsUpdateActive(false);
     }
 
     const confirmUpdate = () => {
@@ -111,7 +126,7 @@ export const MomentDetail = () => {
         momentAPIService.updateMoment(formatUtil.objToLowerCase(updatedMoment)).then(res => {
             if (!res) return;
             setUpdatedMoment();
-            setMomentToUpdate()
+            setMomentToUpdate();
             if (res.error) {
                 setIsLoading(false);
                 openModal(res.error);
@@ -140,9 +155,9 @@ export const MomentDetail = () => {
 
     //ERASE
     const erase = (data) => {
-        AuthService.isCreator(data) ? 
-        openDialog(`Do you really want to delete moment with id: ${data.id}?`, data) :
-        openModal(`You can't erase a moment that is not yours`); 
+        AuthService.isCreator(data) ?
+            openDialog(`Do you really want to delete moment with id: ${data.id}?`, data) :
+            openModal(`You can't erase a moment that is not yours`);
     }
 
     const confirmDelete = (data) => {
@@ -247,8 +262,8 @@ export const MomentDetail = () => {
                 <>
                     {isUpdateActive || updatedMoment ?
                         <NoScrollContainer>
-                            {isUpdateActive ? <View bgColor={'--main-bg'} width={'95%'} ><VUpload closeUpdate={closeUpdate} moment={momentToUpdate} action={showPreview} title={'update'} /></View> : null}
-                            {updatedMoment ? <PreviewCard moment={updatedMoment} confirm={confirmUpdate} cancel={cancelUpdate} title={'update'} /> : null}
+                            {isUpdateActive && <View bgColor={'--main-bg'} width={'95%'} ><VUpload closeUpdate={closeUpdate} moment={momentToUpdate} action={showPreview} title={'update'} uploadImg={uploadImg} /></View>}
+                            {updatedMoment && <PreviewCard moment={updatedMoment} confirm={confirmUpdate} cancel={cancelUpdate} title={'update'} />}
                         </NoScrollContainer>
                         :
                         null

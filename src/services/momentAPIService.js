@@ -64,7 +64,6 @@ export const momentAPIService = {
     },
     updateMoment(moment) {
         const castedMoment = { ...formatUtil.castObj(moment, ['imgUrl', 'location', 'description'])};
-        console.table(castedMoment)
         const updatedMoment = axios.put(`/moments/${moment.id}`, castedMoment)
             .then(res => {
                 return res.data;

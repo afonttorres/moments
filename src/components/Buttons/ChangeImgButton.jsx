@@ -3,7 +3,7 @@ import { useState } from "react";
 import { NoBgButton } from "./Buttons.styled";
 export const ChangeImageButton = ({ action }) => {
     const content = 'Change image';
-    const [styles, setStyles] = useState();
+    const [styles, setStyles] = useState({ width: 'fit-content', padding: '0 5%' });
 
     useEffect(() => { }, [styles]);
 

@@ -88,7 +88,6 @@ export const Upload = () => {
                 openModal(res.error);
                 return;
             }
-            console.log(res)
             setIsPreviewACtive(false);
             openModal(`Moment added succesfully!`)
             setTimeout(() => navigate('/home'), ms * .5);

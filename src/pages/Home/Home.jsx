@@ -86,7 +86,6 @@ export const Home = () => {
 
     //UPLOAD IMG
     const uploadImg = (data) => {
-        console.log(data)
         let { file, ...rest } = data;
         setIsLoading(true);
         cloudinaryAPIService.uploadImage(file).then(res => {
@@ -189,7 +188,6 @@ export const Home = () => {
         setDialogData();
     }
 
-    console.log(isLoading)
     return (
         <>
             <ViewContainer>
