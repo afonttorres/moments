@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useEffect } from "react";
+// import { Col } from "../../pages/Styles.styled";
 import { Row } from "../../pages/Styles.styled";
 import { validationUtil } from "../../utils/validation";
 import { FileButton } from "../Buttons";
@@ -82,7 +83,7 @@ export const MomentForm = (props) => {
 
     return (
         <Form heightDT={'100%'} onSubmit={handleSubmit}>{Object.keys(moment).map((field, key) => (
-            <>
+            <React.Fragment key={key}>
                 <Label key={key} color={filledInputs.includes(field) ? "--interaction-color" : "--font-color-plain-noBg"} >{field.replace("Url", " url")}</Label>
                 <>{field !== 'description' ?
                     <>
@@ -113,7 +114,7 @@ export const MomentForm = (props) => {
                         onFocus={(e) => e.target.select()}
                     />}
                 </>
-            </>
+            </React.Fragment>
         ))}
             <BgButton type="submit">{props.title}</BgButton>
         </Form>
