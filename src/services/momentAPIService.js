@@ -42,7 +42,6 @@ export const momentAPIService = {
     },
     postMoment(moment) {
         const castedMoment = { ...formatUtil.castObj(moment, ['imgUrl', 'location', 'description'])};
-        console.log(castedMoment)
         const postedMoment = axios.post(`/moments`, castedMoment)
             .then(res => {
                 return res.data;

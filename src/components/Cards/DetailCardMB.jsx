@@ -11,8 +11,10 @@ export const DetailCardMB = (props) => {
     const [startTouch, setStartTouch] = useState();
 
     const setDirection = (e) => {
+        if(document.getElementById('noscroll')) return;
         const endTouch = e.changedTouches[0].screenY;
-        if(startTouch === endTouch || startTouch -20 < endTouch) return;
+        if (startTouch === endTouch || Math.abs(startTouch - endTouch) <= 20) return;
+        console.log(`start : ${startTouch} - end : ${endTouch}`);
         startTouch > endTouch ? props.slide('forward') : props.slide('back');
     }
 
@@ -31,7 +33,7 @@ export const DetailCardMB = (props) => {
                 </MCInfoRow>
             </Touchable>
             {props.comments ? <Comments comments={props.comments} user={props.user} /> : null}
-            <CommentForm moment={props.moment} createComment={props.createComment} openModal={props.openModal}/>
+            <CommentForm moment={props.moment} createComment={props.createComment} openModal={props.openModal} />
         </View>
     )
 }

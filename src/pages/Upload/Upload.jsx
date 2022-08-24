@@ -105,9 +105,6 @@ export const Upload = () => {
 
     const closeModal = () => {
         setMsg();
-        setTimeout(() => {
-            navigate('/log-in');
-        }, ms);
     }
 
     return (

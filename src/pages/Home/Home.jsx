@@ -110,7 +110,6 @@ export const Home = () => {
 
     const updateData = (data) => {
         let moment = { ...momentToUpdate, ...data };
-        console.table(moment)
         setUpdatedMoment(moment);
     }
 
