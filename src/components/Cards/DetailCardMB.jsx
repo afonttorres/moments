@@ -11,10 +11,9 @@ export const DetailCardMB = (props) => {
     const [startTouch, setStartTouch] = useState();
 
     const setDirection = (e) => {
-        if(document.getElementById('noscroll')) return;
+        if (document.getElementById('noscroll')) return;
         const endTouch = e.changedTouches[0].screenY;
         if (startTouch === endTouch || Math.abs(startTouch - endTouch) <= 20) return;
-        console.log(`start : ${startTouch} - end : ${endTouch}`);
         startTouch > endTouch ? props.slide('forward') : props.slide('back');
     }
 

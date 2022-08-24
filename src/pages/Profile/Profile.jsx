@@ -76,7 +76,6 @@ export const Profile = (props) => {
         setMoments();
     }
 
-    console.log(user)
     return (
         <ViewContainer>
             {moments ? <VProfile user={user} moments={moments} /> : <Loader />}

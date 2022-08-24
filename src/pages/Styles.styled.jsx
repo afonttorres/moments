@@ -102,7 +102,6 @@ export const Touchable = styled(Col)`
     height: fit-content;
     width: 100%;
     gap: inherit;
-    border: 1px solid red;
 `;
 
 export const NonTouchable = styled(Col)`
