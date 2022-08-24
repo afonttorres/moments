@@ -15,6 +15,7 @@ import { Loader } from '../../components/Loader/Loader';
 import { likeAPIService } from '../../services/likeAPIService';
 import { saveAPIService } from '../../services/saveAPIService';
 import { AuthService } from '../../services/AuthService';
+import { cloudinaryAPIService } from '../../services/cloudinaryAPIService';
 
 
 export const Home = () => {
@@ -29,6 +30,7 @@ export const Home = () => {
     const [isUpdateActive, setIsUpdateActive] = useState(false);
     const [momentToUpdate, setMomentToUpdate] = useState();
     const [updatedMoment, setUpdatedMoment] = useState();
+    const [isLoading, setIsLoading] = useState(false);
 
     const s = 3;
     const ms = s * 1000;
@@ -40,6 +42,11 @@ export const Home = () => {
             getUsers();
         }, ms)
     }, [])
+
+
+    useEffect(() => {
+    }, [isLoading])
+
 
     //GETTERS
     const getData = () => {
@@ -58,9 +65,9 @@ export const Home = () => {
 
     //DELETE
     const erase = (data) => {
-        AuthService.isCreator(data) ? 
-        openDialog(`Do you really want to delete moment with id: ${data.id}?`, data) :
-        openModal(`You can't erase a moment that is not yours`); 
+        AuthService.isCreator(data) ?
+            openDialog(`Do you really want to delete moment with id: ${data.id}?`, data) :
+            openModal(`You can't erase a moment that is not yours`);
     }
 
     const confirmDelete = (data) => {
@@ -74,6 +81,21 @@ export const Home = () => {
             setMoments();
             openModal(`Moment with id: ${res.id} erased successfully!`);
             setTimeout(() => { getData() }, ms * .5)
+        })
+    }
+
+    //UPLOAD IMG
+    const uploadImg = (data) => {
+        console.log(data)
+        let { file, ...rest } = data;
+        setIsLoading(true);
+        cloudinaryAPIService.uploadImage(file).then(res => {
+            if (!res) {
+                openModal('Something went wrong')
+                return
+            };
+            setMomentToUpdate({ ...momentToUpdate, ...rest, imgUrl: res.url });
+            setIsLoading(false);
         })
     }
 
@@ -167,6 +189,7 @@ export const Home = () => {
         setDialogData();
     }
 
+    console.log(isLoading)
     return (
         <>
             <ViewContainer>
@@ -183,8 +206,9 @@ export const Home = () => {
                 <>
                     {isUpdateActive || updatedMoment ? (
                         <NoScrollContainer id='noscroll'>
-                            {isUpdateActive ? <View bgColor={'--main-bg'} width={'95%'} ><VUpload closeUpdate={closeUpdate} moment={momentToUpdate} action={showPreview} title={'update'} /></View> : null}
-                            {updatedMoment ? <PreviewCard moment={updatedMoment} confirm={confirmUpdate} cancel={cancelUpdate} title={'update'} /> : null}
+                            {isUpdateActive && !isLoading && <View bgColor={'--main-bg'} width={'95%'} ><VUpload closeUpdate={closeUpdate} moment={momentToUpdate} action={showPreview} title={'update'} uploadImg={uploadImg} /></View>}
+                            {updatedMoment && !isLoading && <PreviewCard moment={updatedMoment} confirm={confirmUpdate} cancel={cancelUpdate} title={'update'} />}
+                            {isLoading && <ViewContainer bg={'white'}><Loader /></ViewContainer>}
                         </NoScrollContainer>
                     ) : null}
                 </>

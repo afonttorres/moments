@@ -111,7 +111,6 @@ export const Upload = () => {
         }, ms);
     }
 
-    console.log(isLoading)
     return (
         <>
             <ViewContainer>

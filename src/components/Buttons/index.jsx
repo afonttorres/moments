@@ -12,4 +12,5 @@ export { SearchButton } from './SearchButton';
 export { TickButton } from './TickButton';
 export { CrossButton } from './CrossButton';
 export { CancelButton } from './CancelButton';
-export {SliderButtons} from './SliderButtons/SliderButtons';
+export { SliderButtons } from './SliderButtons/SliderButtons';
+export { FileButton } from './FileButton';
