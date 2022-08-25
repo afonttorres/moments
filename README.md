@@ -1,70 +1,93 @@
-# Getting Started with Create React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Moments App
+This React App pretends to emulate both Instagram performance and its design although its design is inspired by [Hazif Rana](https://dribbble.com/shots/15919643-Social-Media-Mobile-App/attachments/7750406?mode=media/). It has been developed using React and calls an API Rest developed with Java.
 
-## Available Scripts
 
-In the project directory, you can run:
+## Tech Stack
++ HTML 5
++ CSS 3
++ REACT
 
-### `npm start`
+### Rest API
++ [Moments API](https://github.com/afonttorres/momentsAPI)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+### Version control
++ GIT
++ Git Hub
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### Development tools & libraries
++ Visual Studio Code
++ Postman
++ Axios
++ Styled-Components
 
-### `npm test`
+## Objectives
+The main entity of this project are the moments. Each moment has its image, title, description and location. User can upload its own moments, update and delete them and interact of those that are not theirs liking, saving or adding comments performing as a small social media.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+The functional requirements of this project were divided by sprints which were developed by importance using Agile Methodologies as Kanban and Scrum.
 
-### `npm run build`
+### Sprint 1
+User should be able to see a list of moments, see its detail in a detail page, upload a new moment, update an already existing moment and delete it. Furthermore, user should be able to search a moment by typing its title, description or location.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Sprint 2
+Besides the CRUD operations seen in the first sprint, every moment should display its author and user should be able to like or dislike a moment and add comments to it. Both comments and likes as well as its count should be displayed. Given a like field on each moment, user should be able to see the list of his liked moments.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### Sprint 3
+The last functional requirement is for the user to be able to register and login so he can be part of this social media and be authenticated in the application to improve its user experience.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Features
+### Moments CRUD
++ Upload a moment
++ Update a moment
++ Display a list of moments
++ Display moment detail
++ Delete a moment
++ Search moments
 
-### `npm run eject`
+### User CRUD
++ Login
++ Register
++ Update settings
++ Log out
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+### Comments CRUD
++ Add a comment to a moment
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### Likes & Saves CRUD
++ Add a like or Saves
++ Delete a like or Saves
++ Display user liked or saved moments
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+### Extra
++ Printable page (allows the user to print a moment)
++ Copy a link to Clipboard
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+### Design
++ Responsive Web Design
++ Modularity and Scalability (by using React components)
++ Upload moment pictures
 
-## Learn More
+## Preview
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## Next
++ Messenger so users can chat
++ Like or dislike a comment
++ Update a comment
++ Delete a comment
++ Upload avatar and banner pictures
 
-### Code Splitting
+## Installation
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+This project was bootstrapped with Create React App therefore requires node.js and npm.  Once you've verified node is installed in your directory take the following steps:
 
-### Analyzing the Bundle Size
+#### 1. Clone the repository
+```bash
+ https://github.com/afonttorres/moments.git
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
 
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+#### 2. Run the app in development mode
+```bash
+ npm start
+ ``` 
