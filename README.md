@@ -68,7 +68,25 @@ The last functional requirement is for the user to be able to register and login
 + Upload moment pictures
 
 ## Preview
-
+#### Desktop
+![App Screenshot](https://via.placeholder.com/468x300?text=App+Screenshot+Here)
+#### Mobile
+![App Screenshot](./assets/mobile/singin.png)
+![App Screenshot](./assets/mobile/login.png)
+![App Screenshot](./assets//mobile/home.png)
+![App Screenshot](./assets/mobile/home-modal.png)
+![App Screenshot](./assets/mobile/upload.png)
+![App Screenshot](./assets/mobile/upload-change.png)
+![App Screenshot](./assets/mobile/preview.png)
+![App Screenshot](./assets/mobile/detail.png)
+![App Screenshot](./assets/mobile/favs.png)
+![App Screenshot](./assets/mobile/seacher.png)
+![App Screenshot](./assets/mobile/print.png)
+![App Screenshot](./assets/mobile/update.png)
+![App Screenshot](./assets/mobile/profile.png)
+![App Screenshot](./assets/mobile/user-profile.png)
+![App Screenshot](./assets/mobile/user-bb.png)
+![App Screenshot](./assets/mobile/user-settings.png)
 
 ## Next
 + Messenger so users can chat
@@ -76,6 +94,8 @@ The last functional requirement is for the user to be able to register and login
 + Update a comment
 + Delete a comment
 + Upload avatar and banner pictures
++ Error component (Not found...)
++ Error handling service
 
 ## Installation
 
