@@ -69,7 +69,23 @@ The last functional requirement is for the user to be able to register and login
 
 ## Preview
 #### Desktop
-![App Screenshot](https://via.placeholder.com/468x300?text=App+Screenshot+Here)
+![App Screenshot](./assets/desk/singin.png)
+![App Screenshot](./assets/desk/login.png)
+![App Screenshot](./assets/desk/home.png)
+![App Screenshot](./assets/desk/home-modal.png)
+![App Screenshot](./assets/desk/upload.png)
+![App Screenshot](./assets/desk/upload-change.png)
+![App Screenshot](./assets/desk/preview.png)
+![App Screenshot](./assets/desk/detail.png)
+![App Screenshot](./assets/desk/favs.png)
+![App Screenshot](./assets/desk/searcher.png)
+![App Screenshot](./assets/desk/print.png)
+![App Screenshot](./assets/desk/update.png)
+![App Screenshot](./assets//desk/profile.png)
+![App Screenshot](./assets/desk/user-profile.png)
+![App Screenshot](./assets/desk/user-bb.png)
+![App Screenshot](./assets/desk/user-settings.png)
+
 #### Mobile
 ![App Screenshot](./assets/mobile/singin.png)
 ![App Screenshot](./assets/mobile/login.png)
