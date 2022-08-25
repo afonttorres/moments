@@ -6,6 +6,7 @@ This React App pretends to emulate both Instagram performance and its design alt
 ## Tech Stack
 + HTML 5
 + CSS 3
++ ES6
 + REACT
 
 ### Rest API
