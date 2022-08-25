@@ -1,5 +1,5 @@
 
-# Moments App
+# Moments App 📷
 This React App pretends to emulate both Instagram performance and its design although its design is inspired by [Hazif Rana](https://dribbble.com/shots/15919643-Social-Media-Mobile-App/attachments/7750406?mode=media/). It has been developed using React and calls an API Rest developed with Java.
 
 
